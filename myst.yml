@@ -1,0 +1,35 @@
+version: 1
+project:
+  title: Teoría y métodos de análisis de riesgos de desastres y climáticos
+  subtitle: Fundamentos para evaluar ciudades de Colombia
+  description: Libro de teoría y métodos (amenaza, exposición, vulnerabilidad y riesgo) para evaluar riesgos de desastres y climáticos en ciudades colombianas, alineado con CLIMAAX, CCDR-tools y CLIMADA.
+  keywords: [riesgo de desastres, riesgo climático, amenaza, vulnerabilidad, Colombia, CLIMADA, CLIMAAX, CCDR]
+  authors:
+    - name: Mauricio Romero
+      email: mauricio.romero.t@gmail.com
+  license:
+    content: CC-BY-4.0
+  bibliography: [references.bib]
+  exclude: ["fuentes/**", "book/03_amenazas/_molde.md"]
+  toc:
+    - file: index.md
+    - file: book/01_conceptos/index.md
+      children:
+        - pattern: book/01_conceptos/1*.md
+    - file: book/02_metodologia/index.md
+      children:
+        - pattern: book/02_metodologia/2*.md
+    - file: book/03_amenazas/index.md
+      children:
+        - pattern: book/03_amenazas/3*.md
+    - file: book/04_vulnerabilidad/index.md
+      children:
+        - pattern: book/04_vulnerabilidad/4*.md
+    - file: book/05_sintesis/index.md
+    - title: Recursos
+      children:
+        - file: book/recursos/fuentes_colombia.md
+        - file: book/recursos/glosario.md
+site:
+  template: book-theme
+  title: Teoría de riesgos
