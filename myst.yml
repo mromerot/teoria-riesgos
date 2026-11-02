@@ -13,7 +13,7 @@ project:
   numbering:
     figure:
       template: Figura %s
-  exclude: ["fuentes/**", "plantilla/**", "scripts/**", "estilo/**", "book/03_amenazas/datos/**"]
+  exclude: ["fuentes/**", "plantilla/**", "scripts/**", "estilo/**", "plan/**", "CLAUDE.md", "book/03_amenazas/datos/**"]
   toc:
     - file: index.md
     - file: book/01_conceptos/index.md
