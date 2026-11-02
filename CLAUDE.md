@@ -11,6 +11,7 @@ Libro MyST (`mystmd`) con la teoría y los métodos para analizar riesgos de des
 - `book/03_amenazas/31x_*.ipynb`: cuadernos con salidas guardadas; su fuente está en `scripts/cuadernos/` y se reconstruyen con `python scripts/cuadernos/construir.py 313 314 315` (ejecutar con `JUPYTER_DATA_DIR` vacío si el kernel `python3` del usuario falla).
 - `plantilla/` y `scripts/nueva_ciudad.py`: plantilla de repositorio de ciudad.
 - `estilo/`: identidad visual; tras cambiar `estilo.css` o un ícono, `python estilo/construir_css.py`.
+- La sección GRD del sitio personal (`MR-Web/grd/`, publicada en https://mromerot.github.io/web/grd/) es un mapa de lecturas y una taxonomía de amenazas del autor: sirve para encontrar fuentes, pero el libro cita el documento original.
 - `fuentes/`: índice de la hoja de vigilancia (`vigilancia_ctei.csv`). `fuentes/texto/` y los PDFs **no se versionan**.
 
 ## Reglas

@@ -12,7 +12,8 @@
    - la colección *Investigaciones en gestión del riesgo de desastres en Colombia* (2021, 2023, 2025);
    - PreventionWeb de UNDRR (conceptos y terminología);
    - fuentes nacionales en PDF (Atlas 2019, DNP, Banco Mundial, Expertise E2050 y otras);
-   - la tabla de artículos colombianos (998 registros; 317 PDFs en Drive).
+   - la tabla de artículos colombianos (998 registros; 317 PDFs en Drive);
+   - tu sección de gestión del riesgo de desastres en el sitio personal, https://mromerot.github.io/web/grd/ (bibliografía comentada y taxonomía de amenazas).
 5. El objetivo es ir construyendo todo de forma iterativa.
 
 ## 2. Qué implica «invocar el libro»
@@ -50,12 +51,14 @@ De ahí salen cinco requisitos para el libro:
 | PreventionWeb (UNDRR) | Conceptos y terminología | Parcial (cascada, compuesto y 3 publicaciones multiamenaza) | Riesgo sistémico, intensivo y extensivo, directo e indirecto, resiliencia, capacidad, perfiles de amenazas (HIPs), GAR |
 | PDFs nacionales (`referencia_colombia`, 9) | Marco y métodos de Colombia | Atlas 2019, DNP, Banco Mundial | Expertise E2050 (3), Informe de ciudades, Perfil de país, Modelación y adaptación |
 | Libros de referencia (`libros_referencia`, 10) | Teoría de base por tema | Solo Chen et al. 2016 | Guía PMGRD, revisión de métodos y software, Baker (sismo), *Landslide Handbook*, GIZ *Climate Risk Sourcebook*, compuestos, atribución, adaptación, *Disaster Risk* (Routledge) |
+| **Sitio personal, sección GRD** (`mromerot.github.io/web/grd/`; fuente local `MR-Web/grd/`) | Bibliografía comentada del autor y taxonomía de amenazas. Sirve de **mapa de entrada**: señala qué leer y qué categorías cubrir. No es fuente primaria: el libro cita el documento original, no la página | Parcial (cascadas y compuestos, ejemplo de Limbe) | Barrido por secciones (abajo) |
 | Tabla de artículos (998) y carpeta de PDFs (317) | Literatura colombiana por amenaza | ~50 citados por título o resumen | Lectura por niveles; ver plan de lectura |
 
 ## 4. Alcance de amenazas
 
 - **En el libro (12):** sismo, volcanes, tsunami, movimientos en masa, inundación, erosión costera, erosión fluvial, sequía, calor, incendios forestales, ciclones tropicales, vendavales.
 - **Que los pilotos usaron y el libro no tiene:** **dengue y salud** (Leticia, Sincelejo), **incendio urbano** (SIDRo), y **seguridad hídrica** (Sincelejo; puede cubrirse desde sequía).
+- **Categorías de amenaza de tu sitio** (`grd/`): geológicas, hidrometeorológicas, ambientales, biológicas (COVID), sociales (migración), tecnológicas y extraterrestres. El libro cubre geológicas, hidrometeorológicas y ambientales; las otras cuatro son decisión de alcance.
 - **Candidatas de la tabla de artículos, sin decidir:** contaminación del aire, perturbación geomagnética, accidentes tecnológicos por desastre natural (NaTech), licuefacción como capítulo propio.
 - Decisión pendiente (ver sección 8).
 
@@ -87,11 +90,27 @@ Un capítulo **provisional** es L1 con una cobertura de fuentes baja (la adverte
 | **F0. Andamiaje** (hecha) | Estructura, 5 partes, 12 amenazas en L0–L1, plantilla, skill, diseño, despliegue | Sitio en línea, repositorio, plantilla | Hecho; falta desplegar el último commit |
 | **F1. Orden y base** | Dejar el proyecto trazable | `plan/`, `CLAUDE.md`, `CITATION.cff`, licencia, inventario de fuentes, lista de cifras por verificar | Plan aprobado; inventario completo |
 | **F2. Literatura colombiana** | Convertir los artículos en capítulos L2 | Copia local de PDFs, emparejamiento con la tabla, fichas, capítulos actualizados | Todos los artículos nivel A leídos; cobertura por capítulo registrada |
-| **F3. Fuentes institucionales** | Agotar las fuentes de referencia | Capítulos y glosario ampliados con PreventionWeb, *Investigaciones GRD* 2025, E2050, informe de ciudades, Guía PMGRD, CLIMADA completo | Matriz de fuentes (sección 3) sin celdas «pendiente» críticas |
+| **F3. Fuentes institucionales** | Agotar las fuentes de referencia | Capítulos y glosario ampliados con PreventionWeb, *Investigaciones GRD* 2025, E2050, informe de ciudades, Guía PMGRD, CLIMADA completo, y el barrido de tu sitio personal | Matriz de fuentes (sección 3) sin celdas «pendiente» críticas |
 | **F4. Brechas de cobertura** | Cubrir lo que los pilotos usaron y el libro no | Capítulos de salud (dengue) e incendio urbano, si se decide; ajustes de alcance | Cada amenaza de los tres pilotos tiene capítulo o está descartada con motivo |
 | **F5. Validación con ciudad real** | Probar la plantilla y el skill | Una ciudad creada con `/nueva-ciudad`; lista de lo que faltó; correcciones al libro | Un análisis de ciudad usa el libro sin consultar los pilotos; capítulos usados pasan a L3 |
 | **F6. Publicación y versionado** | Citable y estable | Etiquetas, DOI (Zenodo), página en tu sitio actualizada, ciudades con versión fijada | Versión 1.0 publicada y citada por al menos un libro de ciudad |
 | **Transversal** | Verificación de cifras pendientes, revisión del marco legal (Ley 1523), revisión de calidad | Lista cerrada en `01_estado.md` | Sin cifras «por verificar» en capítulos L2 |
+
+**Barrido del sitio personal (F3).** Cada sección de `grd/` alimenta una parte del libro:
+
+| Sección del sitio | Alimenta |
+|---|---|
+| Conocimiento del riesgo: amenazas, escenarios, monitoreo | Parte 3 (sección 7, datos) y parte 1 |
+| Vulnerabilidad física y social, artículos científicos | Parte 4 |
+| Evaluación del riesgo: metodologías, FEMA, herramientas | Parte 2 y comparación con CLIMAAX, CCDR-tools y CLIMADA |
+| Riesgos compuestos, en cascada y sistémicos; eventos extremos | Capítulo 1.5 (ya usada); atribución y eventos extremos si se amplía |
+| Resiliencia y análisis forense de desastres | Parte 1 (decidir si entra) y glosario |
+| Comunicación y percepción del riesgo | Fuera del libro por ahora; decidir |
+| Reducción del riesgo y manejo del desastre | Tablas de medidas por amenaza y proceso de la Ley 1523 |
+| Glosario, repositorios, plataformas, SAT | Glosario del libro y tablas de fuentes de datos |
+| Amenazas biológicas, sociales, tecnológicas y extraterrestres | Decisión de alcance (F4) |
+
+El proceso: leer la sección, listar sus enlaces, resolver cada uno a la fuente original y decidir si se lee, se cita o se descarta.
 
 Las fases F2 y F3 se pueden intercalar por capítulo en lugar de hacerlas completas una detrás de otra: tomar un capítulo y agotar sus fuentes (artículos, libros, PreventionWeb) antes de pasar al siguiente. El orden de capítulos propuesto es: sismo, movimientos en masa, inundación, erosión costera y fluvial, calor, sequía e incendios, ciclones y vendavales, tsunami y volcanes, y por último la parte 4 y las partes 1 y 2.
 
@@ -104,7 +123,7 @@ Las fases F2 y F3 se pueden intercalar por capítulo en lugar de hacerlas comple
 | ¿PDFs locales? | Leer de Drive; copiar a una carpeta local | **Copiar** a una carpeta ignorada por git. Ni los PDFs ni su texto ni las fichas se publican. |
 | Profundidad de lectura | Todo a fondo; por niveles | **Por niveles A, B y C** (A: lectura completa de unos 60 a 80; B: lectura dirigida; C: solo índice). |
 | ¿Subagentes para leer en paralelo? | Sí; no | **No por defecto**; solo si lo pides. |
-| Alcance de amenazas | Solo las 12; añadir salud e incendio urbano; añadir más | **Añadir salud (dengue) e incendio urbano** en F4, porque los pilotos ya los usan. Las demás, solo si aparece una ciudad que las necesite. |
+| Alcance de amenazas | Solo las 12; añadir salud e incendio urbano; añadir las categorías biológica, social, tecnológica y extraterrestre de tu sitio | **Añadir salud (dengue) e incendio urbano** en F4, porque los pilotos ya los usan. Las demás categorías, solo si aparece una ciudad que las necesite. |
 | Idioma y licencia | Español, CC BY 4.0 | Mantener. |
 
 ## 9. Riesgos del proyecto
@@ -116,6 +135,7 @@ Las fases F2 y F3 se pueden intercalar por capítulo en lugar de hacerlas comple
 | Derechos de autor | No publicar PDFs, texto extraído ni fichas; parafrasear; figuras de terceros solo enlazadas |
 | Deriva entre ciudades y libro | Plantilla con versión fijada; retroalimentación registrada (R5) |
 | Cuadernos que dejan de correr | Fuentes de cuadernos en `scripts/cuadernos/`; datos descargados en caché ignorada; reconstrucción con un comando |
+| La página personal cita fuentes que no se leyeron | Tratarla como mapa: el libro cita el documento original y su estado de lectura |
 | Fuentes bloqueadas (p. ej. PreventionWeb, Wiley) | Leer desde el navegador cuando se pueda; no eludir verificaciones de bots |
 
 ## 10. Reglas fijas del proyecto

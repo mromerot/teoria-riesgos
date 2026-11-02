@@ -14,7 +14,7 @@
   - [ ] Inventario de fuentes (matriz de la sección 3 del plan) con su estado de lectura
   - [ ] Cerrar la lista de cifras por verificar (abajo)
 - [ ] **F2. Literatura colombiana**: esperando tres decisiones (copia local de PDFs, niveles A, B y C, subagentes).
-- [ ] **F3. Fuentes institucionales**
+- [ ] **F3. Fuentes institucionales**, incluido el barrido de `mromerot.github.io/web/grd/`
 - [ ] **F4. Brechas de cobertura** (salud y dengue, incendio urbano)
 - [ ] **F5. Validación con ciudad real**
 - [ ] **F6. Publicación y versionado**
@@ -62,7 +62,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 
 ## Cobertura de las fuentes de referencia
 
-Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: CLIMADA más allá de `Impact`, *Investigaciones GRD* 2025, los conceptos clave de PreventionWeb, los 3 documentos E2050, el informe de ciudades, el perfil de país, la Guía PMGRD y los otros 9 libros de `libros_referencia`, y 317 PDFs de artículos.
+Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el barrido de la sección GRD de tu sitio personal (ver el plan), CLIMADA más allá de `Impact`, *Investigaciones GRD* 2025, los conceptos clave de PreventionWeb, los 3 documentos E2050, el informe de ciudades, el perfil de país, la Guía PMGRD y los otros 9 libros de `libros_referencia`, y 317 PDFs de artículos.
 
 ## Pilotos y brechas
 
