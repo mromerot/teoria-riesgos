@@ -70,7 +70,7 @@ Deslizamientos, flujos y caídas de roca en laderas.
 :link: book/03_amenazas/305_inundacion.md
 Crecidas de ríos, lluvias intensas e inundación costera.
 :::
-:::{card} ![](estilo/iconos/mov_masa.svg) Avenidas torrenciales
+:::{card} ![](estilo/iconos/avenidas_torrenciales.svg) Avenidas torrenciales
 :link: book/03_amenazas/316_avenidas_torrenciales.md
 Flujos rápidos de agua y sedimentos en cauces de alta pendiente.
 :::

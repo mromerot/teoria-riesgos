@@ -15,7 +15,7 @@ ICONOS = {
     "tsunami": "tsunami",
     "mov-masa": "mov_masa",
     "inundacion": "inundacion",
-    "avenidas-torrenciales": "mov_masa",
+    "avenidas-torrenciales": "avenidas_torrenciales",
     "erosion-costera": "erosion",
     "erosion-fluvial": "erosion",
     "sequia": "sequia",
@@ -26,6 +26,9 @@ ICONOS = {
     "analisis-multiamenaza": "sintesis",
     "riesgos-cascada": "sintesis",
     "trayectorias-ciclones": "ciclones",
+    "sintesis-multiamenaza": "sintesis",
+    "lista-ciudad": "lista",
+    "pmgrd": "pmgrd",
 }
 
 
