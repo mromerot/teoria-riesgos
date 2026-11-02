@@ -18,7 +18,7 @@ md(r'''
 
 [![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mromerot/teoria-riesgos/blob/main/book/03_amenazas/318_tsunami_tumaco_1979.ipynb)
 
-Este cuaderno revisa las **observaciones históricas del tsunami del 12 de diciembre de 1979** (sismo de Mw 8,2 en la zona de subducción colombo-ecuatoriana) que reúne el cuaderno piloto de la UNGRD «Simulación del Tsunami de Tumaco de 1979» ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), licencia MIT, sin validar). Ese cuaderno simula la propagación con aguas someras linealizadas; aquí no se repite la simulación, sino que se usa su tabla de observaciones para dos preguntas que sirven al análisis de una ciudad: **¿cómo cambia el run-up con la distancia a la fuente?** y **¿son coherentes los tiempos de arribo con la física de la onda larga?**
+Este cuaderno revisa las **observaciones históricas del tsunami del 12 de diciembre de 1979** (sismo de Mw 8,3 según Yoshimoto et al., 2017, en la zona de subducción colombo-ecuatoriana) que reúne el cuaderno piloto de la UNGRD «Simulación del Tsunami de Tumaco de 1979», versión 2 ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), licencia MIT). Ese cuaderno simula la propagación con una fuente de Okada y aguas someras lineales; aquí no se repite la simulación, sino que se usa su tabla de observaciones para tres preguntas que sirven al análisis de una ciudad: **¿cómo cambia el run-up con la distancia a la fuente?**, **¿son coherentes los tiempos de arribo con la física de la onda larga?** y **¿son comparables las cifras con lo que simulan otros estudios?**
 
 Epicentro usado por el cuaderno de la UNGRD: 1,598° N, 79,359° O. Las observaciones provienen, según la tabla, de Herd et al. (1981) y de la base de datos de tsunamis de la NOAA (NGDC). **Los valores no se han contrastado con las fuentes primarias.**
 ''')
@@ -90,16 +90,21 @@ md(r'''
 - **Tumaco, 15 minutos.** Los 66–71 km hasta Tumaco en 15 minutos dan una profundidad equivalente de 550–630 m: coherente con una ruta que cruza una plataforma somera y un talud, no con el océano profundo.
 - **Estaciones lejanas.** Buenaventura (45 min) y sobre todo Salinas (35 min a unos 460 km) dan profundidades equivalentes de unos 1 800 y 4 900 m. La segunda supera la profundidad que se espera en la ruta, y la distancia de círculo máximo es un mínimo (la ruta real es más larga, lo que haría la velocidad aún mayor). **Ese tiempo de arribo es sospechoso** y debe contrastarse con la fuente.
 - **Bocagrande.** 49 km en 18 minutos implica una profundidad equivalente de unos 200 m, plausible en una bahía somera.
+- **Coordenadas que no caen en el mar.** Al llevar las estaciones a un modelo digital de elevación (versión 2 del piloto), San Juan y El Charco quedan tierra adentro, Buenaventura en un estuario somero y Salinas fuera del dominio. De las ocho, solo cuatro (Tumaco muelle, Tumaco playa, Bocagrande y Esmeraldas) se pueden comparar con un modelo de aguas someras.
+- **Run-up frente a lo simulado por otros.** Escobar et al. (2020) simulan, para la isla de Tumaco en el escenario de 1979, alturas máximas de 2,30 m (modelo de déficit de deslizamiento) y 1,88 m (modelo de banda ancha); la tabla da 4,5–5 m de run-up en Tumaco. Son magnitudes distintas (altura del tsunami frente a run-up) y modelos distintos, pero la diferencia de más del doble pide verificar la tabla.
+- **Arribo en Tumaco.** El piloto simula un primer ascenso a los 23 min y Ávila-Guzmán et al. (2026) obtienen 22 min con un modelo no lineal; la tabla da 15 min, que pueden referirse al primer movimiento (descenso) y no al primer ascenso. Es otro dato para contrastar con la fuente.
 - **Lección para el análisis de una ciudad.** Antes de calibrar un modelo con observaciones históricas hay que comprobar que sean físicamente coherentes. Con ocho puntos de dos fuentes distintas, al menos uno (Salinas) no encaja con una velocidad de onda larga razonable y otro (Buenaventura) exige una profundidad de unos 1 800 m a lo largo de toda la ruta.
 ''')
 
 md(r'''
 ## 4. Qué haría falta para un estudio de amenaza
 
-- Una fuente sísmica finita (modelo de dislocación) en lugar de una onda en N calibrada; el cuaderno de la UNGRD usa una amplitud inicial de 8 m que compensa la difusión del esquema y no representa el desplazamiento real del fondo, de 1 a 2 m según su propio texto.
-- Ecuaciones no lineales con tratamiento de celda seca para estimar la inundación, no solo la elevación en el mar.
+La versión 2 del piloto ya incorpora una fuente de dislocación (Okada, 1985; falla rectangular de geometría supuesta) y un esquema numérico sin difusión, de modo que no necesita una amplitud de calibración. Sigue faltando:
+
+- La **distribución de deslizamiento** del evento (Poveda y Pulido, 2019, citado por Escobar et al., 2020) en lugar de una falla de deslizamiento uniforme. Con la geometría supuesta, la amplitud en Tumaco varía de 4,2 a 8,8 m según el caso y el tiempo de arribo apenas cambia (21 a 26 min).
+- Ecuaciones no lineales con fricción y tratamiento de celda seca para estimar la inundación; la elevación de un modelo lineal en aguas someras no es un run-up y sobreestima respecto a lo publicado.
 - Topografía de alta resolución de las islas de Tumaco; los 450 m del modelo piloto no capturan su geometría.
 - Validación con las observaciones de Herd et al. (1981) y los registros mareográficos, ya revisados contra las fuentes primarias.
 
-**Referencias.** Herd, D. G., Youd, T. L., Meyer, H., Arango, J. L., Person, W. J. y Mendoza, C. (1981). The Great Tumaco, Colombia earthquake of 12 December 1979. *Science*, 211(4481), 441-445. Base de datos de tsunamis de la NOAA/NGDC. UNGRD, cuaderno piloto crc003 (MIT).
+**Referencias.** Ávila-Guzmán, M. P., Herrera, S., Lizarazo-Marriaga, J., et al. (2026). The impact of earthquake-induced debris on the near-field tsunami pedestrian mobility and safety: Tumaco Island case of study. https://doi.org/10.1007/s11069-026-08104-x. Escobar, R. S., Otero Díaz, L., Guerrero, A. M., et al. (2020). Tsunami hazard assessment for the central and southern Pacific coast of Colombia. *Coastal Engineering Journal*, 62(4), 540-552. https://doi.org/10.1080/21664250.2020.1818362. Herd, D. G., Youd, T. L., Meyer, H., Arango, J. L., Person, W. J. y Mendoza, C. (1981). The Great Tumaco, Colombia earthquake of 12 December 1979. *Science*, 211(4481), 441-445. Okada, Y. (1985). Surface deformation due to shear and tensile faults in a half-space. *Bulletin of the Seismological Society of America*, 75(4), 1135-1154. Base de datos de tsunamis de la NOAA/NGDC. UNGRD, cuaderno piloto crc003, versión 2 (MIT).
 ''')

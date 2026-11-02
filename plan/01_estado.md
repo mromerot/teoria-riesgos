@@ -36,7 +36,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 2 | Escenarios climáticos | L1 | CLIMAAX, CCDR-tools | Reducción de escala para Colombia |
 | 3 | Sismo | L1 | Atlas, literatura nacional | Cifra de población en zonas de amenaza |
 | 3 | Volcanes | L1 | Atlas | Literatura reciente |
-| 3 | Tsunami | L1 | Atlas, caso de Guapi | Literatura reciente |
+| 3 | Tsunami | L1 | Atlas, Guapi, Escobar 2020, Ávila-Guzmán 2026, piloto crc003 v2 | Leer completos Escobar 2020 y Páez 2021; fuente de Poveda y Pulido (2019); NSWE con inundación |
 | 3 | Movimientos en masa | L1 | Atlas, SGC, literatura nacional | Artículos leídos completos |
 | 3 | Inundación | L1 | Atlas, CLIMAAX | Artículos leídos completos |
 | 3 | Erosión costera | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; Pacífico |
@@ -131,10 +131,18 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 ## Natech, tsunami, verificación y oraciones temáticas (2026-11-02)
 
 - Nuevo capítulo provisional `319_natech.md` (grupo «Amenazas tecnológicas»; HIP TL0309; 3 estudios con PDF + Atlas 2019), con ícono, ilustración, tarjeta en la portada y entrada en `scripts/nueva_ciudad.py`. Faltan 4 trabajos de la hoja sin PDF.
-- Tsunami: subsección «Ejemplo aplicado: Tumaco 1979» y cuaderno 318 (`318_tsunami_tumaco_1979.ipynb`) con las observaciones del cuaderno piloto crc003 de la UNGRD (MIT). Hallazgo: el arribo de Salinas (35 min a unos 460 km) implica una profundidad equivalente de unos 4 900 m; contrastar con Herd et al. (1981) y NOAA. El cuaderno piloto está sin validar (amplitud de calibración de 8 m frente a 1–2 m de desplazamiento real).
+- Tsunami: subsección «Ejemplo aplicado: Tumaco 1979» y cuaderno 318 (`318_tsunami_tumaco_1979.ipynb`) con las observaciones del cuaderno piloto crc003 de la UNGRD (MIT). Hallazgo: el arribo de Salinas (35 min a unos 460 km) implica una profundidad equivalente de unos 4 900 m; contrastar con Herd et al. (1981) y NOAA. El cuaderno piloto está sin validar (la versión 1 usaba una amplitud de calibración de 8 m; la versión 2 usa una fuente de Okada).
 - `ragrd evidencia` sobre 14 capítulos: ninguna cifra «no encontrada», «parcial» ni «dispersa». Las filas «sin_pdf» son fuentes que no son PDF (handbooks, HIPs). Solo cubre cifras de las tablas de evidencia.
 - Skill `/topic-sentence` aplicado a las «Lectura conjunta» de 301–312, 316 y 319 (oración temática con calificador de confianza).
 - Pendiente: choque financiero, los 60 «POR DETERMINAR», PDFs sin copia local (454 filas) y leer el texto completo de los estudios cuyas cifras vienen de resúmenes.
+
+## Tsunami: versión 2 del piloto crc003 (2026-11-02)
+
+- El cuaderno piloto de la UNGRD (`cuadernos-reproducibles-crc003`) pasa a la **versión 2**: fuente de Okada (1985) en lugar de una onda en N calibrada, malla escalonada en lugar de Lax-Friedrichs, dominio ampliado, estaciones leídas en celdas de mar de ≥ 10 m, sensibilidad y contraste con la literatura. Se corrigieron la animación espejada, la fuente desligada del epicentro y la atribución del DEM (era un mosaico de NOAA, no GEBCO).
+- `303_tsunami.md`: «Ejemplo aplicado» reescrito como «Qué enseña la simulación de un escenario» (generación con Okada, propagación y esquema numérico, lectura en la costa, resultados y su lectura); se agrega el tiempo de arribo a Tumaco (22–23 min) a la vulnerabilidad por evacuación, la sensibilidad a la fuente a las incertidumbres y dos pendientes. Se agregan `okada1985` y `avila2026` a `references.bib`.
+- `318_tsunami_tumaco_1979.ipynb`: se actualiza el texto (Mw 8,3; estaciones que no caen en el mar; contraste con 1,88–2,30 m de Escobar et al. y 22 min de Ávila-Guzmán et al.). La tabla de observaciones **sigue sin verificar** contra Herd et al. (1981) y NOAA/NGDC.
+- Lección de método incorporada al libro: verificar un solver con onda plana y reposo exacto, la fuente con una implementación independiente, y declarar que un modelo lineal da confianza en el **tiempo de arribo** y poca en la **amplitud**.
+- Cifras del piloto que el libro cita y aún no tienen respaldo en una fuente primaria propia: la geometría de la falla (supuesto), el epicentro y la profundidad (según el artículo del piloto).
 
 ## Pendientes consolidados (2026-11-02)
 

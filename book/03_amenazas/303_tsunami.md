@@ -82,26 +82,30 @@ El caso de Guapi es un método determinista con un solo modelo sobre una morfolo
 
 Existe además una evaluación de la amenaza para la costa Pacífica central y sur de Colombia {cite:p}`escobar2020tsunami`, que debe consultarse para su método y resultados antes de aplicarlo a una ciudad.
 
-### Ejemplo aplicado: el tsunami de Tumaco de 1979
+### Qué enseña la simulación de un escenario
 
-La Subdirección para el Conocimiento del Riesgo de la UNGRD publicó un **cuaderno piloto, sin validar**, que simula la propagación del tsunami del 12 de diciembre de 1979 (sismo de Mw 8,2) hacia Tumaco ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), licencia MIT). Lo que hace y lo que enseña:
+Los dos primeros pasos de la cadena (fuente y deformación) y el tercero (propagación) se pueden ejecutar con herramientas abiertas. Lo que sigue resume lo aprendido al reproducir el tsunami de 1979 en un cuaderno piloto, y qué decisiones de método se desprenden.
 
-| Elemento | Cómo lo trata el cuaderno |
-|---|---|
-| Ecuaciones | Aguas someras linealizadas en dos dimensiones, esquema de Lax-Friedrichs en NumPy, ejecutable en la CPU de Colab (unos 65 s) |
-| Fuente | Onda en N tipo Carrier, con una amplitud de calibración de 8 m |
-| Datos | Batimetría GEBCO 2023 (450 m) y topografía SRTM de 30 m, en UTM zona 18N |
-| Validación | Cualitativa, contra ocho estaciones de run-up |
-| Resultado declarado | Run-up simulado de 3 a 5 m en el área de Tumaco y llegada a los 15 minutos |
+**Generación.** La deformación vertical del fondo de una falla rectangular se calcula con el modelo de dislocación elástica de {cite:t}`okada1985` y se toma como la elevación inicial de la superficie del agua, con deslizamiento $D = M_0/(\mu L W)$ y $M_0 = 10^{1{,}5 M_w + 9{,}1}$ N·m. Es el modelo con el que {cite:t}`sanchez2023guapi` calculan la deformación en Guapi; {cite:t}`escobar2020tsunami` parten de distribuciones de deslizamiento sobre la falla. Para Mw 8,3, 200 × 80 km y 30 GPa, el deslizamiento es de 7,4 m y la deformación va de +3,1 m a −1,3 m. **Calibrar la amplitud de una onda inicial para compensar un esquema difusivo no es una alternativa:** la primera versión del piloto lo hizo, con un pico inicial de 16 m, y ese número no tiene significado físico.
 
-Su propio texto reconoce las limitaciones, que son las mismas que debe resolver un estudio de amenaza: la **amplitud de 8 m compensa la difusión numérica** y no representa el desplazamiento real del fondo, de 1 a 2 m; las ecuaciones lineales **no calculan la inundación**; los 450 m de resolución no capturan las islas de Tumaco; y la fuente no usa un modelo de dislocación finita. Por eso sirve como flujo de trabajo reproducible y no como mapa de amenaza.
+**Propagación.** La celeridad $c=\sqrt{gH}$ da unos 200 m/s sobre 4 000 m. Para tiempos de arribo bastan las ecuaciones de aguas someras **lineales**; para profundidad de inundación hacen falta las **no lineales** con celda seca y fricción (criterio del piloto; no está en las fuentes citadas aquí). El esquema numérico importa: una malla escalonada *forward-backward* conserva el 99,96 % de la amplitud de una onda plana tras 119 km, y Lax-Friedrichs conserva el 43 %. **Un solver nuevo se verifica con una onda plana y con un reposo exacto antes de usarlo**, y la fuente con una implementación independiente.
 
-El cuaderno [](318_tsunami_tumaco_1979.ipynb) usa su tabla de observaciones para dos comprobaciones previas a cualquier calibración:
+**Lectura en la costa.** Un modelo lineal sin fricción sobreestima la elevación en aguas someras y no calcula run-up. El piloto lee cada estación en la celda de mar más cercana con al menos 10 m de profundidad y excluye las que no tienen mar de esa profundidad cerca (varias coordenadas de la tabla de observaciones caen tierra adentro o en estuarios).
 
-- **Run-up y distancia.** Los valores mayores están cerca de la fuente (hasta 5 m en el muelle de Tumaco) y bajan a 0,8 m en Buenaventura.
+El cuaderno piloto de la Subdirección para el Conocimiento del Riesgo de la UNGRD simula el 12 de diciembre de 1979 con Okada, malla escalonada y 450 m de resolución ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), versión 2, licencia MIT). Sus resultados:
+
+| Resultado | Valor | Lectura |
+|---|---|---|
+| Primer ascenso en Tumaco | 23 min; entre 21 y 26 min al variar la fuente y la resolución | Robusto. El modelo no lineal de {cite:t}`avila2026` da 22 min |
+| Elevación máxima en celdas de mar de 10–25 m, Tumaco | 8,2–8,8 m; entre 4,2 y 8,8 m al variar la fuente | **Sensible a la fuente y sobreestimada**: {cite:t}`escobar2020tsunami` simulan 1,88–2,30 m para la isla de Tumaco en el escenario de 1979 |
+| Forma de la señal | Descenso inicial y varias crestas durante 30–45 min; la máxima no es la primera | Un plan de evacuación no termina con el primer ascenso |
+
+La geometría de la falla de ese piloto es un **supuesto** (no tiene la distribución de deslizamiento de Poveda y Pulido, 2019, en que se basan los dos estudios anteriores), y sus observaciones de 1979 están sin verificar. Por eso sirve como flujo de trabajo y como análisis de sensibilidad, no como mapa de amenaza. El cuaderno [](318_tsunami_tumaco_1979.ipynb) usa su tabla de observaciones para dos comprobaciones previas a cualquier calibración:
+
+- **Run-up y distancia.** Los valores mayores están cerca de la fuente (hasta 5 m en el muelle de Tumaco) y bajan a 0,8 m en Buenaventura. Esas cifras duplican las alturas simuladas por {cite:t}`escobar2020tsunami`, otra razón para verificarlas.
 - **Coherencia de los tiempos de arribo.** Los 15 minutos hasta Tumaco corresponden a una profundidad equivalente de unos 600 m, coherente con una plataforma y un talud. El arribo de Salinas (35 minutos a unos 460 km) exige una profundidad de unos 4 900 m a lo largo de toda la ruta, mayor de la esperable, por lo que ese dato es sospechoso hasta contrastarlo con la fuente.
 
-**Lección para el análisis de una ciudad:** los datos históricos con los que se calibra un modelo de tsunami deben revisarse contra la física de la onda larga y contra las fuentes primarias antes de ajustar parámetros.
+**Lección para el análisis de una ciudad:** los datos históricos con los que se calibra un modelo de tsunami deben revisarse contra la física de la onda larga y contra las fuentes primarias antes de ajustar parámetros; y una simulación de escenario entrega con confianza el **tiempo de arribo** y con poca confianza la **amplitud**, mientras no se tenga la distribución de deslizamiento y un modelo no lineal.
 
 ## 3. Exposición
 
@@ -113,7 +117,7 @@ El Atlas incluye los mapas de inundación por tsunami de origen cercano para las
 
 La vulnerabilidad física se modela con **funciones de fragilidad** que dan la probabilidad de daño de un edificio según un parámetro de demanda, típicamente la profundidad de inundación. En el Pacífico colombiano no se registró el daño físico de los eventos del siglo XX, lo que aumenta la incertidumbre del impacto futuro. Por eso se comparan funciones empíricas, construidas con daños observados en otras regiones, con funciones analíticas, para los edificios de Tumaco {cite:p}`paez2021tsunamifrag`.
 
-La vulnerabilidad también incluye el tiempo disponible para evacuar. En fuente cercana puede ser solo de minutos {cite:p}`ungrd2019atlas`. Ese factor no está en las curvas de daño y se aborda en las medidas del punto 7.
+La vulnerabilidad también incluye el tiempo disponible para evacuar. En fuente cercana puede ser solo de minutos {cite:p}`ungrd2019atlas`; para Tumaco, un modelo no lineal da 22 minutos hasta la primera ola {cite:p}`avila2026`. Ese factor no está en las curvas de daño y se aborda en las medidas del punto 7.
 
 ## 5. Riesgo
 
@@ -142,6 +146,7 @@ Una propuesta reciente es un modelo de lógica difusa para emitir niveles de ale
 ### Incertidumbres principales
 
 - Sin registros de daño físico de eventos colombianos, las fragilidades dependen de otras regiones {cite:p}`paez2021tsunamifrag`.
+- La geometría de la falla puede cambiar la amplitud en la costa por un factor de 2 (4,2 a 8,8 m en Tumaco en el análisis de sensibilidad del cuaderno piloto) y apenas mueve el tiempo de arribo (21 a 26 min). Ese análisis varía un parámetro a la vez: no es una cuantificación de la incertidumbre.
 - Fuentes del Caribe aún en investigación {cite:p}`ungrd2019atlas`.
 - Resolución global de la amenaza probabilista {cite:p}`ungrd2019atlas`.
 
@@ -176,7 +181,8 @@ Una propuesta reciente es un modelo de lógica difusa para emitir niveles de ale
 ## Pendiente
 
 - Leer {cite:p}`escobar2020tsunami` y {cite:p}`paez2021tsunamifrag` completos. Hoy se citan por título y resumen.
-- Contrastar la tabla de observaciones de 1979 (en especial el arribo de Salinas) con Herd et al. (1981) y la base de la NOAA.
+- Contrastar la tabla de observaciones de 1979 (el arribo de Salinas; las coordenadas de San Juan, El Charco y Buenaventura; las cifras de run-up frente a los 1,88–2,30 m de {cite:p}`escobar2020tsunami`) con Herd et al. (1981) y la base de la NOAA.
+- Reemplazar la falla supuesta del piloto por la distribución de deslizamiento de Poveda y Pulido (2019) y repetir la simulación con ecuaciones no lineales y celda seca.
 - Añadir la fuente primaria de la evaluación global (NGI y GA, 2014) y la del modelo de arribo (Madsen y Fuhrman, 2009), que el Atlas cita.
 - Verificar con la literatura la combinación tsunami y ascenso del nivel del mar (punto 6).
 
