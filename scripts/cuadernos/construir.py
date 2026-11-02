@@ -8,7 +8,7 @@ from nbclient import NotebookClient
 
 RAIZ = Path(__file__).resolve().parents[2]
 SALIDA = RAIZ / "book" / "03_amenazas"
-NOMBRES = {"312": "312_analisis_multiamenaza", "313": "313_riesgos_cascada"}
+NOMBRES = {"312": "312_analisis_multiamenaza", "313": "313_riesgos_cascada", "314": "314_trayectorias_ciclones"}
 
 def construir(num):
     spec = importlib.util.spec_from_file_location(f"nb{num}", Path(__file__).parent / f"nb{num}.py")

@@ -26,12 +26,13 @@ Cada capítulo sigue el mismo molde de siete puntos ([](_molde.md)): fenómeno, 
 
 ## Análisis integrados con cuadernos
 
-Dos secciones muestran con ejemplos ejecutables (cuadernos de Jupyter, abribles en Colab) cómo se combinan los resultados de varias amenazas. **Usan datos inventados**, rotulados como tales, para enseñar el cálculo y no para sacar conclusiones sobre ninguna ciudad.
+Tres secciones muestran con ejemplos ejecutables (cuadernos de Jupyter, abribles en Colab) cómo se combinan los resultados de varias amenazas. Los dos primeros **usan datos inventados**, rotulados como tales, para enseñar el cálculo y no para sacar conclusiones sobre ninguna ciudad. El tercero usa datos reales.
 
 | Sección | Qué muestra |
 |---|---|
 | [](312_analisis_multiamenaza.ipynb) | Escenarios por detonante, pérdida por edificación, mínimo, medio y máximo, curvas de riesgo, PAE con cotas, y qué se suma y qué no |
 | [](313_riesgos_cascada.ipynb) | Una red de servicios interdependientes (daño directo frente a cascada) y un bucle de retroalimentación como el de Limbe |
+| [](314_trayectorias_ciclones.ipynb) | **Datos reales** (IBTrACS): trayectorias de ciclones en el Caribe y conteo de sistemas cerca de sitios de Colombia. Genera la figura del capítulo de ciclones |
 
 La teoría está en [](../01_conceptos/14_riesgo_multiamenaza.md) y [](../01_conceptos/15_cascada_compuestos.md).
 

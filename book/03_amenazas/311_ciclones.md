@@ -52,6 +52,41 @@ Aun así, estos sistemas dejan lluvias cuantiosas que pueden dar crecidas, y los
 El huracán Iota de 2020 destruyó el 56,4 % de las viviendas de Providencia y dañó parcialmente las demás {cite:p}`rey2021hurricane`. La baja frecuencia de eventos no implica bajo riesgo en las islas.
 ```
 
+### Trayectorias de los ciclones en el Caribe
+
+La figura muestra las trayectorias reales de los ciclones tropicales del Atlántico Norte entre 1980 y 2025, tomadas de la base de datos IBTrACS del NOAA {cite:p}`knapp2010ibtracs,knapp2019ibtracs`. Se dibuja con código Python en un cuaderno reproducible, que descarga los datos y se puede ejecutar en Colab: [](314_trayectorias_ciclones.ipynb).
+
+```{figure} figuras/trayectorias_ciclones_caribe.png
+:label: fig-trayectorias-caribe
+:alt: Mapa de dos paneles. A la izquierda, trayectorias de huracanes que entraron al Caribe entre 1980 y 2025, coloreadas por categoría Saffir-Simpson. A la derecha, acercamiento al suroeste del Caribe con los sistemas que pasaron a menos de 250 km de San Andrés, Providencia, La Guajira y Cartagena.
+:width: 100%
+
+Trayectorias de ciclones tropicales en el Caribe, 1980-2025. Izquierda: huracanes que entraron a la región punteada, con cada tramo coloreado por su categoría. Derecha: sistemas que pasaron a menos de 250 km de sitios de Colombia; los números identifican los huracanes que pasaron a menos de esa distancia de San Andrés o Providencia. Datos: IBTrACS v04r01 {cite:p}`knapp2019ibtracs`. Elaboración propia con el cuaderno 314.
+```
+
+Lo que muestra la {numref}`fig-trayectorias-caribe`, con las cifras que calcula el cuaderno:
+
+- De los 743 sistemas del Atlántico Norte de ese periodo, 631 alcanzaron al menos tormenta tropical y 321 llegaron a huracán. De estos, 192 entraron a la región del Caribe que usa la figura.
+- A simple vista, la mayor parte de las trayectorias cruza el Caribe central y el norte con rumbo oeste-noroeste, y son menos las que llegan al sur; es una lectura de la figura, que el conteo de la tabla respalda en parte. El Atlas atribuye ese patrón a razones meteorológicas {cite:p}`ungrd2019atlas`.
+- Los sistemas que pasaron a menos de 250 km de cuatro sitios de Colombia, en 46 temporadas:
+
+| Sitio | Sistemas a menos de 250 km | Con viento ≥ 34 kt dentro del radio | Con viento ≥ 64 kt dentro del radio |
+|---|---|---|---|
+| San Andrés | 35 | 18 | 9 |
+| Providencia | 40 | 19 | 9 |
+| La Guajira (Cabo de la Vela) | 16 | 10 | 3 |
+| Cartagena | 8 | 4 | 1 |
+
+Fuente: cálculo propio con IBTrACS {cite:p}`knapp2019ibtracs`; el cuaderno 314 reproduce la tabla. La columna final es el viento máximo **del sistema dentro del radio**, no el viento que se sintió en el sitio.
+
+Nueve huracanes pasaron a menos de 250 km de San Andrés o Providencia en ese periodo: Joan (1988), Cesar (1996), Beta (2005), Felix (2007), Ida (2009), Otto (2016), Eta (2020), Iota (2020) y Julia (2022). Iota pasó a unos 22 km de las islas.
+
+La lectura de este libro es que el conteo es **coherente** con lo que dice el Atlas: el archipiélago y La Guajira son las zonas de amenaza directa, y la costa continental del Caribe, como Cartagena, recibe sistemas con mucha menos frecuencia {cite:p}`ungrd2019atlas`. Tres precauciones:
+
+- **El conteo depende de la distancia elegida** (250 km) y de un periodo corto, de 46 temporadas. Con una o dos decenas de sistemas por sitio no se estima un periodo de retorno; para eso el Atlas usa un conjunto estocástico de ciclones {cite:p}`ungrd2019atlas`.
+- **La distancia no es el impacto.** El viento, la lluvia y la marea de tormenta dependen del tamaño del sistema y de por qué lado pasa respecto del sitio.
+- **Son mejores trayectorias.** Las reconstruye el Centro Nacional de Huracanes después de cada temporada, y su precisión es menor antes de la era satelital; por eso se parte de 1980.
+
 ## 2. Amenaza
 
 ### Enfoque probabilista
@@ -106,6 +141,7 @@ La marea de tormenta se suma al nivel del mar. CCDR-tools reúne conjuntos de da
 | NOAA: Centro Nacional de Huracanes | Pronóstico de intensidad y trayectoria | {cite:p}`ungrd2019atlas` |
 | Organización Meteorológica Mundial | Información internacional | {cite:p}`ungrd2019atlas` |
 | GAR15-IBTrACS, IBTrACS v4 y STORM v4 | Conjuntos de amenaza de viento de ciclones listados por CCDR-tools | {cite:p}`ccdr2025tools` |
+| IBTrACS v04r01, cuenca del Atlántico Norte | Trayectorias e intensidad desde 1851, de descarga abierta; usada en la figura de este capítulo | {cite:p}`knapp2019ibtracs` |
 
 ### Incertidumbres
 
@@ -128,4 +164,6 @@ La tabla de medidas es un criterio de método de este libro. El Atlas trata los 
 - Leer completos {cite:p}`rey2021hurricane`, {cite:p}`osorio2024reconstructing` y {cite:p}`velasquezcalderon2027assessing`.
 - La cifra de 80 % de muertes por huracanes donde tocan tierra está en el Atlas tal como se cita en el capítulo; falta hallar la fuente primaria que el Atlas no indica en ese pasaje.
 - Añadir las funciones de vulnerabilidad al viento y los parámetros de la marea de tormenta del Atlas.
+- Usar los radios de viento de IBTrACS (R34, R50, R64) para estimar la huella de viento de cada sistema sobre los sitios, y no solo la distancia.
+- Extender el conteo a todo el periodo desde 1851 con las salvedades de calidad de datos, y a la costa del Pacífico si se agrega esa cuenca.
 - Documentar la inclusión de ciclones en CLIMADA (módulo de ciclones tropicales) después de revisar su documentación.

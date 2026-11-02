@@ -2,3 +2,6 @@ _build/
 .DS_Store
 fuentes/texto/
 fuentes/*.xlsx
+
+# Cuadernos: datos descargados (caché)
+book/03_amenazas/datos/

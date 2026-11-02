@@ -13,7 +13,7 @@ project:
   numbering:
     figure:
       template: Figura %s
-  exclude: ["fuentes/**", "book/03_amenazas/_molde.md", "plantilla/**", "scripts/**"]
+  exclude: ["fuentes/**", "book/03_amenazas/_molde.md", "plantilla/**", "scripts/**", "book/03_amenazas/datos/**"]
   toc:
     - file: index.md
     - file: book/01_conceptos/index.md
@@ -27,6 +27,7 @@ project:
         - pattern: book/03_amenazas/3*.md
         - file: book/03_amenazas/312_analisis_multiamenaza.ipynb
         - file: book/03_amenazas/313_riesgos_cascada.ipynb
+        - file: book/03_amenazas/314_trayectorias_ciclones.ipynb
     - file: book/04_vulnerabilidad/index.md
       children:
         - pattern: book/04_vulnerabilidad/4*.md
