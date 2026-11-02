@@ -106,7 +106,7 @@ Las definiciones de los HIPs son globales y genéricas; la gestión del riesgo e
 | Término colombiano o del libro | Qué hay en los HIPs |
 |---|---|
 | Vendaval | **No hay un perfil.** El más cercano es la ráfaga descendente (MH0101), con la turbonada (MH0304) y el derecho (MH0302); el término colombiano es más amplio y no precisa el mecanismo ([](../03_amenazas/312_vendavales.md)) |
-| Avenida torrencial, inundación lenta y rápida | Se reparten entre inundación repentina (MH0603), inundación fluvial (MH0604) y flujos de detritos (GH0303) |
+| Avenida torrencial, inundación lenta y rápida | Se reparten entre inundación repentina (MH0603), inundación fluvial (MH0604) y flujos de detritos (GH0303); la avenida torrencial tiene capítulo propio ([](../03_amenazas/316_avenidas_torrenciales.md)) |
 | Marea de tormenta | Los HIPs distinguen la marejada (MH0703) de la marea de tormenta completa, que incluye la marea astronómica (MH0704) |
 | Tsunami | Se clasifica entre los peligros meteorológicos e hidrológicos (marino), aunque el libro lo trata a partir de su origen geológico |
 | Erosión costera y fluvial | Se clasifican como peligros geológicos |

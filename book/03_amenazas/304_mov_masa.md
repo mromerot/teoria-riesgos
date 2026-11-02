@@ -4,7 +4,7 @@ title: Movimientos en masa
 
 # Movimientos en masa
 
-Este capítulo sigue el molde de siete puntos ([](_molde.md)). Es una amenaza de origen geológico y gravitacional, pero con detonantes hidrometeorológicos y sísmicos, por lo que cruza los capítulos de [](301_sismo.md) y [](305_inundacion.md). Las avenidas torrenciales (flujos de detritos que viajan por cauces) se tratan aquí en lo que dependen de la ladera y en [](305_inundacion.md) en lo que dependen del cauce.
+Este capítulo sigue el molde de siete puntos ([](_molde.md)). Es una amenaza de origen geológico y gravitacional, pero con detonantes hidrometeorológicos y sísmicos, por lo que cruza los capítulos de [](301_sismo.md) y [](305_inundacion.md). Las avenidas torrenciales (flujos de detritos que viajan por cauces) se tratan aquí en lo que dependen de la ladera y en [](316_avenidas_torrenciales.md) en lo que dependen del cauce.
 
 ## 1. Fenómeno
 

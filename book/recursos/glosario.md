@@ -68,6 +68,12 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 
 **SSP.** Trayectoria socioeconómica compartida: narrativa que combina emisiones con supuestos de desarrollo {cite:p}`riahi2017ssp`.
 
-**Vendaval.** En Colombia, viento fuerte, repentino y local, de corta duración, que suele provenir de una tormenta convectiva. La definición atribuida a la UNGRD (2017) lo ubica entre 50 y 80 km/h {cite:p}`ungrd2017vendaval` ([](../03_amenazas/312_vendavales.md)).
+**Vendaval.** En Colombia, viento fuerte, repentino y local, de corta duración, que suele provenir de una tormenta convectiva. La definición atribuida a la UNGRD (2017) lo ubica entre 50 y 80 km/h {cite:p}`ungrd2017terminologia` ([](../03_amenazas/312_vendavales.md)).
 
 **Vulnerabilidad.** Susceptibilidad física, económica, social, ambiental o institucional de una comunidad de ser afectada si ocurre un evento peligroso {cite:p}`ley1523,dnp2019imrd`.
+
+**Avenida torrencial.** Flujo muy rápido de agua con sólidos significativos en canales de alta pendiente; incluye flujos de detritos, de lodo e hiperconcentrados {cite:p}`sgc2021avenidas`. Ver [](../03_amenazas/316_avenidas_torrenciales.md).
+
+**Índice de intensidad del flujo (IDF).** Producto de la altura por la velocidad al cuadrado (h·v², en m³/s²), usado por la guía del SGC para clasificar la amenaza por avenidas torrenciales {cite:p}`sgc2021avenidas`.
+
+**PMGRD.** Plan municipal de gestión del riesgo de desastres. Ver [](../05_sintesis/53_pmgrd.md).

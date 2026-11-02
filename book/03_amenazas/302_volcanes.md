@@ -117,6 +117,29 @@ Los **lahares** son una excepción parcial porque su movilización depende de ag
 | Observatorio de Manizales | Nevado del Ruiz, Paramillo de Santa Rosa, Nevado de Santa Isabel, Nevado del Tolima y Cerro Machín | {cite:p}`ungrd2019atlas` |
 | Observatorio de Popayán | Sotará, Puracé y Nevado del Huila | {cite:p}`ungrd2019atlas` |
 
+### Estados de alerta y comunicación
+
+En 2024 el SGC publicó una guía de comunicación para periodistas y divulgadores, que describe la red y los estados de alerta {cite:p}`sgc2024volcanes`. Según esa guía, el SGC monitorea 25 estructuras volcánicas activas con tres observatorios (Manizales, Popayán y Pasto) y tiene mapas de amenaza para los 13 volcanes más activos. Esa cifra de 25 supera la de 21 que daba el Atlas en 2019, por lo que conviene citar siempre el año.
+
+| Estado | Significado |
+|---|---|
+| Verde | Volcán activo en reposo |
+| Amarillo | Cambios en el nivel base de la actividad |
+| Naranja | Cambios importantes en la actividad |
+| Rojo | Volcán en erupción |
+
+Puntos de la guía útiles para el análisis de una ciudad {cite:p}`sgc2024volcanes`:
+
+- **Alerta técnica y alerta territorial.** El nivel de actividad lo define el SGC; las alertas y decisiones para el territorio las toma el sistema de gestión del riesgo (UNGRD y autoridades locales).
+- **Boletines.** Semanales para el estado amarillo, mensuales para el verde y extraordinarios cuando cambia la actividad.
+- **Incertidumbre.** Las erupciones no se predicen con exactitud; en el Huila (2007) la actividad cambió en horas. La letalidad depende de la exposición y la vulnerabilidad, como en Armero (1985).
+- **Mitos frecuentes.** Monserrate no es un volcán, los volcanes no se activan entre sí por obras como el túnel de La Línea, y no todo sismo cercano es volcánico.
+- **Comunidades indígenas.** La guía pide respeto por los territorios y visiones de las comunidades vecinas a los volcanes (Huila, Puracé, Chiles y Cerro Negro).
+
+```{note}
+La guía no declara una licencia abierta, por eso aquí solo se parafrasea.
+```
+
 ### Medidas según la Ley 1523
 
 El monitoreo ha permitido alertar desde unos pocos días hasta varias semanas antes de una erupción inminente, y se han elaborado mapas de amenaza y modelos de dispersión de productos volcánicos {cite:p}`ungrd2019atlas`. El hito en vigilancia fue la erupción de septiembre de 1989 del Ruiz, cuando el monitoreo continuo y la coordinación del Comité Regional de Emergencias de Caldas permitieron avisar a la población. Manizales estuvo en alerta roja casi 10 horas mientras caía ceniza {cite:p}`ungrd2019atlas`.

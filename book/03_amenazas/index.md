@@ -15,6 +15,7 @@ Cada capítulo de amenaza sigue el mismo molde de siete puntos ([](_molde.md)): 
 | [](303_tsunami.md) | Atlas 2019 y caso de Guapi | Sólido | No (sí el nivel del mar) |
 | [](304_mov_masa.md) | Atlas 2019 y literatura nacional | Sólido | Sí, por la lluvia |
 | [](305_inundacion.md) | Atlas 2019 y CLIMAAX | Sólido | Sí |
+| [](316_avenidas_torrenciales.md) | Guía metodológica SGC–Javeriana 2021 | Sólido | Poco (según la guía) |
 | [](306_erosion_costera.md) | Literatura de la hoja de vigilancia | **Provisional** | Sí |
 | [](307_erosion_fluvial.md) | Literatura de la hoja de vigilancia | **Provisional** | Sí |
 | [](308_sequia.md) | Atlas 2019 y CLIMAAX | Sólido | Sí |

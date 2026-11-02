@@ -80,7 +80,7 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 - Fórmula del índice municipal ajustado por capacidades (DNP) y ecuación de Moncho (Atlas).
 - Artículos de la Ley 1523 que no vienen del Atlas ni del Banco Mundial (procesos, estructura del sistema, planes municipales, artículo 42 y análisis específicos).
 - Autoría completa de tres capítulos de *Investigaciones GRD* en la bibliografía (obras costeras 2021 cap. 12; incendios de la Orinoquía 2023 cap. 5; 2021 cap. 10 con solo dos autores).
-- Cifras de EM-DAT sobre tormentas convectivas; definición de vendaval de la UNGRD (2017); primer reporte de 1932.
+- Cifras de EM-DAT sobre tormentas convectivas; primer reporte de 1932.
 - Entrada de Wakimoto (2015) sobre microrráfagas (acceso cerrado).
 - NSR-10, título de cargas de viento, y su modificación de 2021.
 - Las cifras de las páginas de PreventionWeb (resúmenes de estudios).
@@ -101,3 +101,8 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 | 2026-11-01 | Andamiaje, partes 1 a 3 y 4, despliegue | F0 |
 | 2026-11-02 | HIPs: capítulo 1.6, subsección «Definición según los HIPs» en los 12 capítulos de amenaza, índice `fuentes/hips_281.csv`, plantilla con códigos HIP | Hecho |
 | 2026-11-02 | Parte 5, glosario, 1.2 a 1.5, plantilla y skill, cuadernos 313 a 315, figura de ciclones, diseño, vendavales | F0 cerrada; plan escrito |
+
+## Fuentes nuevas (carpeta referencia_colombia)
+
+- Incorporadas: guía de avenidas torrenciales (SGC 2021, cap. 316), guía de comunicación sobre volcanes (SGC 2024, cap. 302), guía de PMGRD (UNGRD 2021, cap. 53), Terminología GRD 2017 (definición de vendaval verificada).
+- Sin leer aún: clasificación de movimientos en masa, Estrategia Nacional de Respuesta a Emergencias, guía de respuesta municipal, modelo nacional de amenaza sísmica.

@@ -48,7 +48,7 @@ La UNGRD figura como unidad de la Presidencia en el análisis del Banco Mundial 
 | Plan de ordenamiento territorial (POT) | Debe incorporar el riesgo como determinante; los estudios de riesgo alimentan la zonificación | {cite:p}`ungrd2019atlas` |
 | Plan de desarrollo | Debe incorporar la gestión del riesgo | {cite:p}`ungrd2019atlas` |
 | Plan municipal de gestión del riesgo | Orienta conocimiento, reducción y manejo en el municipio | ver ley |
-| Planes de gestión del riesgo de entidades públicas y privadas (PGRDEPP) | El Atlas los presenta como reglamentación del artículo 42 de la Ley 1523. Alcance exacto: ver ley | {cite:p}`ungrd2019atlas` |
+| Planes de gestión del riesgo de entidades públicas y privadas (PGRDEPP) | El Atlas los presenta como reglamentación del artículo 42 de la Ley 1523. La guía de PMGRD cita el Decreto 2157 de 2017 como directriz para esos planes; alcance exacto: ver decreto | {cite:p}`ungrd2019atlas,ungrd2021pmgrd` |
 | Estudios de amenaza, vulnerabilidad y riesgo para el POT | Escalas y detalle definidos por la reglamentación sectorial | Ver capítulos de amenaza (p. ej. movimientos en masa) |
 
 El Atlas afirma que los planes de desarrollo y de ordenamiento deben incorporar el riesgo como determinante y la gestión del riesgo de manera integral, para corregir lo que generó el riesgo en el pasado y evitar generar riesgos nuevos {cite:p}`ungrd2019atlas`. El análisis del Banco Mundial advierte brechas en el uso del suelo en cuencas y zonas urbanas, y en la articulación de los POT con otros planes {cite:p}`wb2012analysis`.

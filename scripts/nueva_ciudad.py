@@ -25,6 +25,7 @@ AMENAZAS = {
     "volcanes": ("Volcanes", "volcanes", "solido", "GH0201, GH0202, GH0203, GH0204, GH0205"),
     "tsunami": ("Tsunami", "tsunami", "solido", "MH0705"),
     "mov-masa": ("Movimientos en masa", "mov-masa", "solido", "GH0300, GH0301, GH0302, GH0303, GH0304, GH0305"),
+    "avenidas-torrenciales": ("Avenidas torrenciales", "avenidas-torrenciales", "solido", "MH0603, GH0303"),
     "inundacion": ("Inundación", "inundacion", "solido", "MH0600, MH0601, MH0603, MH0604, MH0609"),
     "erosion-costera": ("Erosión costera y aumento del nivel del mar", "erosion-costera", "provisional", "GH0405, EN0402"),
     "erosion-fluvial": ("Erosión fluvial", "erosion-fluvial", "provisional", "GH0404"),

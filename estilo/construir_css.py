@@ -15,6 +15,7 @@ ICONOS = {
     "tsunami": "tsunami",
     "mov-masa": "mov_masa",
     "inundacion": "inundacion",
+    "avenidas-torrenciales": "mov_masa",
     "erosion-costera": "erosion",
     "erosion-fluvial": "erosion",
     "sequia": "sequia",

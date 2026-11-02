@@ -4,7 +4,7 @@ title: Inundaciones
 
 # Inundaciones
 
-Este capítulo es el primero que sigue el molde de siete puntos ([](_molde.md)). Cubre la inundación fluvial lenta, la creciente súbita y la inundación pluvial urbana. La inundación costera se trata en [](306_erosion_costera.md).
+Este capítulo es el primero que sigue el molde de siete puntos ([](_molde.md)). Cubre la inundación fluvial lenta, la creciente súbita y la inundación pluvial urbana. Las avenidas torrenciales, con carga sólida, tienen su propio capítulo: [](316_avenidas_torrenciales.md). La inundación costera se trata en [](306_erosion_costera.md).
 
 ## 1. Fenómeno
 

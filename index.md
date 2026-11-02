@@ -25,7 +25,7 @@ Flujo de evaluación, análisis probabilista y pérdida anual esperada, y escena
 
 :::{card} 3. Amenazas
 :link: book/03_amenazas/index.md
-Doce amenazas con un molde común de siete puntos, y cuadernos con ejemplos ejecutables.
+Trece amenazas con un molde común de siete puntos, y cuadernos con ejemplos ejecutables.
 :::
 
 :::{card} 4. Exposición y vulnerabilidad
@@ -69,6 +69,10 @@ Deslizamientos, flujos y caídas de roca en laderas.
 :::{card} ![](estilo/iconos/inundacion.svg) Inundaciones
 :link: book/03_amenazas/305_inundacion.md
 Crecidas de ríos, lluvias intensas e inundación costera.
+:::
+:::{card} ![](estilo/iconos/mov_masa.svg) Avenidas torrenciales
+:link: book/03_amenazas/316_avenidas_torrenciales.md
+Flujos rápidos de agua y sedimentos en cauces de alta pendiente.
 :::
 :::{card} ![](estilo/iconos/erosion.svg) Erosión costera
 :link: book/03_amenazas/306_erosion_costera.md

@@ -20,7 +20,7 @@ Una ráfaga descendente (*downburst*) se define como un evento en el que una cor
 
 ### El término en Colombia
 
-En Colombia estas ráfagas se conocen como **vendavales**. La definición oficial atribuida a la UNGRD (2017) los describe como una perturbación atmosférica que genera vientos fuertes y destructivos en una sola dirección, con velocidades entre 50 y 80 km/h, durante intervalos cortos y con afectación local {cite:p}`ungrd2017vendaval`. También se conocen como ventisca, ráfaga, temporal, ventarrón o reventón.
+En Colombia estas ráfagas se conocen como **vendavales**. La definición oficial, del documento de terminología de la UNGRD (2017), los describe como una perturbación atmosférica que genera vientos fuertes y destructivos en una sola dirección, con velocidades entre 50 y 80 km/h, durante intervalos cortos y con afectación local {cite:p}`ungrd2017terminologia`. El mismo documento los llama también ventisca, ráfaga y ventarrón, y define aparte el *temporal* como un vendaval acompañado de lluvias fuertes (borrasca o tromba) {cite:p}`ungrd2017terminologia`.
 
 La definición no especifica el mecanismo que produce el viento. Como criterio de método, en este libro «vendaval» designa el viento fuerte, local y de corta duración que causa daño, venga de una ráfaga descendente o de otro proceso; el mecanismo se identifica aparte, con la clasificación siguiente.
 
@@ -85,7 +85,7 @@ Fuente: {cite:p}`undrr2025hips`.
 - **Ráfaga descendente (MH0101): se incluye como el perfil más cercano.** Su clasificación por tamaño (microrráfaga y macrorráfaga) coincide con la que el capítulo toma de la literatura, y sus sinónimos incluyen «microburst» y «macroburst». El perfil agrega que los vientos pueden llegar a 67 m/s y que estos eventos suelen durar de 5 a 30 minutos.
 - **Turbonada, derecho y tornado: se incluyen como perfiles relacionados.** La turbonada (cambio brusco del viento que dura minutos) describe bien lo que se siente en un vendaval; el derecho es una banda de tormentas de gran escala que no consta en las fuentes del libro para Colombia, y el tornado se distingue por su rotación (la ráfaga descendente no rota).
 - **Tormenta eléctrica (MH0103)** se incluye solo como contexto: es la nube que produce estos vientos.
-- **Escala de vientos.** El rango oficial colombiano de 50 a 80 km/h se solapa con el «temporal» (*gale*, MH0303) de la OMM, de 62 a 74 km/h (fuerza 8 de Beaufort), que no se incluye como perfil propio.
+- **Escala de vientos.** El rango oficial colombiano de 50 a 80 km/h se solapa con el «viento fuerte» (*gale*, MH0303) de la OMM, de 62 a 74 km/h (fuerza 8 de Beaufort), que no se incluye como perfil propio. No debe confundirse con el *temporal* de la terminología colombiana, que es un vendaval con lluvia fuerte {cite:p}`ungrd2017terminologia`.
 - **Cascadas.** Los HIPs registran la ráfaga descendente como causada por la tormenta eléctrica y la turbonada, y como causa de inundaciones repentinas y de fallas de infraestructura {cite:p}`undrr2025hips`.
 
 ## 2. Amenaza
@@ -160,7 +160,7 @@ El flujo de CLIMAAX no incluye proyecciones futuras de viento {cite:p}`climaax20
 
 - **Subregistro.** El inventario depende de la cultura de reporte y de la cobertura de la prensa y las oficinas locales.
 - **Escala.** Eventos de menos de 4 km y 20 minutos escapan a las estaciones y a los reanálisis {cite:p}`bolgiani2020microbursts`.
-- **Definición.** La definición oficial no precisa el mecanismo {cite:p}`ungrd2017vendaval`.
+- **Definición.** La definición oficial no precisa el mecanismo {cite:p}`ungrd2017terminologia`.
 - **Curvas de daño.** No hay curvas colombianas por tipo de cubierta.
 
 ### Medidas según la Ley 1523
@@ -177,7 +177,6 @@ Las medidas siguientes son un criterio de método de este libro, derivado de la 
 
 ## Pendiente
 
-- Identificar la publicación de la UNGRD (2017) donde está la definición oficial y confirmar el rango de 50 a 80 km/h.
 - Consultar la entrada de Wakimoto (2015) sobre microrráfagas (*Encyclopedia of Atmospheric Sciences*), que es de acceso cerrado y no se consultó.
 - Verificar en EM-DAT las cifras de las tormentas convectivas y precisar qué tipos de evento incluye.
 - Documentar el título de cargas de viento de la NSR-10, su mapa de amenaza eólica y la modificación de 2021, y el atlas de viento del IDEAM y la UPME.

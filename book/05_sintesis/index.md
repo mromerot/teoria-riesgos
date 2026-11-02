@@ -10,3 +10,4 @@ Las partes anteriores tratan cada amenaza por separado. Esta parte responde dos 
 |---|---|
 | [](51_sintesis_multiamenaza.md) | ¿Qué se puede sumar, qué se puede comparar y qué solo se puede ordenar? |
 | [](52_lista_ciudad.md) | ¿Qué decide y qué produce cada paso de un análisis urbano nuevo? |
+| [](53_pmgrd.md) | ¿Cómo alimentan los productos del libro el plan municipal de gestión del riesgo? |
