@@ -4,6 +4,12 @@ title: 4. Exposición y vulnerabilidad
 
 # 4. Exposición y vulnerabilidad
 
+:::{image} ../../estilo/ilustraciones/vulnerabilidad.svg
+:alt: Casas, personas y curvas de daño según la intensidad
+:class: ilustracion
+:width: 100%
+:::
+
 Los capítulos de amenaza ([](../03_amenazas/index.md)) tratan cada fenómeno por separado. Esta parte reúne lo que comparten: **qué hay en el territorio** (exposición), **qué tan frágil es** (funciones de daño) y **quién puede absorber la pérdida** (vulnerabilidad social y capacidades). Son las dos patas del riesgo que no cambian de un fenómeno a otro, y por eso se explican una sola vez.
 
 | Capítulo | Pregunta que responde |

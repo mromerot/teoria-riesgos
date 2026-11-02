@@ -4,6 +4,12 @@ title: Sismos
 
 # Sismos
 
+:::{image} ../../estilo/ilustraciones/sismo.svg
+:alt: Casas en el borde de una falla, con ondas sísmicas
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). A diferencia de la inundación, el sismo es una amenaza geofísica: no depende del clima y su evaluación descansa sobre la ingeniería sísmica y no sobre la hidrología. Por eso este capítulo usa más el Atlas de Riesgo de Colombia y la literatura nacional que los marcos CLIMAAX y CCDR-tools, que se centran en amenazas hidrometeorológicas {cite:p}`ccdr2025tools`.
 
 ## 1. Fenómeno
@@ -77,6 +83,27 @@ Es común suponer que los terremotos de una fuente siguen un proceso de Poisson:
 | $\beta$ | Pendiente de la curva de recurrencia de magnitudes en la zona de magnitudes bajas |
 | $M_u$ | Magnitud máxima, según la máxima longitud de ruptura posible y las características morfotectónicas |
 | $\lambda_0$ | Número promedio de eventos por año con magnitud mayor que la umbral $M_0$ |
+
+### Ejemplo con datos reales: sismicidad con el catálogo del USGS
+
+El cuaderno [](317_sismicidad_colombia.ipynb) descarga el catálogo del USGS para Colombia y su área de influencia (2000–2024, magnitud de 3,0 o más) y muestra cómo se obtienen los insumos de esta sección. Está adaptado del cuaderno de la Subdirección para el Conocimiento del Riesgo de la UNGRD, con licencia CC BY 4.0 ([cuadernos-reproducibles-crc004](https://scr-ungrd.github.io/cuadernos-reproducibles-crc004/)). Con los datos descargados al ejecutarlo:
+
+| Resultado | Valor |
+|---|---|
+| Eventos del catálogo | 4 201 |
+| Sismos superficiales (hasta 70 km) / intermedios (70 a 300 km) | 2 290 / 1 910 |
+| Magnitud de completitud ($M_c$, máximo de la curvatura) | 4,3 |
+| $b$ por máxima verosimilitud (Aki-Utsu), sismos con $M \ge M_c$ | 1,06 ± 0,02 |
+| $b$ por regresión sobre la curva acumulada | 0,93 |
+
+Lo que enseña el ejemplo:
+
+- **Completitud primero.** El ajuste de Gutenberg-Richter solo vale para magnitudes sobre $M_c$. Con un catálogo global la completitud es mayor que con el del SGC.
+- **Dos estimadores de $b$ dan resultados distintos.** La regresión sobre la curva acumulada y la máxima verosimilitud difieren en 0,13; para una tasa de recurrencia se prefiere la segunda ($\beta = b \ln 10$, ver la tabla anterior).
+- **La caja de búsqueda no es el país.** Incluye parte de Ecuador, Perú, Venezuela y Panamá, y los mayores sismos del listado (por ejemplo, el de Ecuador de 2016, de magnitud 7,8) no son colombianos. Para una ciudad hay que delimitar las fuentes que la afectan.
+- **El catálogo USGS no reemplaza al del SGC** para un estudio de amenaza.
+
+Los valores salen de una descarga del 2 de noviembre de 2026; el USGS puede revisar magnitudes, por lo que las cifras pueden variar un poco al repetirlo.
 
 ### Atenuación del movimiento fuerte
 

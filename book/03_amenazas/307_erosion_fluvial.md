@@ -4,6 +4,12 @@ title: Erosión fluvial
 
 # Erosión fluvial
 
+:::{image} ../../estilo/ilustraciones/erosion_fluvial.svg
+:alt: Orilla de un río que se desmorona junto a una casa
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). Cubre la socavación del lecho, la erosión de orillas y la migración lateral de los cauces. Se relaciona con la inundación ([](305_inundacion.md)) porque ambas dependen del caudal, pero el daño aquí es la pérdida de terreno y de lo construido sobre él.
 
 ```{important}

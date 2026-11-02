@@ -321,3 +321,12 @@ article [class*="card"] p { margin: 0.3rem 0; }
 .myst-primary-sidebar a[href$='/lista-ciudad']::before { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%237A5BC4%22/%3E%3Cstop offset=%221%22 stop-color=%22%233E2A7A%22/%3E%3C/linearGradient%3E%3C/defs%3E %3Ccircle cx=%2216%22 cy=%2216%22 r=%2216%22 fill=%22url(%23g)%22/%3E %3Cpath d=%22M8 11 l1.8 1.8 l3 -3.2 M8 17.5 l1.8 1.8 l3 -3.2 M8 24 l1.8 1.8 l3 -3.2%22 fill=%22none%22 stroke=%22%23F0A830%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 transform=%22translate(0 -3)%22/%3E %3Cpath d=%22M16 9 h8 M16 15.5 h8 M16 22 h8%22 stroke=%22%23fff%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E %3C/svg%3E"); }
 .myst-primary-sidebar a[href$='/pmgrd']::before { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%233FA66B%22/%3E%3Cstop offset=%221%22 stop-color=%22%2316603A%22/%3E%3C/linearGradient%3E%3C/defs%3E %3Ccircle cx=%2216%22 cy=%2216%22 r=%2216%22 fill=%22url(%23g)%22/%3E %3Crect x=%229%22 y=%227.5%22 width=%2214%22 height=%2218%22 rx=%222%22 fill=%22%23fff%22/%3E %3Crect x=%2212.5%22 y=%225.8%22 width=%227%22 height=%223.6%22 rx=%221.2%22 fill=%22%23BFE8CF%22 stroke=%22%2316603A%22 stroke-width=%221%22/%3E %3Cpath d=%22M12 14 l1.8 1.8 l3.2 -3.4%22 fill=%22none%22 stroke=%22%2316603A%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E %3Cpath d=%22M12 20.5 h8%22 stroke=%22%2316603A%22 stroke-width=%221.8%22 stroke-linecap=%22round%22/%3E %3C/svg%3E"); }
 
+
+/* Ilustraciones de cabecera de cada capítulo */
+img.ilustracion, .ilustracion img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin: 0.25rem 0 1.5rem;
+}

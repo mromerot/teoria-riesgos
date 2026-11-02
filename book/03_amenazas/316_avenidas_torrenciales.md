@@ -4,6 +4,12 @@ title: Avenidas torrenciales
 
 # Avenidas torrenciales
 
+:::{image} ../../estilo/ilustraciones/avenidas_torrenciales.svg
+:alt: Avenida torrencial que baja por una quebrada hacia las casas
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)) y se apoya sobre todo en la guía metodológica del Servicio Geológico Colombiano (SGC) y la Pontificia Universidad Javeriana {cite:p}`sgc2021avenidas`. Esa guía es la referencia nacional para zonificar la amenaza y tiene licencia CC BY 4.0. Aquí se resume y se organiza para el análisis de una ciudad; para ejecutar un estudio hay que consultarla completa.
 
 ## 1. Fenómeno

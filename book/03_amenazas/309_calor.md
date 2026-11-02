@@ -4,6 +4,12 @@ title: Olas de calor
 
 # Olas de calor
 
+:::{image} ../../estilo/ilustraciones/calor.svg
+:alt: Sol intenso sobre una casa con ondas de calor
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). Es el que mejor ilustra la diferencia entre un marco hecho para Europa y una ciudad tropical: las definiciones de ola de calor de CLIMAAX dependen de percentiles climatológicos y de umbrales regionales, y en Colombia no hay una definición oficial adoptada en las fuentes revisadas.
 
 ```{important}

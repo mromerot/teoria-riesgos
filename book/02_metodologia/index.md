@@ -4,6 +4,12 @@ title: 2. Metodología
 
 # 2. Metodología
 
+:::{image} ../../estilo/ilustraciones/metodologia.svg
+:alt: Flujo de evaluación y curva de pérdida anual esperada
+:class: ilustracion
+:width: 100%
+:::
+
 Esta parte describe el procedimiento común a todas las amenazas, que los capítulos de la [parte 3](../03_amenazas/index.md) aplican a cada fenómeno.
 
 | Capítulo | Qué resuelve |

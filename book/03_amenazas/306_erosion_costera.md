@@ -5,6 +5,12 @@ title: Erosión costera y aumento del nivel del mar
 
 # Erosión costera y aumento del nivel del mar
 
+:::{image} ../../estilo/ilustraciones/erosion_costera.svg
+:alt: Costa que retrocede junto a palmeras y una casa
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). Reúne dos procesos que se evalúan juntos en una costa: el retroceso de la línea de costa (erosión) y el ascenso del nivel del mar. La inundación costera por marea de tormenta se trata en [](305_inundacion.md) y [](311_ciclones.md); el tsunami en [](303_tsunami.md).
 
 ```{important}

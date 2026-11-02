@@ -5,6 +5,12 @@ title: Ciclones tropicales
 
 # Ciclones tropicales
 
+:::{image} ../../estilo/ilustraciones/ciclones.svg
+:alt: Ciclón tropical sobre el mar con palmeras dobladas
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). Para la mayor parte de Colombia continental el ciclón tropical es una amenaza indirecta. Para el archipiélago de San Andrés, Providencia y Santa Catalina y la península de La Guajira es directa. Los vendavales, que producen vientos fuertes locales sin ser ciclones, se tratan en [](312_vendavales.md). La marea de tormenta se conecta con [](306_erosion_costera.md) y la lluvia con [](305_inundacion.md) y [](304_mov_masa.md).
 
 ## 1. Fenómeno

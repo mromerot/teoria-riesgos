@@ -4,6 +4,12 @@ title: Sequía
 
 # Sequía
 
+:::{image} ../../estilo/ilustraciones/sequia.svg
+:alt: Sol, suelo agrietado y árbol seco junto a las casas
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). La sequía es una amenaza lenta cuya evaluación probabilista es poco común, y por eso este capítulo se apoya en el Atlas, en el capítulo de sequía agrícola de la serie 2021 y en el flujo de CLIMAAX de sequía relativa.
 
 ## 1. Fenómeno

@@ -4,6 +4,12 @@ title: Incendios forestales
 
 # Incendios forestales
 
+:::{image} ../../estilo/ilustraciones/incendios.svg
+:alt: Incendio forestal con humo avanzando hacia una casa
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). Los incendios de la cobertura vegetal tienen casi siempre origen humano, así que su amenaza combina un fenómeno natural (combustible y clima) con una causa social (la ignición).
 
 ## 1. Fenómeno

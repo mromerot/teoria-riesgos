@@ -4,6 +4,12 @@ title: PMGRD
 
 # Plan municipal de gestión del riesgo de desastres (PMGRD)
 
+:::{image} ../../estilo/ilustraciones/pmgrd.svg
+:alt: Plan municipal de gestión del riesgo: lista de acciones
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo explica cómo usar los productos de un análisis hecho con este libro para formular o actualizar el PMGRD de un municipio. Se apoya en la guía metodológica de la UNGRD de 2021 {cite:p}`ungrd2021pmgrd`, que organiza el plan en once pasos. La guía no define métodos para cada amenaza: remite a las guías técnicas nacionales, y ahí es donde entra este libro.
 
 ```{note}

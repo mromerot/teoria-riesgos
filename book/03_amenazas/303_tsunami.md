@@ -4,6 +4,12 @@ title: Tsunami
 
 # Tsunami
 
+:::{image} ../../estilo/ilustraciones/tsunami.svg
+:alt: Ola de tsunami que se acerca a una costa con casas
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). El tsunami de origen sísmico es una amenaza secundaria del sismo: comparte con él la fuente y la lógica probabilista ([](301_sismo.md)), pero el daño lo produce el agua, por lo que su vulnerabilidad y su exposición son las de una inundación costera rápida.
 
 ## 1. Fenómeno

@@ -23,29 +23,42 @@ project:
       children:
         - pattern: book/02_metodologia/2*.md
     # Las amenazas van en el primer nivel para que el sidebar las muestre siempre, con su ícono (como en EVA y CLIMAAX)
+    # Sección 3: las amenazas se agrupan como en la sección GRD del sitio personal, que sigue los tipos de amenaza de los HIPs de UNDRR-ISC
     - file: book/03_amenazas/index.md
-    - file: book/03_amenazas/_molde.md
-      title: Molde de los capítulos
-    - file: book/03_amenazas/301_sismo.md
-    - file: book/03_amenazas/302_volcanes.md
-    - file: book/03_amenazas/303_tsunami.md
-    - file: book/03_amenazas/304_mov_masa.md
-    - file: book/03_amenazas/305_inundacion.md
-    - file: book/03_amenazas/316_avenidas_torrenciales.md
-    - file: book/03_amenazas/306_erosion_costera.md
-    - file: book/03_amenazas/307_erosion_fluvial.md
-    - file: book/03_amenazas/308_sequia.md
-    - file: book/03_amenazas/309_calor.md
-    - file: book/03_amenazas/310_incendios.md
-    - file: book/03_amenazas/311_ciclones.md
       children:
-        - file: book/03_amenazas/315_trayectorias_ciclones.ipynb
-          title: Trayectorias en el Caribe
-    - file: book/03_amenazas/312_vendavales.md
-    - file: book/03_amenazas/313_analisis_multiamenaza.ipynb
-      title: Análisis multiamenaza
-    - file: book/03_amenazas/314_riesgos_cascada.ipynb
-      title: Riesgos en cascada
+        - file: book/03_amenazas/_molde.md
+          title: Molde de los capítulos
+        - title: Amenazas geológicas
+          children:
+            - file: book/03_amenazas/301_sismo.md
+              children:
+                - file: book/03_amenazas/317_sismicidad_colombia.ipynb
+                  title: Sismicidad con datos del USGS
+            - file: book/03_amenazas/302_volcanes.md
+            - file: book/03_amenazas/303_tsunami.md
+            - file: book/03_amenazas/304_mov_masa.md
+        - title: Amenazas hidrológicas y meteorológicas
+          children:
+            - file: book/03_amenazas/305_inundacion.md
+            - file: book/03_amenazas/316_avenidas_torrenciales.md
+            - file: book/03_amenazas/308_sequia.md
+            - file: book/03_amenazas/309_calor.md
+            - file: book/03_amenazas/311_ciclones.md
+              children:
+                - file: book/03_amenazas/315_trayectorias_ciclones.ipynb
+                  title: Trayectorias en el Caribe
+            - file: book/03_amenazas/312_vendavales.md
+        - title: Amenazas ambientales
+          children:
+            - file: book/03_amenazas/306_erosion_costera.md
+            - file: book/03_amenazas/307_erosion_fluvial.md
+            - file: book/03_amenazas/310_incendios.md
+        - title: Análisis integrados
+          children:
+            - file: book/03_amenazas/313_analisis_multiamenaza.ipynb
+              title: Análisis multiamenaza
+            - file: book/03_amenazas/314_riesgos_cascada.ipynb
+              title: Riesgos en cascada
     - file: book/04_vulnerabilidad/index.md
       children:
         - pattern: book/04_vulnerabilidad/4*.md

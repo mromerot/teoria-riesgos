@@ -4,6 +4,12 @@ title: 1. Conceptos
 
 # 1. Conceptos
 
+:::{image} ../../estilo/ilustraciones/conceptos.svg
+:alt: Riesgo como intersección de amenaza, exposición y vulnerabilidad
+:class: ilustracion
+:width: 100%
+:::
+
 Esta parte fija el lenguaje del libro antes de entrar en los métodos.
 
 | Capítulo | Qué fija |

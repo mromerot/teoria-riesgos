@@ -121,3 +121,9 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 - Incorporados como evidencia (cifras de resumen por verificar): avenidas torrenciales (Mocoa, Cali, cascadas publicadas en NHESS), erosión fluvial/suelo, inundación (no estacionariedad), calor (olas de calor marinas), volcanes (Galeras, nueva síntesis), sequía, ciclones, erosión costera, incendios, vendavales (Soledad), claves duplicadas del bib unificadas.
 - Siguen sin leer con el RAG: texto completo de estos estudios (verificar cifras con `ragrd evidencia`), tsunami (2 PDFs), Natech, choque financiero y los 60 «POR DETERMINAR».
 - Al final: aplicar `/topic-sentence` a las «Lecturas conjuntas» y párrafos introductorios.
+
+## Frontend y cuaderno de sismicidad (2026-11-02)
+
+- Sidebar de la sección 3 agrupado como en la sección GRD del sitio personal (tipos de amenaza de los HIPs): geológicas, hidrológicas y meteorológicas, ambientales, más «Análisis integrados»; la sección tiene ahora flecha de despliegue como las 1 y 2. No hay capítulos de amenazas biológicas, tecnológicas, sociales ni extraterrestres.
+- Ilustraciones de cabecera (SVG planos, `estilo/ilustraciones/`, generadas con `python estilo/construir_ilustraciones.py`): 13 amenazas y 5 partes (conceptos, metodología, vulnerabilidad, síntesis, PMGRD). Se insertan con la directiva `image` y la clase `ilustracion`.
+- Cuaderno 317 (sismicidad con datos del USGS), adaptado de `scr-ungrd/cuadernos-reproducibles-crc004` (CC BY 4.0), anidado bajo Sismos.

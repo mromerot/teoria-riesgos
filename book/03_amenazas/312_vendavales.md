@@ -4,6 +4,12 @@ title: Vendavales
 
 # Vendavales
 
+:::{image} ../../estilo/ilustraciones/vendavales.svg
+:alt: Viento fuerte que arranca el techo de una casa
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). Trata los vientos fuertes, repentinos y localizados que producen las tormentas convectivas y que en Colombia se conocen como vendavales. Se separa del capítulo de [ciclones tropicales](311_ciclones.md) porque el mecanismo, la escala y los datos son distintos: un ciclón es un sistema de cientos de kilómetros que se pronostica y se sigue durante días; un vendaval dura minutos y afecta unos pocos kilómetros.
 
 ```{important}

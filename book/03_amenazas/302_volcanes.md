@@ -4,6 +4,12 @@ title: Volcanes y lahares
 
 # Volcanes y lahares
 
+:::{image} ../../estilo/ilustraciones/volcanes.svg
+:alt: Volcán en erupción sobre un valle con casas
+:class: ilustracion
+:width: 100%
+:::
+
 Este capítulo sigue el molde de siete puntos ([](_molde.md)). La amenaza volcánica es geofísica y no depende del clima, pero comparte con otras amenazas los lahares (flujos de lodo y escombros, parientes de las crecientes súbitas de [](305_inundacion.md)) y la caída de ceniza, que afecta a ciudades lejanas al volcán.
 
 ## 1. Fenómeno
