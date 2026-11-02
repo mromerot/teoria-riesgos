@@ -8,6 +8,10 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 
 **Amenaza.** Peligro latente de que un evento físico de origen natural, socionatural o antrópico se presente con severidad suficiente para causar muertes, lesiones, daños y pérdidas {cite:p}`ley1523,dnp2019imrd`.
 
+**Amenaza compuesta.** Combinación de varios impulsores o amenazas que contribuyen al riesgo, aunque no estén relacionadas causalmente {cite:p}`white2025towards` ([](../01_conceptos/14_riesgo_multiamenaza.md)).
+
+**Amplificación.** Interacción en la que una amenaza aumenta (o reduce) la probabilidad o la magnitud de otra {cite:p}`white2025towards`.
+
 **Análisis determinista.** Evaluación de un escenario o de un evento definido, sin probabilidad asociada ([](../01_conceptos/11_marco_riesgo.md)).
 
 **Análisis probabilista.** Evaluación que considera el conjunto de eventos posibles con su frecuencia e intensidad, y entrega curvas de excedencia y pérdida anual esperada ([](../02_metodologia/22_probabilista_pae.md)).
@@ -35,6 +39,10 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 **Marea de tormenta.** Elevación del nivel del mar por el viento y la baja presión de un ciclón ([](../03_amenazas/311_ciclones.md)).
 
 **Modelo proxy.** Representación aproximada de la exposición cuando no hay inventario detallado, construida con estadísticas demográficas, económicas y de tipos constructivos {cite:p}`ungrd2019atlas`.
+
+**Multiamenaza.** Selección de las varias amenazas principales de un lugar y de los contextos en que pueden ocurrir de forma simultánea, en cascada o acumulativa, con sus efectos relacionados {cite:p}`white2025towards`.
+
+**Multirriesgo.** Riesgo generado por varias amenazas y sus interrelaciones, considerando también las interrelaciones en la vulnerabilidad {cite:p}`white2025towards,ferrario2026harnessing`.
 
 **Pérdida anual esperada (PAE o AAL).** Valor esperado de la pérdida por año, sumando sobre todos los eventos posibles ponderados por su frecuencia ([](../02_metodologia/22_probabilista_pae.md)).
 
