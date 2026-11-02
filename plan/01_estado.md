@@ -135,3 +135,50 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 - `ragrd evidencia` sobre 14 capítulos: ninguna cifra «no encontrada», «parcial» ni «dispersa». Las filas «sin_pdf» son fuentes que no son PDF (handbooks, HIPs). Solo cubre cifras de las tablas de evidencia.
 - Skill `/topic-sentence` aplicado a las «Lectura conjunta» de 301–312, 316 y 319 (oración temática con calificador de confianza).
 - Pendiente: choque financiero, los 60 «POR DETERMINAR», PDFs sin copia local (454 filas) y leer el texto completo de los estudios cuyas cifras vienen de resúmenes.
+
+## Pendientes consolidados (2026-11-02)
+
+Resumen de todo lo abierto al cierre de la sesión. Estado: todo lo hecho está desplegado (último commit `8b3bcd6`).
+
+### A. Contenido del libro
+1. **Verificar cifras de resúmenes contra el texto completo.** Las «Síntesis de evidencia» de 301–312, 316 y 319 salen de resúmenes. `ragrd evidencia` solo cubre cifras de tablas con cita; extenderlo al texto corrido y a las «Lecturas conjuntas». Prioridad: avenidas torrenciales (Mocoa, Cali), sismos y movimientos en masa.
+2. **Capítulos provisionales por reforzar:** erosión costera (306), erosión fluvial (307), olas de calor (309), vendavales (312) y Natech (319). Faltan resultados completos de Soledad (vendavales) y de los estudios de calor.
+3. **Tsunami:** contrastar la tabla de observaciones de 1979 (en especial el arribo de Salinas, 35 min a unos 460 km) con Herd et al. (1981) y la base de la NOAA. El cuaderno piloto crc003 de la UNGRD sigue sin validar.
+4. **Natech:** conseguir los cuatro trabajos sin PDF (oleoductos y deslizamientos 2021, sistema de calificación 2022, revisión sistemática de 2024, derrames por fenómenos hidrológicos extremos 2025) y buscar casos colombianos con fuente primaria; medir qué fracción de los 3 466 eventos tecnológicos de la UNGRD (1998–2017) fue Natech.
+5. **Amenazas de la hoja sin capítulo:** choque financiero (8 filas), agentes biológicos (7), perturbación geomagnética (7), contaminación del aire (6), enfermedades transmitidas por vectores, dengue y leptospirosis, residuos, falla de puente y de represa, entre otras. Decidir cuáles merecen capítulo (la web GRD ya tiene grupos biológicas, tecnológicas, sociales y extraterrestres).
+6. **Los 249 registros «POR DETERMINAR»** de `AMENAZA_ESPECIFICA` (60 con PDF): clasificar con el skill `vigilancia-cti-clasificacion-hips` y decidir si alimentan algún capítulo.
+7. **Parte 4 (vulnerabilidad):** curvas de daño con ejemplos de Colombia (4.2) y curvas por IDF para avenidas torrenciales.
+8. **PMGRD (5.3):** verificar la vigencia de la guía y del Marco Estratégico 2018–2022; leer el Decreto 2157 de 2017 y la guía de respuesta municipal.
+9. **Guías nacionales sin leer** en `referencia_colombia`: clasificación de movimientos en masa, Estrategia Nacional de Respuesta a Emergencias, guía de respuesta municipal y modelo nacional de amenaza sísmica. Del documento de avenidas torrenciales solo se leyeron las secciones clave (cap. 3, 5, 6 y 8.2 a medias).
+10. **Marco normativo (1.3):** contrastar con el texto oficial los artículos de la Ley 1523 y sus decretos (ya listado en «Cifras y datos por verificar»).
+11. **Estilo del texto:** `/topic-sentence` se aplicó a las «Lecturas conjuntas». Falta aplicarlo a los párrafos introductorios de cada capítulo y de las partes 1, 2, 4 y 5.
+
+### B. Fuentes y datos
+1. **PDFs sin copia local:** 454 filas de la hoja con «PDF disponible = No». Descarga de acceso abierto: 300 con versión abierta sin enlace directo (abrir los enlaces de `fuentes/vig/descargas.json`), 174 sin acceso abierto (acceso institucional o pedir a los autores), 22 con error de red por reintentar. No se evaden bloqueos de los sitios.
+2. **Errores de la hoja Vigilancia_CTeI** (reportar al responsable):
+   - fila 884 (SUDS en Ibagué): el DOI corresponde a otro artículo (2018);
+   - DOI mal formados o que no resuelven (varios en sismos, incendios y erosión costera) y 49 filas con DOI sin metadatos en Crossref;
+   - 48 grupos de DOI repetidos (51 filas de más) y registros que mezclan preprint y versión publicada;
+   - 47 registros sin DOI y 48 filas reservadas vacías;
+   - dos años 2027 (IDs 942 y 950).
+3. **Metadatos APA:** las entradas sin DOI en «Bibliografía recomendada» no tienen autores; completarlos a mano o con OpenAlex.
+4. **Claves del bib:** hay claves poco legibles (por ejemplo `departamento2023analysis`, `facultad2021flood`, `universidad2020modelacion`) porque Crossref devolvió la afiliación como autor; renombrarlas.
+
+### C. RAG-GRD (`../RAG-GRD`)
+1. Indexar los PDFs nuevos cada vez que se agreguen (`python3 -m ragrd indexar`); los 454 sin copia siguen fuera.
+2. Consultas bilingües: el acierto@5 cae a 64–69 % en las tandas con documentos en inglés; valorar traducción automática de la consulta con `consultas/sinonimos.yml` o embeddings.
+3. Un archivo (`Cadena - 2022 … Galeras volcano.pdf`) es una página HTML guardada como `.pdf`: conseguir el PDF real por vía institucional.
+4. Extraer una tabla estructurada por artículo (diseño, lugar, método, resultado, cifra) para acelerar la síntesis de evidencia.
+
+### D. Frontend y publicación
+1. Rótulo «Figure N» en inglés en los pies de figura (rótulo del tema).
+2. Las ilustraciones de cabecera existen para 14 amenazas y 5 partes; faltan para «Recursos» y para las páginas de los cuadernos (313 a 318). Revisar contraste y lectura en modo oscuro y en celular.
+3. Botones de Colab: los cuadernos 317 y 318 apuntan a rutas del repositorio `mromerot/teoria-riesgos`; comprobar que abren tras el despliegue.
+4. `mromerot.github.io/web`: actualizar el enlace a «3. Amenazas» (usa `index-3`), el menú de `docs/datascience` y la sección GRD (grupos y capítulos nuevos: avenidas torrenciales, Natech, PMGRD).
+5. El kernel `python3` del usuario apunta a un entorno inexistente; los cuadernos se ejecutan con `JUPYTER_DATA_DIR` vacío (`scripts/cuadernos/construir.py 313 314 315 317 318`).
+
+### E. Decisiones pendientes del usuario
+- ¿Qué amenazas sin capítulo (A5) se incorporan y en qué orden?
+- ¿Se extiende la verificación del RAG al texto corrido (A1) antes de pasar a nuevas ciudades?
+- `eva-core` (aplazado): ¿se extrae como paquete común para Leticia, SIDRo y Sincelejo?
+- Aplicar el libro a una ciudad piloto (Sincelejo en curso) y registrar qué falta en el libro.
