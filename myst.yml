@@ -10,6 +10,9 @@ project:
   license:
     content: CC-BY-4.0
   bibliography: [references.bib]
+  numbering:
+    figure:
+      template: Figura %s
   exclude: ["fuentes/**", "book/03_amenazas/_molde.md", "plantilla/**", "scripts/**"]
   toc:
     - file: index.md

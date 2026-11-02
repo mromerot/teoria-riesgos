@@ -88,6 +88,37 @@ En el valle del río Fella, la pérdida anual promedio por flujos de detritos y 
 
 Los autores reconocen que validar un análisis de riesgo es difícil; solo se puede comparar con eventos pasados parecidos. Con el evento de 2003, las pérdidas modeladas en edificaciones privadas (22,2 millones de euros para flujos y crecidas súbitas, 6,73 para el río) quedaron por debajo del daño reportado por la protección civil (59,1 millones), que incluía bienes comerciales e industriales no modelados {cite:p}`chen2016integrating`. Las muertes modeladas superaron las dos reportadas, entre otras razones porque no se consideraron las alertas ni las evacuaciones {cite:p}`chen2016integrating`. Además, los procesos se modelaron por separado, sin un modelo que analice sus interacciones a la vez {cite:p}`chen2016integrating`.
 
+### Aplicación: el flujo de evaluación multiamenaza de Leticia
+
+El análisis de riesgos de Leticia (Amazonas) adapta el procedimiento anterior a una ciudad amazónica. La figura resume su flujo en seis etapas: datos de entrada, amenaza por detonante, elementos en riesgo, vulnerabilidad, impacto por escenario y síntesis multiamenaza.
+
+```{figure} figuras/flujo_multiamenaza.svg
+:label: fig-flujo-multiamenaza
+:alt: Diagrama de seis etapas del flujo de evaluación multiamenaza de Leticia, desde los datos de entrada hasta las curvas de excedencia de pérdida económica, personas afectadas e interrupción de servicios.
+:width: 100%
+
+Flujo de evaluación multiamenaza usado en el análisis de Leticia. Elaboración propia, a partir del procedimiento de {cite:t}`chen2016integrating`. Las referencias entre paréntesis (3.1, 3.2…) son las secciones de análisis del libro de Leticia.
+```
+
+Cómo se lee la {numref}`fig-flujo-multiamenaza`:
+
+| Etapa | Qué hace | Relación con el procedimiento de Chen et al. |
+|---|---|---|
+| 1. Datos de entrada | Series del IDEAM (nivel, lluvia, temperatura), cartografía e imágenes, huellas de edificaciones y población, y eventos históricos con daños | Inventarios y datos de lluvia |
+| 2. Amenaza por detonante | Se agrupan las amenazas por su detonante (creciente del río, lluvia intensa, El Niño) y cada uno tiene escenarios por periodo de retorno $T$, ajustados con GEV y L-momentos | Escenarios por periodo de retorno del detonante |
+| 3. Elementos en riesgo | Edificaciones, población repartida por edificación y exposición sistémica (puerto, acueducto), en escenarios de creciente y vaciante, por celda de 200 m | Base de elementos en riesgo con dos escenarios de ocupación |
+| 4. Vulnerabilidad | Curvas e índices por amenaza, de la literatura, del juicio de expertos y de la calibración con daños históricos, con valores mínimo, medio y máximo | Tres vías para construir curvas de vulnerabilidad |
+| 5. Impacto por escenario | $I = P_s \cdot E \cdot V$ por escenario, con mínimo, medio y máximo | La ecuación de pérdida |
+| 6. Síntesis multiamenaza | Curvas de excedencia de pérdida económica, personas afectadas e interrupción de servicios | Curvas de riesgo y pérdida anual |
+
+Lo que añade el diseño de Leticia respecto del caso alpino:
+
+- **Detonantes en lugar de amenazas.** Dentro de cada detonante, el impacto de un elemento es el máximo de las amenazas que lo dañan, no la suma. Entre detonantes independientes sí se suman las pérdidas anuales esperadas (EAI). Es la regla que este libro adopta en la [síntesis](../05_sintesis/51_sintesis_multiamenaza.md).
+- **Servicios además de daños.** Incluye la interrupción de servicios (días sin servicio) y la exposición sistémica de líneas vitales, un paso hacia el análisis de cascadas ([](15_cascada_compuestos.md)).
+- **Tres métricas de salida:** pérdida económica, personas afectadas y servicios interrumpidos.
+
+La figura es un diseño de método y no presenta resultados. Los valores y los nombres de las fuentes (huellas de Microsoft, población de Kontur, series del IDEAM) son los de Leticia; para otra ciudad se reemplazan por los del territorio.
+
 ## 5. Indicadores multiamenaza
 
 Un indicador es una característica observable y medible que simplifica la información para entender el estado de un fenómeno o seguirlo en el tiempo; un índice es una medida compuesta que combina varios indicadores en un valor {cite:p}`white2025towards`. Lo que encontró la revisión de White et al. {cite:p}`white2025towards`:
