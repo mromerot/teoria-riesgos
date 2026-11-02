@@ -23,6 +23,7 @@ ICONOS = {
     "incendios": "incendios",
     "ciclones": "ciclones",
     "vendavales": "lluvias_vendavales",
+    "natech": "natech",
     "analisis-multiamenaza": "sintesis",
     "riesgos-cascada": "sintesis",
     "trayectorias-ciclones": "ciclones",

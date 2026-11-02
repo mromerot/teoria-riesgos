@@ -170,7 +170,7 @@ Dos revisiones recientes tratan el manejo del riesgo volcánico en Colombia 40 a
 | {cite:t}`benavidescordoba2024respiratory` | Estudio descriptivo transversal en adultos de más de 60 años, Genoy (zona de alta amenaza de Galeras) | Analiza los efectos pulmonares y la tolerancia al esfuerzo por exposición crónica a ceniza volcánica |
 | {cite:t}`ospina2022cuando` | Reflexión etnográfica sobre el recuerdo de Armero (1985) | Los sobrevivientes narran la avalancha como evento mágico, sacro y transformador: la memoria social es parte del riesgo |
 
-**Lectura conjunta.**
+**Lectura conjunta.** La evidencia reunida es escasa (tres estudios) y apunta, con confianza baja a media, a que el riesgo volcánico depende tanto del enfoque de evaluación, de la exposición crónica a la ceniza y de la memoria social como de la erupción misma.
 
 - **Probabilista frente a determinista.** El caso de Galeras muestra que la elección del enfoque puede cambiar decisiones de ordenamiento durante casi dos décadas {cite:p}`cardona2024implicaciones`. Esto respalda el uso de resultados probabilistas ([](../02_metodologia/22_probabilista_pae.md)) en lugar de un único escenario.
 - **Exposición crónica.** El riesgo volcánico incluye efectos de salud por ceniza, no solo erupciones {cite:p}`benavidescordoba2024respiratory`.

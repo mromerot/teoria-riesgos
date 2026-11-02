@@ -123,7 +123,7 @@ CLIMAAX compara los escenarios RCP4.5 y RCP8.5 para un periodo de referencia (19
 
 - {cite:t}`bustos2024observation` analiza 30 años de temperatura superficial diaria y proyecciones de 19 modelos CMIP6 para las olas de calor marinas en el Caribe, un fenómeno poco estudiado; en 1983–2012 hubo tendencias significativas de la frecuencia (1,32 eventos por década y nodo).
 
-**Lectura conjunta.** La vigilancia reúne pocos estudios nacionales sobre calor; el capítulo sigue siendo provisional. Las olas de calor marinas del Caribe se suman como una variante a considerar para ciudades costeras.
+**Lectura conjunta.** La evidencia nacional sobre olas de calor es escasa (confianza baja), por lo que el capítulo sigue siendo provisional. Las olas de calor marinas del Caribe se suman como una variante a considerar para ciudades costeras.
 
 ## Pendiente
 

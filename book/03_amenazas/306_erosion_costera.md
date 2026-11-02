@@ -139,7 +139,7 @@ Las fuentes citadas llaman a un manejo estratégico a largo plazo, que considere
 | {cite:t}`villate2020mangrove` | Imágenes Landsat, tres ciénagas del Caribe | Colombia tiene unas 379 954 ha de manglar con la mayor tasa anual de pérdida de Suramérica; en tres décadas unas 40 000 ha fueron muy afectadas |
 | {cite:t}`fragozo2026beyond` | Comparación de seis modelos de elevación globales con una referencia fotogramétrica local, planicie caribeña | Mide el error vertical y su efecto en la conectividad hidrológica |
 
-**Lectura conjunta.**
+**Lectura conjunta.** Con confianza media, la erosión costera del Caribe colombiano es espacialmente heterogénea y está condicionada por el nivel relativo del mar, los manglares y la calidad de los datos topográficos, por lo que debe medirse tramo a tramo.
 
 - **Heterogeneidad espacial.** La erosión no es uniforme: hay tramos en retroceso grave y otros estables o en acreción {cite:p}`rangelbuitrago2020are,manzolli2020magnitude`. El análisis de una ciudad debe medir su tramo y no extrapolar la cifra regional.
 - **El nivel del mar relativo importa más que el global.** La subsidencia local acelera el ascenso relativo {cite:p}`restrepoangel2021coastal`, y las inundaciones por tormenta dependen de la morfodinámica de la playa {cite:p}`cueto2022morphodynamics`.

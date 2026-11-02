@@ -128,7 +128,7 @@ Este libro sigue esa postura para el detonante y propone, como criterio propio, 
 | {cite:t}`smolikova2021analysis` | Análisis de lluvia detonante de un flujo de detritos, República Checa | Acumulados de 2 a 60 días e índices de precipitación antecedente (1983–2018); referencia metodológica externa |
 | {cite:t}`diaz2022alianzas` | Estudio cualitativo de la reconstrucción tras el desastre de Salgar (2015) | Las alianzas público-privadas y sin ánimo de lucro cumplieron un papel central en la reconstrucción |
 
-**Lectura conjunta.**
+**Lectura conjunta.** Los estudios revisados sugieren, con confianza media, que el análisis de avenidas torrenciales debe combinar la lluvia con el sedimento disponible, priorizar las cuencas por su morfometría y apoyarse en alertas redundantes y en la vulnerabilidad de los hogares.
 
 - **La lluvia extrema no basta.** Si pocas cascadas ocurren con las lluvias más extremas {cite:p}`arangocarmona2025hillslope`, el detonante debe analizarse junto con el sedimento disponible. Esto es coherente con la estructura de la guía del SGC ({cite:p}`sgc2021avenidas`) que modela los sólidos aparte de la lluvia.
 - **Priorización previa.** La morfometría de cuenca permite pasar de cientos de cuencas a unas pocas prioritarias antes de modelar {cite:p}`arango2020morphometrical`.

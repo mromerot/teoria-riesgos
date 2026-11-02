@@ -225,7 +225,7 @@ La NSR-22 es una propuesta que, según el capítulo citado, debía ser estudiada
 | Exposición y respuesta | {cite:t}`hurtado2026building`; {cite:t}`aroquipa2022seismic`; {cite:t}`ordaz2023review` | Predicción de colapso con aprendizaje automático; resiliencia de edificios; aceleraciones de diseño | Enlazan daño observado, resiliencia y normativa |
 | Comunicación | {cite:t}`acevedo2025earthquake` | Iniciativa de transferencia de conocimiento de riesgo sísmico | Para que el riesgo sirva a la toma de decisiones, quien lo genera debe transferirlo a los usuarios finales |
 
-**Lectura conjunta.**
+**Lectura conjunta.** Los estudios revisados sugieren, con confianza media, que el riesgo sísmico urbano se calcula con un marco común pero cambia por tres factores que el análisis de cada ciudad debe resolver: las fuentes corticales cercanas, los efectos de sitio y los sesgos al derivar la vulnerabilidad.
 
 - **El riesgo sísmico urbano se calcula con el mismo marco en las tres mayores ciudades** {cite:p}`acevedo2020seismic`; esto sirve de plantilla para otras ciudades, a costa de documentar las incertidumbres epistémicas {cite:p}`marulanda2021epistemicb` y los sesgos de vulnerabilidad {cite:p}`hoyos2022seismic`.
 - **Fuentes corticales cercanas.** El caso del Eje Cafetero en 1999 y los sismos históricos de Algeciras y de 1925 muestran que no basta la subducción para la amenaza de una ciudad {cite:p}`arteta2023ground,chicanganamonton2022sismicidad,salcedohurtado2021reevaluacion`.
@@ -481,7 +481,6 @@ Lista de los 194 registros de la hoja de vigilancia científica (pestaña `Vigil
 - Miura, H., Matsuoka, M., Reyes, J. C., Pulido, N., Hashimoto, M., Riaño, A. C., Hurtado, A., Rincon, R., García, H., & Lozano, C. (2023). Quick Estimation Model for Mapping Earthquake Impacts in Bogotá, Colombia. *ISPRS International Journal of Geo-Information*, *12*(12), 471. https://doi.org/10.3390/ijgi12120471
 
 - Molina-Gómez, F., González-Olaya, R., & Camacho-Tauta, J. (2024). Exploring liquefaction resistance in saturated and gassy sands at different state parameters. *Transportation Geotechnics*, *49*, 101410. https://doi.org/10.1016/j.trgeo.2024.101410
-get rights and content
 
 - Molina-Gómez, F., Viana da Fonseca, A., Ferreira, C., & Caicedo, B. (2024). Insights into the assessment and interpretation of earthquake-induced liquefaction in sands under different degrees of saturation. *Earth-Science Reviews*, *258*, 104925. https://doi.org/10.1016/j.earscirev.2024.104925
 

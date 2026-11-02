@@ -144,7 +144,7 @@ Los resultados sirven para planificar actividades de prevención y mitigación, 
 | {cite:t}`ballesterosgonzalez2020estimating` | Modelo químico-transporte WRF-Chem, norte de Suramérica | Estima el efecto de la quema de biomasa en la calidad del aire y la salud |
 | {cite:t}`jones2024state` | Informe global de incendios 2023–2024 | Atribuye eventos extremos al clima y al uso del suelo y proyecta riesgos futuros |
 
-**Lectura conjunta.**
+**Lectura conjunta.** Los estudios revisados indican, con confianza media, que el análisis de amenaza por incendios debe combinar el clima con la actividad humana y puede apoyarse en datos abiertos, aunque su validación con eventos locales sigue pendiente.
 
 - **Doble causa.** Los estudios coinciden en que el fuego responde a un factor climático (sequía y calor) y a uno humano (uso del fuego y cambio de cobertura) {cite:p}`acevedoortiz2026sequias,anderson2021alert`. Un modelo de amenaza debe tener ambos, no solo la precipitación.
 - **Datos abiertos.** MODIS, TRMM y focos activos permiten construir mapas de probabilidad sin datos locales {cite:p}`barreto2020open,acevedoortiz2026sequias`; su validación con eventos locales queda pendiente.

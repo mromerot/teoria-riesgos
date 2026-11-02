@@ -127,3 +127,11 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 - Sidebar de la sección 3 agrupado como en la sección GRD del sitio personal (tipos de amenaza de los HIPs): geológicas, hidrológicas y meteorológicas, ambientales, más «Análisis integrados»; la sección tiene ahora flecha de despliegue como las 1 y 2. No hay capítulos de amenazas biológicas, tecnológicas, sociales ni extraterrestres.
 - Ilustraciones de cabecera (SVG planos, `estilo/ilustraciones/`, generadas con `python estilo/construir_ilustraciones.py`): 13 amenazas y 5 partes (conceptos, metodología, vulnerabilidad, síntesis, PMGRD). Se insertan con la directiva `image` y la clase `ilustracion`.
 - Cuaderno 317 (sismicidad con datos del USGS), adaptado de `scr-ungrd/cuadernos-reproducibles-crc004` (CC BY 4.0), anidado bajo Sismos.
+
+## Natech, tsunami, verificación y oraciones temáticas (2026-11-02)
+
+- Nuevo capítulo provisional `319_natech.md` (grupo «Amenazas tecnológicas»; HIP TL0309; 3 estudios con PDF + Atlas 2019), con ícono, ilustración, tarjeta en la portada y entrada en `scripts/nueva_ciudad.py`. Faltan 4 trabajos de la hoja sin PDF.
+- Tsunami: subsección «Ejemplo aplicado: Tumaco 1979» y cuaderno 318 (`318_tsunami_tumaco_1979.ipynb`) con las observaciones del cuaderno piloto crc003 de la UNGRD (MIT). Hallazgo: el arribo de Salinas (35 min a unos 460 km) implica una profundidad equivalente de unos 4 900 m; contrastar con Herd et al. (1981) y NOAA. El cuaderno piloto está sin validar (amplitud de calibración de 8 m frente a 1–2 m de desplazamiento real).
+- `ragrd evidencia` sobre 14 capítulos: ninguna cifra «no encontrada», «parcial» ni «dispersa». Las filas «sin_pdf» son fuentes que no son PDF (handbooks, HIPs). Solo cubre cifras de las tablas de evidencia.
+- Skill `/topic-sentence` aplicado a las «Lectura conjunta» de 301–312, 316 y 319 (oración temática con calificador de confianza).
+- Pendiente: choque financiero, los 60 «POR DETERMINAR», PDFs sin copia local (454 filas) y leer el texto completo de los estudios cuyas cifras vienen de resúmenes.

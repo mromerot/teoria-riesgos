@@ -129,7 +129,7 @@ La tabla es un resumen de los insumos que usan los estudios citados {cite:p}`fra
 | {cite:t}`vega2023assessment` | RUSLE-GGS (RUSLE con SIG, incertidumbre GLUE y relación de entrega de sedimento), cuenca del Cesar, 1991–2020, resolución 2,5 km | Primera estimación de erosión del suelo de esta cuenca; identifica puntos calientes con Getis-Ord |
 | {cite:t}`rosas2020assessing` | RUSLE-SIG con incertidumbre GLUE y relación de entrega de sedimento, países en desarrollo | Propone un método para estimar erosión del suelo a escala nacional con pocas mediciones |
 
-**Lectura conjunta.** La evidencia mezcla escalas: erosión de laderas y suelo (USLE/RUSLE, {cite:p}`calero2021evaluacion,rosas2020assessing`), dinámica de cauces {cite:p}`manzolli2022recent` y decisión de inversión {cite:p}`cardenas2024prioritizing`. Ninguno ofrece una amenaza de erosión de orillas lista para usar; el capítulo sigue siendo provisional.
+**Lectura conjunta.** La evidencia disponible sobre erosión fluvial y del suelo es de baja confianza para el análisis de una ciudad, porque mezcla escalas: erosión de laderas y suelo (USLE/RUSLE, {cite:p}`calero2021evaluacion,rosas2020assessing`), dinámica de cauces {cite:p}`manzolli2022recent` y decisión de inversión {cite:p}`cardenas2024prioritizing`. Ninguno ofrece una amenaza de erosión de orillas lista para usar; el capítulo sigue siendo provisional.
 
 ## Pendiente
 

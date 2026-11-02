@@ -16,6 +16,7 @@ MAPA = {
  "310_incendios.md": ["Incendios forestales"],
  "311_ciclones.md": ["Ciclón tropical"],
  "312_vendavales.md": ["Viento", "Tormenta eléctrica"],
+ "319_natech.md": ["Natech (accidente tecnológico inducido por desastre natural)"],
  "316_avenidas_torrenciales.md": ["Flujos de detritos y tierra (lodo) y avalanchas de roca", "Inundación repentina"],
 }
 def limpia(s):
@@ -62,7 +63,8 @@ def apa(r):
             if iss: s += f"({limpia(iss)})"
             if pg: s += f", {limpia(pg)}"
             s += ". "
-        s += enlace(d, m) or ""
+        dd = m.get("DOI") or d
+        s += (enlace(dd, m) or "")
         return (au or t).lower(), anio, s.strip()
     t = limpia(r["TITULO/TITLE"]); rev = limpia(r["FUENTE"])
     s = f"{titulo_fin(t)} ({anio}). " + (f"*{rev}*. " if rev else "")

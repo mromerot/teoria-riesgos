@@ -33,6 +33,7 @@ AMENAZAS = {
     "calor": ("Olas de calor", "calor", "provisional", "MH0501"),
     "incendios": ("Incendios forestales", "incendios", "solido", "EN0205"),
     "ciclones": ("Ciclones tropicales", "ciclones", "solido", "MH0309, MH0703, MH0704"),
+    "natech": ("Natech", "natech", "provisional", "TL0309"),
     "vendavales": ("Vendavales", "vendavales", "provisional", "MH0101, MH0304, MH0302, MH0305"),
 }
 AVISO_PROV = (

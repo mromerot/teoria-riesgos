@@ -22,18 +22,20 @@ Cada capítulo de amenaza sigue el mismo molde de siete puntos ([](_molde.md)): 
 | [](309_calor.md) | CLIMAAX, CCDR-tools y dos estudios | **Provisional** | Sí |
 | [](310_incendios.md) | Atlas 2019 y CLIMAAX | Sólido | Sí, y por ignición humana |
 | [](311_ciclones.md) | Atlas 2019 y estudios del archipiélago | Sólido | Sí |
+| [](319_natech.md) | Atlas 2019 y tres estudios | **Provisional** | Sí, a través de las amenazas que lo activan |
 | [](312_vendavales.md) | Borrador UNGRD (Quindío), DNP y CLIMAAX | **Provisional** | Incierto |
 
 «Sólido» significa que existe una metodología nacional o internacional descrita en una fuente de referencia. No significa que todas las citas se hayan verificado contra el texto completo: cada capítulo lista al final lo que falta leer.
 
 ## Análisis integrados con cuadernos
 
-Cuatro secciones muestran con ejemplos ejecutables (cuadernos de Jupyter, abribles en Colab) cómo se combinan resultados o se trabaja con datos reales. Los dos primeros **usan datos inventados**, rotulados como tales, para enseñar el cálculo y no para sacar conclusiones sobre ninguna ciudad. Los otros dos usan datos reales.
+Cinco secciones muestran con ejemplos ejecutables (cuadernos de Jupyter, abribles en Colab) cómo se combinan resultados o se trabaja con datos reales. Los dos primeros **usan datos inventados**, rotulados como tales, para enseñar el cálculo y no para sacar conclusiones sobre ninguna ciudad. Los otros tres usan datos reales.
 
 | Sección | Qué muestra |
 |---|---|
 | [](313_analisis_multiamenaza.ipynb) | Escenarios por detonante, pérdida por edificación, mínimo, medio y máximo, curvas de riesgo, PAE con cotas, y qué se suma y qué no |
 | [](314_riesgos_cascada.ipynb) | Una red de servicios interdependientes (daño directo frente a cascada) y un bucle de retroalimentación como el de Limbe |
+| [](318_tsunami_tumaco_1979.ipynb) | **Datos reales** (observaciones de 1979 del cuaderno piloto de la UNGRD): run-up frente a distancia y coherencia de los tiempos de arribo con la velocidad de la onda larga |
 | [](317_sismicidad_colombia.ipynb) | **Datos reales** (USGS): catálogo sísmico de Colombia y su área de influencia, magnitud de completitud, relación de Gutenberg-Richter y profundidades. Alimenta el capítulo de sismos |
 | [](315_trayectorias_ciclones.ipynb) | **Datos reales** (IBTrACS): trayectorias de ciclones en el Caribe y conteo de sistemas cerca de sitios de Colombia. Genera la figura del capítulo de ciclones |
 

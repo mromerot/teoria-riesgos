@@ -82,6 +82,27 @@ El caso de Guapi es un método determinista con un solo modelo sobre una morfolo
 
 Existe además una evaluación de la amenaza para la costa Pacífica central y sur de Colombia {cite:p}`escobar2020tsunami`, que debe consultarse para su método y resultados antes de aplicarlo a una ciudad.
 
+### Ejemplo aplicado: el tsunami de Tumaco de 1979
+
+La Subdirección para el Conocimiento del Riesgo de la UNGRD publicó un **cuaderno piloto, sin validar**, que simula la propagación del tsunami del 12 de diciembre de 1979 (sismo de Mw 8,2) hacia Tumaco ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), licencia MIT). Lo que hace y lo que enseña:
+
+| Elemento | Cómo lo trata el cuaderno |
+|---|---|
+| Ecuaciones | Aguas someras linealizadas en dos dimensiones, esquema de Lax-Friedrichs en NumPy, ejecutable en la CPU de Colab (unos 65 s) |
+| Fuente | Onda en N tipo Carrier, con una amplitud de calibración de 8 m |
+| Datos | Batimetría GEBCO 2023 (450 m) y topografía SRTM de 30 m, en UTM zona 18N |
+| Validación | Cualitativa, contra ocho estaciones de run-up |
+| Resultado declarado | Run-up simulado de 3 a 5 m en el área de Tumaco y llegada a los 15 minutos |
+
+Su propio texto reconoce las limitaciones, que son las mismas que debe resolver un estudio de amenaza: la **amplitud de 8 m compensa la difusión numérica** y no representa el desplazamiento real del fondo, de 1 a 2 m; las ecuaciones lineales **no calculan la inundación**; los 450 m de resolución no capturan las islas de Tumaco; y la fuente no usa un modelo de dislocación finita. Por eso sirve como flujo de trabajo reproducible y no como mapa de amenaza.
+
+El cuaderno [](318_tsunami_tumaco_1979.ipynb) usa su tabla de observaciones para dos comprobaciones previas a cualquier calibración:
+
+- **Run-up y distancia.** Los valores mayores están cerca de la fuente (hasta 5 m en el muelle de Tumaco) y bajan a 0,8 m en Buenaventura.
+- **Coherencia de los tiempos de arribo.** Los 15 minutos hasta Tumaco corresponden a una profundidad equivalente de unos 600 m, coherente con una plataforma y un talud. El arribo de Salinas (35 minutos a unos 460 km) exige una profundidad de unos 4 900 m a lo largo de toda la ruta, mayor de la esperable, por lo que ese dato es sospechoso hasta contrastarlo con la fuente.
+
+**Lección para el análisis de una ciudad:** los datos históricos con los que se calibra un modelo de tsunami deben revisarse contra la física de la onda larga y contra las fuentes primarias antes de ajustar parámetros.
+
 ## 3. Exposición
 
 Los municipios costeros expuestos suman cerca de siete millones de habitantes (seis millones en el Caribe y uno en el Pacífico), el 16 % de la población, según el Atlas {cite:p}`ungrd2019atlas`. Los departamentos expuestos son Nariño, Cauca, Valle del Cauca y Chocó en el Pacífico, y La Guajira, Bolívar, Atlántico, Magdalena, Sucre, Córdoba, Antioquia, Chocó y San Andrés y Providencia en el Caribe {cite:p}`ungrd2019atlas`. El municipio con mayor población expuesta y probabilidad de pérdidas es Tumaco {cite:p}`ungrd2019atlas`.
@@ -146,7 +167,7 @@ Una propuesta reciente es un modelo de lógica difusa para emitir niveles de ale
 | {cite:t}`gonzalez2021probabilistic` | Método probabilista de amenaza de tsunami, bahía de Cádiz (España) | Aplica el enfoque a zonas con marea meso y macromareal; referencia metodológica, no colombiana |
 | {cite:t}`cabrera2020generation` | Experimentos de laboratorio y modelo analítico | La amplitud máxima de la ola por deslizamiento depende de una sola razón adimensional, la sumersión relativa |
 
-**Lectura conjunta.**
+**Lectura conjunta.** La evidencia revisada indica que el análisis de tsunami en Colombia descansa en escenarios deterministas del Pacífico y en estimaciones indirectas del Caribe, lo que limita el cálculo probabilista de la pérdida anual esperada.
 
 - **Pacífico y Caribe se evalúan con métodos distintos.** En el Pacífico hay tsunamis históricos (1906, 1979) y escenarios deterministas; en el Caribe solo hay estimaciones indirectas de acoplamiento, sin eventos recientes {cite:p}`escobar2020tsunamib,lizarazo2021interplate`. Esto confirma que el análisis de una ciudad caribeña debe declarar mayor incertidumbre de la fuente.
 - **Deterministas frente a probabilistas.** Los estudios colombianos revisados son deterministas; el enfoque probabilista aparece en la referencia española {cite:p}`gonzalez2021probabilistic`. Para calcular PAE ([](../02_metodologia/22_probabilista_pae.md)) hace falta el segundo.
@@ -155,7 +176,7 @@ Una propuesta reciente es un modelo de lógica difusa para emitir niveles de ale
 ## Pendiente
 
 - Leer {cite:p}`escobar2020tsunami` y {cite:p}`paez2021tsunamifrag` completos. Hoy se citan por título y resumen.
-- Enlazar el cuaderno reproducible del tsunami de Tumaco de 1979 como ejemplo aplicado.
+- Contrastar la tabla de observaciones de 1979 (en especial el arribo de Salinas) con Herd et al. (1981) y la base de la NOAA.
 - Añadir la fuente primaria de la evaluación global (NGI y GA, 2014) y la del modelo de arribo (Madsen y Fuhrman, 2009), que el Atlas cita.
 - Verificar con la literatura la combinación tsunami y ascenso del nivel del mar (punto 6).
 
@@ -177,6 +198,6 @@ Lista de los 9 registros de la hoja de vigilancia científica (pestaña `Vigilan
 
 - Lizarazo, S. C., Sagiya, T., & Mora-Páez, H. (2021). Interplate coupling along the Caribbean coast of Colombia and its implications for seismic/tsunami hazards. *Journal of South American Earth Sciences*, *110*, 103332. https://doi.org/10.1016/j.jsames.2021.103332
 
-- Lizarazo, S. C., Sagiya, T., & Mora-Páez, H. (2024). Viscoelastic earthquake cycle model for the Caribbean subduction zone in northwestern Colombia: Implications of coastal subsidence for seismic/tsunami hazards. *Journal of South American Earth Sciences*, *141*, 104931. https://doi.org//10.1016/j.jsames.2024.104931
+- Lizarazo, S. C., Sagiya, T., & Mora-Páez, H. (2024). Viscoelastic earthquake cycle model for the Caribbean subduction zone in northwestern Colombia: Implications of coastal subsidence for seismic/tsunami hazards. *Journal of South American Earth Sciences*, *141*, 104931. https://doi.org/10.1016/j.jsames.2024.104931
 
 - Paez-Ramirez, J., Lizarazo, J., Medina, S., Rivas, M., Luna, P., Mas, E., & Koshimura, S. (2021). A comparative analysis of empirical and analytical tsunami fragility functions for buildings in Tumaco, Colombia. *IOP Conference Series: Earth and Environmental Science*, *630*(1), 012008. https://doi.org/10.1088/1755-1315/630/1/012008

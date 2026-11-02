@@ -177,7 +177,7 @@ La relación entre lluvia y deslizamiento no es lineal: depende de la humedad an
 | Sociedad | {cite:t}`smith2020toward`; {cite:t}`vargascuervo2024challenges` | Proyecto piloto en Medellín; análisis espaciotemporal en Bogotá | Barreras sociales e institucionales para reducir el riesgo en asentamientos informales |
 | Alerta | {cite:t}`henaocespedes2023landslide` | Perspectiva del internet de las cosas, Manizales | Monitoreo de laderas de bajo costo para alerta temprana |
 
-**Lectura conjunta.**
+**Lectura conjunta.** Con confianza media, la amenaza por movimientos en masa se estima con modelos estadísticos y físicos que comparten una limitación: dependen de la lluvia y de propiedades del suelo que en zonas con pocos datos se conocen mal.
 
 - **Método dominante.** Para amenaza se usan dos familias: estadísticas de susceptibilidad {cite:p}`goyespenafiel2021landslide,aristizabal2026modelos` y modelos físicos con lluvia {cite:p}`marin2021applicability,marin2022understanding`. Los de base física piden propiedades del suelo que en zonas con pocos datos son la principal incertidumbre.
 - **Umbrales.** Los umbrales de lluvia se estiman con enfoques empíricos y probabilistas {cite:p}`aristizabal2022umbrales,correa2019early`; son el vínculo entre este capítulo y los de clima y alerta.

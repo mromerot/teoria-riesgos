@@ -36,6 +36,9 @@ project:
                   title: Sismicidad con datos del USGS
             - file: book/03_amenazas/302_volcanes.md
             - file: book/03_amenazas/303_tsunami.md
+              children:
+                - file: book/03_amenazas/318_tsunami_tumaco_1979.ipynb
+                  title: Tumaco 1979 (observaciones)
             - file: book/03_amenazas/304_mov_masa.md
         - title: Amenazas hidrológicas y meteorológicas
           children:
@@ -53,6 +56,9 @@ project:
             - file: book/03_amenazas/306_erosion_costera.md
             - file: book/03_amenazas/307_erosion_fluvial.md
             - file: book/03_amenazas/310_incendios.md
+        - title: Amenazas tecnológicas
+          children:
+            - file: book/03_amenazas/319_natech.md
         - title: Análisis integrados
           children:
             - file: book/03_amenazas/313_analisis_multiamenaza.ipynb

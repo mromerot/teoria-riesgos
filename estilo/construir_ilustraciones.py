@@ -253,6 +253,27 @@ def vendavales():
     svg("vendavales", ("#B8C4D1", "#97A7B8"), c, "Viento fuerte que arranca el techo de una casa y dobla los árboles")
 
 
+def natech():
+    c = nube(170, 46, 1.3, "#6C7988") + nube(480, 34, 1.0, "#5C6877") + lluvia(90, 560, 56, 130, 30, "#CFE0EE", .8)
+    c += '<polygon points="560,40 544,84 560,84 548,122 580,72 562,72 572,40" fill="#FFD84A"/>'
+    c += suelo(200, "#6B7A66", "#59685A")
+    def tanque(x, y, w, h, col):
+        return (f'<g><rect x="{x}" y="{y-h}" width="{w}" height="{h}" rx="6" fill="{col}"/><ellipse cx="{x+w/2}" cy="{y-h}" rx="{w/2}" ry="7" fill="#fff" opacity=".55"/>'
+                f'<rect x="{x+6}" y="{y-h+10}" width="5" height="{h-18}" rx="2.5" fill="#fff" opacity=".35"/></g>')
+    c += tanque(80, 200, 78, 78, "#B9C3CE") + tanque(176, 200, 64, 100, "#CFD6DE") + tanque(256, 200, 90, 62, "#A9B5C2")
+    c += '<g fill="none" stroke="#3b4756" stroke-width="5"><path d="M118 122 V104 H208 V100"/><path d="M300 138 V110 H400 V200"/></g>'
+    c += '<path d="M208 100 V86" stroke="#3b4756" stroke-width="5" fill="none"/>'
+    def llama(x, y, s):
+        return (f'<g transform="translate({x} {y}) scale({s})"><path d="M0 0 C -26 -16 -20 -44 -6 -62 C -8 -42 4 -40 6 -54 C 22 -40 30 -16 0 0 Z" fill="#E8542B"/>'
+                f'<path d="M0 0 C -12 -8 -10 -24 -2 -34 C 0 -24 6 -22 8 -30 C 14 -20 14 -8 0 0 Z" fill="#FFC83D"/></g>')
+    c += llama(208, 92, 1.1) + "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#4B4B55" opacity=".8"/>' for x, y, r in [(214, 20, 14), (234, 6, 18), (262, 12, 14)])
+    c += ola(440, W, 190, 6, 90, "#2F7FB8", .95, relleno_hasta=H) + ola(440, W, 190, 6, 90, "#9AD3F2", 1, 3)
+    c += ola(440, W, 224, 6, 100, "#1F6FA8", .85, relleno_hasta=H)
+    c += casa(640, 192, 1.1, "#C0703A") + casa(790, 196, .9, "#3C6E91")
+    c += '<g fill="#6B5B3A" opacity=".8"><ellipse cx="480" cy="212" rx="22" ry="5"/><ellipse cx="560" cy="236" rx="28" ry="5"/><ellipse cx="700" cy="226" rx="20" ry="4"/></g>'
+    svg("natech", ("#9EA9B6", "#7C8A9A"), c, "Tanques industriales junto a un río crecido, con un rayo y una llama")
+
+
 # ---------- partes ----------
 def p_conceptos():
     c = suelo(214, "#E3DDCF")
@@ -315,7 +336,7 @@ def p_pmgrd():
     svg("pmgrd", ("#DDF0E3", "#BFE0CB"), c, "Plan municipal de gestión del riesgo: lista de acciones para un municipio")
 
 
-for f in [sismo, volcanes, tsunami, mov_masa, avenidas, inundacion, erosion_costera, erosion_fluvial, sequia, calor, incendios, ciclones, vendavales,
+for f in [sismo, volcanes, tsunami, mov_masa, avenidas, inundacion, erosion_costera, erosion_fluvial, sequia, calor, incendios, ciclones, vendavales, natech,
           p_conceptos, p_metodologia, p_vulnerabilidad, p_sintesis, p_pmgrd]:
     f()
 print("escritas", len(list(OUT.glob("*.svg"))), "ilustraciones en", OUT)

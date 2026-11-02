@@ -144,7 +144,7 @@ El flujo de CLIMAAX usa precipitación del conjunto de cinco modelos CMIP6 de IS
 | {cite:t}`nauditt2022evaluating` | Riesgo de sequía con productos abiertos de amenaza y vulnerabilidad en cuadrículas, trópico | Muestra que se puede combinar datos globales abiertos de amenaza y vulnerabilidad |
 | {cite:t}`scott2021ecosystem` | Comparación de seguridad hídrica en ciudades de Latinoamérica | Examina si la inseguridad ecosistémica y la vulnerabilidad social llevan a fallas de seguridad hídrica |
 
-**Lectura conjunta.** La evidencia colombiana apunta en una dirección: el impacto de la sequía sobre la salud depende más de la pobreza y la exclusión que del acceso físico al agua {cite:p}`contreras2020the`. Por eso el análisis de sequía debe combinar un índice de amenaza (SPI o índices satelitales, {cite:p}`ojedaflechas2020characterization`) con vulnerabilidad social ([](../04_vulnerabilidad/43_vulnerabilidad_social.md)). Los resultados de La Guajira son asociaciones entre municipios y no prueban causalidad individual.
+**Lectura conjunta.** Con confianza media, el impacto de la sequía sobre la salud depende en Colombia más de la pobreza y la exclusión que del acceso físico al agua {cite:p}`contreras2020the`. Por eso el análisis de sequía debe combinar un índice de amenaza (SPI o índices satelitales, {cite:p}`ojedaflechas2020characterization`) con vulnerabilidad social ([](../04_vulnerabilidad/43_vulnerabilidad_social.md)). Los resultados de La Guajira son asociaciones entre municipios y no prueban causalidad individual.
 
 **Estudios añadidos con el segundo lote de PDFs.**
 

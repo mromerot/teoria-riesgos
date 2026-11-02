@@ -25,7 +25,7 @@ Flujo de evaluación, análisis probabilista y pérdida anual esperada, y escena
 
 :::{card} 3. Amenazas
 :link: book/03_amenazas/index.md
-Trece amenazas con un molde común de siete puntos, y cuadernos con ejemplos ejecutables.
+Catorce amenazas con un molde común de siete puntos, y cuadernos con ejemplos ejecutables.
 :::
 
 :::{card} 4. Exposición y vulnerabilidad
@@ -97,6 +97,10 @@ Fuego en la cobertura vegetal.
 :::{card} ![](estilo/iconos/ciclones.svg) Ciclones tropicales
 :link: book/03_amenazas/311_ciclones.md
 Viento, marea de tormenta y lluvia de huracanes.
+:::
+:::{card} ![](estilo/iconos/natech.svg) Natech
+:link: book/03_amenazas/319_natech.md
+Accidentes tecnológicos desencadenados por amenazas naturales.
 :::
 :::{card} ![](estilo/iconos/lluvias_vendavales.svg) Vendavales
 :link: book/03_amenazas/312_vendavales.md

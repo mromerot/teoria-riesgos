@@ -198,7 +198,7 @@ La tabla de medidas es un criterio de método de este libro. El Atlas trata los 
 | {cite:t}`acostacoll2022cross` | Comparación entre radar terrestre NEXRAD y radar satelital GPM, Puerto Rico | Evalúa la correlación entre sensores durante ciclones para alertas oportunas |
 | {cite:t}`varon2025desastres` | Revisión documental y de prensa, Colombia y Honduras | Las entidades de gestión siguen una visión clásica del riesgo orientada a mitigar efectos, no las causas estructurales de la vulnerabilidad |
 
-**Lectura conjunta.** Hay un método reproducible para reconstruir eventos históricos sin registros (modelo paramétrico de viento más oleaje, calibrado con un evento reciente) {cite:p}`ortiz2022huracan`, útil para estimar la amenaza en el archipiélago. La evidencia sobre gestión es cualitativa y comparativa, de dos casos {cite:p}`varon2025desastres`.
+**Lectura conjunta.** Con confianza media, la amenaza de ciclones en el archipiélago puede reconstruirse con métodos reproducibles y sus efectos se miden tanto en los ecosistemas como en la capacidad social de respuesta. Hay un método reproducible para reconstruir eventos históricos sin registros (modelo paramétrico de viento más oleaje, calibrado con un evento reciente) {cite:p}`ortiz2022huracan`, útil para estimar la amenaza en el archipiélago. La evidencia sobre gestión es cualitativa y comparativa, de dos casos {cite:p}`varon2025desastres`.
 
 **Estudios añadidos con el segundo lote de PDFs.**
 

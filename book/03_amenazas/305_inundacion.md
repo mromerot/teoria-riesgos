@@ -183,7 +183,7 @@ Los datos del Atlas son de 2019. Las cifras de estaciones y la disponibilidad de
 | Gestión y economía | {cite:t}`corderinovoa2020economics`; {cite:t}`facultad2021flood`; {cite:t}`departamento2023analysis` | Optimización de inversión; medidas locales en Tunja; ordenamiento en la cuenca baja del Sinú | La inversión puede optimizarse por tipo, combinación y momento de las medidas; la inundación lenta exige integrar la gestión del riesgo al ordenamiento |
 | Global | {cite:t}`kreibich2022challenge`; {cite:t}`castellsquintana2022population` | Casos de crecidas y sequías sin precedentes; más de 3300 inundaciones y desplazamiento | Las inundaciones sin precedentes ponen a prueba la gestión; el desplazamiento por inundaciones se asocia con conflicto urbano |
 
-**Lectura conjunta.**
+**Lectura conjunta.** Los estudios revisados coinciden en que el análisis de inundación debe ir más allá de las series estacionarias y de la profundidad del agua, aunque la mayor parte de la literatura se ocupa del drenaje urbano y no de la amenaza.
 
 - **Estacionariedad.** Tres estudios del alto Cauca y el Tolima muestran que las series no son estacionarias {cite:p}`universidad2020modelacion,ceron2021spatio,jimenezu2022stationary`; el análisis de frecuencia debe contrastarse con tendencias antes de fijar periodos de retorno.
 - **Cambio de la estimación.** En Antioquia, comparar la estimación estacionaria y no estacionaria del periodo de retorno para diseño de alcantarillado es el mismo problema {cite:p}`chicaosorio2022comparison`.
