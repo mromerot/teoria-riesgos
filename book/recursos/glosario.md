@@ -18,7 +18,7 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 
 **Capacidad de adaptación.** Habilidad de un sistema para ajustarse al daño potencial, aprovechar oportunidades o afrontar las consecuencias. Junto con la sensibilidad compone la vulnerabilidad en el marco del AR6 {cite:p}`ccdr2025tools`.
 
-**Cascada.** Secuencia en la que una amenaza activa otras (sismo y tsunami, lluvia y deslizamiento) ([](../03_amenazas/index.md)).
+**Cascada (riesgo o evento en).** Riesgo de que uno o varios eventos peligrosos precipiten riesgos y eventos posteriores, por cadenas de amenazas o impactos interrelacionados {cite:p}`undrr2026cascading` ([](../01_conceptos/15_cascada_compuestos.md)).
 
 **CMIP6.** Sexta fase del proyecto de comparación de modelos acoplados, que sustenta el AR6 del IPCC y proyecta el clima con escenarios SSP {cite:p}`ccdr2025tools`.
 
@@ -53,6 +53,8 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 **Reducción del riesgo.** Proceso de la Ley 1523 que comprende la intervención correctiva y prospectiva y la protección financiera {cite:p}`ley1523,wb2012analysis`.
 
 **Riesgo.** Daños o pérdidas que pueden presentarse cuando coinciden en un territorio y un tiempo una amenaza, elementos expuestos y su vulnerabilidad: amenaza × exposición × vulnerabilidad {cite:p}`climaax2025handbook,ccdr2025tools,dnp2019imrd`.
+
+**Riesgo compuesto.** Riesgo de que dos o más amenazas o impulsores interactúen, de forma simultánea o consecutiva, y produzcan impactos mayores que la suma de los individuales {cite:p}`undrr2026compound`.
 
 **Riesgo relativo.** Resultado en clases que solo compara zonas dentro del área estudiada, no entre áreas {cite:p}`climaax2025handbook`.
 

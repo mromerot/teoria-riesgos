@@ -37,4 +37,4 @@ Varias amenazas comparten el detonante o el mecanismo, por lo que un análisis d
 | Sequía y calor | Incendios forestales |
 | Ascenso del nivel del mar | Erosión costera, inundación costera |
 
-Este cuadro es un criterio de organización del libro, no una afirmación de una fuente única. Los vínculos sismo–tsunami, lluvia–deslizamiento y ciclón–lluvia aparecen en el Atlas {cite:p}`ungrd2019atlas`.
+La teoría de las cascadas y los eventos compuestos está en [](../01_conceptos/15_cascada_compuestos.md). Este cuadro es un criterio de organización del libro, no una afirmación de una fuente única. Los vínculos sismo–tsunami, lluvia–deslizamiento y ciclón–lluvia aparecen en el Atlas {cite:p}`ungrd2019atlas`.

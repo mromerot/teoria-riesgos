@@ -41,7 +41,7 @@ Fuentes de la tabla: {cite:p}`ferrario2026harnessing,white2025towards,tiggeloven
 | **Compuesta** | Una combinación de factores o amenazas contribuye al riesgo; pueden coincidir en espacio o tiempo sin estar relacionadas | Sequía y calor extremo ([](../03_amenazas/309_calor.md)) |
 | **Amplificación** | Una amenaza aumenta (o reduce) la probabilidad o la magnitud de otra | Incendios que aumentan la probabilidad de deslizamientos {cite:p}`ferrario2026harnessing` |
 
-Las definiciones vienen de White et al., que las toma de Ciurean et al. (2018) y Zscheischler et al. (2020) {cite:p}`white2025towards`. Los ejemplos de la última columna son del libro, salvo el de incendios y deslizamientos, que Ferrario et al. toman de un estudio del Himalaya {cite:p}`ferrario2026harnessing`.
+Las definiciones vienen de White et al., que las toma de Ciurean et al. (2018) y Zscheischler et al. (2020) {cite:p}`white2025towards`. El capítulo siguiente ([](15_cascada_compuestos.md)) desarrolla las cascadas y los eventos compuestos. Los ejemplos de la última columna son del libro, salvo el de incendios y deslizamientos, que Ferrario et al. toman de un estudio del Himalaya {cite:p}`ferrario2026harnessing`.
 
 ## 3. Capas superpuestas o interacciones
 
