@@ -24,6 +24,17 @@ Cada capítulo sigue el mismo molde de siete puntos ([](_molde.md)): fenómeno, 
 
 «Sólido» significa que existe una metodología nacional o internacional descrita en una fuente de referencia. No significa que todas las citas se hayan verificado contra el texto completo: cada capítulo lista al final lo que falta leer.
 
+## Análisis integrados con cuadernos
+
+Dos secciones muestran con ejemplos ejecutables (cuadernos de Jupyter, abribles en Colab) cómo se combinan los resultados de varias amenazas. **Usan datos inventados**, rotulados como tales, para enseñar el cálculo y no para sacar conclusiones sobre ninguna ciudad.
+
+| Sección | Qué muestra |
+|---|---|
+| [](312_analisis_multiamenaza.ipynb) | Escenarios por detonante, pérdida por edificación, mínimo, medio y máximo, curvas de riesgo, PAE con cotas, y qué se suma y qué no |
+| [](313_riesgos_cascada.ipynb) | Una red de servicios interdependientes (daño directo frente a cascada) y un bucle de retroalimentación como el de Limbe |
+
+La teoría está en [](../01_conceptos/14_riesgo_multiamenaza.md) y [](../01_conceptos/15_cascada_compuestos.md).
+
 ## Cómo se relacionan
 
 Varias amenazas comparten el detonante o el mecanismo, por lo que un análisis de ciudad debe revisar las cascadas y no solo cada amenaza por separado.

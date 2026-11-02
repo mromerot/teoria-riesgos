@@ -19,3 +19,11 @@ python scripts/nueva_ciudad.py --nombre "Ciudad" --municipio "Municipio, Depto" 
 ```
 
 El skill `nueva-ciudad` de Claude Code (en `~/.claude/skills/`) la invoca. La plantilla no incluye código de análisis; el paquete compartido está pendiente.
+
+## Cuadernos de la parte 3
+
+`book/03_amenazas/312_analisis_multiamenaza.ipynb` y `313_riesgos_cascada.ipynb` son cuadernos con **datos inventados**, con las salidas ya guardadas (se ven en el sitio sin ejecutar). Se pueden abrir en Colab desde el botón de cada página. Su fuente está en `scripts/cuadernos/` y se regeneran y ejecutan con:
+
+```bash
+python scripts/cuadernos/construir.py 312 313
+```
