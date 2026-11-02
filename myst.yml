@@ -10,7 +10,7 @@ project:
   license:
     content: CC-BY-4.0
   bibliography: [references.bib]
-  exclude: ["fuentes/**", "book/03_amenazas/_molde.md"]
+  exclude: ["fuentes/**", "book/03_amenazas/_molde.md", "plantilla/**", "scripts/**"]
   toc:
     - file: index.md
     - file: book/01_conceptos/index.md
