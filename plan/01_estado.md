@@ -42,7 +42,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 3 | Erosión costera | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; Pacífico |
 | 3 | Erosión fluvial | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; puentes |
 | 3 | Sequía | L1 | Atlas, CLIMAAX | Artículos leídos completos |
-| 3 | Olas de calor | L1 **provisional** | CLIMAAX, CCDR-tools | Definición para Colombia; isla de calor urbana |
+| 3 | Olas de calor | L1 **provisional**, con un caso aplicado (Cartagena, CRC002) | CLIMAAX, CCDR-tools, Esteban-Cantillo 2024, estación IDEAM y datos abiertos | Probar el percentil local en otras ciudades; vulnerabilidad por edad y función de impacto; verificar cifras de resumen |
 | 3 | Incendios forestales | L1 | Atlas, CLIMAAX | Datos de área quemada recientes |
 | 3 | Ciclones tropicales | L1 | Atlas, IBTrACS (datos reales) | 80 % de muertes en tierra sin fuente primaria |
 | 3 | Vendavales | L1 **provisional** | DNP, Bolgiani 2020, CLIMAAX | Definición UNGRD 2017, EM-DAT, NSR-10, caso colombiano |
@@ -60,6 +60,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 313 Análisis multiamenaza | Inventados | Ejecutado, con salidas guardadas |
 | 314 Riesgos en cascada | Inventados | Ejecutado, con salidas guardadas |
 | 315 Trayectorias de ciclones | Reales (IBTrACS) | Ejecutado; descarga de 58 MB en caché local |
+| CRC002 Olas de calor en Cartagena (externo, `scr-ungrd`) | Reales (IDEAM, NEX-GDDP-CMIP6, Landsat 8 y 9, WorldCover, WorldPop, OpenStreetMap) | Versión 2 ejecutada y publicada; se cita desde el capítulo 309, no se copia al libro |
 
 ## Cobertura de las fuentes de referencia
 
@@ -143,6 +144,14 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 - `318_tsunami_tumaco_1979.ipynb`: se actualiza el texto (Mw 8,3; estaciones que no caen en el mar; contraste con 1,88–2,30 m de Escobar et al. y 22 min de Ávila-Guzmán et al.). La tabla de observaciones **sigue sin verificar** contra Herd et al. (1981) y NOAA/NGDC.
 - Lección de método incorporada al libro: verificar un solver con onda plana y reposo exacto, la fuente con una implementación independiente, y declarar que un modelo lineal da confianza en el **tiempo de arribo** y poca en la **amplitud**.
 - Cifras del piloto que el libro cita y aún no tienen respaldo en una fuente primaria propia: la geometría de la falla (supuesto), el epicentro y la profundidad (según el artículo del piloto).
+
+## Olas de calor: caso Cartagena (CRC002 v2) (2026-11-02)
+
+- El cuaderno `scr-ungrd/cuadernos-reproducibles-crc002` pasó a la **versión 2** con datos abiertos reales (estación IDEAM, cinco modelos de NEX-GDDP-CMIP6 bajo SSP2-4.5, SSP3-7.0 y SSP5-8.5, Landsat 8 y 9, WorldCover, WorldPop, OpenStreetMap), y se reescribió su marco teórico con el RAG-GRD y este libro.
+- Auditoría de la versión 1 (datos sintéticos): umbral nocturno de 24 °C que no discrimina (92 % de los días), generador con ~46 días/año de Tmáx ≥ 35 °C frente a ~14 observados, mapa de isla de calor circular y climatología base no verificable (el conjunto abierto del IDEAM empieza en septiembre de 2019).
+- Cambios en este libro: 309 gana la definición por percentil local, las tres rutas de datos abiertos para Colombia (IDEAM en datos.gov.co, NEX-GDDP-CMIP6 por OPeNDAP, advertencia sobre ERA5-Land en la costa), la sección «Caso aplicado: Cartagena» y la evidencia de Esteban-Cantillo et al. (2024) y Ávila-Díaz et al. (2023); 23 gana «Del modelo a la estación: sesgo y umbral relativo» y la advertencia de Arias et al. (2022) sobre promediar RCP; 41 gana una advertencia práctica sobre WorldPop. Entradas nuevas en el bib: cantillo2024historical, avila2023current, arias2022tercera, bubeck2025mortality, munoz2021era5land, zippenfenig2023openmeteo, zanaga2022worldcover, worldpop2020, ideam2026temperaturas, masterton1979humidex y romero2026crc002.
+- Pendiente de verificar: las cifras de los resúmenes de Esteban-Cantillo y Ávila-Díaz contra el texto completo, las categorías del Humidex de Environment Canada contra Masterton y Richardson (1979), y las menciones de Bubeck et al. (2025) y Giraldo-Charria et al. (2025), que solo se conocen por el título.
+- Pendiente de la ciudad: datos sociales por manzana (censo DANE 2018), función de impacto del calor validada y humedad proyectada (`hurs`) para el Humidex futuro.
 
 ## Pendientes consolidados (2026-11-02)
 

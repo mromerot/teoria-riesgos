@@ -55,6 +55,10 @@ CLIMAAX y CCDR-tools coinciden en un conjunto de fuentes globales que sirven com
 
 Para Colombia se suman fuentes nacionales. El Índice Municipal de Riesgo usa el Censo Nacional de Población y Vivienda 2018 (DANE), el Mapa Nacional de Coberturas de la Tierra (IDEAM) y la densidad de semovientes del ICA {cite:p}`dnp2019imrd`. Un análisis urbano debe añadir el catastro, el censo de edificaciones y los inventarios sectoriales, cuya disponibilidad se documenta por ciudad.
 
+### Una advertencia práctica sobre WorldPop
+
+WorldPop publica la población total de Colombia en una versión restringida a las edificaciones (27 MB a 100 m, 2020) y las estructuras por edad y sexo en otra no restringida, con unos 0,5 GB por cada grupo de edad y un servidor que no admite descargas parciales. En el caso de Cartagena se usó la población total y la composición por edad quedó pendiente del censo DANE por manzana {cite:p}`romero2026crc002,worldpop2020`. Conviene decidirlo antes de planear una evaluación de vulnerabilidad por edad: bajar los 12 grupos relevantes (menores de 5 y mayores de 65, mujeres y hombres) son unos 6 GB.
+
 ### Qué enseña el caso de las ciudades latinoamericanas
 
 Un análisis de la exposición a inundaciones en 363 ciudades latinoamericanas encontró alta heterogeneidad entre ciudades {cite:p}`xu2026latam`. Como criterio de método, esto desaconseja transferir exposiciones de una ciudad a otra y justifica un inventario propio.
