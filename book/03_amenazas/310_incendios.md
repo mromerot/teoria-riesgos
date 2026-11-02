@@ -145,6 +145,14 @@ Los resultados sirven para planificar actividades de prevención y mitigación, 
 - **Efectos fuera del área quemada.** El humo afecta ciudades lejanas {cite:p}`ballesterosgonzalez2020estimating`; el análisis urbano debe considerar la calidad del aire, no solo la cercanía al fuego.
 - **Clima futuro.** Hay escenarios para sabanas colombianas {cite:p}`gonzalez2025predicting`.
 
+**Estudios añadidos con el segundo lote de PDFs.**
+
+- {cite:t}`armenteras2023landscape` documenta un aumento de la ocurrencia y severidad de megaincendios en Suramérica, atribuido al cambio climático y a prácticas insostenibles de uso del suelo, y pide coordinación científica y manejo del paisaje.
+- {cite:t}`oliveras2025integrated` y {cite:t}`puiggirones2025preserve` proponen el manejo integrado del fuego y el uso del fuego como herramientas de adaptación y de conservación de la biodiversidad bajo regímenes de fuego alterados. Se leen aquí solo por su título y resumen.
+- {cite:t}`fontana2023women` explora con teatro foro las experiencias de mujeres en crisis de incendios y conflicto en Colombia.
+
+**Lectura adicional.** El manejo del paisaje y la dimensión social (conflicto, género) completan el enfoque de amenaza basado en clima y sequía.
+
 ## Pendiente
 
 - Leer {cite:p}`gonzalez2025predicting`, {cite:p}`arias2025compound` y {cite:p}`acevedoortiz2026sequias` completos. Los dos primeros se conocen por título o resumen parcial.

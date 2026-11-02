@@ -154,7 +154,7 @@ La relación entre lluvia y deslizamiento no es lineal: depende de la humedad an
 
 | Bloque | Estudio | Diseño y lugar | Resultado relevante |
 |---|---|---|---|
-| Inventario | {cite:t}`garciadelgado2022fatal` | Catálogo a partir de cuatro bases de datos y literatura gris, Colombia | 2351 deslizamientos fatales y unas 37 959 muertes; 11 eventos son históricos (antes del siglo XX) |
+| Inventario | {cite:t}`garcia2022fatal` | Catálogo a partir de cuatro bases de datos y literatura gris, Colombia | 2351 deslizamientos fatales y unas 37 959 muertes; 11 eventos son históricos (antes del siglo XX) |
 | Inventario | {cite:t}`aristizabal2025geohazard` | Aplicación web con base de datos de movimientos en masa y avenidas torrenciales | Herramienta de visualización de eventos |
 | Susceptibilidad | {cite:t}`goyespenafiel2021landslide` | Regresión logística y pesos de evidencia, Popayán | Índice de susceptibilidad |
 | Susceptibilidad | {cite:t}`aristizabal2026modelos` | Modelos multinivel de regresión logística, Andes colombianos | Incorpora la heterogeneidad espacial que la regresión tradicional ignora |
@@ -176,7 +176,7 @@ La relación entre lluvia y deslizamiento no es lineal: depende de la humedad an
 - **Método dominante.** Para amenaza se usan dos familias: estadísticas de susceptibilidad {cite:p}`goyespenafiel2021landslide,aristizabal2026modelos` y modelos físicos con lluvia {cite:p}`marin2021applicability,marin2022understanding`. Los de base física piden propiedades del suelo que en zonas con pocos datos son la principal incertidumbre.
 - **Umbrales.** Los umbrales de lluvia se estiman con enfoques empíricos y probabilistas {cite:p}`aristizabal2022umbrales,correa2019early`; son el vínculo entre este capítulo y los de clima y alerta.
 - **Clima.** Aumentar la intensidad de lluvia eleva la amenaza en los escenarios evaluados con SHALSTAB y TRIGRS {cite:p}`aristizabal2020rainfallb`; falta leer los resultados completos para cuantificarlo.
-- **Víctimas.** El catálogo nacional da la base de frecuencia–consecuencia {cite:p}`garciadelgado2022fatal`. Los estudios de caso asocian el daño con segregación y barreras institucionales {cite:p}`ozturk2025urban,smith2020toward`, y la inversión preventiva con menos eventos y víctimas {cite:p}`ayalagarcia2021impact`.
+- **Víctimas.** El catálogo nacional da la base de frecuencia–consecuencia {cite:p}`garcia2022fatal`. Los estudios de caso asocian el daño con segregación y barreras institucionales {cite:p}`ozturk2025urban,smith2020toward`, y la inversión preventiva con menos eventos y víctimas {cite:p}`ayalagarcia2021impact`.
 - **Complementariedad.** Ninguna de las dos familias de modelos sustituye a la otra; se recomienda usar la estadística para zonificar y la física para escenarios de lluvia y cambio climático (criterio de este libro).
 
 ## Pendiente

@@ -114,3 +114,10 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 - «Síntesis de evidencia» (narrativa, resúmenes leídos, cifras por verificar): hechas 301, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 316. **Pendientes**: 302 volcanes (lahares: 2 PDFs etnográficos sobre Armero), PDFs de Natech/choque financiero/biológicos, los 60 PDFs «POR DETERMINAR», y verificar cifras contra texto completo. Los PDFs descargados por acceso abierto (carpeta `_descargados_acceso_abierto`, registro en `fuentes/vig/descargas.json`) aún no se han leído.
 - Errores de la hoja: fila 884 (SUDS Ibagué) tiene un DOI que en Crossref es otro artículo; varios DOI mal formados o no resueltos (se marcan en la bibliografía); 49 filas con DOI sin metadatos en Crossref.
 - Un «metaanálisis» cuantitativo con efectos agrupados no es viable con estos estudios (diseños heterogéneos); se usa síntesis narrativa por tipo de evidencia.
+
+## Segundo lote de PDFs con el RAG (2026-11-02)
+
+- Las 561 PDFs de `NUEVO-CONOCIMIENTO-GRD-2020-2026` se renombraron («Autor - Año - Título - DOI») y se consolidaron; el índice RAG ya los tiene (503 emparejados con la hoja). La hoja ganó la columna W «PDF disponible» (496 Sí, 454 No); copia en `fuentes/vig/disp.csv`.
+- Incorporados como evidencia (cifras de resumen por verificar): avenidas torrenciales (Mocoa, Cali, cascadas publicadas en NHESS), erosión fluvial/suelo, inundación (no estacionariedad), calor (olas de calor marinas), volcanes (Galeras, nueva síntesis), sequía, ciclones, erosión costera, incendios, vendavales (Soledad), claves duplicadas del bib unificadas.
+- Siguen sin leer con el RAG: texto completo de estos estudios (verificar cifras con `ragrd evidencia`), tsunami (2 PDFs), Natech, choque financiero y los 60 «POR DETERMINAR».
+- Al final: aplicar `/topic-sentence` a las «Lecturas conjuntas» y párrafos introductorios.

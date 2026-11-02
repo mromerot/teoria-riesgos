@@ -140,6 +140,16 @@ El flujo de CLIMAAX usa precipitación del conjunto de cinco modelos CMIP6 de IS
 
 **Lectura conjunta.** La evidencia colombiana apunta en una dirección: el impacto de la sequía sobre la salud depende más de la pobreza y la exclusión que del acceso físico al agua {cite:p}`contreras2020the`. Por eso el análisis de sequía debe combinar un índice de amenaza (SPI o índices satelitales, {cite:p}`ojedaflechas2020characterization`) con vulnerabilidad social ([](../04_vulnerabilidad/43_vulnerabilidad_social.md)). Los resultados de La Guajira son asociaciones entre municipios y no prueban causalidad individual.
 
+**Estudios añadidos con el segundo lote de PDFs.**
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`paeztrujilo2023multivariate` | Modelo hidrológico SWAT y árboles de regresión multivariados | Relaciona características hidroclimáticas con la severidad de sequías agrícolas e hidrológicas |
+| {cite:t}`villalbabarrios2024assessing`; {cite:t}`villalbabarrios2026analysis` | Análisis probabilista de caudales y duración de sequías en el río Sinú; índice SPI | Compara las sequías antes y después de la operación de una hidroeléctrica |
+| {cite:t}`mora2026porque` | Historia climática, llanuras del Caribe, 1739–1825 | La sequía fue menos frecuente que el exceso de lluvia, pero sus efectos se agravaron por presiones sociales |
+
+**Lectura adicional.** La regulación de un embalse cambia la serie de caudales y, por tanto, la sequía observada {cite:p}`villalbabarrios2024assessing,villalbabarrios2026analysis`; los registros históricos muestran que la presión social agravó la sequía mucho antes de los datos instrumentales {cite:p}`mora2026porque`.
+
 ## Pendiente
 
 - Leer {cite:p}`nauditt2022evaluating`, {cite:p}`cerpareyes2022adjustment` y {cite:p}`ojedaflechas2020characterization` completos. Los dos últimos solo se conocen por su resumen.

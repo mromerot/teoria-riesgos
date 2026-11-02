@@ -183,10 +183,12 @@ Las medidas siguientes son un criterio de método de este libro, derivado de la 
 
 | Estudio | Diseño y lugar | Resultado relevante |
 |---|---|---|
-| {cite:t}`casallas2021understanding` | Imágenes de satélite y datos de precipitación, Sabana de Bogotá | Los vientos del oeste de la tarde están presentes en el 78 % de los días de lluvias, pero solo el 26 % tiene tormentas convectivas: no son un buen predictor; el vapor de agua precipitable en el valle del Magdalena es anormalmente bajo en días convectivos |
-| {cite:t}`olivar2020effects` | Análisis de confiabilidad de tanques de almacenamiento | Evalúa el efecto de vientos extremos sobre estructuras industriales |
+| {cite:t}`casallas2021convective` | Imágenes de satélite y datos de precipitación, Sabana de Bogotá | Los vientos del oeste de la tarde están presentes en el 78 % de los días de lluvias, pero solo el 26 % tiene tormentas convectivas: no son un buen predictor; el vapor de agua precipitable en el valle del Magdalena es anormalmente bajo en días convectivos |
+| {cite:t}`ramirez2020tanks` | Análisis de confiabilidad de tanques de almacenamiento | Evalúa el efecto de vientos extremos sobre estructuras industriales |
 
-**Lectura conjunta.** La predicción de tormentas convectivas en el altiplano no se reduce a la dirección del viento {cite:p}`casallas2021understanding`; esto limita las alertas basadas en un solo predictor. Para exposición industrial hay métodos de fragilidad de tanques {cite:p}`olivar2020effects`.
+**Lectura conjunta.** La predicción de tormentas convectivas en el altiplano no se reduce a la dirección del viento {cite:p}`casallas2021convective`; esto limita las alertas basadas en un solo predictor. Para exposición industrial hay métodos de fragilidad de tanques {cite:p}`ramirez2020tanks`.
+
+- {cite:t}`perezarevalo2025impacts` evalúa en Soledad (Atlántico), zona de vendavales recurrentes con daños a bienes y vidas, cómo la morfología urbana modifica las condiciones micrometeorológicas. Falta leer el texto completo para extraer resultados.
 
 ## Pendiente
 

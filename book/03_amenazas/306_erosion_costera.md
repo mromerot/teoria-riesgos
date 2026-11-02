@@ -140,6 +140,19 @@ Las fuentes citadas llaman a un manejo estratégico a largo plazo, que considere
 - **Los manglares son defensa y están en pérdida** {cite:p}`villate2020mangrove,sancheznunez2020local`.
 - **Datos topográficos.** Con modelos de elevación globales hay error vertical relevante en costas planas {cite:p}`fragozo2026beyond`.
 
+**Estudios añadidos con el segundo lote de PDFs.**
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`manzolli2024assessing` | Erosión y remoción de sedimento, barrera costera de Isla Salamanca | La erosión se atribuye al ascenso del nivel del mar y a obras humanas como la carretera Barranquilla–Ciénaga (km 19 y 29 en riesgo) y los diques |
+| {cite:t}`portz2024impacts` | Línea de costa 1985–2019 con fotografías aéreas e imágenes de satélite, bahía de Santa Marta | Relaciona la evolución de la costa con estructuras rígidas de protección |
+| {cite:t}`moreno2026erosion` | Landsat y DSAS (tasas EPR y LRR), Moñitos (Córdoba), 1990–2023 | Evalúa el retroceso de la línea de costa y su relación con el clima |
+| {cite:t}`villatedaza2025coastal` | Dinámica costera y paleolínea de costa, Pozos Colorados (Santa Marta) | Analiza el ascenso del nivel del mar en el sector |
+| {cite:t}`moralesgiraldo2023evaluacion` | Evaluación de rasgos geológicos cercanos a la costa | Los arrecifes reducen la energía del oleaje y sirven de base para medidas basadas en ecosistemas |
+| {cite:t}`echeverry2025migration` | Migración de manglares deltaicos y de aguas abiertas | Examina cómo los manglares cambian de posición según factores ambientales |
+
+**Lectura adicional.** Las estructuras rígidas modifican la erosión de tramos vecinos {cite:p}`portz2024impacts,manzolli2024assessing`; el análisis de una ciudad debe medir la línea de costa con una serie multitemporal (DSAS) {cite:p}`moreno2026erosion` y considerar medidas basadas en ecosistemas {cite:p}`moralesgiraldo2023evaluacion`.
+
 ## Pendiente
 
 - Leer completos {cite:p}`rangelbuitrago2020risk`, {cite:p}`enriquezhidalgo2025shoreline` y los IDs 273, 290, 431, 502, 556, 619, 651 y 839.

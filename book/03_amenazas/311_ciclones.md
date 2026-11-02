@@ -194,6 +194,16 @@ La tabla de medidas es un criterio de método de este libro. El Atlas trata los 
 
 **Lectura conjunta.** Hay un método reproducible para reconstruir eventos históricos sin registros (modelo paramétrico de viento más oleaje, calibrado con un evento reciente) {cite:p}`ortiz2022huracan`, útil para estimar la amenaza en el archipiélago. La evidencia sobre gestión es cualitativa y comparativa, de dos casos {cite:p}`varon2025desastres`.
 
+**Estudios añadidos con el segundo lote de PDFs.**
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`alvarezecheverry2025multi` | Análisis multitemporal con Sentinel-2 e índices NDVI, NDWI, BSI y NBR, huracanes Iota y Eta (2020), archipiélago de San Andrés | En Providencia y Santa Catalina los más afectados fueron bosques, manglares, vegetación secundaria y playas |
+| {cite:t}`hernandezhamon2024rapid` | Clasificación supervisada con Google Earth Engine y batimetría satelital, arrecifes de Providencia | Pérdida de 38,14 % en el arrecife posterior y de 6,15 % en la terraza rocosa; la cresta arrecifal casi no cambió y actuó como barrera del oleaje |
+| {cite:t}`marquezperez2024overcoming` | Reflexión cultural sobre la comunidad raizal tras Iota (categoría 4, 2020) | La comunidad se adaptó y reorganizó pese a una respuesta gubernamental caótica |
+
+**Lectura adicional.** Los efectos de un ciclón se miden tanto en la cobertura y los ecosistemas costeros como en la capacidad social de respuesta; los arrecifes funcionan como defensa natural {cite:p}`hernandezhamon2024rapid,alvarezecheverry2025multi,marquezperez2024overcoming`.
+
 ## Pendiente
 
 - Leer completos {cite:p}`rey2021hurricane`, {cite:p}`osorio2024reconstructing` y {cite:p}`velasquezcalderon2027assessing`.

@@ -114,7 +114,10 @@ Este libro sigue esa postura para el detonante y propone, como criterio propio, 
 | Estudio | Diseño y lugar | Resultado relevante |
 |---|---|---|
 | {cite:t}`arango2020morphometrical` | Aprendizaje automático con parámetros morfométricos de cuencas de montaña, norte de la cordillera Andina colombiana | Susceptibilidad a flujos torrenciales a escala de cuenca, para priorizar zonas antes de los mapas de amenaza |
-| {cite:t}`arangocarmona2025hillslope` | Base de 22 eventos en cascada, 2009–2024, montañas tropicales (preprint sin revisión por pares) | Pocos casos coinciden con las lluvias más extremas registradas, lo que sugiere que otros controles, como la disponibilidad de sedimento, son necesarios |
+| {cite:t}`arangocarmona2025hillslope` | Base de 22 eventos en cascada, 2009–2024, montañas tropicales (versión publicada en *Natural Hazards and Earth System Sciences*) | Solo pocos casos coinciden con las lluvias más extremas, lo que sugiere que otros controles, como el sedimento disponible, son necesarios; en regiones de pendientes fuertes y suelos finos hubo cascadas con lluvia de menor intensidad; los sismos y la lluvia pueden interactuar en el tiempo |
+| {cite:t}`ramoscanon2023redundancia`; {cite:t}`ramoscanon2026desempeno` | Umbrales de alerta temprana de Mocoa (precipitación, nivel y caudal) con modelación física y análisis probabilista; evaluación con la avenida de 2018 | La avenida del 31 de marzo de 2017 causó 332 muertos, 398 heridos y 77 desaparecidos; en 2018 la combinación precipitación–movimientos en masa llegó a alerta roja una hora antes del impacto y la de precipitación–caudal no superó el umbral; se evacuó a más de 20 000 personas y no hubo víctimas. Los autores resaltan la necesidad de redundancia en los umbrales |
+| {cite:t}`aponte2026vulnerabilidad` | Vulnerabilidad social con AHP y lógica difusa, quebrada Isabel Pérez, Cali (97 hogares) | El 52 % de los hogares tiene vulnerabilidad alta, el 20 % media y el 25 % baja; el capital financiero es lo más afectado (80 % con ingresos iguales o menores que los gastos) |
+| {cite:t}`munoz2025experimental` | Ensayos de laboratorio en canal (pendientes de 5 a 20 %) y modelos numéricos para flujos de lodo | Estima parámetros reológicos y la altura de depósito para un caso real |
 | {cite:t}`paez2025debris` | Revisión de modelación de flujos de lodo y detritos como herramienta de amenaza | Resalta que el cambio climático podría aumentar las pérdidas |
 | {cite:t}`smolikova2021analysis` | Análisis de lluvia detonante de un flujo de detritos, República Checa | Acumulados de 2 a 60 días e índices de precipitación antecedente (1983–2018); referencia metodológica externa |
 | {cite:t}`diaz2022alianzas` | Estudio cualitativo de la reconstrucción tras el desastre de Salgar (2015) | Las alianzas público-privadas y sin ánimo de lucro cumplieron un papel central en la reconstrucción |
@@ -123,7 +126,9 @@ Este libro sigue esa postura para el detonante y propone, como criterio propio, 
 
 - **La lluvia extrema no basta.** Si pocas cascadas ocurren con las lluvias más extremas {cite:p}`arangocarmona2025hillslope`, el detonante debe analizarse junto con el sedimento disponible. Esto es coherente con la estructura de la guía del SGC ({cite:p}`sgc2021avenidas`) que modela los sólidos aparte de la lluvia.
 - **Priorización previa.** La morfometría de cuenca permite pasar de cientos de cuencas a unas pocas prioritarias antes de modelar {cite:p}`arango2020morphometrical`.
-- **Evidencia limitada.** El estudio de cascadas es un preprint y las demás referencias son metodológicas o cualitativas; no hay todavía un estudio colombiano de validación de umbrales de la guía.
+- **Alerta temprana con redundancia.** El caso de Mocoa muestra que varios umbrales independientes (lluvia–deslizamiento, lluvia–caudal) pueden fallar de manera distinta y que la redundancia salvó vidas en 2018 {cite:p}`ramoscanon2026desempeno,ramoscanon2023redundancia`.
+- **Vulnerabilidad de quienes viven en la quebrada.** El capital financiero débil caracteriza a la mayoría de los hogares encuestados en Cali {cite:p}`aponte2026vulnerabilidad`; se suma a la exposición física.
+- **Evidencia limitada.** Hay pocos estudios de validación de los umbrales de la guía del SGC con eventos colombianos; el de Mocoa es el más cercano.
 
 ## Pendiente
 

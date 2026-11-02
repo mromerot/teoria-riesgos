@@ -152,6 +152,24 @@ El monitoreo ha permitido alertar desde unos pocos días hasta varias semanas an
 
 Dos revisiones recientes tratan el manejo del riesgo volcánico en Colombia 40 años después de Armero {cite:p}`calvache2025volcanic` y las lecciones de 40 años de comunicación del riesgo volcánico en crisis {cite:p}`mani2025lessons`. Las cito por título y deben leerse antes de usarlas.
 
+## Síntesis de evidencia
+
+```{note}
+**Método.** Síntesis narrativa por tipo de evidencia (no un metaanálisis con efectos agrupados: los estudios usan diseños, escalas y variables que no se pueden combinar en un solo estimador). Las cifras vienen de los resúmenes de los artículos de la hoja de vigilancia y **faltan por verificar contra el texto completo**.
+```
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`cardona2024implicaciones` | Estudios detallados de riesgo probabilista por corrientes de densidad piroclástica, flujos de lodo y de escombros y caída de piroclastos, municipios del volcán Galeras | El enfoque probabilista dio resultados muy distintos de los de las evaluaciones deterministas previas, que habían congelado el desarrollo de la zona por 18 años |
+| {cite:t}`benavidescordoba2024respiratory` | Estudio descriptivo transversal en adultos de más de 60 años, Genoy (zona de alta amenaza de Galeras) | Analiza los efectos pulmonares y la tolerancia al esfuerzo por exposición crónica a ceniza volcánica |
+| {cite:t}`ospina2022cuando` | Reflexión etnográfica sobre el recuerdo de Armero (1985) | Los sobrevivientes narran la avalancha como evento mágico, sacro y transformador: la memoria social es parte del riesgo |
+
+**Lectura conjunta.**
+
+- **Probabilista frente a determinista.** El caso de Galeras muestra que la elección del enfoque puede cambiar decisiones de ordenamiento durante casi dos décadas {cite:p}`cardona2024implicaciones`. Esto respalda el uso de resultados probabilistas ([](../02_metodologia/22_probabilista_pae.md)) en lugar de un único escenario.
+- **Exposición crónica.** El riesgo volcánico incluye efectos de salud por ceniza, no solo erupciones {cite:p}`benavidescordoba2024respiratory`.
+- **Memoria.** La experiencia de Armero condiciona la percepción y la comunicación del riesgo {cite:p}`ospina2022cuando`; ver también la guía de comunicación del SGC {cite:p}`sgc2024volcanes`.
+
 ## Pendiente
 
 - Leer {cite:p}`calvache2025volcanic` y {cite:p}`mani2025lessons`, y resumir sus lecciones sobre comunicación y gobernanza.
