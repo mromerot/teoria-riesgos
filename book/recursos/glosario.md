@@ -30,6 +30,8 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 
 **Función de daño (o de vulnerabilidad).** Relación entre la intensidad de una amenaza y la pérdida relativa de un tipo de elemento expuesto. Se describe con valor esperado y varianza {cite:p}`ungrd2019atlas`.
 
+**HIP (perfil de información de amenazas).** Ficha oficial de UNDRR y el ISC que define un peligro, con código, definición, sinónimos y relaciones con otros peligros; la edición de 2025 tiene 281 perfiles en ocho tipos {cite:p}`undrr2025hips` ([](../01_conceptos/16_hips_undrr.md)).
+
 **Impacto anual esperado (EAI).** Impacto promedio por año, que se calcula integrando la curva de excedencia {cite:p}`ccdr2025tools`. Ver también *pérdida anual esperada*.
 
 **Índice climático.** Medida estandarizada que resume un patrón del clima, como los días secos consecutivos (CDD) o la precipitación máxima en cinco días (Rx5day) {cite:p}`ccdr2025tools`.
@@ -50,6 +52,8 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 
 **Periodo de retorno.** Inverso de la frecuencia anual de excedencia de un evento. Un periodo de 100 años equivale a una probabilidad de 39,4 % de ser superado en 50 años {cite:p}`ungrd2019atlas`.
 
+**Ráfaga descendente (*downburst*).** Corriente descendente intensa en los niveles bajos que produce en la superficie un área de viento dañino con patrón divergente {cite:p}`bolgiani2020microbursts`. Se clasifica en macrorráfaga y microrráfaga según su tamaño y duración.
+
 **Reducción del riesgo.** Proceso de la Ley 1523 que comprende la intervención correctiva y prospectiva y la protección financiera {cite:p}`ley1523,wb2012analysis`.
 
 **Riesgo.** Daños o pérdidas que pueden presentarse cuando coinciden en un territorio y un tiempo una amenaza, elementos expuestos y su vulnerabilidad: amenaza × exposición × vulnerabilidad {cite:p}`climaax2025handbook,ccdr2025tools,dnp2019imrd`.
@@ -65,7 +69,5 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 **SSP.** Trayectoria socioeconómica compartida: narrativa que combina emisiones con supuestos de desarrollo {cite:p}`riahi2017ssp`.
 
 **Vendaval.** En Colombia, viento fuerte, repentino y local, de corta duración, que suele provenir de una tormenta convectiva. La definición atribuida a la UNGRD (2017) lo ubica entre 50 y 80 km/h {cite:p}`ungrd2017vendaval` ([](../03_amenazas/312_vendavales.md)).
-
-**Ráfaga descendente (*downburst*).** Corriente descendente intensa en los niveles bajos que produce en la superficie un área de viento dañino con patrón divergente {cite:p}`bolgiani2020microbursts`. Se clasifica en macrorráfaga y microrráfaga según su tamaño y duración.
 
 **Vulnerabilidad.** Susceptibilidad física, económica, social, ambiental o institucional de una comunidad de ser afectada si ocurre un evento peligroso {cite:p}`ley1523,dnp2019imrd`.

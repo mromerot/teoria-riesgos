@@ -88,6 +88,26 @@ La lectura de este libro es que el conteo es **coherente** con lo que dice el At
 - **La distancia no es el impacto.** El viento, la lluvia y la marea de tormenta dependen del tamaño del sistema y de por qué lado pasa respecto del sitio.
 - **Son mejores trayectorias.** Las reconstruye el Centro Nacional de Huracanes después de cada temporada, y su precisión es menor antes de la era satelital; por eso se parte de 1980.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| MH0309 | Ciclón tropical (meteorológico e hidrológico, viento y presión) | Ciclón de origen tropical y diámetro pequeño (algunos cientos de kilómetros), con presión mínima de superficie que en ocasiones baja de 900 hPa, vientos muy violentos y lluvia torrencial, a veces con tormentas eléctricas; suele tener una región central, el «ojo» (OMM, 2023). Definición alternativa: ciclón sinóptico de núcleo cálido, no frontal, originado sobre aguas tropicales o subtropicales, con convección profunda organizada y circulación cerrada de viento en torno a un centro definido (OMM, 2024). |
+| MH0703 | Marejada de tormenta (marino) | Diferencia entre el nivel real del agua bajo la influencia de una perturbación meteorológica y el nivel que habría ocurrido sin ella, es decir, con la marea astronómica (OMM, 2008, 2011, 2017). |
+| MH0704 | Marea de tormenta (marino) | Nivel real del mar bajo la influencia de una perturbación meteorológica: la marea astronómica normal más la marejada (OMM, 2017). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluyen los tres perfiles.** El HIP recuerda que «huracán», «tifón» y «ciclón» son nombres regionales del mismo fenómeno, y que en el Caribe y el Atlántico occidental se llama huracán; es el uso del libro.
+- **Marejada y marea de tormenta.** Los HIPs las separan: la marejada es el exceso sobre la marea astronómica, y la marea de tormenta es el nivel total. El Atlas usa «marea de tormenta» para lo que los HIPs llaman marejada; el libro dice cuál usa en cada caso.
+- **Etapas.** Los HIPs no tienen perfiles por etapa (depresión, tormenta, huracán) ni por categoría; la escala de Saffir–Simpson del Atlas queda fuera.
+- **No se desarrollan** la depresión o ciclón de baja presión (MH0306), el ciclón subtropical (MH0308), el extratropical (MH0307) ni el viento (MH0301).
+- **Cascadas.** Los HIPs registran el ciclón tropical como causa de inundación fluvial, repentina, costera y por aguas subterráneas, y de tornados, marejada y erosión costera {cite:p}`undrr2025hips`; ver [](312_vendavales.md) para los vientos fuertes que no son de un ciclón.
+
 ## 2. Amenaza
 
 ### Enfoque probabilista

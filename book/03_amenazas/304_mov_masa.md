@@ -28,6 +28,29 @@ Un catálogo posterior reunió 2 351 deslizamientos fatales en Colombia desde ti
 
 **Variable de intensidad.** Depende del método. En el enfoque probabilista del Atlas es el inverso del factor de seguridad (factor de inestabilidad), que crece con el nivel de amenaza {cite:p}`ungrd2019atlas`. Para el recorrido del material (*runout*) se suelen usar la distancia, la altura de depósito y la velocidad; esto es un criterio de método de este libro, no una afirmación del Atlas.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| GH0300 | Movimiento en masa gravitacional, «deslizamiento» (geológico, falla del terreno) | Movimiento ladera abajo de suelo, roca y materiales orgánicos por efecto de la gravedad, que ocurre cuando las fuerzas motrices superan la resistencia por fricción del material. Puede ser terrestre o submarino (cf. Cruden y Varnes, 1996). |
+| GH0301 | Caídas de roca, escombros y tierra | Fragmento de roca, cuerpo de escombros o de tierra que se desprende de un acantilado vertical o casi vertical y avanza ladera abajo rebotando y volando en trayectorias balísticas, o rodando sobre taludes. |
+| GH0302 | Extensiones laterales de roca, escombros y tierra (incluye la reptación del terreno) | Estiramiento casi horizontal de una masa de bloques coherentes por la deformación de un material débil subyacente; con desplazamiento total limitado y movimiento lento (Hungr et al., 2014). |
+| GH0303 | Flujos de escombros y tierra (lodo) y avalanchas de roca | Movimientos de masa ladera abajo en forma de fluido, que suelen dejar un depósito en abanico. Los flujos de lodo son una subcategoría de los de tierra; la avalancha de roca es un movimiento extremadamente rápido y masivo de roca fragmentada. |
+| GH0304 | Deslizamientos de roca, escombros y tierra (lodo) | Movimiento de una masa de roca, escombros o tierra sobre una superficie de falla individualizada (adaptado de Dennis y Didier, 2019). |
+| GH0305 | Volcamientos de roca, escombros y tierra | Rotación hacia adelante, fuera de la ladera, de una masa de suelo o roca alrededor de un punto o eje por debajo del centro de gravedad de la masa desplazada (Cruden y Varnes, 1996). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluyen el perfil general y sus cinco tipos.** Los HIPs adoptan la clasificación de Cruden y Varnes (1996) y de Hungr et al. (2014): caídas, extensiones, flujos, deslizamientos y volcamientos. Es la misma lógica del capítulo, que clasifica por el tipo de movimiento y de material; se usa como vocabulario común.
+- **Correspondencia con los términos colombianos** (criterio de método de este libro): la *reptación* que describe el capítulo cae en GH0302 (cuyo título incluye el *creep*); las *avenidas torrenciales* con material sólido y los *flujos de detritos* caen en GH0303; los *lahares* son un perfil volcánico aparte (GH0204, ver [](302_volcanes.md)).
+- **Otros perfiles relacionados:** GH0306 (movimientos en masa submarinos) y GH0307 (licuefacción, ver [](301_sismo.md)); no se desarrollan aquí.
+- **Límite de los HIPs.** Los perfiles de extensiones de escombros y de tierra declaran que «requieren una definición formal», es decir, no están terminados.
+- **Cascadas.** Los HIPs registran los movimientos en masa como causados por sismos, lluvia, inundación, incendios, deforestación y falla de presas, y como causa de lahares, tsunami y fallas de infraestructura {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Amenaza no es riesgo

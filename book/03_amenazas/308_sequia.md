@@ -31,6 +31,23 @@ También puede haber sequía por confluencia de temperaturas muy cálidas, baja 
 
 **Variable de intensidad.** Depende del índice: déficit de precipitación, índice estandarizado de precipitación (SPI), humedad del suelo, caudal. No existe un índice universal {cite:p}`ungrd2019atlas`.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| MH0401 | Sequía (meteorológico e hidrológico, precipitación) | Período de tiempo anormalmente seco, caracterizado por una deficiencia prolongada de precipitación por debajo de cierto umbral, sobre un área grande y durante más de un mes (OMM, 2023). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluye, pero solo como definición meteorológica.** El perfil habla únicamente de déficit de precipitación; no cubre los demás tipos de sequía del capítulo (agrícola, hidrológica, socioeconómica), que se apoyan en el Atlas y en CLIMAAX. El capítulo mantiene su clasificación por sistema afectado y usa el perfil como punto de partida.
+- **Umbral y duración.** La definición no fija un umbral numérico (lo deja «por debajo de cierto umbral») y pide más de un mes; el capítulo, siguiendo al Atlas, subraya que no hay un índice universal.
+- **No se incluye la desertificación (EN0206),** que los HIPs definen como degradación de la tierra en zonas áridas, semiáridas y subhúmedas secas; es un proceso distinto.
+- **Cascadas.** Los HIPs registran la sequía como causa de incendios, entre otros efectos {cite:p}`undrr2025hips`; ver [](310_incendios.md).
+
 ## 2. Amenaza
 
 ### Índices

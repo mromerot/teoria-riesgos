@@ -22,6 +22,23 @@ CCDR-tools añade que la incomodidad térmica aumenta cuando el calor se asocia 
 
 Como criterio de método, en una ciudad tropical se debe distinguir entre ola de calor (anomalía respecto del clima local) y calor persistente propio del clima. La hoja de vigilancia muestra interés en Colombia por el calor extremo urbano y por sus efectos en salud; se ve en los dos estudios de abajo.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| MH0501 | Ola de calor (meteorológico e hidrológico, temperatura) | Período marcado e inusual de tiempo caluroso sobre una región, que persiste al menos dos o tres días y noches consecutivos durante la época caliente del año según las condiciones climatológicas locales, con condiciones térmicas registradas por encima de umbrales dados (OMM y OMS, 2015). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluye.** La definición deja los umbrales a la climatología local, lo que respalda el criterio del capítulo: para una ciudad colombiana el umbral debe fijarse con datos locales y no copiarse de Europa.
+- **Distinguir ola de calor y calor persistente.** El perfil habla de un período «inusual» según el clima local; es coherente con la distinción que hace el capítulo entre anomalía y clima cálido normal.
+- **No se incluye** la ola de calor marina (MH0708, IPCC 2019: temperatura superficial del mar extrema que persiste de días a meses), aunque puede ser relevante para los ecosistemas del Caribe; queda como tema por considerar.
+- **Cascadas.** Los HIPs registran la ola de calor como causa de sequía e incendios {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Dos definiciones de CLIMAAX

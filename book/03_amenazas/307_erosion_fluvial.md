@@ -29,6 +29,22 @@ Se distinguen procesos que conviene medir por separado:
 
 Que un río erosione una orilla suele significar que acreciona la contraria. En un tramo de 3,5 km del Amazonas entre Nazaret y Leticia, un modelo numérico identificó sedimentación severa en el cauce izquierdo y la aparición de barras de arena en la parte colombiana del cauce, validadas con análisis multitemporal. El título del estudio plantea la pérdida potencial de soberanía por esos cambios {cite:p}`villadiegorojas2023fluvial`. Este es el caso más directo para Leticia.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| GH0404 | Erosión y acreción fluvial (geológico, otros peligros) | La erosión fluvial es la remoción de material de las orillas y los lechos de ríos y quebradas; la acreción fluvial es la formación de tierra nueva, como barras de canal, bancos de arena y deltas, por sedimentación o por cambios del flujo (Lawler, 1993; Islam y Guchhait, 2020; Hasanuzzaman et al., 2024). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluye.** El perfil trata erosión y acreción como dos caras del mismo proceso, igual que el capítulo, y su idea de acreción (barras, bancos de arena, deltas) corresponde a las barras del Amazonas cerca de Leticia que el capítulo describe.
+- **No se incluye la erosión del suelo (GH0403).** Los HIPs la tratan aparte (remoción de partículas por agua, viento, cosecha y labranza); es una amenaza de ladera y de uso agrícola, y no la erosión de cauces.
+- **Cascadas.** Los HIPs registran la erosión fluvial como causada por inundaciones, lahares, licuefacción, falla de presas y ascenso del nivel del mar, y como causa de movimientos en masa {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Análisis multitemporal

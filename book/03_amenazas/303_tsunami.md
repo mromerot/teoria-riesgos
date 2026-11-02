@@ -32,6 +32,22 @@ En el **Caribe** continúan las investigaciones sobre fuentes locales, como sism
 La amenaza es mayor en el Pacífico, pero las pérdidas podrían ser mayores en el Caribe por la concentración de población e infraestructura {cite:p}`ungrd2019atlas`. Un análisis de riesgo no debe descartar el Caribe solo por su menor amenaza.
 ```
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| MH0705 | Tsunami (meteorológico e hidrológico, marino) | Término japonés que significa «ola» en el puerto; designa una serie de ondas viajeras de largo periodo, causadas típicamente por perturbaciones como terremotos bajo o cerca del fondo oceánico (COI, 2019). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluye** la definición de la COI: sirve para el capítulo, que describe la generación, la propagación y la llegada de la ola.
+- **Clasificación.** Los HIPs ubican el tsunami entre los peligros meteorológicos e hidrológicos (clúster marino), aunque su origen típico sea geológico. El libro lo trata aquí, junto a sus causas, y se anota la diferencia para no confundir al clasificar.
+- **Causas y efectos.** Los HIPs lo registran como causado por terremotos, movimientos en masa, impactos de meteoritos y desechos espaciales, y como causa de inundación costera y estuarina, erosión costera, intrusión salina, enfermedades transmitidas por el agua y fallas de infraestructura {cite:p}`undrr2025hips`. Ver [](305_inundacion.md) y [](306_erosion_costera.md).
+
 ## 2. Amenaza
 
 ### Dos enfoques

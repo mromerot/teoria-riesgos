@@ -29,6 +29,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 1 | Riesgo climático | L1 | CCDR-tools, CMIP6 | Tabla de cambios esperados contra el AR6; proyecciones del IDEAM |
 | 1 | Marco normativo de Colombia | L1 | Atlas, Banco Mundial 2012 | Artículos de la Ley 1523 sin contrastar con el texto oficial |
 | 1 | Riesgos multiamenaza | L1 (cerca de L2) | Chen 2016, White 2025, Tiggeloven 2026, Ferrario 2026 (leídos completos) | Lo que esos artículos citan; literatura colombiana |
+| 1 | HIPs de UNDRR | L1 | Página y API de PreventionWeb (CC BY 4.0) | Informe técnico y publicación 2025 sin leer; licencia de la infografía |
 | 1 | Cascadas y compuestos | L1 | PreventionWeb (resúmenes), Bevacqua 2021, editorial npj | Leer los estudios que PreventionWeb resume; Awah 2024 completo |
 | 2 | Flujo general | L1 | CLIMAAX, CCDR-tools, CLIMADA | Módulos de CLIMADA; guía de alcance de CLIMAAX |
 | 2 | Probabilista y PAE | L1 | CCDR-tools, CLIMADA | Verificar con la documentación completa de CLIMADA |
@@ -98,4 +99,5 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 | Fecha | Rebanada | Resultado |
 |---|---|---|
 | 2026-11-01 | Andamiaje, partes 1 a 3 y 4, despliegue | F0 |
+| 2026-11-02 | HIPs: capítulo 1.6, subsección «Definición según los HIPs» en los 12 capítulos de amenaza, índice `fuentes/hips_281.csv`, plantilla con códigos HIP | Hecho |
 | 2026-11-02 | Parte 5, glosario, 1.2 a 1.5, plantilla y skill, cuadernos 313 a 315, figura de ciclones, diseño, vendavales | F0 cerrada; plan escrito |

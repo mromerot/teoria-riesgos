@@ -65,6 +65,29 @@ Los reportes describen sobre todo daño a cubiertas, tejas, ventanas y muros de 
 
 **Variable de intensidad.** La ráfaga máxima de 3 segundos a 10 m sobre el suelo, como en los ciclones ([](311_ciclones.md)) y en el flujo de tormentas de viento de CLIMAAX {cite:p}`climaax2025handbook`. Para un vendaval hay que añadir su **extensión** y su **duración**, que son muy pequeñas.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| MH0101 | Ráfaga descendente (meteorológico e hidrológico, convectivo) | Corriente descendente violenta y dañina que llega a la superficie del suelo, asociada con una tormenta severa (OMM, 1992). Se clasifica por la extensión del flujo de salida: microrráfaga (menos de 4 km) y macrorráfaga (más de 4 km). |
+| MH0304 | Turbonada (viento y presión) | Fenómeno atmosférico con una variación muy grande de la velocidad del viento: empieza de repente, dura del orden de minutos y disminuye de repente; suele acompañarse de aguacero o tormenta (OMM, 2018). |
+| MH0302 | Derecho (viento y presión) | Bandas de tormentas de movimiento rápido con vientos destructivos, que pueden ser tan fuertes como los de huracanes o tornados; a diferencia de ellos, los vientos siguen líneas rectas (NOAA, 2019). |
+| MH0103 | Tormenta eléctrica (convectivo) | Una o más descargas eléctricas repentinas, manifestadas por un destello de luz (relámpago) y un sonido agudo o retumbante (trueno) (OMM). |
+| MH0305 | Tornado (viento y presión) | Columna de aire en rotación que se extiende desde la base de una nube cumuliforme y suele ser visible como embudo de condensación en contacto con el suelo, o con una nube de polvo o escombros circulante en el suelo (OMM, 2017). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **No hay un perfil de «vendaval».** Es el hallazgo principal de esta revisión. El término colombiano es más amplio que cualquier perfil: la definición de la UNGRD no precisa el mecanismo (ver «El término en Colombia», arriba), y los HIPs describen por separado la ráfaga descendente, la turbonada, el derecho y el tornado.
+- **Ráfaga descendente (MH0101): se incluye como el perfil más cercano.** Su clasificación por tamaño (microrráfaga y macrorráfaga) coincide con la que el capítulo toma de la literatura, y sus sinónimos incluyen «microburst» y «macroburst». El perfil agrega que los vientos pueden llegar a 67 m/s y que estos eventos suelen durar de 5 a 30 minutos.
+- **Turbonada, derecho y tornado: se incluyen como perfiles relacionados.** La turbonada (cambio brusco del viento que dura minutos) describe bien lo que se siente en un vendaval; el derecho es una banda de tormentas de gran escala que no consta en las fuentes del libro para Colombia, y el tornado se distingue por su rotación (la ráfaga descendente no rota).
+- **Tormenta eléctrica (MH0103)** se incluye solo como contexto: es la nube que produce estos vientos.
+- **Escala de vientos.** El rango oficial colombiano de 50 a 80 km/h se solapa con el «temporal» (*gale*, MH0303) de la OMM, de 62 a 74 km/h (fuerza 8 de Beaufort), que no se incluye como perfil propio.
+- **Cascadas.** Los HIPs registran la ráfaga descendente como causada por la tormenta eléctrica y la turbonada, y como causa de inundaciones repentinas y de fallas de infraestructura {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### El problema de la escala

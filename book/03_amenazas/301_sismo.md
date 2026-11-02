@@ -26,6 +26,25 @@ La amenaza se expresa con parámetros de movimiento fuerte: aceleración máxima
 Zonas de amenaza sísmica en la norma NSR-10, según la aceleración pico efectiva (Aa): baja, hasta 0,10 g; intermedia, entre 0,10 g y 0,20 g; alta, mayor que 0,20 g. Según el estudio incorporado en la NSR-10, 553 cabeceras municipales (cerca del 39,7 % de la población) están en zona alta, 431 (47,3 %) en zona intermedia y 139 (13 %) en zona baja {cite:p}`ungrd2019atlas`.
 ```
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| GH0101 | Terremoto (geológico, sísmico) | Término que describe el deslizamiento repentino de una falla y la sacudida del suelo que produce la energía sísmica radiada durante ese evento. El deslizamiento puede deberse a cambios de esfuerzo en la Tierra o a actividad volcánica o magmática (USGS). |
+| GH0307 | Licuefacción (geológico, falla del terreno) | Pérdida de resistencia de sedimentos sueltos, saturados o casi saturados, en o cerca de la superficie, por sacudidas fuertes como las de un sismo, por cargas cíclicas o vibraciones, o por exceso de presión de poros (AGI; USGS). |
+| GH0311 | Ruptura superficial y fisuramiento (geológico, otros) | Desplazamientos localizados del terreno por esfuerzos de tensión, compresión y corte, sobre todo en sedimentos no consolidados; la ruptura superficial es la prolongación hacia arriba del deslizamiento de la falla en profundidad (Arizona Geological Survey; USGS). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Terremoto (GH0101): se incluye** como definición de referencia. Coincide con el enfoque del capítulo: un evento de la fuente (la falla) y su efecto (la sacudida del terreno).
+- **Licuefacción (GH0307): se incluye.** Los HIPs la tratan como un peligro propio, no como parte del terremoto; el capítulo la trata como amenaza secundaria del sismo (sección «Amenazas secundarias»).
+- **Ruptura superficial (GH0311): solo se menciona.** Importa donde una traza de falla activa cruza la ciudad; el capítulo no la desarrolla.
+- **Cascadas.** Los HIPs registran el terremoto como causa de movimientos en masa, licuefacción, tsunami, incendios y fallas de edificios, puentes, presas, energía y agua {cite:p}`undrr2025hips`; ver [](../01_conceptos/16_hips_undrr.md) y [](../01_conceptos/15_cascada_compuestos.md).
+
 ## 2. Amenaza
 
 ### Por qué probabilista

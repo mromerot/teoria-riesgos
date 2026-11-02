@@ -31,6 +31,24 @@ Los incendios se concentran en las temporadas secas anuales (diciembre a marzo y
 
 **Variable de intensidad.** Depende del método: un índice de peligro de incendio (como el FWI), la susceptibilidad de la cobertura o el área quemada.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| EN0205 | Incendios de vegetación (ambiental, degradación ambiental) | Todo incendio de vegetación no planificado e incontrolado que, sin importar la fuente de ignición, pueda afectar negativamente valores sociales, económicos o ambientales y requiera una respuesta de supresión u otra acción según la política de la agencia (FAO, 2024). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluye.** La definición es independiente de la fuente de ignición, lo que calza con el énfasis del capítulo en el origen humano de la mayoría de los incendios.
+- **Clasificación.** Los HIPs lo ubican entre los peligros ambientales, y no entre los meteorológicos; el capítulo mantiene la relación con el clima ([](308_sequia.md), [](309_calor.md)).
+- **No se incluyen:** el humo (MH0205: partículas en suspensión producidas por la combustión), que es un asunto de calidad del aire, ni las quemas controladas, que quedan fuera de la definición.
+- **Incendio urbano.** Los HIPs no tienen un perfil de incendio urbano o estructural; el más cercano es TL0305 «Fuego», de tipo tecnológico (falla industrial), cuyo contexto reconoce los incendios en áreas urbanas. Se retoma en la decisión de alcance del [plan](../01_conceptos/16_hips_undrr.md).
+- **Cascadas.** Los HIPs registran los incendios de vegetación como causados por sequía, ola de calor, rayos y erupciones, y como causa de movimientos en masa y de contaminación del aire {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Método del IDEAM

@@ -48,7 +48,7 @@ De ahí salen cinco requisitos para el libro:
 | CCDR-tools | Cálculo y combinación espacial; EAI con cotas | Alto | Indicadores, conjuntos de datos por amenaza |
 | CLIMADA | Impacto por evento, métricas, comparación de medidas | Parcial (solo la clase `Impact`) | Exposures, Hazard, ImpactFunc, Engine (adaptación y costo-beneficio) |
 | *Investigaciones GRD de Colombia* | Casos y métodos colombianos | Parcial (2021: cap. 1, 2, 3, 10, 12; 2023: cap. 2 y 5) | 2025 completo y el resto de 2021 y 2023 |
-| PreventionWeb (UNDRR) | Conceptos y terminología | Parcial (cascada, compuesto y 3 publicaciones multiamenaza) | Riesgo sistémico, intensivo y extensivo, directo e indirecto, resiliencia, capacidad, perfiles de amenazas (HIPs), GAR |
+| PreventionWeb (UNDRR) | Conceptos y terminología | Parcial (cascada, compuesto, HIPs 2025 y 3 publicaciones multiamenaza) | Riesgo sistémico, intensivo y extensivo, directo e indirecto, resiliencia, capacidad, GAR; informe técnico de los HIPs |
 | PDFs nacionales (`referencia_colombia`, 9) | Marco y métodos de Colombia | Atlas 2019, DNP, Banco Mundial | Expertise E2050 (3), Informe de ciudades, Perfil de país, Modelación y adaptación |
 | Libros de referencia (`libros_referencia`, 10) | Teoría de base por tema | Solo Chen et al. 2016 | Guía PMGRD, revisión de métodos y software, Baker (sismo), *Landslide Handbook*, GIZ *Climate Risk Sourcebook*, compuestos, atribución, adaptación, *Disaster Risk* (Routledge) |
 | **Sitio personal, sección GRD** (`mromerot.github.io/web/grd/`; fuente local `MR-Web/grd/`) | Bibliografía comentada del autor y taxonomía de amenazas. Sirve de **mapa de entrada**: señala qué leer y qué categorías cubrir. No es fuente primaria: el libro cita el documento original, no la página | Parcial (cascadas y compuestos, ejemplo de Limbe) | Barrido por secciones (abajo) |
@@ -59,6 +59,7 @@ De ahí salen cinco requisitos para el libro:
 - **En el libro (12):** sismo, volcanes, tsunami, movimientos en masa, inundación, erosión costera, erosión fluvial, sequía, calor, incendios forestales, ciclones tropicales, vendavales.
 - **Que los pilotos usaron y el libro no tiene:** **dengue y salud** (Leticia, Sincelejo), **incendio urbano** (SIDRo), y **seguridad hídrica** (Sincelejo; puede cubrirse desde sequía).
 - **Categorías de amenaza de tu sitio** (`grd/`): geológicas, hidrometeorológicas, ambientales, biológicas (COVID), sociales (migración), tecnológicas y extraterrestres. El libro cubre geológicas, hidrometeorológicas y ambientales; las otras cuatro son decisión de alcance.
+- **Código HIP de cada pilote que falta** (de `fuentes/hips_281.csv`): dengue BI0207 y enfermedades transmitidas por vectores BI0108 (salud); incendio urbano, que los HIPs no tienen como perfil propio, el más cercano es TL0305 «Fuego» (tecnológico, con contexto de incendios urbanos).
 - **Candidatas de la tabla de artículos, sin decidir:** contaminación del aire, perturbación geomagnética, accidentes tecnológicos por desastre natural (NaTech), licuefacción como capítulo propio.
 - Decisión pendiente (ver sección 8).
 

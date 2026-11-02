@@ -175,6 +175,10 @@ Cada fila es un detonante; las columnas, lo que puede seguir según los capítul
 
 La fila de incendios y deslizamientos viene de un caso del Himalaya que describen Ferrario et al. ({cite:p}`ferrario2026harnessing`; ver [](14_riesgo_multiamenaza.md)) y de la lluvia sobre áreas quemadas que trata el editorial para el suroeste de Estados Unidos {cite:p}`alcantara2025cascading`. No se verificó para Colombia.
 
+### Contraste con los HIPs
+
+Los perfiles de información de amenazas de UNDRR registran, para cada peligro, cuáles puede causar ([](16_hips_undrr.md)). Los vínculos principales de la matriz anterior aparecen también ahí: sismo con movimientos en masa y tsunami, ciclón con inundación, sequía y calor con incendios, y erupción con lahares {cite:p}`undrr2025hips`. Los HIPs añaden otros, como la inundación como causa de erosión de ríos y costas, y muestran que la mayor parte de los efectos son fallas de infraestructura (puentes, presas, energía, agua, telecomunicaciones). Es el tipo de cascada que modela el [cuaderno de riesgos en cascada](../03_amenazas/314_riesgos_cascada.ipynb).
+
 ### Procedimiento
 
 1. **Listar los detonantes** de la ciudad con la matriz y la historia de eventos.

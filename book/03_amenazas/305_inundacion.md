@@ -27,6 +27,28 @@ A estos dos tipos se suma la **inundación pluvial urbana**: una lluvia intensa 
 En el norte de Suramérica el ENSO reduce las lluvias durante El Niño y las aumenta durante La Niña. En 2010–2011, La Niña causó una de las peores emergencias por inundaciones, avenidas torrenciales y movimientos en masa del país {cite:p}`ungrd2019atlas`. En 2017, el desbordamiento de los ríos Mulato y Sangoyaco y de la quebrada Taruca arrasó el norte de Mocoa {cite:p}`ungrd2019atlas`.
 ```
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| MH0600 | Inundación (meteorológico e hidrológico, agua) | (1) Desbordamiento de agua fuera de los confines normales de un curso u otro cuerpo de agua; (2) acumulación de agua de drenaje sobre áreas normalmente no sumergidas; (3) esparcimiento controlado de agua para riego (OMM y UNESCO, 2012). |
+| MH0604 | Inundación fluvial | Desbordamiento de agua fuera de los confines normales de un curso u otro cuerpo de agua (OMM, 2012). |
+| MH0603 | Inundación repentina | Inundación de corta duración con un caudal pico relativamente alto (OMM, 2021). |
+| MH0609 | Inundación por encharcamiento (pluvial) | Resulta del agua de lluvia que se acumula donde cae o cerca de ahí, porque cae más rápido de lo que el drenaje, natural o artificial, puede evacuar (OMM, 2006). |
+| MH0601 | Inundación costera | Ocurre por múltiples fuentes: marejadas de tormenta, oleaje, seiches, crecidas cercanas a la costa, mareas, ascenso del nivel del mar y tsunamis; es más frecuente por marejadas con viento fuerte que coinciden con mareas altas (OMM, 2011; 2022). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluyen el perfil general y cuatro subtipos** (fluvial, repentina, pluvial y costera). Del perfil general solo aplican las acepciones (1) y (2); el riego controlado (3) no es una amenaza.
+- **Correspondencia con la clasificación del Atlas** (criterio de método de este libro): la *inundación lenta* de llanuras aluviales corresponde a MH0604; la *creciente súbita* a MH0603; la *inundación pluvial urbana* a MH0609. La definición de MH0603 se centra en la duración y el caudal pico, y no en la pendiente de la cuenca, que es lo que el Atlas destaca para las cuencas andinas.
+- **Inundación costera (MH0601):** se trata en [](306_erosion_costera.md) y [](311_ciclones.md).
+- **No se desarrollan** las inundaciones por aguas subterráneas (MH0605), por aguas superficiales (MH0606), estuarinas (MH0602) ni por desborde de lagos glaciares (MH0607).
+- **Cascadas.** Los HIPs registran la inundación como causada por lluvia, ciclones, tormentas y falla de presas, y como causa de movimientos en masa, lahares, erosión de ríos y costas, enfermedades transmitidas por el agua y fallas de infraestructura {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Métodos usados en Colombia

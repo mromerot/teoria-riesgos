@@ -19,20 +19,20 @@ from string import Template
 RAIZ = Path(__file__).resolve().parent.parent
 PLANTILLA = RAIZ / "plantilla"
 
-# clave -> (título, capítulo teórico, estado del respaldo en el libro)
+# clave -> (título, capítulo teórico, estado del respaldo en el libro, códigos HIP de UNDRR-ISC)
 AMENAZAS = {
-    "sismo": ("Sismo", "sismo", "solido"),
-    "volcanes": ("Volcanes", "volcanes", "solido"),
-    "tsunami": ("Tsunami", "tsunami", "solido"),
-    "mov-masa": ("Movimientos en masa", "mov-masa", "solido"),
-    "inundacion": ("Inundación", "inundacion", "solido"),
-    "erosion-costera": ("Erosión costera y aumento del nivel del mar", "erosion-costera", "provisional"),
-    "erosion-fluvial": ("Erosión fluvial", "erosion-fluvial", "provisional"),
-    "sequia": ("Sequía", "sequia", "solido"),
-    "calor": ("Olas de calor", "calor", "provisional"),
-    "incendios": ("Incendios forestales", "incendios", "solido"),
-    "ciclones": ("Ciclones tropicales", "ciclones", "solido"),
-    "vendavales": ("Vendavales", "vendavales", "provisional"),
+    "sismo": ("Sismo", "sismo", "solido", "GH0101, GH0307, GH0311"),
+    "volcanes": ("Volcanes", "volcanes", "solido", "GH0201, GH0202, GH0203, GH0204, GH0205"),
+    "tsunami": ("Tsunami", "tsunami", "solido", "MH0705"),
+    "mov-masa": ("Movimientos en masa", "mov-masa", "solido", "GH0300, GH0301, GH0302, GH0303, GH0304, GH0305"),
+    "inundacion": ("Inundación", "inundacion", "solido", "MH0600, MH0601, MH0603, MH0604, MH0609"),
+    "erosion-costera": ("Erosión costera y aumento del nivel del mar", "erosion-costera", "provisional", "GH0405, EN0402"),
+    "erosion-fluvial": ("Erosión fluvial", "erosion-fluvial", "provisional", "GH0404"),
+    "sequia": ("Sequía", "sequia", "solido", "MH0401"),
+    "calor": ("Olas de calor", "calor", "provisional", "MH0501"),
+    "incendios": ("Incendios forestales", "incendios", "solido", "EN0205"),
+    "ciclones": ("Ciclones tropicales", "ciclones", "solido", "MH0309, MH0703, MH0704"),
+    "vendavales": ("Vendavales", "vendavales", "provisional", "MH0101, MH0304, MH0302, MH0305"),
 }
 AVISO_PROV = (
     "\n\n```{warning}\nEl capítulo teórico es **provisional**: hay poca literatura de referencia. "
@@ -62,8 +62,8 @@ def main() -> int:
     a = p.parse_args()
 
     if a.listar:
-        for k, (t, _, e) in AMENAZAS.items():
-            print(f"{k:16} {t}  [{e}]")
+        for k, (t, _, e, h) in AMENAZAS.items():
+            print(f"{k:16} {t}  [{e}]  HIP: {h}")
         return 0
     if not (a.nombre and a.municipio and a.destino):
         p.error("--nombre, --municipio y --destino son obligatorios")
@@ -83,13 +83,13 @@ def main() -> int:
     estado_aplica = "por_revisar" if todas else "si"
     bloque = "\n".join(
         f"{k}:\n  aplica: {'por_revisar' if todas else ('si' if k in elegidas else 'no')}\n"
-        f"  respaldo: por_definir\n  eventos_historicos: null\n"
+        f"  respaldo: por_definir\n  hip: [{AMENAZAS[k][3]}]\n  eventos_historicos: null\n"
         f"  capitulo_teoria: https://mromerot.github.io/teoria-riesgos/{AMENAZAS[k][1]}"
         for k in AMENAZAS
     )
     tabla = "\n".join(
         f"| {AMENAZAS[k][0]} | [{AMENAZAS[k][1]}](https://mromerot.github.io/teoria-riesgos/{AMENAZAS[k][1]}) | "
-        f"{'por revisar' if todas else ('sí' if k in elegidas else 'no')} | por definir |"
+        f"{AMENAZAS[k][3]} | {'por revisar' if todas else ('sí' if k in elegidas else 'no')} | por definir |"
         for k in AMENAZAS
     )
     pasos = "\n".join(f"- [ ] {AMENAZAS[k][0]}: riesgo actual con el método del capítulo" for k in aplican)
@@ -117,7 +117,7 @@ def main() -> int:
 
     molde = PLANTILLA / "book" / "analisis_amenaza.md.tpl"
     for k in aplican:
-        t, cap, est = AMENAZAS[k]
+        t, cap, est, _hip = AMENAZAS[k]
         w = dict(v, titulo=t, slug_teoria=cap, aviso=AVISO_PROV if est == "provisional" else "")
         (destino / "book" / "analisis" / f"a_{slug(k)}.md").write_text(render(molde, w), encoding="utf-8")
 

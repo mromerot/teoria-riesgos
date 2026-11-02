@@ -37,6 +37,28 @@ Los volcanes colombianos son de tipo continental, asociados a la subducción de 
 La erupción del Nevado del Ruiz del 13 de noviembre de 1985 causó el desastre de Armero (Tolima) y afectó a Villamaría y Chinchiná (Caldas). Los lahares se debieron a la fusión parcial, cerca de 10 %, del casquete glaciar, y fluyeron por los ríos Gualí–Azufrado y Claro–Chinchiná {cite:p}`ungrd2019atlas`. Existen registros de lahares del Ruiz en 1595, 1831, 1833, 1845 y 1985 {cite:p}`ungrd2019atlas`.
 ```
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| GH0201 | Flujos y domos de lava (geológico, volcánico) | Se forman con roca fundida que hace erupción y se enfría en o cerca de la superficie. Un flujo es un derrame de roca fluida de baja viscosidad; un domo es una pila de lava viscosa que no fluye lejos del conducto y cuyo colapso puede ser peligroso. |
+| GH0202 | Caída de ceniza y tefra (geológico, volcánico) | La tefra es el término colectivo para los fragmentos volcánicos expulsados a la atmósfera en una erupción explosiva, sin importar su tamaño, composición ni forma; la ceniza volcánica son sus partículas más finas. |
+| GH0203 | Corriente de densidad piroclástica (geológico, volcánico) | Mezclas calientes y rápidas de partículas volcánicas y gas que fluyen según su densidad relativa al medio y la gravedad; suelen originarse en el colapso de columnas eruptivas, domos o frentes de lava, y en explosiones laterales. |
+| GH0204 | Lahares (geológico, volcánico) | Flujos discretos, rápidos, impulsados por la gravedad y saturados de agua, con partículas de roca volcánica, sedimento, hielo, madera y otros restos, que se originan en volcanes. |
+| GH0205 | Gases y aerosoles volcánicos (geológico, volcánico) | El gas volcánico es cualquier sustancia en fase gaseosa emitida por actividad volcánica o volcánico-geotérmica; los aerosoles son partículas líquidas o sólidas suspendidas en el aire y emitidas por esa actividad. |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluyen los cinco perfiles.** Los HIPs no tienen un perfil para «erupción volcánica»: dividen el peligro volcánico en cinco fenómenos que producen daño, que son los mismos de la tabla de este capítulo (ceniza, flujos piroclásticos, lahares, gases y lava).
+- **Lahar (GH0204).** El perfil lista como sinónimos «flujo de detritos» y «flujo de lodo volcánico», y el de flujos de detritos (GH0303) remite a él cuando el origen es volcánico; ver [](304_mov_masa.md). En Colombia, donde los lahares se distinguen de los flujos de detritos por su origen volcánico, la distinción es útil.
+- **Gases (GH0205).** El capítulo los menciona con el CO₂ como ejemplo; es un tema por ampliar.
+- La definición de la tefra llega cortada en la API de los HIPs, así que la traducción cubre solo lo que se pudo leer.
+- **Cascadas.** Los HIPs registran los fenómenos volcánicos como causa de movimientos en masa, incendios, caída de infraestructura, interrupciones de energía y agua, y contaminación {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Límites del conocimiento

@@ -25,6 +25,24 @@ El nivel del mar relativo depende del ascenso global y de los movimientos vertic
 
 **Variable de intensidad.** Tasa de retroceso de la línea de costa (m/año), cambio del nivel del mar relativo (mm/año) y nivel extremo del agua para un periodo de retorno.
 
+### Definición según los HIPs de UNDRR
+
+Los perfiles de información de amenazas ([](../01_conceptos/16_hips_undrr.md)) que corresponden a este capítulo son:
+
+| Código | Perfil (clúster) | Definición (traducción propia) |
+|---|---|---|
+| GH0405 | Erosión y acreción costera (geológico, otros peligros) | La erosión costera es la remoción de material en la línea de costa que lleva a perder tierra cuando la costa retrocede; la acreción es el depósito de material que lleva a ganar tierra cuando la costa avanza hacia el mar (Gibb, 1978). |
+| EN0402 | Aumento del nivel del mar (ambiental, degradación ambiental) | Cambio en la altura del nivel del mar, global y local (relativo), a escala estacional, anual o mayor, por cambios en el volumen y la densidad del océano, la forma de las cuencas, los campos gravitacional y rotacional de la Tierra y la subsidencia o elevación local del terreno (IPCC, 2019). |
+
+Fuente: {cite:p}`undrr2025hips`.
+
+**Qué se incluye y por qué.**
+
+- **Se incluyen los dos perfiles.** El de erosión y acreción trata los dos procesos juntos, como el capítulo («erosión y acreción» del Caribe y del Pacífico); y el del nivel del mar incluye la subsidencia local, que es justo lo que muestra el caso de Cartagena, donde los movimientos verticales del terreno explican parte del ascenso relativo.
+- **Marejada y marea de tormenta** (MH0703 y MH0704) se definen en [](311_ciclones.md); el capítulo los usa para la inundación costera.
+- **Clasificación.** Los HIPs ubican la erosión costera entre los peligros geológicos y el nivel del mar entre los ambientales.
+- **Cascadas.** Los HIPs registran la erosión costera como causada por ciclones, marejada y marea de tormenta, inundación costera y estuarina, tsunami, ascenso del nivel del mar, pérdida de manglares y minería de arena, y como causa de caídas, flujos y deslizamientos en acantilados y laderas costeras {cite:p}`undrr2025hips`.
+
 ## 2. Amenaza
 
 ### Retroceso de la línea de costa
