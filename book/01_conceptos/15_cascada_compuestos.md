@@ -41,6 +41,34 @@ A diferencia de los demás capítulos, el daño ya no está solo en lo que la am
 
 El editorial agrega que los sistemas de montaña son puntos críticos de interacción entre amenazas por su topografía abrupta, su sensibilidad ecológica y su exposición climática {cite:p}`alcantara2025cascading`. Esa descripción coincide con la de las laderas andinas, y se conecta con [](../03_amenazas/304_mov_masa.md) y [](../03_amenazas/307_erosion_fluvial.md).
 
+(limbe)=
+### Un ejemplo con retroalimentación: las inundaciones de Limbe (Camerún)
+
+En Limbe, ciudad costera de Camerún, la inundación no se explica solo por la lluvia intensa. Resulta de decisiones de uso del suelo, mal manejo de residuos, gobernanza débil y falta de infraestructura, con efectos en cascada sobre la educación, el transporte, la salud y la economía {cite:p}`awah2025mindmaps`. Para entenderla, la autora y su equipo usaron modelación participativa de dinámica de sistemas. Funcionarios, líderes comunitarios, grupos de jóvenes y comerciantes dibujaron los problemas en tarjetas, los conectaron con sus impactos en discusiones facilitadas, y el resultado se digitalizó en el programa Vensim y se validó con el grupo {cite:p}`awah2025mindmaps`. El estudio completo identifica las interdependencias y los bucles de retroalimentación del sistema de gestión del riesgo de inundación de la ciudad {cite:p}`awah2024participatory`.
+
+Una de las cascadas que describe el blog tiene forma de bucle: los drenajes bloqueados causan inundación, que interrumpe el transporte, lo que afecta los negocios y produce pérdidas económicas, que a su vez reducen la inversión en infraestructura, y el ciclo continúa {cite:p}`awah2025mindmaps`. El diagrama de abajo es un dibujo propio de ese bucle, hecho a partir de la descripción del texto. No reproduce la figura original de CDKN («Economic sub-model of cascading effects of flooding in Limbe»), que está protegida por derechos de autor y puede verse en la [página de la historia](https://cdkn.org/story/flood-maps-mind-maps-participatory-systems-modelling-floods-limbe-cameroon).
+
+```{mermaid}
+flowchart TB
+    A[Drenajes bloqueados<br/>e infraestructura insuficiente] --> B[Inundación]
+    B --> C[Interrupción<br/>del transporte]
+    C --> D[Negocios afectados]
+    D --> E[Pérdidas económicas]
+    E --> F[Menos inversión<br/>en infraestructura]
+    F -. refuerza .-> A
+```
+
+*Bucle de refuerzo de la cascada económica de las inundaciones en Limbe. Elaboración propia a partir de {cite:t}`awah2025mindmaps`.*
+
+Lo que enseña el ejemplo para este libro:
+
+- **La cascada puede cerrarse sobre sí misma.** La cadena de cinco etapas de arriba termina en efectos de largo plazo, pero aquí el último efecto (menos inversión) agrava la causa inicial. Una evaluación que solo sigue la cadena hacia adelante no ve ese refuerzo.
+- **Las causas no son solo físicas.** Los autores ponen cuatro áreas críticas: política y gobernanza, degradación ambiental, tensión económica e impactos sociales {cite:p}`awah2025mindmaps`. Es la misma idea del riesgo sistémico del editorial {cite:p}`alcantara2025cascading` y se conecta con la vulnerabilidad social ([](../04_vulnerabilidad/43_vulnerabilidad_social.md)).
+- **El conocimiento local entra en el modelo.** El blog afirma que la experiencia vivida de la comunidad aportó información que complementa los datos {cite:p}`awah2025mindmaps`. Coincide con la recomendación de co-desarrollo con actores del capítulo anterior ([](14_riesgo_multiamenaza.md)).
+- **Es un método cualitativo.** El resultado es un mapa de relaciones y bucles, no una pérdida anual esperada. Sirve para identificar qué cuantificar y dónde intervenir, y puede preceder al diagrama causal que piden Bevacqua et al. {cite:p}`bevacqua2021guidelines`. Es una lectura de este libro.
+
+El caso es de África y de una inundación con drenaje urbano deficiente. Su relevancia para una ciudad colombiana depende de las condiciones locales y no se evaluó aquí.
+
 ### Riesgo sistémico
 
 El editorial plantea que los desastres ya no están definidos por los extremos naturales sino por interacciones complejas entre varias amenazas, vulnerabilidades sociales arraigadas y fallas de gobernanza {cite:p}`alcantara2025cascading`. Los enfoques centrados en una sola amenaza resultan insuficientes, y los casos muestran que las consecuencias de un evento dependen de la vulnerabilidad social y de la capacidad de respuesta de comunidades e instituciones {cite:p}`alcantara2025cascading`. Para este libro la consecuencia es que la vulnerabilidad social y las capacidades ([](../04_vulnerabilidad/43_vulnerabilidad_social.md)) son parte del análisis de cascadas y no un anexo.
@@ -115,6 +143,7 @@ PreventionWeb propone {cite:p}`undrr2026cascading`:
 
 - **Mapear detonantes y consecuencias** entre sistemas, para visualizar emergencias secundarias y cadenas complejas.
 - **Modelar las interdependencias** entre sectores e identificar los vínculos críticos de la infraestructura.
+- **Mapas de sistemas participativos**, que muestran bucles de retroalimentación como el de Limbe ([ejemplo de Limbe](#limbe)).
 - **Pasar de modelos estáticos a dinámicos**, que combinan información meteorológica en tiempo real, imágenes satelitales, telemetría de la infraestructura y análisis de vulnerabilidad con inteligencia artificial. El ejemplo es modelar un corte de energía en tiempo real para anticipar efectos en hospitales, telecomunicaciones y agua.
 
 El editorial coincide en que las herramientas tradicionales no captan las dinámicas en cascada, pide métodos nuevos (interferometría de radar, proyecciones de lluvia subhoraria, modelos de cultivos basados en procesos, análisis espaciotemporal de incendios) e indicadores que vayan más allá de las pérdidas económicas, para recoger impactos sociales en cascada, desplazamiento de largo plazo, alteración ecológica y fragilidad institucional {cite:p}`alcantara2025cascading`.
@@ -148,7 +177,7 @@ La fila de incendios y deslizamientos viene de un caso del Himalaya que describe
 ### Procedimiento
 
 1. **Listar los detonantes** de la ciudad con la matriz y la historia de eventos.
-2. **Dibujar el diagrama causal** de cada cadena relevante (Bevacqua, recomendación 1).
+2. **Dibujar el diagrama causal** de cada cadena relevante (Bevacqua, recomendación 1), con los actores locales si es posible, y marcar los bucles de retroalimentación.
 3. **Elegir un indicador de impacto** por cadena (nivel del agua, número de edificaciones o personas afectadas, horas sin servicio).
 4. **Mapear las líneas vitales** que cada cadena interrumpe y las poblaciones que dependen de ellas ([](../04_vulnerabilidad/41_exposicion.md)).
 5. **Clasificar la combinación**: cascada, o compuesta (precondicionada, multivariada, temporal o espacial).
@@ -170,6 +199,7 @@ Un artículo sobre cambios del régimen de lluvias proyecta que cerca de 3.000 m
 
 ## Pendiente
 
+- Leer completo el artículo de Awah et al. (2024) sobre Limbe y su submodelo económico; solo se leyeron el resumen y el blog.
 - Leer los estudios originales que PreventionWeb resume (Louisiana, Europa 2026, Pakistán, Indonesia) y los tres recursos que esa página recomienda.
 - Leer el estudio de eventos compuestos de sequía, calor e incendios de Sudamérica que cita el editorial y buscar casos colombianos de cascadas urbanas (Mocoa, Armero, Providencia) con su literatura.
 - Revisar la definición de riesgo en cascada del informe de UNDRR de 2021 (revisión de definición y clasificación de amenazas), que PreventionWeb cita y no se consultó.
