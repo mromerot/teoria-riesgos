@@ -169,6 +169,7 @@ Cada fila es un detonante; las columnas, lo que puede seguir según los capítul
 | Ciclón tropical | Viento, marea de tormenta, lluvia (inundación, deslizamientos) | [](../03_amenazas/311_ciclones.md), [](../03_amenazas/306_erosion_costera.md) |
 | Erupción | Caída de ceniza, flujos piroclásticos, lahares | [](../03_amenazas/302_volcanes.md) |
 | Sequía y calor | Incendios forestales, estrés hídrico | [](../03_amenazas/308_sequia.md), [](../03_amenazas/309_calor.md), [](../03_amenazas/310_incendios.md) |
+| Tormenta convectiva severa | Vendaval, lluvia intensa y crecida súbita, interrupción del servicio eléctrico | [](../03_amenazas/312_vendavales.md), [](../03_amenazas/305_inundacion.md) |
 | Incendio forestal | Pérdida de cobertura, que favorece deslizamientos y crecidas con lluvias posteriores | [](../03_amenazas/310_incendios.md), [](../03_amenazas/304_mov_masa.md) |
 | Falla de una línea vital (energía, agua, comunicaciones, vías) | Interrupción de servicios en hospitales y respuesta de emergencia | [](../04_vulnerabilidad/41_exposicion.md) |
 

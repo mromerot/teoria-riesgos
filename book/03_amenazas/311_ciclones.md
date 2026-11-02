@@ -1,10 +1,11 @@
 ---
-title: Ciclones tropicales y vendavales
+short_title: Ciclones tropicales
+title: Ciclones tropicales
 ---
 
-# Ciclones tropicales y vendavales
+# Ciclones tropicales
 
-Este capítulo sigue el molde de siete puntos ([](_molde.md)). Para la mayor parte de Colombia continental el ciclón tropical es una amenaza indirecta. Para el archipiélago de San Andrés, Providencia y Santa Catalina y la península de La Guajira es directa. La marea de tormenta se conecta con [](306_erosion_costera.md) y la lluvia con [](305_inundacion.md) y [](304_mov_masa.md).
+Este capítulo sigue el molde de siete puntos ([](_molde.md)). Para la mayor parte de Colombia continental el ciclón tropical es una amenaza indirecta. Para el archipiélago de San Andrés, Providencia y Santa Catalina y la península de La Guajira es directa. Los vendavales, que producen vientos fuertes locales sin ser ciclones, se tratan en [](312_vendavales.md). La marea de tormenta se conecta con [](306_erosion_costera.md) y la lluvia con [](305_inundacion.md) y [](304_mov_masa.md).
 
 ## 1. Fenómeno
 
@@ -54,14 +55,14 @@ El huracán Iota de 2020 destruyó el 56,4 % de las viviendas de Providencia y d
 
 ### Trayectorias de los ciclones en el Caribe
 
-La figura muestra las trayectorias reales de los ciclones tropicales del Atlántico Norte entre 1980 y 2025, tomadas de la base de datos IBTrACS del NOAA {cite:p}`knapp2010ibtracs,knapp2019ibtracs`. Se dibuja con código Python en un cuaderno reproducible, que descarga los datos y se puede ejecutar en Colab: [](314_trayectorias_ciclones.ipynb).
+La figura muestra las trayectorias reales de los ciclones tropicales del Atlántico Norte entre 1980 y 2025, tomadas de la base de datos IBTrACS del NOAA {cite:p}`knapp2010ibtracs,knapp2019ibtracs`. Se dibuja con código Python en un cuaderno reproducible, que descarga los datos y se puede ejecutar en Colab: [](315_trayectorias_ciclones.ipynb).
 
 ```{figure} figuras/trayectorias_ciclones_caribe.png
 :label: fig-trayectorias-caribe
 :alt: Mapa de dos paneles. A la izquierda, trayectorias de huracanes que entraron al Caribe entre 1980 y 2025, coloreadas por categoría Saffir-Simpson. A la derecha, acercamiento al suroeste del Caribe con los sistemas que pasaron a menos de 250 km de San Andrés, Providencia, La Guajira y Cartagena.
 :width: 100%
 
-Trayectorias de ciclones tropicales en el Caribe, 1980-2025. Izquierda: huracanes que entraron a la región punteada, con cada tramo coloreado por su categoría. Derecha: sistemas que pasaron a menos de 250 km de sitios de Colombia; los números identifican los huracanes que pasaron a menos de esa distancia de San Andrés o Providencia. Datos: IBTrACS v04r01 {cite:p}`knapp2019ibtracs`. Elaboración propia con el cuaderno 314.
+Trayectorias de ciclones tropicales en el Caribe, 1980-2025. Izquierda: huracanes que entraron a la región punteada, con cada tramo coloreado por su categoría. Derecha: sistemas que pasaron a menos de 250 km de sitios de Colombia; los números identifican los huracanes que pasaron a menos de esa distancia de San Andrés o Providencia. Datos: IBTrACS v04r01 {cite:p}`knapp2019ibtracs`. Elaboración propia con el cuaderno 315.
 ```
 
 Lo que muestra la {numref}`fig-trayectorias-caribe`, con las cifras que calcula el cuaderno:
@@ -77,7 +78,7 @@ Lo que muestra la {numref}`fig-trayectorias-caribe`, con las cifras que calcula 
 | La Guajira (Cabo de la Vela) | 16 | 10 | 3 |
 | Cartagena | 8 | 4 | 1 |
 
-Fuente: cálculo propio con IBTrACS {cite:p}`knapp2019ibtracs`; el cuaderno 314 reproduce la tabla. La columna final es el viento máximo **del sistema dentro del radio**, no el viento que se sintió en el sitio.
+Fuente: cálculo propio con IBTrACS {cite:p}`knapp2019ibtracs`; el cuaderno 315 reproduce la tabla. La columna final es el viento máximo **del sistema dentro del radio**, no el viento que se sintió en el sitio.
 
 Nueve huracanes pasaron a menos de 250 km de San Andrés o Providencia en ese periodo: Joan (1988), Cesar (1996), Beta (2005), Felix (2007), Ida (2009), Otto (2016), Eta (2020), Iota (2020) y Julia (2022). Iota pasó a unos 22 km de las islas.
 
@@ -103,9 +104,9 @@ La simulación matemática de ciclones se usa también para estimar la tormenta 
 - **Reconstrucción de Eta e Iota** en San Andrés y Providencia, con vientos extremos, inundación por marea de tormenta e inundación por lluvia {cite:p}`osorio2024reconstructing`.
 - **Riesgo de marea de tormenta** en condiciones climáticas del pasado cercano, para informar el uso del suelo {cite:p}`velasquezcalderon2027assessing`.
 
-### Vendavales no ciclónicos
+### Vientos fuertes que no son de un ciclón
 
-Los vientos fuertes que no provienen de un ciclón (vendavales, tormentas convectivas) no se modelan con la cadena de ciclones. CLIMAAX tiene un flujo de tormenta de viento basado en un evento, que usa el mapa de ráfaga máxima de 3 segundos y está pensado para Europa y sus tormentas extratropicales {cite:p}`climaax2025handbook`. Su uso en Colombia exigiría datos de ráfagas locales.
+Los vientos fuertes, repentinos y locales de las tormentas convectivas (los vendavales) no se modelan con la cadena de ciclones; tienen su propio capítulo: [](312_vendavales.md).
 
 ## 3. Exposición
 

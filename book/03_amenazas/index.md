@@ -4,7 +4,7 @@ title: 3. Amenazas
 
 # 3. Amenazas
 
-Cada capítulo sigue el mismo molde de siete puntos ([](_molde.md)): fenómeno, amenaza, exposición, vulnerabilidad, riesgo, clima, y datos y medidas.
+Cada capítulo de amenaza sigue el mismo molde de siete puntos ([](_molde.md)): fenómeno, amenaza, exposición, vulnerabilidad, riesgo, clima, y datos y medidas.
 
 ## Estado de los capítulos
 
@@ -21,6 +21,7 @@ Cada capítulo sigue el mismo molde de siete puntos ([](_molde.md)): fenómeno, 
 | [](309_calor.md) | CLIMAAX, CCDR-tools y dos estudios | **Provisional** | Sí |
 | [](310_incendios.md) | Atlas 2019 y CLIMAAX | Sólido | Sí, y por ignición humana |
 | [](311_ciclones.md) | Atlas 2019 y estudios del archipiélago | Sólido | Sí |
+| [](312_vendavales.md) | Borrador UNGRD (Quindío), DNP y CLIMAAX | **Provisional** | Incierto |
 
 «Sólido» significa que existe una metodología nacional o internacional descrita en una fuente de referencia. No significa que todas las citas se hayan verificado contra el texto completo: cada capítulo lista al final lo que falta leer.
 
@@ -30,9 +31,9 @@ Tres secciones muestran con ejemplos ejecutables (cuadernos de Jupyter, abribles
 
 | Sección | Qué muestra |
 |---|---|
-| [](312_analisis_multiamenaza.ipynb) | Escenarios por detonante, pérdida por edificación, mínimo, medio y máximo, curvas de riesgo, PAE con cotas, y qué se suma y qué no |
-| [](313_riesgos_cascada.ipynb) | Una red de servicios interdependientes (daño directo frente a cascada) y un bucle de retroalimentación como el de Limbe |
-| [](314_trayectorias_ciclones.ipynb) | **Datos reales** (IBTrACS): trayectorias de ciclones en el Caribe y conteo de sistemas cerca de sitios de Colombia. Genera la figura del capítulo de ciclones |
+| [](313_analisis_multiamenaza.ipynb) | Escenarios por detonante, pérdida por edificación, mínimo, medio y máximo, curvas de riesgo, PAE con cotas, y qué se suma y qué no |
+| [](314_riesgos_cascada.ipynb) | Una red de servicios interdependientes (daño directo frente a cascada) y un bucle de retroalimentación como el de Limbe |
+| [](315_trayectorias_ciclones.ipynb) | **Datos reales** (IBTrACS): trayectorias de ciclones en el Caribe y conteo de sistemas cerca de sitios de Colombia. Genera la figura del capítulo de ciclones |
 
 La teoría está en [](../01_conceptos/14_riesgo_multiamenaza.md) y [](../01_conceptos/15_cascada_compuestos.md).
 
@@ -45,6 +46,7 @@ Varias amenazas comparten el detonante o el mecanismo, por lo que un análisis d
 | Sismo | Tsunami, movimientos en masa, licuefacción |
 | Lluvia intensa | Inundación, movimientos en masa, erosión fluvial |
 | Ciclón tropical | Viento, marea de tormenta, lluvia (inundación y deslizamientos) |
+| Tormenta convectiva severa | Vendaval, lluvia intensa (crecidas súbitas), granizo, tormentas eléctricas, interrupción de servicios (ver [](312_vendavales.md)) |
 | Erupción | Caída de ceniza, flujos piroclásticos, lahares |
 | Sequía y calor | Incendios forestales |
 | Ascenso del nivel del mar | Erosión costera, inundación costera |

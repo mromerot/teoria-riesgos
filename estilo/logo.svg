@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 48" role="img" aria-label="TR">
+  <title>Teoría de riesgos: métodos de análisis de riesgos de desastres y climáticos</title>
+  <!-- La T lleva las tres capas del riesgo en su barra: amenaza, exposición y vulnerabilidad -->
+  <rect x="4" y="6" width="12" height="7" fill="#1A6FA3"/>
+  <rect x="16" y="6" width="12" height="7" fill="#2E7D32"/>
+  <rect x="28" y="6" width="12" height="7" fill="#C8811A"/>
+  <rect x="17.5" y="13" width="9" height="29" fill="#0B2545"/>
+  <!-- R -->
+  <path d="M47 6 H62 C70.5 6 75.5 11 75.5 17.5 C75.5 23 72 27.2 66.5 28.6 L77 42 H67.6 L58.5 30 H54.6 V42 H47 Z M54.6 13 V23.5 H61.6 C65 23.5 67.6 21.5 67.6 18.2 C67.6 14.9 65 13 61.6 13 Z" fill="#0B2545" fill-rule="evenodd"/>
+</svg>

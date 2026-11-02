@@ -66,7 +66,7 @@ Esta lista convierte el libro en un procedimiento de trabajo. Sigue el flujo pro
 
 ## Aviso sobre capítulos provisionales
 
-Si la ciudad tiene erosión costera, erosión fluvial o calor como amenaza principal, los capítulos respectivos son provisionales y se apoyan en poca literatura de referencia. En ese caso, el análisis debe empezar con una búsqueda de metodologías específicas y citar la fuente de cada decisión.
+Si la ciudad tiene erosión costera, erosión fluvial, calor o vendavales como amenaza principal, los capítulos respectivos son provisionales y se apoyan en poca literatura de referencia. En ese caso, el análisis debe empezar con una búsqueda de metodologías específicas y citar la fuente de cada decisión.
 
 ## Pendiente
 

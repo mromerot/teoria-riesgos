@@ -64,4 +64,8 @@ Los términos siguen el uso de este libro. Cuando la definición viene de una fu
 
 **SSP.** Trayectoria socioeconómica compartida: narrativa que combina emisiones con supuestos de desarrollo {cite:p}`riahi2017ssp`.
 
+**Vendaval.** En Colombia, viento fuerte, repentino y local, de corta duración, que suele provenir de una tormenta convectiva. La definición atribuida a la UNGRD (2017) lo ubica entre 50 y 80 km/h {cite:p}`ungrd2017vendaval` ([](../03_amenazas/312_vendavales.md)).
+
+**Ráfaga descendente (*downburst*).** Corriente descendente intensa en los niveles bajos que produce en la superficie un área de viento dañino con patrón divergente {cite:p}`bolgiani2020microbursts`. Se clasifica en macrorráfaga y microrráfaga según su tamaño y duración.
+
 **Vulnerabilidad.** Susceptibilidad física, económica, social, ambiental o institucional de una comunidad de ser afectada si ocurre un evento peligroso {cite:p}`ley1523,dnp2019imrd`.

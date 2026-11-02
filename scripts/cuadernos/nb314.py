@@ -1,301 +1,257 @@
-"""Fuente del cuaderno 314 (trayectorias de ciclones tropicales en el Caribe, datos reales de IBTrACS)."""
+"""Fuente del cuaderno 313 (riesgos en cascada)."""
 
 CELLS = []
 def md(t): CELLS.append(("md", t.strip("\n")))
 def code(t): CELLS.append(("code", t.strip("\n")))
 
 md(r'''
-# Trayectorias de ciclones tropicales en el Caribe
+# Riesgos en cascada: un ejemplo con datos inventados
 
-[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mromerot/teoria-riesgos/blob/main/book/03_amenazas/314_trayectorias_ciclones.ipynb)
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mromerot/teoria-riesgos/blob/main/book/03_amenazas/314_riesgos_cascada.ipynb)
 
-Este cuaderno **descarga datos reales** y produce la figura de trayectorias que usa el capítulo de [ciclones tropicales y vendavales](311_ciclones.md). Se puede ejecutar completo en Colab o en un computador, sin cuenta ni claves.
-
-**Datos.** IBTrACS (*International Best Track Archive for Climate Stewardship*), versión 4, cuenca del Atlántico Norte, del NOAA/NCEI. Reúne las trayectorias oficiales («mejores trayectorias») de los centros de pronóstico; para el Atlántico proviene del Centro Nacional de Huracanes de Estados Unidos. Cita: Knapp et al. (2010), *Bulletin of the American Meteorological Society* 91(3), 363-376, [doi:10.1175/2009BAMS2755.1](https://doi.org/10.1175/2009BAMS2755.1); datos: Knapp et al. (2019), IBTrACS Project, Version 4, NOAA NCEI, [doi:10.25921/82ty-9e16](https://doi.org/10.25921/82ty-9e16) (archivo v04r01). Mapa base: Natural Earth (dominio público).
-
-**Qué hace.**
-
-1. Descarga y guarda en caché el archivo de la cuenca del Atlántico Norte (unos 58 MB) y los límites de países.
-2. Se queda con los sistemas desde un año de inicio (por defecto 1980, la era satelital) y calcula la categoría Saffir-Simpson en cada punto con el viento sostenido.
-3. Mide la distancia mínima de cada trayectoria a cuatro sitios de Colombia: San Andrés, Providencia, La Guajira (Cabo de la Vela) y Cartagena.
-4. Dibuja la figura y cuenta cuántos sistemas pasaron cerca de cada sitio.
-
-```{note}
-Los parámetros están en la primera celda de código (año de inicio, distancia de referencia, sitios). Para otra región o periodo basta con cambiarlos.
+```{warning}
+**Todos los datos de este cuaderno son inventados.** Los servicios, sus dependencias, las intensidades y los parámetros no corresponden a ninguna ciudad real. Sirve para ver **cómo se calcula** una cascada, con las ideas del [capítulo de cascadas y compuestos](../01_conceptos/15_cascada_compuestos.md). El segundo ejemplo es un modelo de juguete, no calibrado.
 ```
+
+## Qué se calcula
+
+Una cascada aparece cuando la falla de un servicio provoca la de otros que dependen de él. El capítulo de cascadas y compuestos la describe como una cadena (detonante, impacto primario, falla de sistemas interdependientes, crisis secundarias) y propone mapear detonantes y consecuencias y modelar las interdependencias entre sectores. Aquí se hace en dos partes:
+
+1. **Una red de servicios interdependientes** (energía, agua, comunicaciones, vía, hospital) sometida a tres escenarios. Se compara la interrupción **solo por daño directo** con la interrupción **con cascada**.
+2. **Un bucle de retroalimentación** como el de las inundaciones de Limbe: el daño reduce la inversión y eso aumenta el daño siguiente.
 ''')
 
 code(r'''
-from pathlib import Path
-import io, zipfile, datetime
 import numpy as np
 import pandas as pd
-import requests
-import geopandas as gpd
 import matplotlib.pyplot as plt
-from matplotlib.collections import LineCollection
-from matplotlib.lines import Line2D
+from scipy.special import ndtr
 
-# ----------------------------- parámetros -----------------------------
-ANIO_INICIO = 1980          # era satelital; las trayectorias anteriores son menos precisas
-UMBRAL_KM = 250             # distancia de referencia a cada sitio
-VIENTO_HURACAN = 64         # nudos (categoría 1 de Saffir-Simpson)
-VIENTO_TORMENTA = 34        # nudos (tormenta tropical)
-VENTANA = dict(lon=(-100, -50), lat=(5, 38))        # extensión de la figura general
-CARIBE = dict(lon=(-90, -58), lat=(8, 25))          # un sistema "entra al Caribe" si pasa por esta caja
-ZOOM = dict(lon=(-86, -68), lat=(8, 20))            # acercamiento al suroeste del Caribe
-
-SITIOS = {                  # (lat, lon) aproximadas
-    "San Andrés": (12.58, -81.70),
-    "Providencia": (13.35, -81.37),
-    "La Guajira (Cabo de la Vela)": (12.20, -72.18),
-    "Cartagena": (10.39, -75.51),
-}
-
-URL_IBTRACS = ("https://www.ncei.noaa.gov/data/international-best-track-archive-for-climate-stewardship-ibtracs/"
-               "v04r01/access/csv/ibtracs.NA.list.v04r01.csv")
-URL_PAISES = "https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip"
-
-DATOS, FIGURAS = Path("datos"), Path("figuras")
-DATOS.mkdir(exist_ok=True); FIGURAS.mkdir(exist_ok=True)
-
-# Escala Saffir-Simpson por viento sostenido (nudos): TD, TS, C1..C5
-LIMITES = [0, 34, 64, 83, 96, 113, 137, 999]
-ETIQUETAS = ["Depresión tropical", "Tormenta tropical", "Huracán cat. 1", "Huracán cat. 2",
-             "Huracán cat. 3", "Huracán cat. 4", "Huracán cat. 5"]
-COLORES = ["#9ecae1", "#41ab5d", "#fed976", "#fd8d3c", "#e31a1c", "#bd0026", "#6a0d83"]
+rng = np.random.default_rng(7)
+plt.rcParams.update({"figure.dpi": 110, "axes.grid": True, "grid.alpha": 0.25})
 ''')
 
 md(r'''
-## 1. Descarga (con caché)
+## 1. La red de servicios (inventada)
+
+Cada servicio tiene dos cosas: **qué daño directo puede sufrir** por la amenaza (según su intensidad en el sitio) y **de qué otros servicios depende**. Cada dependencia lleva una **autonomía** en horas: el tiempo que el servicio aguanta con reservas (generador, tanque, baterías) después de que falla aquello de lo que depende. Con autonomía 0 la falla es inmediata.
 ''')
 
 code(r'''
-def descargar(url, destino):
-    """Descarga en bloques si el archivo no existe. Devuelve la ruta."""
-    if destino.exists():
-        print(f"En caché: {destino} ({destino.stat().st_size/1e6:.0f} MB)")
-        return destino
-    print(f"Descargando {url} ...")
-    with requests.get(url, stream=True, timeout=120, headers={"User-Agent": "teoria-riesgos-cuaderno"}) as r:
-        r.raise_for_status()
-        with open(destino, "wb") as f:
-            for bloque in r.iter_content(1 << 20):
-                f.write(bloque)
-    print(f"  listo: {destino.stat().st_size/1e6:.0f} MB")
-    return destino
+SERVICIOS = ["Subestación eléctrica", "Planta de agua", "Torre de comunicaciones", "Puente vial",
+             "Centro de emergencias", "Hospital", "Albergue", "Servicio de agua (barrio)",
+             "Servicio eléctrico (barrio)"]
 
-ruta_csv = descargar(URL_IBTRACS, DATOS / "ibtracs.NA.list.v04r01.csv")
-ruta_zip = descargar(URL_PAISES, DATOS / "ne_50m_admin_0_countries.zip")
+# dependencias: (servicio, depende de, autonomía en horas)
+DEPENDENCIAS = [
+    ("Planta de agua", "Subestación eléctrica", 4),
+    ("Torre de comunicaciones", "Subestación eléctrica", 12),     # baterías
+    ("Centro de emergencias", "Subestación eléctrica", 24),        # planta propia
+    ("Centro de emergencias", "Torre de comunicaciones", 0),
+    ("Hospital", "Subestación eléctrica", 48),                     # generador
+    ("Hospital", "Planta de agua", 12),                            # tanque
+    ("Hospital", "Puente vial", 72),                               # reservas, acceso de insumos
+    ("Albergue", "Planta de agua", 8),
+    ("Albergue", "Puente vial", 24),
+    ("Servicio de agua (barrio)", "Planta de agua", 0),
+    ("Servicio eléctrico (barrio)", "Subestación eléctrica", 0),
+]
 
-cab = requests.head(URL_IBTRACS, timeout=60, headers={"User-Agent": "teoria-riesgos-cuaderno"}).headers
-print("Última modificación del archivo en el servidor:", cab.get("Last-Modified"))
-print("Fecha de esta ejecución:", datetime.date.today().isoformat())
+# Intensidades en el sitio de cada servicio, por escenario (inventadas):
+# profundidad de inundación (m) y aceleración (g). Nan = no aplica.
+SITIOS = pd.DataFrame({
+    "inund_T25":  [0.3, 0.1, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "inund_T100": [0.9, 0.4, 0.0, 1.4, 0.0, 0.0, 0.2, 0.0, 0.0],
+    "pga_T475":   [0.22, 0.20, 0.25, 0.28, 0.20, 0.18, 0.18, 0.0, 0.0],
+}, index=SERVICIOS)
+
+# Fragilidad: mediana y dispersión del umbral de falla directa (lognormal), por servicio
+FRAGILIDAD = pd.DataFrame({
+    "mediana_inund": [1.0, 1.2, 3.0, 1.6, 2.0, 2.0, 1.5, 1.0, 1.0],   # m
+    "mediana_pga":   [0.45, 0.50, 0.40, 0.55, 0.60, 0.65, 0.45, 0.50, 0.45],  # g
+}, index=SERVICIOS)
+BETA = 0.5
+
+def prob_falla_directa(escenario):
+    """Probabilidad de que cada servicio falle por daño directo en el escenario."""
+    if escenario.startswith("inund"):
+        I, med = SITIOS[escenario], FRAGILIDAD.mediana_inund
+    else:
+        I, med = SITIOS[escenario], FRAGILIDAD.mediana_pga
+    p = pd.Series(ndtr(np.log(np.clip(I, 1e-9, None) / med) / BETA), index=SERVICIOS)
+    return p.where(I > 0, 0.0)
+
+pd.DataFrame({e: prob_falla_directa(e) for e in SITIOS.columns}).round(2)
 ''')
 
 md(r'''
-## 2. Lectura y limpieza
+## 2. Propagar las fallas por el tiempo
 
-El archivo tiene dos filas de encabezado (nombres y unidades) y muchas columnas; se leen solo las necesarias. Se conservan las trayectorias principales (`TRACK_TYPE == "main"`) y se usa el viento sostenido en nudos (`USA_WIND`, del Centro Nacional de Huracanes; si falta, el viento oficial `WMO_WIND`).
+Para cada simulación se sortea qué servicios fallan por **daño directo** (instante 0). Después se propaga: un servicio falla en el instante en que falla aquello de lo que depende **más su autonomía**, y se toma el instante más temprano entre todas sus dependencias. Se mide en un horizonte de 72 horas cuántas horas queda cada servicio fuera de funcionamiento.
+
+Se supone, para simplificar, que las fallas directas son **independientes** entre servicios dados el escenario. En la realidad están correlacionadas por la amenaza (si una crecida llega a la subestación, probablemente llega también al puente cercano); eso se trata en el [análisis multiamenaza](313_analisis_multiamenaza.ipynb) con escenarios por periodo de retorno.
 ''')
 
 code(r'''
-cols = ["SID", "SEASON", "NAME", "ISO_TIME", "NATURE", "LAT", "LON", "TRACK_TYPE", "USA_WIND", "WMO_WIND"]
-df = pd.read_csv(ruta_csv, usecols=cols, skiprows=[1], low_memory=False)
-for c in ["SEASON", "LAT", "LON", "USA_WIND", "WMO_WIND"]:
-    df[c] = pd.to_numeric(df[c], errors="coerce")
-df["ISO_TIME"] = pd.to_datetime(df["ISO_TIME"], errors="coerce")
-df["viento"] = df["USA_WIND"].fillna(df["WMO_WIND"])
+HORIZONTE = 72      # horas
+IDX = {s: i for i, s in enumerate(SERVICIOS)}
 
-df = df[(df.TRACK_TYPE == "main") & (df.SEASON >= ANIO_INICIO) & df.LAT.notna() & df.LON.notna()].copy()
-df = df.sort_values(["SID", "ISO_TIME"]).reset_index(drop=True)
-df["categoria"] = pd.cut(df["viento"], LIMITES, labels=False, right=False)   # 0=TD ... 6=C5; NaN si no hay viento
-print(f"{df.SID.nunique()} sistemas del Atlántico Norte desde {ANIO_INICIO}; {len(df):,} posiciones")
-print("Periodo cubierto:", df.ISO_TIME.min().date(), "a", df.ISO_TIME.max().date())
-df.head(3)
+def propagar(falla_directa):
+    """falla_directa: vector booleano. Devuelve el instante de falla (h) de cada servicio (inf si no falla)."""
+    t = np.where(falla_directa, 0.0, np.inf)
+    cambio = True
+    while cambio:                                   # relajación hasta que ninguna hora cambie
+        cambio = False
+        for serv, dep, autonomia in DEPENDENCIAS:
+            candidato = t[IDX[dep]] + autonomia
+            if candidato < t[IDX[serv]]:
+                t[IDX[serv]] = candidato
+                cambio = True
+    return t
+
+def simular(escenario, n=5000):
+    p = prob_falla_directa(escenario).values
+    horas_directo = np.zeros((n, len(SERVICIOS)))
+    horas_cascada = np.zeros((n, len(SERVICIOS)))
+    for k in range(n):
+        directa = rng.random(len(SERVICIOS)) < p
+        t_casc = propagar(directa)
+        horas_directo[k] = np.where(directa, HORIZONTE, 0)
+        horas_cascada[k] = np.clip(HORIZONTE - t_casc, 0, None)
+    return horas_directo, horas_cascada
+
+ESCENARIOS = {"inund_T25": "Lluvia, T = 25 años", "inund_T100": "Lluvia, T = 100 años", "pga_T475": "Sismo, T = 475 años"}
+SIM = {e: simular(e) for e in ESCENARIOS}
 ''')
 
 code(r'''
-# Resumen por sistema
-sis = (df.groupby("SID")
-         .agg(nombre=("NAME", "first"), anio=("SEASON", "first"), vmax=("viento", "max"),
-              inicio=("ISO_TIME", "min"))
-         .reset_index())
-sis["nombre"] = sis.nombre.str.title()
-print(f"Con viento máximo ≥ {VIENTO_TORMENTA} kt (tormenta tropical o más): {(sis.vmax >= VIENTO_TORMENTA).sum()}")
-print(f"Con viento máximo ≥ {VIENTO_HURACAN} kt (huracán): {(sis.vmax >= VIENTO_HURACAN).sum()}")
-
-def haversine(lat1, lon1, lat2, lon2):
-    """Distancia en km sobre la esfera (arrays o escalares)."""
-    R = 6371.0
-    p1, p2 = np.radians(lat1), np.radians(lat2)
-    dphi, dl = p2 - p1, np.radians(lon2 - lon1)
-    a = np.sin(dphi / 2) ** 2 + np.cos(p1) * np.cos(p2) * np.sin(dl / 2) ** 2
-    return 2 * R * np.arcsin(np.sqrt(a))
-
-for nombre, (la, lo) in SITIOS.items():
-    df["d_" + nombre] = haversine(df.LAT, df.LON, la, lo)
-''')
-
-md(r'''
-## 3. ¿Qué sistemas pasan cerca de Colombia?
-
-Para cada sitio se toma, de cada sistema, el punto de la trayectoria más cercano. La tabla cuenta los sistemas que pasaron a menos de la distancia de referencia, separados por intensidad (viento máximo del sistema **dentro** de esa distancia).
-''')
-
-code(r'''
-def cerca(sitio, km=UMBRAL_KM):
-    """Una fila por sistema que pasó a menos de `km` del sitio: distancia mínima y viento máximo dentro del radio."""
-    d = df["d_" + sitio]
-    dentro = df[d <= km]
-    r = (dentro.groupby("SID")
-               .agg(dmin=("d_" + sitio, "min"), vmax_cerca=("viento", "max"),
-                    nombre=("NAME", "first"), anio=("SEASON", "first")).reset_index())
-    r["nombre"] = r.nombre.str.title()
-    return r
-
-CERCA = {s: cerca(s) for s in SITIOS}
 filas = []
-for s, r in CERCA.items():
-    filas.append({"sitio": s,
-                  f"sistemas a < {UMBRAL_KM} km": len(r),
-                  "con viento ≥ 34 kt dentro del radio": int((r.vmax_cerca >= VIENTO_TORMENTA).sum()),
-                  "con viento ≥ 64 kt dentro del radio": int((r.vmax_cerca >= VIENTO_HURACAN).sum())})
-resumen = pd.DataFrame(filas).set_index("sitio")
-print(f"Periodo {ANIO_INICIO}-{df.SEASON.max():.0f}  ({df.SEASON.max() - ANIO_INICIO + 1:.0f} temporadas)")
-resumen
+for e, nombre in ESCENARIOS.items():
+    d, c = SIM[e]
+    for i, s in enumerate(SERVICIOS):
+        filas.append(dict(escenario=nombre, servicio=s,
+                          horas_directo=d[:, i].mean(), horas_con_cascada=c[:, i].mean()))
+res = pd.DataFrame(filas)
+res["amplificación (×)"] = np.where(res.horas_directo > 0.05, res.horas_con_cascada / res.horas_directo, np.nan)
+res.pivot(index="servicio", columns="escenario", values=["horas_directo", "horas_con_cascada"]).round(1)
 ''')
 
 code(r'''
-# Sistemas con viento de huracán dentro del radio de San Andrés o Providencia
-arch = pd.concat([CERCA["San Andrés"].assign(sitio="San Andrés"), CERCA["Providencia"].assign(sitio="Providencia")])
-arch = (arch[arch.vmax_cerca >= VIENTO_HURACAN].sort_values("dmin")
-            .drop_duplicates("SID")[["nombre", "anio", "dmin", "vmax_cerca"]])
-arch.columns = ["nombre", "año", "distancia mínima (km)", "viento máx. dentro del radio (kt)"]
-arch.round(0).reset_index(drop=True)
+fig, ax = plt.subplots(1, 3, figsize=(14, 4.3), sharey=True)
+orden = SERVICIOS[::-1]
+for a, (e, nombre) in zip(ax, ESCENARIOS.items()):
+    sub = res[res.escenario == nombre].set_index("servicio").loc[orden]
+    y = np.arange(len(orden))
+    a.barh(y + 0.2, sub.horas_directo, height=0.38, color="lightgray", edgecolor="k", label="solo daño directo")
+    a.barh(y - 0.2, sub.horas_con_cascada, height=0.38, color="tab:red", edgecolor="k", label="con cascada")
+    a.set_yticks(y); a.set_yticklabels(orden, fontsize=8); a.set_title(nombre, fontsize=10)
+    a.set_xlabel(f"horas fuera de servicio esperadas (de {HORIZONTE} h)")
+ax[0].legend(fontsize=8, loc="lower right")
+plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## 4. La figura
+## 3. ¿Qué cambia con la cascada?
 
-Dos paneles. A la izquierda, los **huracanes** (viento máximo ≥ 64 kt) que entraron al Caribe, con cada tramo coloreado por la categoría que tenía el sistema en ese punto. A la derecha, un acercamiento al suroeste del Caribe con los **sistemas que pasaron a menos de la distancia de referencia** de los cuatro sitios de Colombia (tormentas tropicales y huracanes).
+El hospital casi nunca falla por daño directo (su fragilidad es baja), pero **depende de tres servicios**. La siguiente celda mide la probabilidad de que pase **24 horas o más fuera de servicio** con y sin cascada. Un análisis que solo mira el daño directo subestima este riesgo.
 ''')
 
 code(r'''
-paises = gpd.read_file(f"zip://{ruta_zip}")
-colombia = paises[paises.NAME == "Colombia"]
+tabla = []
+for e, nombre in ESCENARIOS.items():
+    d, c = SIM[e]
+    for s in ["Hospital", "Centro de emergencias", "Albergue"]:
+        i = IDX[s]
+        tabla.append({"escenario": nombre, "servicio": s,
+                      "P(≥24 h fuera), solo directo": (d[:, i] >= 24).mean(),
+                      "P(≥24 h fuera), con cascada": (c[:, i] >= 24).mean()})
+pd.DataFrame(tabla).round(3)
+''')
 
-def dibujar_base(ax, ext):
-    paises.plot(ax=ax, color="#eeeeee", edgecolor="#9a9a9a", linewidth=0.4, zorder=1)
-    colombia.plot(ax=ax, color="#ffe9a8", edgecolor="#8a6d00", linewidth=0.8, zorder=2)
-    ax.set_xlim(*ext["lon"]); ax.set_ylim(*ext["lat"])
-    ax.set_aspect(1 / np.cos(np.radians(np.mean(ext["lat"]))))
-    ax.set_facecolor("#dbeaf3")
-    ax.grid(color="white", alpha=0.6, lw=0.5)
-    ax.set_xlabel("longitud (°)"); ax.set_ylabel("latitud (°)")
-
-def segmentos(g):
-    xy = g[["LON", "LAT"]].to_numpy()
-    seg = np.stack([xy[:-1], xy[1:]], axis=1)
-    cat = g["categoria"].to_numpy()[:-1]
-    return seg, cat
-
-def dibujar_trayectorias(ax, sids, lw=1.0, alpha=0.9, solo_gris=False):
-    segs, cols = [], []
-    for sid, g in df[df.SID.isin(sids)].groupby("SID"):
-        if len(g) < 2:
-            continue
-        s, c = segmentos(g)
-        segs.append(s)
-        cols.append(np.where(np.isnan(c), 0, c).astype(int))
-    if not segs:
-        return
-    segs, cols = np.concatenate(segs), np.concatenate(cols)
-    color = ["#bdbdbd"] * len(cols) if solo_gris else [COLORES[i] for i in cols]
-    ax.add_collection(LineCollection(segs, colors=color, linewidths=lw, alpha=alpha, zorder=3))
-
-def circulo(lat, lon, km, n=120):
-    """Círculo geodésico aproximado (en lon, lat) de radio `km`."""
-    ang = np.linspace(0, 2 * np.pi, n)
-    dlat = (km / 111.0) * np.sin(ang)
-    dlon = (km / (111.0 * np.cos(np.radians(lat)))) * np.cos(ang)
-    return lon + dlon, lat + dlat
-
-# --- selección de sistemas
-en_caribe = df[(df.LON.between(*CARIBE["lon"])) & (df.LAT.between(*CARIBE["lat"]))].SID.unique()
-huracanes_caribe = sis[(sis.SID.isin(en_caribe)) & (sis.vmax >= VIENTO_HURACAN)].SID
-sids_cerca = set()
-for s, r in CERCA.items():
-    sids_cerca |= set(r[r.vmax_cerca >= VIENTO_TORMENTA].SID)
-print(f"Huracanes que entraron al Caribe: {len(huracanes_caribe)}; sistemas cerca de Colombia: {len(sids_cerca)}")
-
-fig, ax = plt.subplots(1, 2, figsize=(16, 7.2), gridspec_kw=dict(width_ratios=[1.35, 1]))
-
-# Panel izquierdo
-dibujar_base(ax[0], VENTANA)
-dibujar_trayectorias(ax[0], set(huracanes_caribe), lw=0.9, alpha=0.85)
-ax[0].add_patch(plt.Rectangle((CARIBE["lon"][0], CARIBE["lat"][0]), CARIBE["lon"][1] - CARIBE["lon"][0],
-                              CARIBE["lat"][1] - CARIBE["lat"][0], fill=False, ls="--", ec="k", lw=0.8, zorder=4))
-ax[0].set_title(f"Huracanes que entraron al Caribe, {ANIO_INICIO}-{df.SEASON.max():.0f} (n = {len(huracanes_caribe)})\n"
-                "caja punteada: región usada para seleccionarlos", fontsize=10)
-
-# Panel derecho
-dibujar_base(ax[1], ZOOM)
-otros = set(sis[(sis.vmax >= VIENTO_TORMENTA)].SID) - sids_cerca
-dibujar_trayectorias(ax[1], otros, lw=0.5, alpha=0.5, solo_gris=True)
-dibujar_trayectorias(ax[1], sids_cerca, lw=1.8, alpha=0.95)
-for nombre, (la, lo) in SITIOS.items():
-    cx, cy = circulo(la, lo, UMBRAL_KM)
-    ax[1].plot(cx, cy, "k--", lw=0.8, zorder=5)
-    ax[1].plot(lo, la, "k^", ms=7, zorder=6)
-    despl = (-62, -4) if nombre == "San Andrés" else ((4, -12) if nombre != "Providencia" else (6, 4))
-    ax[1].annotate(nombre, (lo, la), xytext=despl, textcoords="offset points", fontsize=8, zorder=7,
-                   bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.75))
-# numerar los huracanes que pasaron por el archipiélago (la lista va en un recuadro, para que no se encimen)
-DESPLAZ = [(-52, 30), (38, 44), (-62, -30), (46, -40), (-8, 52), (62, 4)]    # desplazamiento de cada número (puntos)
-lista = []
-for k, (_, f) in enumerate(arch.head(6).iterrows()):
-    sid = sis[(sis.nombre == f["nombre"]) & (sis.anio == f["año"])].SID.iloc[0]
-    g = df[df.SID == sid]
-    d = np.minimum(g["d_San Andrés"], g["d_Providencia"])
-    p = g.loc[d.idxmin()]
-    ax[1].annotate(str(k + 1), (p.LON, p.LAT), xytext=DESPLAZ[k], textcoords="offset points", fontsize=8,
-                   fontweight="bold", ha="center", va="center", zorder=9,
-                   bbox=dict(boxstyle="circle,pad=0.25", fc="white", ec="#7a0000", lw=1),
-                   arrowprops=dict(arrowstyle="-", color="#7a0000", lw=0.8))
-    lista.append(f"{k + 1}  {f['nombre']} {int(f['año'])}")
-ax[1].text(0.015, 0.985, "Huracanes que pasaron a < %d km\nde San Andrés o Providencia:\n" % UMBRAL_KM + "\n".join(lista),
-           transform=ax[1].transAxes, fontsize=8, va="top", zorder=10,
-           bbox=dict(boxstyle="round", fc="white", ec="gray", alpha=0.92))
-ax[1].set_title(f"Sistemas a menos de {UMBRAL_KM} km de sitios de Colombia (tormenta tropical o más)\n"
-                "gris: demás sistemas de la época; triángulos: sitios; círculos: radio de referencia", fontsize=10)
-
-leyenda = [Line2D([0], [0], color=c, lw=3, label=e) for c, e in zip(COLORES, ETIQUETAS)]
-ax[0].legend(handles=leyenda, loc="lower left", fontsize=8, title="Categoría en cada tramo", framealpha=0.9)
-fig.suptitle("Trayectorias de ciclones tropicales del Atlántico Norte en el Caribe (IBTrACS v04r01, NOAA/NCEI)", fontsize=12)
-fig.text(0.5, 0.005, "Datos: IBTrACS, mejores trayectorias del Centro Nacional de Huracanes. Mapa base: Natural Earth. "
-         "Elaboración propia con el cuaderno 314_trayectorias_ciclones.ipynb.", ha="center", fontsize=8, color="dimgray")
-plt.tight_layout(rect=(0, 0.02, 1, 0.97))
-SALIDA = FIGURAS / "trayectorias_ciclones_caribe.png"
-fig.savefig(SALIDA, dpi=125, bbox_inches="tight")
-print("Figura guardada en", SALIDA)
-plt.show()
+code(r'''
+# Esquema de la red: color = horas fuera de servicio esperadas con cascada (escenario T = 100)
+POS = {"Subestación eléctrica": (0, 2), "Planta de agua": (1.5, 3), "Torre de comunicaciones": (1.5, 1),
+       "Puente vial": (1.5, 0), "Centro de emergencias": (3, 1), "Hospital": (3.2, 2.2), "Albergue": (3, 3.4),
+       "Servicio de agua (barrio)": (3, 4.3), "Servicio eléctrico (barrio)": (0, 3.6)}
+horas = res[res.escenario == ESCENARIOS["inund_T100"]].set_index("servicio").horas_con_cascada
+fig, ax = plt.subplots(figsize=(8.5, 5))
+for serv, dep, aut in DEPENDENCIAS:
+    (x0, y0), (x1, y1) = POS[dep], POS[serv]
+    ax.annotate("", xy=(x1, y1), xytext=(x0, y0), arrowprops=dict(arrowstyle="->", color="gray", lw=1,
+                shrinkA=14, shrinkB=14))
+    ax.text((x0 + x1) / 2, (y0 + y1) / 2, f"{aut} h", fontsize=6.5, color="dimgray")
+sc = ax.scatter([POS[s][0] for s in SERVICIOS], [POS[s][1] for s in SERVICIOS],
+                c=[horas[s] for s in SERVICIOS], cmap="Reds", vmin=0, vmax=HORIZONTE, s=900, edgecolor="k", zorder=3)
+for s in SERVICIOS:
+    ax.text(POS[s][0], POS[s][1] - 0.32, s, ha="center", fontsize=7)
+plt.colorbar(sc, label="horas fuera de servicio esperadas", shrink=0.8)
+ax.set_title("Red de dependencias (flecha: de qué depende; etiqueta: autonomía) · lluvia T = 100", fontsize=9)
+ax.set_xlim(-0.7, 4.0); ax.set_ylim(-0.6, 4.8); ax.axis("off")
+plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## 5. Qué hay que tener presente al leer la figura
+## 4. Un bucle de retroalimentación (modelo de juguete)
 
-- **Son mejores trayectorias, no mediciones.** El Centro Nacional de Huracanes las reconstruye después de cada temporada. La intensidad entre observaciones se interpola; el viento sostenido tiene incertidumbre.
-- **El periodo es corto frente a la frecuencia de eventos raros.** Unas cuatro décadas dan una idea del patrón, pero pocos sistemas pasan cerca de un punto dado; un conteo de uno o dos sistemas no permite estimar un periodo de retorno. Para la amenaza se usa un conjunto estocástico de ciclones, como el del Atlas de Riesgo de Colombia.
-- **La distancia no es el impacto.** Que un ciclón pase a 250 km no dice cuánto viento, lluvia o marea de tormenta recibe un sitio; eso depende del tamaño del sistema y de su lado (derecho o izquierdo) respecto del punto. El daño también depende de la exposición y la vulnerabilidad.
-- **Las coordenadas de los sitios son aproximadas** y se pueden cambiar en la primera celda de código.
+En Limbe, el capítulo de cascadas y compuestos describe una cascada económica que se cierra sobre sí misma: los drenajes bloqueados causan inundación, que interrumpe el transporte y los negocios, lo que reduce la inversión en infraestructura, y el ciclo continúa. Una evaluación que solo sigue la cadena hacia adelante no ve ese refuerzo.
 
-## 6. Reproducir o adaptar
+Este modelo lo reproduce de forma mínima, **sin calibrar y con parámetros inventados**:
 
-| Quiero… | Cambio |
-|---|---|
-| Otro periodo | `ANIO_INICIO` (la base llega hasta 1851, con menos precisión antes de la era satelital) |
-| Otra ciudad o región | `SITIOS`, `ZOOM` y `VENTANA` |
-| Otra distancia de referencia | `UMBRAL_KM` |
-| Otra cuenca (Pacífico oriental, por ejemplo) | Cambiar `URL_IBTRACS` por el archivo `ibtracs.EP.list.v04r01.csv` |
+- $C_t$: capacidad de drenaje (1 = suficiente para la lluvia media alta).
+- $R_t$: lluvia del año (aleatoria).
+- Daño: $D_t = k \cdot \max(0, R_t - C_t)$.
+- Inversión: $I_t = I_0 - \alpha D_t$ si la inversión depende del daño (el presupuesto se desvía a la recuperación), o $I_t = I_0$ si está **protegida**.
+- Capacidad: $C_{t+1} = (1-\delta) C_t + \beta I_t$.
+
+Se simulan 500 trayectorias de 30 años con la misma lluvia en los dos casos.
+''')
+
+code(r'''
+ANIOS, N_SIM = 30, 500
+C0, I0, DELTA, BETA_I, K, ALPHA = 0.70, 0.50, 0.06, 0.12, 1.5, 0.9
+
+def trayectorias(retroalimentacion, lluvias):
+    C = np.full(N_SIM, C0)
+    Cs, Ds = [], []
+    for t in range(ANIOS):
+        R = lluvias[:, t]
+        D = K * np.clip(R - C, 0, None)
+        I = np.clip(I0 - ALPHA * D, 0, None) if retroalimentacion else np.full(N_SIM, I0)
+        Cs.append(C.copy()); Ds.append(D)
+        C = np.clip((1 - DELTA) * C + BETA_I * I, 0, 1.3)
+    return np.array(Cs), np.array(Ds)            # (años, trayectorias)
+
+lluvias = rng.lognormal(mean=np.log(0.85), sigma=0.22, size=(N_SIM, ANIOS))   # la MISMA lluvia en los dos casos
+C_fb, D_fb = trayectorias(True, lluvias)
+C_pr, D_pr = trayectorias(False, lluvias)
+
+fig, ax = plt.subplots(1, 2, figsize=(12, 4.2))
+anios = np.arange(ANIOS)
+for (C, D, color, etiqueta) in [(C_fb, D_fb, "tab:red", "inversión que cae con el daño"),
+                                (C_pr, D_pr, "tab:blue", "inversión protegida")]:
+    for a, M, titulo in [(ax[0], C, "Capacidad de drenaje"), (ax[1], np.cumsum(D, axis=0), "Daño acumulado")]:
+        a.plot(anios, np.median(M, axis=1), color=color, label=etiqueta)
+        a.fill_between(anios, np.percentile(M, 10, axis=1), np.percentile(M, 90, axis=1), color=color, alpha=0.18)
+        a.set_title(titulo + " (mediana y banda 10-90 %)", fontsize=10); a.set_xlabel("año")
+ax[0].legend(fontsize=8)
+plt.tight_layout(); plt.show()
+
+print(f"Daño acumulado a 30 años (mediana): con retroalimentación {np.median(D_fb.sum(0)):.1f}, "
+      f"con inversión protegida {np.median(D_pr.sum(0)):.1f} (unidades arbitrarias).")
+''')
+
+md(r'''
+La diferencia entre las dos curvas es el efecto del bucle: en el caso con retroalimentación, los años de lluvia fuerte recortan la inversión y la capacidad no se recupera. **Lo que enseña es una lección cualitativa**: las políticas que protegen la inversión en infraestructura cortan el bucle. Los números no significan nada fuera del juguete.
+
+## 5. Cómo pasar a datos reales
+
+| En este cuaderno | En un análisis real | Dónde se explica |
+|---|---|---|
+| `SERVICIOS`, `DEPENDENCIAS` | Inventario de líneas vitales de la ciudad y entrevistas con los operadores para fijar dependencias y autonomías | [Exposición](../04_vulnerabilidad/41_exposicion.md), [Cascadas y compuestos](../01_conceptos/15_cascada_compuestos.md) |
+| `SITIOS` | Intensidades de los mapas de amenaza en el sitio de cada servicio, por escenario | [Inundación](305_inundacion.md), [Sismo](301_sismo.md) |
+| `FRAGILIDAD` | Curvas de fragilidad de la literatura o de expertos para cada tipo de infraestructura | [Funciones de daño](../04_vulnerabilidad/42_funciones_dano.md) |
+| Fallas independientes | Fallas correlacionadas por la misma amenaza (misma realización de intensidades) | [Análisis multiamenaza](313_analisis_multiamenaza.ipynb) |
+| Bucle de Limbe | Un mapa de sistemas construido con los actores locales, y luego un modelo calibrado si hay datos | [Cascadas y compuestos](../01_conceptos/15_cascada_compuestos.md) |
+
+Para el informe, la síntesis debe decir qué cascadas se cuantificaron, con qué supuestos de dependencia y autonomía, y cuáles quedaron solo descritas ([síntesis multiamenaza](../05_sintesis/51_sintesis_multiamenaza.md)).
 ''')

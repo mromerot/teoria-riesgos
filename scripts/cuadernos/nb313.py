@@ -1,257 +1,313 @@
-"""Fuente del cuaderno 313 (riesgos en cascada)."""
+"""Fuente del cuaderno 312 (análisis multiamenaza). Cada elemento es ('md'|'code', texto)."""
 
 CELLS = []
 def md(t): CELLS.append(("md", t.strip("\n")))
 def code(t): CELLS.append(("code", t.strip("\n")))
 
 md(r'''
-# Riesgos en cascada: un ejemplo con datos inventados
+# Análisis multiamenaza: un ejemplo con datos inventados
 
-[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mromerot/teoria-riesgos/blob/main/book/03_amenazas/313_riesgos_cascada.ipynb)
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mromerot/teoria-riesgos/blob/main/book/03_amenazas/313_analisis_multiamenaza.ipynb)
 
 ```{warning}
-**Todos los datos de este cuaderno son inventados.** Los servicios, sus dependencias, las intensidades y los parámetros no corresponden a ninguna ciudad real. Sirve para ver **cómo se calcula** una cascada, con las ideas del [capítulo de cascadas y compuestos](../01_conceptos/15_cascada_compuestos.md). El segundo ejemplo es un modelo de juguete, no calibrado.
+**Todos los datos de este cuaderno son inventados.** La "ciudad" es sintética: sus edificaciones, valores, amenazas y curvas de vulnerabilidad no corresponden a ningún lugar real. El cuaderno sirve para ver **cómo se hacen los cálculos** del [capítulo de riesgos multiamenaza](../01_conceptos/14_riesgo_multiamenaza.md) y de la [síntesis](../05_sintesis/51_sintesis_multiamenaza.md), no para sacar conclusiones sobre ninguna ciudad.
 ```
 
 ## Qué se calcula
 
-Una cascada aparece cuando la falla de un servicio provoca la de otros que dependen de él. El capítulo de cascadas y compuestos la describe como una cadena (detonante, impacto primario, falla de sistemas interdependientes, crisis secundarias) y propone mapear detonantes y consecuencias y modelar las interdependencias entre sectores. Aquí se hace en dos partes:
+Se sigue el procedimiento de Chen et al. (2016) del capítulo de riesgos multiamenaza:
 
-1. **Una red de servicios interdependientes** (energía, agua, comunicaciones, vía, hospital) sometida a tres escenarios. Se compara la interrupción **solo por daño directo** con la interrupción **con cascada**.
-2. **Un bucle de retroalimentación** como el de las inundaciones de Limbe: el daño reduce la inversión y eso aumenta el daño siguiente.
+1. Escenarios de amenaza por **periodo de retorno** del detonante.
+2. Pérdida por edificación: $L = P_s \cdot E \cdot V$ (probabilidad espacial × exposición × vulnerabilidad).
+3. **Mínimo, medio y máximo** en cada factor, para expresar la incertidumbre.
+4. Dentro de un mismo detonante, el **máximo por elemento** y no la suma.
+5. **Curvas de riesgo** (pérdida contra probabilidad anual) y pérdida anual esperada (PAE), con cotas inferior y superior como en CCDR-tools.
+6. Entre detonantes independientes se **suman las PAE**, pero **no** las pérdidas máximas probables (PML).
+
+La ciudad inventada tiene dos detonantes: la **lluvia intensa** (que produce a la vez inundación y movimientos en masa) y el **sismo** (independiente de la lluvia).
 ''')
 
 code(r'''
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.special import ndtr
+from scipy.special import ndtr          # función de distribución normal
 
-rng = np.random.default_rng(7)
+rng = np.random.default_rng(42)         # semilla fija: los resultados se repiten
 plt.rcParams.update({"figure.dpi": 110, "axes.grid": True, "grid.alpha": 0.25})
 ''')
 
 md(r'''
-## 1. La red de servicios (inventada)
+## 1. La ciudad inventada (exposición)
 
-Cada servicio tiene dos cosas: **qué daño directo puede sufrir** por la amenaza (según su intensidad en el sitio) y **de qué otros servicios depende**. Cada dependencia lleva una **autonomía** en horas: el tiempo que el servicio aguanta con reservas (generador, tanque, baterías) después de que falla aquello de lo que depende. Con autonomía 0 la falla es inmediata.
+500 edificaciones repartidas en un cuadrado de 3 km por 3 km, atravesado por un río sinuoso. El terreno sube hacia el norte, donde hay una ladera que llega hasta la orilla del río: en esa franja una misma casa puede ser alcanzada por la crecida y por un movimiento en masa. Cada edificación tiene un tipo constructivo, un valor de reposición (millones de pesos) y un número de ocupantes. **En un análisis real** esta tabla sale del catastro, del censo de edificaciones y del DANE ([capítulo de exposición](../04_vulnerabilidad/41_exposicion.md)).
 ''')
 
 code(r'''
-SERVICIOS = ["Subestación eléctrica", "Planta de agua", "Torre de comunicaciones", "Puente vial",
-             "Centro de emergencias", "Hospital", "Albergue", "Servicio de agua (barrio)",
-             "Servicio eléctrico (barrio)"]
+N, LADO = 500, 3000
+x = rng.uniform(0, LADO, N)
+y = rng.uniform(0, LADO, N)
 
-# dependencias: (servicio, depende de, autonomía en horas)
-DEPENDENCIAS = [
-    ("Planta de agua", "Subestación eléctrica", 4),
-    ("Torre de comunicaciones", "Subestación eléctrica", 12),     # baterías
-    ("Centro de emergencias", "Subestación eléctrica", 24),        # planta propia
-    ("Centro de emergencias", "Torre de comunicaciones", 0),
-    ("Hospital", "Subestación eléctrica", 48),                     # generador
-    ("Hospital", "Planta de agua", 12),                            # tanque
-    ("Hospital", "Puente vial", 72),                               # reservas, acceso de insumos
-    ("Albergue", "Planta de agua", 8),
-    ("Albergue", "Puente vial", 24),
-    ("Servicio de agua (barrio)", "Planta de agua", 0),
-    ("Servicio eléctrico (barrio)", "Subestación eléctrica", 0),
-]
+rio_y = 1400 + 300 * np.sin(x / 600)            # trazado del río (m), al pie de la ladera
+dist_rio = np.abs(y - rio_y)
+elev = 0.012 * dist_rio + 0.07 * np.clip(y - 1800, 0, None)   # elevación sobre el cauce (m)
+pendiente = 4 + 34 * np.clip((y - 1100) / 1700, 0, 1) + rng.normal(0, 2, N)   # grados
+suscept = 1 / (1 + np.exp(-(pendiente - 20) / 4))             # susceptibilidad 0-1 por pendiente
+suscept = np.clip(suscept + 0.7 * np.exp(-dist_rio / 250), 0, 1)   # + inestabilidad de taludes ribereños
 
-# Intensidades en el sitio de cada servicio, por escenario (inventadas):
-# profundidad de inundación (m) y aceleración (g). Nan = no aplica.
-SITIOS = pd.DataFrame({
-    "inund_T25":  [0.3, 0.1, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0],
-    "inund_T100": [0.9, 0.4, 0.0, 1.4, 0.0, 0.0, 0.2, 0.0, 0.0],
-    "pga_T475":   [0.22, 0.20, 0.25, 0.28, 0.20, 0.18, 0.18, 0.0, 0.0],
-}, index=SERVICIOS)
+tipos = np.array(["mampostería", "concreto", "bahareque"])
+tipo = rng.choice(tipos, N, p=[0.5, 0.3, 0.2])
+valor = rng.lognormal(mean=np.log(110), sigma=0.45, size=N)   # millones de COP
+personas = rng.poisson(3.2, N) + 1
 
-# Fragilidad: mediana y dispersión del umbral de falla directa (lognormal), por servicio
-FRAGILIDAD = pd.DataFrame({
-    "mediana_inund": [1.0, 1.2, 3.0, 1.6, 2.0, 2.0, 1.5, 1.0, 1.0],   # m
-    "mediana_pga":   [0.45, 0.50, 0.40, 0.55, 0.60, 0.65, 0.45, 0.50, 0.45],  # g
-}, index=SERVICIOS)
-BETA = 0.5
-
-def prob_falla_directa(escenario):
-    """Probabilidad de que cada servicio falle por daño directo en el escenario."""
-    if escenario.startswith("inund"):
-        I, med = SITIOS[escenario], FRAGILIDAD.mediana_inund
-    else:
-        I, med = SITIOS[escenario], FRAGILIDAD.mediana_pga
-    p = pd.Series(ndtr(np.log(np.clip(I, 1e-9, None) / med) / BETA), index=SERVICIOS)
-    return p.where(I > 0, 0.0)
-
-pd.DataFrame({e: prob_falla_directa(e) for e in SITIOS.columns}).round(2)
+edif = pd.DataFrame({"x": x, "y": y, "tipo": tipo, "valor": valor, "personas": personas,
+                     "dist_rio": dist_rio, "elev": elev, "pendiente": pendiente, "suscept": suscept})
+print(f"Valor expuesto total: {edif.valor.sum():,.0f} millones de COP (inventados)")
+edif.groupby("tipo").agg(n=("tipo", "size"), valor_medio=("valor", "mean")).round(1)
 ''')
 
 md(r'''
-## 2. Propagar las fallas por el tiempo
+## 2. Escenarios de los detonantes
 
-Para cada simulación se sortea qué servicios fallan por **daño directo** (instante 0). Después se propaga: un servicio falla en el instante en que falla aquello de lo que depende **más su autonomía**, y se toma el instante más temprano entre todas sus dependencias. Se mide en un horizonte de 72 horas cuántas horas queda cada servicio fuera de funcionamiento.
-
-Se supone, para simplificar, que las fallas directas son **independientes** entre servicios dados el escenario. En la realidad están correlacionadas por la amenaza (si una crecida llega a la subestación, probablemente llega también al puente cercano); eso se trata en el [análisis multiamenaza](312_analisis_multiamenaza.ipynb) con escenarios por periodo de retorno.
+Cada detonante tiene escenarios por periodo de retorno $T$. La lluvia usa $T = 2$ a $500$ años; el sismo, $T = 50$ a $2475$. **Las dos amenazas de la lluvia (inundación y movimientos en masa) comparten los mismos escenarios**, porque las dispara el mismo evento.
 ''')
 
 code(r'''
-HORIZONTE = 72      # horas
-IDX = {s: i for i, s in enumerate(SERVICIOS)}
+T_LLUVIA = np.array([2, 5, 10, 25, 50, 100, 250, 500])
+T_SISMO = np.array([50, 100, 250, 475, 975, 2475])
 
-def propagar(falla_directa):
-    """falla_directa: vector booleano. Devuelve el instante de falla (h) de cada servicio (inf si no falla)."""
-    t = np.where(falla_directa, 0.0, np.inf)
-    cambio = True
-    while cambio:                                   # relajación hasta que ninguna hora cambie
-        cambio = False
-        for serv, dep, autonomia in DEPENDENCIAS:
-            candidato = t[IDX[dep]] + autonomia
-            if candidato < t[IDX[serv]]:
-                t[IDX[serv]] = candidato
-                cambio = True
-    return t
+# Incertidumbre: cada factor se expresa con valores mínimo, medio y máximo (Chen et al., 2016).
+# "mín" y "máx" se refieren a la PÉRDIDA: todos los factores empujan en la misma dirección.
+CASOS = {
+    "mín": dict(f_int=0.85, f_vul=0.80, f_ps=0.70, f_val=0.85, f_T=1.5),   # f_T>1: eventos más raros
+    "med": dict(f_int=1.00, f_vul=1.00, f_ps=1.00, f_val=1.00, f_T=1.0),
+    "máx": dict(f_int=1.15, f_vul=1.25, f_ps=1.30, f_val=1.15, f_T=0.7),   # f_T<1: eventos más frecuentes
+}
+pd.DataFrame(CASOS).T
+''')
 
-def simular(escenario, n=5000):
-    p = prob_falla_directa(escenario).values
-    horas_directo = np.zeros((n, len(SERVICIOS)))
-    horas_cascada = np.zeros((n, len(SERVICIOS)))
-    for k in range(n):
-        directa = rng.random(len(SERVICIOS)) < p
-        t_casc = propagar(directa)
-        horas_directo[k] = np.where(directa, HORIZONTE, 0)
-        horas_cascada[k] = np.clip(HORIZONTE - t_casc, 0, None)
-    return horas_directo, horas_cascada
+md(r'''
+## 3. Amenaza, vulnerabilidad y pérdida por edificación
 
-ESCENARIOS = {"inund_T25": "Lluvia, T = 25 años", "inund_T100": "Lluvia, T = 100 años", "pga_T475": "Sismo, T = 475 años"}
-SIM = {e: simular(e) for e in ESCENARIOS}
+Tres funciones, una por amenaza. Cada una devuelve la pérdida económica y las personas afectadas de cada edificación para un escenario y un caso de incertidumbre. Las curvas son **inventadas** y sin calibración: en un estudio real se toman de la literatura, de expertos o de daños históricos ([capítulo de funciones de daño](../04_vulnerabilidad/42_funciones_dano.md)).
 ''')
 
 code(r'''
-filas = []
-for e, nombre in ESCENARIOS.items():
-    d, c = SIM[e]
-    for i, s in enumerate(SERVICIOS):
-        filas.append(dict(escenario=nombre, servicio=s,
-                          horas_directo=d[:, i].mean(), horas_con_cascada=c[:, i].mean()))
-res = pd.DataFrame(filas)
-res["amplificación (×)"] = np.where(res.horas_directo > 0.05, res.horas_con_cascada / res.horas_directo, np.nan)
-res.pivot(index="servicio", columns="escenario", values=["horas_directo", "horas_con_cascada"]).round(1)
+D50_INUND = {"mampostería": 1.8, "concreto": 2.5, "bahareque": 1.0}   # profundidad de daño medio (m)
+THETA_PGA = {"mampostería": 0.30, "concreto": 0.45, "bahareque": 0.25}  # mediana de fragilidad (g)
+
+def _sigmoide(z):
+    return 1 / (1 + np.exp(-z))
+
+def inundacion(T, c):
+    """Profundidad del agua por escenario -> curva profundidad-daño por tipo."""
+    nivel = (0.2 + 0.45 * np.log(T)) * c["f_int"]          # nivel del río (m)
+    prof = np.clip(nivel - edif.elev.values, 0, None)
+    d50 = edif.tipo.map(D50_INUND).values / c["f_vul"]
+    V = np.clip((_sigmoide((prof - d50) / 0.5) - _sigmoide(-d50 / 0.5)) / (1 - _sigmoide(-d50 / 0.5)), 0, 1)
+    V = np.where(prof > 0, V, 0.0)
+    Ps = np.where(prof > 0, 1.0, 0.0)                         # zona modelada = zona afectada
+    return Ps, V, prof
+
+def movimiento_masa(T, c):
+    """Lluvia -> altura del flujo y probabilidad espacial de que la celda sea alcanzada."""
+    r = np.log(T) / np.log(500)                               # intensidad relativa del detonante (0-1)
+    Ps = np.clip(edif.suscept.values * (0.03 + 0.6 * r ** 2) * c["f_ps"], 0, 1)
+    h = 3.0 * edif.suscept.values * r * c["f_int"]            # altura del depósito (m)
+    V = np.clip(1 - np.exp(-(h / (1.2 / c["f_vul"])) ** 2), 0, 1)
+    return Ps, V, h
+
+def sismo(T, c):
+    """Aceleración del escenario -> fragilidad por tipo constructivo (Ps = 1: afecta a toda la ciudad)."""
+    pga = 0.07 * (T / 50) ** 0.55 * c["f_int"]               # g, roca
+    amp = np.where(edif.dist_rio.values < 350, 1.35, 1.0)   # suelo blando cerca del río
+    theta = edif.tipo.map(THETA_PGA).values / c["f_vul"]
+    V = 0.7 * ndtr(np.log(pga * amp / theta) / 0.5)
+    return np.ones(N), V, pga * amp
+
+def perdidas(funcion, T, caso):
+    c = CASOS[caso]
+    Ps, V, intensidad = funcion(T, c)
+    E = edif.valor.values * c["f_val"]
+    perdida = Ps * E * V                                      # L = Ps · E · V   (millones de COP)
+    afectados = edif.personas.values * Ps * np.clip(2 * V, 0, 1)
+    return perdida, afectados, intensidad
+
+# Una mirada rápida al escenario de 100 años de la lluvia, caso medio
+L_inu, _, prof = perdidas(inundacion, 100, "med")
+L_mm, _, h = perdidas(movimiento_masa, 100, "med")
+ambas = (L_inu > 0) & (L_mm > 0)
+print(f"T = 100 años, lluvia: {np.sum(prof > 0)} edificaciones inundadas; "
+      f"pérdida por inundación {L_inu.sum():,.0f} y por movimientos en masa {L_mm.sum():,.0f} millones de COP; "
+      f"{ambas.sum()} edificaciones sufren daño por las dos amenazas a la vez")
 ''')
 
 code(r'''
-fig, ax = plt.subplots(1, 3, figsize=(14, 4.3), sharey=True)
-orden = SERVICIOS[::-1]
-for a, (e, nombre) in zip(ax, ESCENARIOS.items()):
-    sub = res[res.escenario == nombre].set_index("servicio").loc[orden]
-    y = np.arange(len(orden))
-    a.barh(y + 0.2, sub.horas_directo, height=0.38, color="lightgray", edgecolor="k", label="solo daño directo")
-    a.barh(y - 0.2, sub.horas_con_cascada, height=0.38, color="tab:red", edgecolor="k", label="con cascada")
-    a.set_yticks(y); a.set_yticklabels(orden, fontsize=8); a.set_title(nombre, fontsize=10)
-    a.set_xlabel(f"horas fuera de servicio esperadas (de {HORIZONTE} h)")
-ax[0].legend(fontsize=8, loc="lower right")
+fig, ax = plt.subplots(1, 3, figsize=(13, 4.2), sharex=True, sharey=True)
+for a, (titulo, v, cmap, lab) in zip(ax, [
+        ("Inundación, T = 100 años: profundidad (m)", prof, "Blues", "m"),
+        ("Movimientos en masa, T = 100: altura del depósito (m)", h, "Oranges", "m"),
+        ("Sismo, T = 475: aceleración (g)", perdidas(sismo, 475, "med")[2], "Purples", "g")]):
+    s = a.scatter(edif.x, edif.y, c=v, s=edif.valor / 6, cmap=cmap, edgecolor="k", linewidth=0.2)
+    xs = np.linspace(0, LADO, 200)
+    a.plot(xs, 1400 + 300 * np.sin(xs / 600), "c-", lw=2, alpha=0.6)
+    a.set_title(titulo, fontsize=9); a.set_aspect("equal"); plt.colorbar(s, ax=a, shrink=0.7, label=lab)
+fig.suptitle("Ciudad inventada: intensidades por amenaza (tamaño del punto = valor; línea cian = río)", fontsize=10)
 plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## 3. ¿Qué cambia con la cascada?
+## 4. Pérdida por escenario: máximo por elemento dentro del detonante
 
-El hospital casi nunca falla por daño directo (su fragilidad es baja), pero **depende de tres servicios**. La siguiente celda mide la probabilidad de que pase **24 horas o más fuera de servicio** con y sin cascada. Un análisis que solo mira el daño directo subestima este riesgo.
+Para cada escenario de lluvia se calcula la pérdida de cada edificación por inundación y por movimientos en masa. Una misma casa puede ser dañada por ambas durante el mismo evento. Chen et al. (2016) toman **la mayor pérdida por elemento, no la suma**, y además la pérdida no puede superar el valor de la casa. Más abajo se compara con la suma ingenua para ver cuánto se sobrestimaría.
 ''')
 
 code(r'''
-tabla = []
-for e, nombre in ESCENARIOS.items():
-    d, c = SIM[e]
-    for s in ["Hospital", "Centro de emergencias", "Albergue"]:
-        i = IDX[s]
-        tabla.append({"escenario": nombre, "servicio": s,
-                      "P(≥24 h fuera), solo directo": (d[:, i] >= 24).mean(),
-                      "P(≥24 h fuera), con cascada": (c[:, i] >= 24).mean()})
-pd.DataFrame(tabla).round(3)
+def tabla_escenarios():
+    filas = []
+    for caso in CASOS:
+        for T in T_LLUVIA:
+            Li, Ai, _ = perdidas(inundacion, T, caso)
+            Lm, Am, _ = perdidas(movimiento_masa, T, caso)
+            valor = edif.valor.values * CASOS[caso]["f_val"]
+            filas.append(dict(detonante="lluvia", caso=caso, T=T,
+                              inundacion=Li.sum(), mov_masa=Lm.sum(),
+                              maximo=np.maximum(Li, Lm).sum(),                         # regla adoptada
+                              suma_ingenua=np.minimum(Li + Lm, valor).sum(),           # tope: el valor de la casa
+                              afectados=np.maximum(Ai, Am).sum()))
+        for T in T_SISMO:
+            Ls, As, _ = perdidas(sismo, T, caso)
+            filas.append(dict(detonante="sismo", caso=caso, T=T, inundacion=np.nan, mov_masa=np.nan,
+                              maximo=Ls.sum(), suma_ingenua=Ls.sum(), afectados=As.sum()))
+    return pd.DataFrame(filas)
+
+esc = tabla_escenarios()
+esc[(esc.caso == "med")].round(0).set_index(["detonante", "T"])[["inundacion", "mov_masa", "maximo", "suma_ingenua", "afectados"]]
+''')
+
+md(r'''
+## 5. Curvas de riesgo y pérdida anual esperada (PAE)
+
+La probabilidad anual de cada escenario es $1/T$. La curva de riesgo grafica la pérdida contra esa probabilidad, y el área bajo la curva es la PAE. Como en CCDR-tools, se calculan dos cotas con sumas de rectángulos (inferior y superior) y se informa también el promedio. La PAE solo cubre el rango de probabilidades de los escenarios dados: **no se estima la cola** de eventos más raros que el mayor escenario.
 ''')
 
 code(r'''
-# Esquema de la red: color = horas fuera de servicio esperadas con cascada (escenario T = 100)
-POS = {"Subestación eléctrica": (0, 2), "Planta de agua": (1.5, 3), "Torre de comunicaciones": (1.5, 1),
-       "Puente vial": (1.5, 0), "Centro de emergencias": (3, 1), "Hospital": (3.2, 2.2), "Albergue": (3, 3.4),
-       "Servicio de agua (barrio)": (3, 4.3), "Servicio eléctrico (barrio)": (0, 3.6)}
-horas = res[res.escenario == ESCENARIOS["inund_T100"]].set_index("servicio").horas_con_cascada
-fig, ax = plt.subplots(figsize=(8.5, 5))
-for serv, dep, aut in DEPENDENCIAS:
-    (x0, y0), (x1, y1) = POS[dep], POS[serv]
-    ax.annotate("", xy=(x1, y1), xytext=(x0, y0), arrowprops=dict(arrowstyle="->", color="gray", lw=1,
-                shrinkA=14, shrinkB=14))
-    ax.text((x0 + x1) / 2, (y0 + y1) / 2, f"{aut} h", fontsize=6.5, color="dimgray")
-sc = ax.scatter([POS[s][0] for s in SERVICIOS], [POS[s][1] for s in SERVICIOS],
-                c=[horas[s] for s in SERVICIOS], cmap="Reds", vmin=0, vmax=HORIZONTE, s=900, edgecolor="k", zorder=3)
-for s in SERVICIOS:
-    ax.text(POS[s][0], POS[s][1] - 0.32, s, ha="center", fontsize=7)
-plt.colorbar(sc, label="horas fuera de servicio esperadas", shrink=0.8)
-ax.set_title("Red de dependencias (flecha: de qué depende; etiqueta: autonomía) · lluvia T = 100", fontsize=9)
-ax.set_xlim(-0.7, 4.0); ax.set_ylim(-0.6, 4.8); ax.axis("off")
+def pae(T, perdida, f_T=1.0):
+    """PAE con cotas inferior y superior (sumas de rectángulos entre escenarios consecutivos)."""
+    p = 1 / (np.asarray(T) * f_T)                  # probabilidad anual de excedencia
+    orden = np.argsort(-p)
+    p, L = p[orden], np.asarray(perdida)[orden]    # p decreciente, pérdida creciente
+    dp = p[:-1] - p[1:]
+    inf = np.sum(L[:-1] * dp)
+    sup = np.sum(L[1:] * dp)
+    return inf, sup, (inf + sup) / 2
+
+resumen = []
+for det, Ts in [("lluvia", T_LLUVIA), ("sismo", T_SISMO)]:
+    for caso in CASOS:
+        sub = esc[(esc.detonante == det) & (esc.caso == caso)].sort_values("T")
+        inf, sup, med = pae(sub["T"].values, sub["maximo"].values, CASOS[caso]["f_T"])
+        resumen.append(dict(detonante=det, caso=caso, PAE_inf=inf, PAE_sup=sup, PAE=med,
+                            PML_maximo=sub["maximo"].max(), T_PML=int(sub["T"].max())))
+resumen = pd.DataFrame(resumen)
+resumen.round(1)
+''')
+
+code(r'''
+fig, ax = plt.subplots(1, 2, figsize=(12, 4.3), sharey=False)
+colores = {"mín": "tab:green", "med": "tab:blue", "máx": "tab:red"}
+for a, (det, Ts) in zip(ax, [("lluvia", T_LLUVIA), ("sismo", T_SISMO)]):
+    for caso in CASOS:
+        sub = esc[(esc.detonante == det) & (esc.caso == caso)].sort_values("T")
+        a.plot(1 / (sub["T"] * CASOS[caso]["f_T"]), sub["maximo"], "o-", color=colores[caso], label=caso)
+    a.set_xscale("log"); a.invert_xaxis()
+    a.set_xlabel("probabilidad anual de excedencia"); a.set_ylabel("pérdida (millones de COP)")
+    a.set_title(f"Curva de riesgo: {det} (máx. por elemento)"); a.legend(title="caso")
 plt.tight_layout(); plt.show()
 ''')
 
 md(r'''
-## 4. Un bucle de retroalimentación (modelo de juguete)
+Las tres curvas por detonante (mínimo, medio y máximo) son la forma de mostrar la incertidumbre que proponen Chen et al. y que entienden bien quienes toman decisiones. **En un cálculo real el ancho del rango es un resultado importante**: si es muy grande, conviene gastar esfuerzo en reducir la incertidumbre del factor que más pesa antes de decidir.
 
-En Limbe, el capítulo de cascadas y compuestos describe una cascada económica que se cierra sobre sí misma: los drenajes bloqueados causan inundación, que interrumpe el transporte y los negocios, lo que reduce la inversión en infraestructura, y el ciclo continúa. Una evaluación que solo sigue la cadena hacia adelante no ve ese refuerzo.
+## 6. ¿Cuánto se sobrestima si se suman amenazas del mismo detonante?
 
-Este modelo lo reproduce de forma mínima, **sin calibrar y con parámetros inventados**:
-
-- $C_t$: capacidad de drenaje (1 = suficiente para la lluvia media alta).
-- $R_t$: lluvia del año (aleatoria).
-- Daño: $D_t = k \cdot \max(0, R_t - C_t)$.
-- Inversión: $I_t = I_0 - \alpha D_t$ si la inversión depende del daño (el presupuesto se desvía a la recuperación), o $I_t = I_0$ si está **protegida**.
-- Capacidad: $C_{t+1} = (1-\delta) C_t + \beta I_t$.
-
-Se simulan 500 trayectorias de 30 años con la misma lluvia en los dos casos.
+Se compara la regla del máximo con la suma ingenua de inundación y movimientos en masa (con tope en el valor de la casa). El efecto sobre el total depende de **cuánta exposición se solapa**: aquí solo la franja ribereña recibe daño de las dos amenazas, así que el error total es pequeño, pero en esa franja es grande. En una ciudad con más solapamiento (por ejemplo, un valle estrecho con laderas a ambos lados) el error total sería mayor.
 ''')
 
 code(r'''
-ANIOS, N_SIM = 30, 500
-C0, I0, DELTA, BETA_I, K, ALPHA = 0.70, 0.50, 0.06, 0.12, 1.5, 0.9
+comp = []
+for caso in CASOS:
+    sub = esc[(esc.detonante == "lluvia") & (esc.caso == caso)].sort_values("T")
+    f = CASOS[caso]["f_T"]
+    comp.append(dict(caso=caso,
+                     PAE_maximo=pae(sub["T"].values, sub["maximo"].values, f)[2],
+                     PAE_suma_ingenua=pae(sub["T"].values, sub["suma_ingenua"].values, f)[2]))
+comp = pd.DataFrame(comp)
+comp["sobrestimación (%)"] = 100 * (comp.PAE_suma_ingenua / comp.PAE_maximo - 1)
+print("PAE de la lluvia (millones de COP/año):")
+display(comp.round(2))
 
-def trayectorias(retroalimentacion, lluvias):
-    C = np.full(N_SIM, C0)
-    Cs, Ds = [], []
-    for t in range(ANIOS):
-        R = lluvias[:, t]
-        D = K * np.clip(R - C, 0, None)
-        I = np.clip(I0 - ALPHA * D, 0, None) if retroalimentacion else np.full(N_SIM, I0)
-        Cs.append(C.copy()); Ds.append(D)
-        C = np.clip((1 - DELTA) * C + BETA_I * I, 0, 1.3)
-    return np.array(Cs), np.array(Ds)            # (años, trayectorias)
-
-lluvias = rng.lognormal(mean=np.log(0.85), sigma=0.22, size=(N_SIM, ANIOS))   # la MISMA lluvia en los dos casos
-C_fb, D_fb = trayectorias(True, lluvias)
-C_pr, D_pr = trayectorias(False, lluvias)
-
-fig, ax = plt.subplots(1, 2, figsize=(12, 4.2))
-anios = np.arange(ANIOS)
-for (C, D, color, etiqueta) in [(C_fb, D_fb, "tab:red", "inversión que cae con el daño"),
-                                (C_pr, D_pr, "tab:blue", "inversión protegida")]:
-    for a, M, titulo in [(ax[0], C, "Capacidad de drenaje"), (ax[1], np.cumsum(D, axis=0), "Daño acumulado")]:
-        a.plot(anios, np.median(M, axis=1), color=color, label=etiqueta)
-        a.fill_between(anios, np.percentile(M, 10, axis=1), np.percentile(M, 90, axis=1), color=color, alpha=0.18)
-        a.set_title(titulo + " (mediana y banda 10-90 %)", fontsize=10); a.set_xlabel("año")
-ax[0].legend(fontsize=8)
-plt.tight_layout(); plt.show()
-
-print(f"Daño acumulado a 30 años (mediana): con retroalimentación {np.median(D_fb.sum(0)):.1f}, "
-      f"con inversión protegida {np.median(D_pr.sum(0)):.1f} (unidades arbitrarias).")
+# ¿Dónde se concentra la sobrestimación? En las edificaciones con daño por las dos amenazas a la vez.
+Li, _, _ = perdidas(inundacion, 100, "med")
+Lm, _, _ = perdidas(movimiento_masa, 100, "med")
+doble = (Li > 0) & (Lm > 0)
+v = edif.valor.values
+max_d, suma_d = np.maximum(Li, Lm)[doble].sum(), np.minimum(Li + Lm, v)[doble].sum()
+print(f"Escenario T = 100: {doble.sum()} de {N} edificaciones ({100*doble.mean():.0f} %) sufren daño doble.")
+print(f"En ese grupo la suma ingenua sobrestima la pérdida en {100*(suma_d/max_d-1):.0f} %; "
+      f"en toda la ciudad, en {100*(np.minimum(Li+Lm,v).sum()/np.maximum(Li,Lm).sum()-1):.1f} %.")
 ''')
 
 md(r'''
-La diferencia entre las dos curvas es el efecto del bucle: en el caso con retroalimentación, los años de lluvia fuerte recortan la inversión y la capacidad no se recupera. **Lo que enseña es una lección cualitativa**: las políticas que protegen la inversión en infraestructura cortan el bucle. Los números no significan nada fuera del juguete.
+## 7. Síntesis: qué se suma y qué no
 
-## 5. Cómo pasar a datos reales
+- La **PAE** de detonantes independientes (lluvia y sismo) **se suma**: es un valor esperado en la misma unidad, sobre el mismo inventario.
+- La **PML no se suma**: la pérdida del escenario de 500 años de lluvia y la del escenario de 475 años del sismo no ocurren en el mismo año. Si los dos detonantes son independientes, la probabilidad de que ambos ocurran el mismo año es el producto de las probabilidades.
+''')
+
+code(r'''
+total = resumen.groupby("caso")[["PAE_inf", "PAE_sup", "PAE"]].sum().loc[["mín", "med", "máx"]]
+print("PAE total de la ciudad inventada (millones de COP por año), suma de detonantes independientes:")
+display(total.round(1))
+valor_total = edif.valor.sum()
+print(f"Como proporción del valor expuesto ({valor_total:,.0f}): PAE media = {1000 * total.loc['med', 'PAE'] / valor_total:.1f} ‰ por año "
+      f"(rango {1000 * total.loc['mín', 'PAE'] / valor_total:.1f} a {1000 * total.loc['máx', 'PAE'] / valor_total:.1f} ‰).")
+
+pml_lluvia = resumen[(resumen.detonante == "lluvia") & (resumen.caso == "med")].PML_maximo.item()
+pml_sismo = resumen[(resumen.detonante == "sismo") & (resumen.caso == "med")].PML_maximo.item()
+p_conjunta = (1 / 500) * (1 / 2475)
+print(f"\nPML lluvia (T=500): {pml_lluvia:,.0f}   PML sismo (T=2475): {pml_sismo:,.0f}")
+print(f"Sumarlas daría {pml_lluvia + pml_sismo:,.0f}, pero ambos eventos en un mismo año tienen "
+      f"probabilidad {p_conjunta:.1e} (periodo de retorno conjunto ≈ {1/p_conjunta:,.0f} años).")
+print("La suma no representa ninguna pérdida de periodo de retorno conocido: se reporta cada PML por separado.")
+''')
+
+code(r'''
+fig, ax = plt.subplots(figsize=(7.5, 4))
+etiquetas = ["lluvia\n(máximo)", "lluvia\n(suma ingenua)", "sismo"]
+med_l = resumen[(resumen.detonante == "lluvia") & (resumen.caso == "med")].PAE.item()
+med_s = resumen[(resumen.detonante == "sismo") & (resumen.caso == "med")].PAE.item()
+valores = [med_l, comp[comp.caso == "med"].PAE_suma_ingenua.item(), med_s]
+ax.bar(etiquetas, valores, color=["tab:blue", "lightgray", "tab:purple"], edgecolor="k")
+ax.set_ylabel("PAE, caso medio (millones de COP por año)")
+ax.set_title("PAE por detonante en la ciudad inventada")
+for i, v in enumerate(valores):
+    ax.text(i, v, f"{v:,.1f}", ha="center", va="bottom")
+plt.tight_layout(); plt.show()
+''')
+
+md(r'''
+## 8. Cómo pasar a datos reales
+
+Cada bloque de este cuaderno tiene un equivalente real. Lo que se reemplaza y de dónde sale:
 
 | En este cuaderno | En un análisis real | Dónde se explica |
 |---|---|---|
-| `SERVICIOS`, `DEPENDENCIAS` | Inventario de líneas vitales de la ciudad y entrevistas con los operadores para fijar dependencias y autonomías | [Exposición](../04_vulnerabilidad/41_exposicion.md), [Cascadas y compuestos](../01_conceptos/15_cascada_compuestos.md) |
-| `SITIOS` | Intensidades de los mapas de amenaza en el sitio de cada servicio, por escenario | [Inundación](305_inundacion.md), [Sismo](301_sismo.md) |
-| `FRAGILIDAD` | Curvas de fragilidad de la literatura o de expertos para cada tipo de infraestructura | [Funciones de daño](../04_vulnerabilidad/42_funciones_dano.md) |
-| Fallas independientes | Fallas correlacionadas por la misma amenaza (misma realización de intensidades) | [Análisis multiamenaza](312_analisis_multiamenaza.ipynb) |
-| Bucle de Limbe | Un mapa de sistemas construido con los actores locales, y luego un modelo calibrado si hay datos | [Cascadas y compuestos](../01_conceptos/15_cascada_compuestos.md) |
+| `edif` con puntos aleatorios | Catastro o censo de edificaciones (GeoPackage), con tipo, valor y ocupantes por edificación | [Exposición](../04_vulnerabilidad/41_exposicion.md) |
+| `elev`, `pendiente`, `suscept` | Modelo de elevación, mapa de susceptibilidad (SGC, POT) y mapas de inundación por periodo de retorno | [Movimientos en masa](304_mov_masa.md), [Inundación](305_inundacion.md) |
+| `T_LLUVIA`, escenarios de $T$ | Distribución de valores extremos (GEV) ajustada a series del IDEAM | [Probabilista y PAE](../02_metodologia/22_probabilista_pae.md) |
+| `inundacion`, `movimiento_masa`, `sismo` | Funciones de daño de la literatura, de expertos o de daños históricos | [Funciones de daño](../04_vulnerabilidad/42_funciones_dano.md) |
+| `CASOS` | Rangos justificados para cada factor | [Riesgos multiamenaza](../01_conceptos/14_riesgo_multiamenaza.md) |
 
-Para el informe, la síntesis debe decir qué cascadas se cuantificaron, con qué supuestos de dependencia y autonomía, y cuáles quedaron solo descritas ([síntesis multiamenaza](../05_sintesis/51_sintesis_multiamenaza.md)).
+El paso más delicado es **definir qué amenazas comparten detonante**: de eso depende dónde se aplica el máximo y dónde se suma. Los eventos que además se disparan unos a otros (cascadas) se tratan en el [cuaderno siguiente](314_riesgos_cascada.ipynb).
 ''')

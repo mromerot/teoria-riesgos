@@ -22,8 +22,16 @@ El skill `nueva-ciudad` de Claude Code (en `~/.claude/skills/`) la invoca. La pl
 
 ## Cuadernos de la parte 3
 
-`book/03_amenazas/312_analisis_multiamenaza.ipynb` y `313_riesgos_cascada.ipynb` son cuadernos con **datos inventados**, con las salidas ya guardadas (se ven en el sitio sin ejecutar). Se pueden abrir en Colab desde el botón de cada página. Su fuente está en `scripts/cuadernos/` y se regeneran y ejecutan con:
+`book/03_amenazas/313_analisis_multiamenaza.ipynb` y `314_riesgos_cascada.ipynb` son cuadernos con **datos inventados**, con las salidas ya guardadas (se ven en el sitio sin ejecutar). Se pueden abrir en Colab desde el botón de cada página. Su fuente está en `scripts/cuadernos/` y se regeneran y ejecutan con:
 
 ```bash
-python scripts/cuadernos/construir.py 312 313
+python scripts/cuadernos/construir.py 313 314 315
+```
+
+## Diseño
+
+La identidad visual (logo, paleta, íconos de amenaza y sidebar fijo) es la misma de EVA y SIDRo y vive en `estilo/`. Tras cambiar `estilo/estilo.css` o un ícono de `estilo/iconos/`, regenerar la hoja con:
+
+```bash
+python estilo/construir_css.py
 ```

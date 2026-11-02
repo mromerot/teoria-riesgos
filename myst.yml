@@ -13,7 +13,7 @@ project:
   numbering:
     figure:
       template: Figura %s
-  exclude: ["fuentes/**", "book/03_amenazas/_molde.md", "plantilla/**", "scripts/**", "book/03_amenazas/datos/**"]
+  exclude: ["fuentes/**", "plantilla/**", "scripts/**", "estilo/**", "book/03_amenazas/datos/**"]
   toc:
     - file: index.md
     - file: book/01_conceptos/index.md
@@ -22,12 +22,29 @@ project:
     - file: book/02_metodologia/index.md
       children:
         - pattern: book/02_metodologia/2*.md
+    # Las amenazas van en el primer nivel para que el sidebar las muestre siempre, con su ícono (como en EVA y CLIMAAX)
     - file: book/03_amenazas/index.md
+    - file: book/03_amenazas/_molde.md
+      title: Molde de los capítulos
+    - file: book/03_amenazas/301_sismo.md
+    - file: book/03_amenazas/302_volcanes.md
+    - file: book/03_amenazas/303_tsunami.md
+    - file: book/03_amenazas/304_mov_masa.md
+    - file: book/03_amenazas/305_inundacion.md
+    - file: book/03_amenazas/306_erosion_costera.md
+    - file: book/03_amenazas/307_erosion_fluvial.md
+    - file: book/03_amenazas/308_sequia.md
+    - file: book/03_amenazas/309_calor.md
+    - file: book/03_amenazas/310_incendios.md
+    - file: book/03_amenazas/311_ciclones.md
       children:
-        - pattern: book/03_amenazas/3*.md
-        - file: book/03_amenazas/312_analisis_multiamenaza.ipynb
-        - file: book/03_amenazas/313_riesgos_cascada.ipynb
-        - file: book/03_amenazas/314_trayectorias_ciclones.ipynb
+        - file: book/03_amenazas/315_trayectorias_ciclones.ipynb
+          title: Trayectorias en el Caribe
+    - file: book/03_amenazas/312_vendavales.md
+    - file: book/03_amenazas/313_analisis_multiamenaza.ipynb
+      title: Análisis multiamenaza
+    - file: book/03_amenazas/314_riesgos_cascada.ipynb
+      title: Riesgos en cascada
     - file: book/04_vulnerabilidad/index.md
       children:
         - pattern: book/04_vulnerabilidad/4*.md
@@ -41,3 +58,12 @@ project:
 site:
   template: book-theme
   title: Teoría de riesgos
+  options:
+    logo: estilo/logo.svg
+    logo_dark: estilo/logo_oscuro.svg
+    logo_alt: Teoría de riesgos
+    logo_text: Teoría y métodos de análisis de riesgos de desastres y climáticos
+    favicon: estilo/favicon.png
+    style: estilo/teoria.css
+  parts:
+    primary_sidebar_footer: estilo/pie_sidebar.md

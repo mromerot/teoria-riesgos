@@ -31,7 +31,8 @@ AMENAZAS = {
     "sequia": ("Sequía", "sequia", "solido"),
     "calor": ("Olas de calor", "calor", "provisional"),
     "incendios": ("Incendios forestales", "incendios", "solido"),
-    "ciclones": ("Ciclones tropicales y vendavales", "ciclones", "solido"),
+    "ciclones": ("Ciclones tropicales", "ciclones", "solido"),
+    "vendavales": ("Vendavales", "vendavales", "provisional"),
 }
 AVISO_PROV = (
     "\n\n```{warning}\nEl capítulo teórico es **provisional**: hay poca literatura de referencia. "
