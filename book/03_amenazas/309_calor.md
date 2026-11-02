@@ -107,9 +107,39 @@ CLIMAAX compara los escenarios RCP4.5 y RCP8.5 para un periodo de referencia (19
 | Reducción | Infraestructura verde urbana, como los bosques urbanos que reducen la exposición | {cite:p}`giraldocharria2025urban` (por título) |
 | Manejo | Atención en salud a grupos vulnerables | {cite:p}`salazarceballos2025sistema` |
 
+## Síntesis de evidencia
+
+```{note}
+**Método.** Síntesis narrativa por tipo de evidencia (no un metaanálisis con efectos agrupados: los estudios usan diseños, escalas y variables que no se pueden combinar en un solo estimador). Se leyeron los resúmenes de los artículos de la hoja de vigilancia que están en la carpeta de PDFs; las cifras vienen de esos resúmenes y **faltan por verificar contra el texto completo**.
+```
+
+- {cite:t}`salazarceballos2025sistema` propone, en Colombia, un sistema de alerta temprana para altas temperaturas y olas de calor como política de salud pública. Se lee aquí solo el título y el inicio del documento, que es una versión anticipada sin edición final.
+
+**Lectura conjunta.** La vigilancia reúne pocos estudios nacionales sobre calor con PDF; el capítulo sigue siendo provisional.
+
 ## Pendiente
 
 - Leer {cite:p}`giraldocharria2025urban` y {cite:p}`rivera20232022` completos.
 - Definir un umbral o percentil de ola de calor para las ciudades colombianas, con datos del IDEAM.
 - Evaluar datos satelitales de temperatura de superficie con menos limitación por nubosidad.
 - Buscar literatura de isla de calor urbana en Bogotá, Medellín, Cali y Barranquilla.
+
+## Bibliografía recomendada
+
+Lista de los 8 registros de la hoja de vigilancia científica (pestaña `Vigilancia_CTeI`, columna `AMENAZA_ESPECIFICA` = «Ola de calor»), en formato APA 7 con metadatos de Crossref. Son lecturas recomendadas: **no están verificadas contra el texto completo** ni se usan como evidencia hasta que se citen en el capítulo. Las entradas sin DOI carecen de autores en la hoja.
+
+- Arias, P. A., Fernández-Berrío, A., Bedoya-Pineda, V., Acevedo-Ortiz, M. Y., & Martínez, J. A. (2025). Compound dry and hot extremes and their implications for fire activity over the Orinoco River Basin in northern South America. *Climate Dynamics*, *63*(4), 175. https://doi.org/10.1007/s00382-025-07660-5
+
+- Bustos Usta, D. F., Torres Parra, R. R., Rodríguez-López, L., Castillo Alvarez, M., & Bourrel, L. (2024). Observation and Projection of Marine Heatwaves in the Caribbean Sea from CMIP6 Models. *Remote Sensing*, *16*(13), 2357. https://doi.org/10.3390/rs16132357
+
+- Cuartas, J., Narea, M., Ahun, M., & Vergunst, F. (2026). Prenatal and Early Childhood Ambient Heat Exposure and Developmental Outcomes: A Systematic Review. *Clinical Child and Family Psychology Review*, *29*(3), 493-505. https://doi.org/10.1007/s10567-026-00569-3
+
+- Giraldo-Charria, D. L., Escobedo, F. J., Clerici, N., & Quesada, B. (2025). Urban forests mitigate extreme heat exposure in a vulnerable tropical city. *Urban Climate*, *59*, 102311. https://doi.org/10.1016/j.uclim.2025.102311
+
+- Palacios-Gutiérrez, A., Valencia-Delfa, J. L., & Villeta, M. (2025). Identification of extreme temperature and precipitation patterns in Spain based on multiscale analysis of time series. *Natural Hazards*, *121*(7), 7991-8009. https://doi.org/10.1007/s11069-024-07082-2
+
+- Rivera, J. A., Arias, P. A., Sörensson, A. A., Zachariah, M., Barnes, C., Philip, S., Kew, S., Vautard, R., Koren, G., Pinto, I., Vahlberg, M., Singh, R., Raju, E., Li, S., Yang, W., Vecchi, G. A., Harrington, L. J., & Otto, F. E. L. (2023). 2022 early-summer heatwave in Southern South America: 60 times more likely due to climate change. *Climatic Change*, *176*(8), 102. https://doi.org/10.1007/s10584-023-03576-3
+
+- Salazar-Ceballos, A., & Álvarez-Miño, L. (2025). Sistema de alerta temprana para altas temperaturas y olas de calor: la necesidad de una política de salud pública en Colombia. *Biomédica*, *45*(Sp. 2), 7-16. https://doi.org/10.7705/biomedica.7934
+
+- Zhou, W., Melack, J. M., MacIntyre, S., Amaral, J. H. F., & Barbosa, P. M. (2026). Conditions leading to exceptionally high temperatures in shallow tropical lakes. *Limnology and Oceanography*, *71*(6), e70415. https://doi.org/10.1002/lno.70415

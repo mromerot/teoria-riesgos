@@ -180,6 +180,20 @@ La marea de tormenta se suma al nivel del mar. CCDR-tools reúne conjuntos de da
 
 La tabla de medidas es un criterio de método de este libro. El Atlas trata los ciclones sin detallar medidas {cite:p}`ungrd2019atlas`.
 
+## Síntesis de evidencia
+
+```{note}
+**Método.** Síntesis narrativa por tipo de evidencia (no un metaanálisis con efectos agrupados: los estudios usan diseños, escalas y variables que no se pueden combinar en un solo estimador). Se leyeron los resúmenes de los artículos de la hoja de vigilancia que están en la carpeta de PDFs; las cifras vienen de esos resúmenes y **faltan por verificar contra el texto completo**.
+```
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`ortiz2022huracan` | Modelo paramétrico de viento acoplado a SWAN, huracán de 1911 en San Andrés | Vientos cercanos a 200 km/h a 22 km de la costa norte de San Andrés; oleaje menor que el de Iota (2020) y Joan (1988); calibrado con la boya del huracán Matthew (2016) |
+| {cite:t}`acostacoll2022cross` | Comparación entre radar terrestre NEXRAD y radar satelital GPM, Puerto Rico | Evalúa la correlación entre sensores durante ciclones para alertas oportunas |
+| {cite:t}`varon2025desastres` | Revisión documental y de prensa, Colombia y Honduras | Las entidades de gestión siguen una visión clásica del riesgo orientada a mitigar efectos, no las causas estructurales de la vulnerabilidad |
+
+**Lectura conjunta.** Hay un método reproducible para reconstruir eventos históricos sin registros (modelo paramétrico de viento más oleaje, calibrado con un evento reciente) {cite:p}`ortiz2022huracan`, útil para estimar la amenaza en el archipiélago. La evidencia sobre gestión es cualitativa y comparativa, de dos casos {cite:p}`varon2025desastres`.
+
 ## Pendiente
 
 - Leer completos {cite:p}`rey2021hurricane`, {cite:p}`osorio2024reconstructing` y {cite:p}`velasquezcalderon2027assessing`.
@@ -188,3 +202,57 @@ La tabla de medidas es un criterio de método de este libro. El Atlas trata los 
 - Usar los radios de viento de IBTrACS (R34, R50, R64) para estimar la huella de viento de cada sistema sobre los sitios, y no solo la distancia.
 - Extender el conteo a todo el periodo desde 1851 con las salvedades de calidad de datos, y a la costa del Pacífico si se agrega esa cuenca.
 - Documentar la inclusión de ciclones en CLIMADA (módulo de ciclones tropicales) después de revisar su documentación.
+
+## Bibliografía recomendada
+
+Lista de los 25 registros de la hoja de vigilancia científica (pestaña `Vigilancia_CTeI`, columna `AMENAZA_ESPECIFICA` = «Ciclón tropical»), en formato APA 7 con metadatos de Crossref. Son lecturas recomendadas: **no están verificadas contra el texto completo** ni se usan como evidencia hasta que se citen en el capítulo. Las entradas sin DOI carecen de autores en la hoja.
+
+- Acosta-Coll, M., Morales, A., Zamora-Musa, R., & Butt, S. A. (2022). Cross-Evaluation of Reflectivity from NEXRAD and Global Precipitation Mission during Extreme Weather Events. *Sensors*, *22*(15), 5773. https://doi.org/10.3390/s22155773
+
+- Álvarez-Echeverry, A., Toro-Restrepo, L. J., Suárez-Gómez, J. A., & Osorio-Cano, J. D. (2025). Multi-temporal analysis of land cover changes due to hurricanes Iota and Eta on the islands of San Andres, Providencia and Santa Catalina. *DYNA*, *92*(235), 9-18. https://doi.org/10.15446/dyna.v92n235.113880
+
+- Aparicio Cuervo, J. R., & Macías Perdomo, L. V. (2024). Hurricanes, reconstruction, and resistance: thinking through vulnerability in the Caribbean. *Disasters*, *49*(1), e12664. https://doi.org/10.1111/disa.12664
+
+- Arregocés, H. A., & Fuentes Molina, N. (2026). Quantifying the Contribution of Tropical Cyclones to Precipitation Variability in Northern South America (2016–2025). *Environments*, *13*(6), 331. https://doi.org/10.3390/environments13060331
+
+- Bernal, R., Lacouture, S., Perez-Cardona, S., & Rettberg, A. (2026). Peace, democracy, and the weather: did hurricane Matthew botch the 2016 Colombian peace referendum? *Journal of Peace Research*, *63*(4), 661-674. https://doi.org/10.1093/jopres/xjag014
+
+- Cabarcas-Mier, A., Rey, W., Torrecillas, C., Paladio-Hernandez, A., Cahuich-López, M., Salles, P., Muñoz-Perez, J. J., de Santos-Medina, L., & Jigena-Antelo, B. (2025). Assessment of the shoreline dynamics in San Andres Island: A remote sensing and EOF analysis approach. *Regional Studies in Marine Science*, *90*, 104435. https://doi.org/10.1016/j.rsma.2025.104435
+
+- Carbonó dela Rosa, M. E., Ospino-Castro, A., Robles-Algarín, C., Restrepo-Leal, D., & Olivero-Ortiz, V. (2026). Integrated Multi-Scale Spectral Framework for Tropical Cyclone Dynamics: Implications for Offshore Wind Energy Resilience in the Atlantic Caribbean Basin. *Energies*, *19*(10), 2473. https://doi.org/10.3390/en19102473
+
+- Giraldo, S. (2023). Winds, Rain, and Thunder. *Managing Disaster Risks to Cultural Heritage*, 213-225. https://doi.org/10.4324/9781003263647-13
+
+- Hernández-Hamón, H., Zapata-Ramírez, P. A., Vásquez, R. E., Zuluaga, C. A., Mejía, J. D. S., & Cano, M. (2024). Rapid Remote Sensing Assessment of Impacts from Hurricane Iota on the Coral Reef Geomorphic Zonation in Providencia. *Disaster Risk Reduction*, 69-87. https://doi.org/10.1007/978-981-97-6663-5_4
+
+- Márquez-Pérez, A. I. (2024). Overcoming Iota: A Reflection on Old Providence and Santa Catalina Cultural Resilience In the Face of Disaster and Climate Change. *Disaster Risk Reduction*, 209-231. https://doi.org/10.1007/978-981-97-6663-5_10
+
+- Martínez-Rivera, W., Carvalhaes, T., Jevtić, P., & Reddy, T. A. (2022). A treatment-effect model to quantify human dimensions of disaster impacts: the case of Hurricane Maria in Puerto Rico. *Natural Hazards*. https://doi.org/10.1007/s11069-022-05753-6
+
+- Medina, N., Sanchez, A., & Vojinovic, Z. (2023). Emergency Evacuation Behavior in Small Island Developing States: Hurricane Irma in Sint Maarten. *Water*, *15*(11), 2117. https://doi.org/10.3390/w15112117
+
+- Miramonti, A. (2026). Engaging Haitian youth in hurricane preparedness: Drama-based action research. *Emotion, Space and Society*, *59*, 101165. https://doi.org/10.1016/j.emospa.2026.101165
+
+- Ortiz Royero, J. C., Cera, S. H., & Gomes, H. (2021). Coastal Meteo-marine Parameters of Hurricane Matthew along the Colombian Caribbean Coast: Establishing a Baseline of Knowledge. *Journal of Coastal Research*, *38*(1), 66-76. https://doi.org/10.2112/jcoastres-d-20-00108.1
+
+- Ortiz, J. C., & Conde, M. (2022). El huracán que pasó sobre la Isla de San Andrés en 1911. *Revista de la Academia Colombiana de Ciencias Exactas, Físicas y Naturales*, *46*(180), 795-806. https://doi.org/10.18257/raccefyn.1743
+
+- Osorio, A. F., Montoya, R., Ayala, F. F., & Osorio-Cano, J. D. (2024). Reconstructing the Eta and Iota Events for San Andrés and Providencia: A Focus on Urban and Coastal Flooding. *Disaster Risk Reduction*, 39-67. https://doi.org/10.1007/978-981-97-6663-5_3
+
+- Osorio-Cano, J. D., Alcérreca-Huerta, J. C., Navarro, B. A., & Álvarez-Silva, O. (2024). The Seaflower Biosphere Reserve: Research advances on ocean and coastal processes and related hazards for the regional management. *Ocean & Coastal Management*, *258*, 107414. https://doi.org/10.1016/j.ocecoaman.2024.107414
+
+- Pérez-Arévalo, R., Jiménez-Caldera, J. E., Serrano-Montes, J. L., Rodrigo-Comino, J., Ortiz Royero, J. C., & Caballero-Calvo, A. (2025). Impacts of Urban Morphology on Micrometeorological Parameters and Cyclonic Phenomena in Northern Colombian Caribbean. *Climate*, *13*(5), 87. https://doi.org/10.3390/cli13050087
+
+- Rey, W., Ruiz-Salcines, P., Salles, P., Urbano-Latorre, C. P., Escobar-Olaya, G., Osorio, A. F., Ramírez, J. P., Cabarcas-Mier, A., Jigena-Antelo, B., & Appendini, C. M. (2021). Hurricane Flood Hazard Assessment for the Archipelago of San Andres, Providencia and Santa Catalina, Colombia. *Frontiers in Marine Science*, *8*, 766258. https://doi.org/10.3389/fmars.2021.766258
+
+- Roldán, M., Montoya, R. D., Rios, J. D., & Osorio, A. F. (2023). Modified parametric hurricane wind model to improve the asymmetry in the region of maximum winds. *Ocean Engineering*, *280*, 114508. https://doi.org/10.1016/j.oceaneng.2023.114508
+
+- Valencia, J., Yepes, J., Mejía, J. F., Builes-Jaramillo, A., & Salas, H. D. (2024). Influence of Tropical Easterly Waves on the ChocoJet during the 2019 OTREC Campaign. *Journal of Hydrometeorology*, *25*(2), 325-337. https://doi.org/10.1175/jhm-d-23-0039.1
+
+- Varón Rojas, D. H., & Reyes Corea, S. M. (2025). Desastres y sufrimiento: Temporada de huracanes en Colombia y Honduras. *Revista de Estudios Latinoamericanos sobre Reducción del Riesgo de Desastres REDER*, *9*(1), 97. https://doi.org/10.55467/reder.v9i1.172
+
+- Velásquez-Calderón, C. S., Alvarez, A., Rey, W., Ruiz-Salcines, P., Urbano-Latorre, C. P., & Santos-Martínez, A. (2027). Assessing hurricane storm surge risk under near-past climate conditions to inform land-use planning in small Caribbean islands: San Andrés, Providencia, and Santa Catalina, Colombia. *Ocean & Coastal Management*, *283*, 108404. https://doi.org/10.1016/j.ocecoaman.2026.108404
+
+- Velásquez-Calderón, C. S., Ortiz-Roca, F., & Santos-Martínez, A. (2026). Maritory and spatial justice after hurricane Iota: Raizal territorial rights in Providencia and Santa Catalina,Western Caribbean. *International Journal of Disaster Risk Reduction*, *141*, 106171. https://doi.org/10.1016/j.ijdrr.2026.106171
+
+- Zapata-Henao, M., Hoyos, C. D., & Cardona, Y. (2026). Evaluation and Setup of a High-Resolution Regional Coupled Ocean–Atmosphere Model for Hindcasting Tropical Cyclones in the North Atlantic Ocean Basin. *Atmosphere*, *17*(4), 356. https://doi.org/10.3390/atmos17040356

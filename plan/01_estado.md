@@ -106,3 +106,11 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 
 - Incorporadas: guía de avenidas torrenciales (SGC 2021, cap. 316), guía de comunicación sobre volcanes (SGC 2024, cap. 302), guía de PMGRD (UNGRD 2021, cap. 53), Terminología GRD 2017 (definición de vendaval verificada).
 - Sin leer aún: clasificación de movimientos en masa, Estrategia Nacional de Respuesta a Emergencias, guía de respuesta municipal, modelo nacional de amenaza sísmica.
+
+## Vigilancia CTeI → libro (2026-11-02)
+
+- `scripts/vigilancia/`: `crossref.py` (metadatos por DOI, caché `fuentes/vig/crossref.json`), `bibliografia.py` (genera «Bibliografía recomendada» APA 7 por capítulo desde `AMENAZA_ESPECIFICA`), `emparejar_pdfs.py` (PDFs de la carpeta ↔ filas; 258 de 317 emparejados, 243 filas), `descargar_oa.py` (Unpaywall → `_descargados_acceso_abierto/`, solo PDFs reales), `resumen.py`, `bibkey.py`, `insertar.py`.
+- Bibliografía recomendada: 13 capítulos (sismo 194, inundación 102, mov. en masa 80, erosión costera 52, incendios 41, …). Amenazas de la hoja sin capítulo: Natech, choque financiero, agentes biológicos, perturbación geomagnética, contaminación del aire, dengue, etc.
+- «Síntesis de evidencia» (narrativa, resúmenes leídos, cifras por verificar): hechas 301, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 316. **Pendientes**: 302 volcanes (lahares: 2 PDFs etnográficos sobre Armero), PDFs de Natech/choque financiero/biológicos, los 60 PDFs «POR DETERMINAR», y verificar cifras contra texto completo. Los PDFs descargados por acceso abierto (carpeta `_descargados_acceso_abierto`, registro en `fuentes/vig/descargas.json`) aún no se han leído.
+- Errores de la hoja: fila 884 (SUDS Ibagué) tiene un DOI que en Crossref es otro artículo; varios DOI mal formados o no resueltos (se marcan en la bibliografía); 49 filas con DOI sin metadatos en Crossref.
+- Un «metaanálisis» cuantitativo con efectos agrupados no es viable con estos estudios (diseños heterogéneos); se usa síntesis narrativa por tipo de evidencia.

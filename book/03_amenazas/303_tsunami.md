@@ -127,9 +127,50 @@ Una propuesta reciente es un modelo de lógica difusa para emitir niveles de ale
 | Reducción: mitigación | Planes de acción preventiva en zonas costeras; la primera propuesta de mitigación data del estudio posterior al evento de 1906 | {cite:p}`ungrd2019atlas` |
 | Manejo | Rutas de evacuación, alerta temprana, planes de respuesta, programas educativos | {cite:p}`ungrd2019atlas` |
 
+## Síntesis de evidencia
+
+```{note}
+**Método.** Síntesis narrativa por tipo de evidencia (no un metaanálisis con efectos agrupados: los estudios usan diseños, escalas y variables que no se pueden combinar en un solo estimador). Se leyeron los resúmenes de los artículos de la hoja de vigilancia que están en la carpeta de PDFs; las cifras vienen de esos resúmenes y **faltan por verificar contra el texto completo**.
+```
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`escobar2020tsunamib` | Escenarios deterministas con modelos de déficit de deslizamiento, costa pacífica de Colombia | En el peor escenario la altura máxima fue 4,66 m en la isla de Tumaco y 4,34 m en El Morro; el 11 % y el 10 % de esas islas tendrían profundidades de inundación de 2 a 5 m |
+| {cite:t}`lizarazo2021interplate` | Inversión de datos GPS, Caribe noroccidental colombiano | Estima el acoplamiento entre placas para evaluar el potencial sísmico y de tsunami, donde no hay megaterremotos registrados en 500 años |
+| {cite:t}`gonzalez2021probabilistic` | Método probabilista de amenaza de tsunami, bahía de Cádiz (España) | Aplica el enfoque a zonas con marea meso y macromareal; referencia metodológica, no colombiana |
+| {cite:t}`cabrera2020generation` | Experimentos de laboratorio y modelo analítico | La amplitud máxima de la ola por deslizamiento depende de una sola razón adimensional, la sumersión relativa |
+
+**Lectura conjunta.**
+
+- **Pacífico y Caribe se evalúan con métodos distintos.** En el Pacífico hay tsunamis históricos (1906, 1979) y escenarios deterministas; en el Caribe solo hay estimaciones indirectas de acoplamiento, sin eventos recientes {cite:p}`escobar2020tsunamib,lizarazo2021interplate`. Esto confirma que el análisis de una ciudad caribeña debe declarar mayor incertidumbre de la fuente.
+- **Deterministas frente a probabilistas.** Los estudios colombianos revisados son deterministas; el enfoque probabilista aparece en la referencia española {cite:p}`gonzalez2021probabilistic`. Para calcular PAE ([](../02_metodologia/22_probabilista_pae.md)) hace falta el segundo.
+- **Fuente no sísmica.** Los deslizamientos pueden generar olas con una ley simple de escala {cite:p}`cabrera2020generation`, relevante para costas con laderas sumergidas.
+
 ## Pendiente
 
 - Leer {cite:p}`escobar2020tsunami` y {cite:p}`paez2021tsunamifrag` completos. Hoy se citan por título y resumen.
 - Enlazar el cuaderno reproducible del tsunami de Tumaco de 1979 como ejemplo aplicado.
 - Añadir la fuente primaria de la evaluación global (NGI y GA, 2014) y la del modelo de arribo (Madsen y Fuhrman, 2009), que el Atlas cita.
 - Verificar con la literatura la combinación tsunami y ascenso del nivel del mar (punto 6).
+
+## Bibliografía recomendada
+
+Lista de los 9 registros de la hoja de vigilancia científica (pestaña `Vigilancia_CTeI`, columna `AMENAZA_ESPECIFICA` = «Tsunami»), en formato APA 7 con metadatos de Crossref. Son lecturas recomendadas: **no están verificadas contra el texto completo** ni se usan como evidencia hasta que se citen en el capítulo. Las entradas sin DOI carecen de autores en la hoja.
+
+- Alerting tsunamis: a fuzzy logic model. (2025). *Congreso Internacional De Innovacion Y Tendencias*. `doi:10.1109/coniiti…(número de artículo: 11366132)` (no resuelve en Crossref; corregir en la hoja)
+
+- Cabrera, M. A., Pinzon, G., Take, W. A., & Mulligan, R. P. (2020). Wave Generation Across a Continuum of Landslide Conditions From the Collapse of Partially Submerged to Fully Submerged Granular Columns. *Journal of Geophysical Research: Oceans*, *125*(12), e2020JC016465. https://doi.org/10.1029/2020jc016465
+
+- El costo economico de los desastres naturales: el caso del tsunami y la emergencia nuclear en Japon en 2011. (2020). *Lecturas de Economia*. `doi:10.17533/udea.le.n93ia340531` (no resuelve en Crossref; corregir en la hoja)
+
+- Escobar, R. S., Diaz, L. O., Guerrero, A. M., Galindo, M. P., Mas, E., Koshimura, S., Adriano, B., Urra, L., & Quintero, P. (2020). Tsunami hazard assessment for the central and southern pacific coast of Colombia. *Coastal Engineering Journal*, *62*(4), 540-552. https://doi.org/10.1080/21664250.2020.1818362
+
+- González, M., Álvarez-Gómez, J. A., Aniel-Quiroga, Í., Otero, L., Olabarrieta, M., Omira, R., Luceño, A., Jelinek, R., Krausmann, E., Birkman, J., Baptista, M. A., Miranda, M., & Aguirre-Ayerbe, I. (2021). Probabilistic Tsunami Hazard Assessment in Meso and Macro Tidal Areas. Application to the Cádiz Bay, Spain. *Frontiers in Earth Science*, *9*, 591383. https://doi.org/10.3389/feart.2021.591383
+
+- IMPACT AND RESPONSE IN CENTRAL AND SOUTH AMERICA DUE TO THE TSUNAMI GENERATED BY THE SUBMARINE ERUPTION OF HUNGA TONGA-HUNGA HA’APAI VOLCANO. (2022). *Science of Tsunami Hazards*. (Sin DOI; completar autores).
+
+- Lizarazo, S. C., Sagiya, T., & Mora-Páez, H. (2021). Interplate coupling along the Caribbean coast of Colombia and its implications for seismic/tsunami hazards. *Journal of South American Earth Sciences*, *110*, 103332. https://doi.org/10.1016/j.jsames.2021.103332
+
+- Lizarazo, S. C., Sagiya, T., & Mora-Páez, H. (2024). Viscoelastic earthquake cycle model for the Caribbean subduction zone in northwestern Colombia: Implications of coastal subsidence for seismic/tsunami hazards. *Journal of South American Earth Sciences*, *141*, 104931. https://doi.org//10.1016/j.jsames.2024.104931
+
+- Paez-Ramirez, J., Lizarazo, J., Medina, S., Rivas, M., Luna, P., Mas, E., & Koshimura, S. (2021). A comparative analysis of empirical and analytical tsunami fragility functions for buildings in Tumaco, Colombia. *IOP Conference Series: Earth and Environmental Science*, *630*(1), 012008. https://doi.org/10.1088/1755-1315/630/1/012008

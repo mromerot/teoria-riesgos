@@ -105,8 +105,82 @@ Este libro sigue esa postura para el detonante y propone, como criterio propio, 
 | Reducción: mitigación | Control de sedimentos y cobertura en la cuenca; por detallar con fuente |
 | Manejo | Alerta temprana por lluvia y evacuación; por detallar con fuente |
 
+## Síntesis de evidencia
+
+```{note}
+**Método.** Síntesis narrativa por tipo de evidencia (no un metaanálisis con efectos agrupados: los estudios usan diseños, escalas y variables que no se pueden combinar en un solo estimador). Se leyeron los resúmenes de los artículos de la hoja de vigilancia que están en la carpeta de PDFs; las cifras vienen de esos resúmenes y **faltan por verificar contra el texto completo**.
+```
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`arango2020morphometrical` | Aprendizaje automático con parámetros morfométricos de cuencas de montaña, norte de la cordillera Andina colombiana | Susceptibilidad a flujos torrenciales a escala de cuenca, para priorizar zonas antes de los mapas de amenaza |
+| {cite:t}`arangocarmona2025hillslope` | Base de 22 eventos en cascada, 2009–2024, montañas tropicales (preprint sin revisión por pares) | Pocos casos coinciden con las lluvias más extremas registradas, lo que sugiere que otros controles, como la disponibilidad de sedimento, son necesarios |
+| {cite:t}`paez2025debris` | Revisión de modelación de flujos de lodo y detritos como herramienta de amenaza | Resalta que el cambio climático podría aumentar las pérdidas |
+| {cite:t}`smolikova2021analysis` | Análisis de lluvia detonante de un flujo de detritos, República Checa | Acumulados de 2 a 60 días e índices de precipitación antecedente (1983–2018); referencia metodológica externa |
+| {cite:t}`diaz2022alianzas` | Estudio cualitativo de la reconstrucción tras el desastre de Salgar (2015) | Las alianzas público-privadas y sin ánimo de lucro cumplieron un papel central en la reconstrucción |
+
+**Lectura conjunta.**
+
+- **La lluvia extrema no basta.** Si pocas cascadas ocurren con las lluvias más extremas {cite:p}`arangocarmona2025hillslope`, el detonante debe analizarse junto con el sedimento disponible. Esto es coherente con la estructura de la guía del SGC ({cite:p}`sgc2021avenidas`) que modela los sólidos aparte de la lluvia.
+- **Priorización previa.** La morfometría de cuenca permite pasar de cientos de cuencas a unas pocas prioritarias antes de modelar {cite:p}`arango2020morphometrical`.
+- **Evidencia limitada.** El estudio de cascadas es un preprint y las demás referencias son metodológicas o cualitativas; no hay todavía un estudio colombiano de validación de umbrales de la guía.
+
 ## Pendiente
 
 - Leer los capítulos 3, 5 y 6 de la guía completos y verificar umbrales.
 - Añadir medidas de mitigación y alerta temprana con fuente.
 - Añadir un caso colombiano (Mocoa 2017, Salgar 2015) con fuente primaria.
+
+## Bibliografía recomendada
+
+Lista de los 25 registros de la hoja de vigilancia científica (pestaña `Vigilancia_CTeI`, columna `AMENAZA_ESPECIFICA` = «Flujos de detritos y tierra (lodo) y avalanchas de roca»; «Inundación repentina»), en formato APA 7 con metadatos de Crossref. Son lecturas recomendadas: **no están verificadas contra el texto completo** ni se usan como evidencia hasta que se citen en el capítulo. Las entradas sin DOI carecen de autores en la hoja.
+
+- Aponte García, V., Tarapuez Bolaños, D. F., García Millán, N., & Salcedo Hurtado, E. d. J. (2026). Vulnerabilidad social frente a avenida torrencial (flujo de detritos) en el área de influencia de la quebrada Isabel Pérez en Santiago de Cali, Colombia, usando lógica difusa. *Documents d'Anàlisi Geogràfica*, *72*(1), 135-167. https://doi.org/10.5565/rev/dag.1445
+
+- Arango, M. I., Aristizábal, E., & Gómez, F. (2020). Morphometrical analysis of torrential flows-prone catchments in tropical and mountainous terrain of the Colombian Andes by machine learning techniques. *Natural Hazards*, *105*(1), 983-1012. https://doi.org/10.1007/s11069-020-04346-5
+
+- Arango-Carmona, M. I., Voit, P., Hürlimann, M., Aristizábal, E., & Korup, O. (2025). Hillslope-Torrential Hazard Cascades in Tropical Mountains. *Egusphere*. https://doi.org/10.5194/egusphere-2025-1698
+
+- Arango-Carmona, M. I., Voit, P., Hürlimann, M., Aristizábal, E., & Korup, O. (2025). Hillslope torrential hazard cascades in tropical mountains. *Natural Hazards and Earth System Sciences*, *25*(9), 3641-3663. https://doi.org/10.5194/nhess-25-3641-2025
+
+- Assessing debris flow susceptibility using triggering and propagation models, a case study in the tropical region of the northern andes in colombia. (2023). *Revista de la Asociacion Geologica Argentina*. https://revista.geologica.org.ar/raga/article/view/1660
+
+- Bocanegra, R. A., Ramírez, C. A., Salcedo, E. d. J., & Villegas, M. P. L. (2023). Determination of Hazard Due to Debris Flows. *Water*, *15*(23), 4057. https://doi.org/10.3390/w15234057
+
+- Cardona, F. G., Giraldo, E. A., & Mergili, M. (2025). Modelling debris flood propagation in scarce data terrain, case study in the Colombian Andes. *Journal of South American Earth Sciences*, *165*, 105660. https://doi.org/10.1016/j.jsames.2025.105660
+
+- Díaz Ramírez, J. H., Páez Martínez, H. J., Lizarralde, G., & Herazo, B. (2022). El rol de las alianzas sociales en el proceso de reconstrucción en Salgar, Colombia. *Letras Verdes. Revista Latinoamericana de Estudios Socioambientales*(31), 115-134. https://doi.org/10.17141/letrasverdes.31.2022.5092
+
+- Garzon, L. F. L., Johnson, M. F., Mount, N., & Gomez, H. (2023). Exploring the effects of catchment morphometry on overland flow response to extreme rainfall using a 2D hydraulic-hydrological model (IBER). *Journal of Hydrology*, *627*, 130405. https://doi.org/10.1016/j.jhydrol.2023.130405
+
+- Guerrero-Miranda, P., & Luque González, A. (2021). Social Responsibility, Sustainability, and Public Policy: The Lessons of Debris Management after the Manabí Earthquake in Ecuador. *International Journal of Environmental Research and Public Health*, *18*(7), 3494. https://doi.org/10.3390/ijerph18073494
+
+- Henao Salgado, M. J., & Zambrano Nájera, J. (2022). Assessing Flood Early Warning Systems for Flash Floods. *Frontiers in Climate*, *4*, 787042. https://doi.org/10.3389/fclim.2022.787042
+
+- Luna, C. C., Zambrano Nájera, J., & Vélez Upegui, J. J. (2025). Lessons learned from flash floods early warning system in a mountainous rur-urban region of Colombia. *Environmental Challenges*, *20*, 101199. https://doi.org/10.1016/j.envc.2025.101199
+
+- Machuca, S., García-Delgado, H., & Ramos-Cañón, A. M. (2024). Assessing torrentiality in catchments of the tropical Andes: A morphometric approach. *Journal of South American Earth Sciences*, *134*, 104775. https://doi.org/10.1016/j.jsames.2023.104775
+
+- Moreno-Alfonso, S. C., Sánchez, J. J., & Murcia, H. (2021). Evidences of an unknown debris avalanche event (<0.58 Ma), in the active azufral volcano (Nariño, Colombia). *Journal of South American Earth Sciences*, *107*, 103138. https://doi.org/10.1016/j.jsames.2020.103138
+
+- Muñoz, F., Vega, J., & Hidalgo, C. (2025). Experimental and numerical mudflows modeling for runout and deposition height assessment. *Natural Hazards*, *121*(20), 23723-23754. https://doi.org/10.1007/s11069-025-07193-4
+
+- Páez Pedraza, J. P. (2025). Mud and debris flow modeling as hazard assessment tool. *Ingenieria y Universidad*, *29*. https://doi.org/10.11144/javeriana.iued29.mdfm
+
+- Paez, L. V., Sánchez, J. J., & Castro-Caicedo, Á. J. (2024). Morphology of the collapse scar of the Chiles Volcano (Colombia-Ecuador border) and geomechanical characterization of rock masses. *Boletín Geológico*, *51*(1). https://doi.org/10.32685/0120-1425/bol.geol.51.1.2024.714
+
+- Ramos-Cañón, A. M., Munévar, M., Prada-Sarmiento, L. F., Escobar-Vargas, J., Vargas-Luna, A., Prieto, A. F., Reyes, N. C., Medina, M., Pérez, J., & Dorado, L. (2023). Redundancia de los umbrales del sistema de alerta temprana para avenidas torrenciales de Mocoa, Putumayo, Colombia. *Revista de Estudios Latinoamericanos sobre Reducción del Riesgo de Desastres REDER*, *7*(2), 142. https://doi.org/10.55467/reder.v7i2.129
+
+- Ramos-Cañón, A., Prada-Sarmiento, L. F., Munévar-Peña, M., & Castro-Malaver, C. (2026). Desempeño Técnico del Sistema de Alerta Temprana para Avenidas Torrenciales en Mocoa, Colombia. *Revista de Estudios Latinoamericanos sobre Reducción del Riesgo de Desastres REDER*, *10*(2), 301. https://doi.org/10.55467/reder.v10i2.234
+
+- Sanvitale, N., Bowman, E., & Cabrera, M. A. (2021). Experimental Investigation on the Impact Dynamics of Saturated Granular Flows on Rigid Barriers. *Environmental and Engineering Geoscience*, *27*(1), 127-138. https://doi.org/10.2113/eeg-d-20-00033
+
+- Smolíková, J., Hrbáček, F., Blahůt, J., Klimeš, J., Vilímek, V., & Loaiza Usuga, J. C. (2021). Analysis of the rainfall pattern triggering the Lemešná debris flow, Javorníky Range, the Czech Republic. *Natural Hazards*, *106*(3), 2353-2379. https://doi.org/10.1007/s11069-021-04546-7
+
+- The basal friction in the modeling of the propagation of shallow landslides – debris flow using r.avaflow. (2025). *Revista De La Asociacion Geologica Argentina*. (Sin DOI; completar autores).
+
+- Trujillo-Vela, M. G., Ramos-Cañón, A. M., Escobar-Vargas, J. A., & Galindo-Torres, S. A. (2022). An overview of debris-flow mathematical modelling. *Earth-Science Reviews*, *232*, 104135. https://doi.org/10.1016/j.earscirev.2022.104135
+
+- Trujillo-Vela, M., Galindo-Torres, S., Zhang, X., Ramos-Cañón, A., & Escobar-Vargas, J. (2021). SPH-DEM Coupling for Debris Flows. *14th WCCM-ECCOMAS Congress*. https://doi.org/10.23967/wccm-eccomas.2020.316
+
+- Valencia Londoño, P. A., & Valencia Londoño, D. (2024). Persistent Vulnerability after Disaster Risk Reduction (DRR) Response: The Case of Salgar, Colombia. *Sustainability*, *16*(11), 4394. https://doi.org/10.3390/su16114394

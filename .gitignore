@@ -5,3 +5,4 @@ fuentes/*.xlsx
 
 # Cuadernos: datos descargados (caché)
 book/03_amenazas/datos/
+fuentes/vig/

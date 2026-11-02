@@ -158,3 +158,21 @@ Dos revisiones recientes tratan el manejo del riesgo volcánico en Colombia 40 a
 - Verificar con la literatura la afirmación sobre lahares secundarios por lluvia (punto 6).
 - Añadir los parámetros del modelo VHAST y las funciones de vulnerabilidad a ceniza del Atlas (Cardona et al., 2015).
 - La hoja de vigilancia no tiene un grupo de volcanes: sus registros están dispersos. Revisar los IDs 66, 80, 229, 371, 455, 524, 755 y 800 para ampliar el capítulo.
+
+## Bibliografía recomendada
+
+Lista de los 7 registros de la hoja de vigilancia científica (pestaña `Vigilancia_CTeI`, columna `AMENAZA_ESPECIFICA` = «Lahares»; «Flujos de lava y domos»; «Corriente de densidad piroclástica»; «Gases y aerosoles volcánicos»), en formato APA 7 con metadatos de Crossref. Son lecturas recomendadas: **no están verificadas contra el texto completo** ni se usan como evidencia hasta que se citen en el capítulo. Las entradas sin DOI carecen de autores en la hoja.
+
+- Aguillón Lombana, A. (2022). Desastre, memoria y materialidad: los objetos y la identidad de los armeritas 35 años después de la avalancha. *Memorias*, *45*, 178-203. https://doi.org/10.14482/memor.45.986.1361
+
+- Benavides-Cordoba, V., Suarez, A., Guerrero-Jaramillo, D., Silva-Medina, M., Betancourt-Peña, J., & Palacios-Gómez, M. (2024). Respiratory and physical health consequences in older adults in a high-risk volcanic area: Comparison of two rural villages. *PLOS ONE*, *19*(9), e0310659. https://doi.org/10.1371/journal.pone.0310659
+
+- Calvache, M. (2025). Volcanic risk management in Colombia 40 years after Armero. *Nature Geoscience*, *18*(11), 1074-1076. https://doi.org/10.1038/s41561-025-01830-0
+
+- Cardona A., O.-D., & Bernal G., G. A. (2024). Implicaciones del Enfoque Metodológico de Evaluación de la Amenaza y el Riesgo de Desastres por Erupciones del Volcán Galeras, Colombia. *Revista de Estudios Latinoamericanos sobre Reducción del Riesgo de Desastres REDER*, *8*(1), 12. https://doi.org/10.55467/reder.v8i1.137
+
+- Mani, L., Barclay, J., Fearnley, C., Robertson, R. E. A., Mafuko Nyandwi, B., Barsotti, S., Donovan, A., & Stovall, W. (2025). Lessons from 40 years of communicating volcanic risk during crises. *Nature Geoscience*, *18*(11), 1077-1080. https://doi.org/10.1038/s41561-025-01832-y
+
+- Ortiz, J., García, J. S., Murcia, H., Schonwalder-Ángel, D., & Sánchez-Torres, L. (2023). The relation between monogenetic and polygenetic dacitic volcanism. Case study from Tapias dome (<95 ka) and Cerro Machín volcano (<50 ka), Colombia. *Boletín de Geología*, *45*(1). https://doi.org/10.18273/revbol.v45n1-2023001
+
+- Ospina Enciso, A. F. (2022). Cuando se apaga Armero alumbran sus hijos: tragedia, magia y transformación en el norte del Tolima. *Memorias*, *45*, 153-177. https://doi.org/10.14482/memor.45.986.136

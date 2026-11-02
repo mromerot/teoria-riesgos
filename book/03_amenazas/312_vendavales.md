@@ -175,6 +175,19 @@ Las medidas siguientes son un criterio de método de este libro, derivado de la 
 | Protección financiera | Seguros para vivienda y cultivos |
 | Manejo | Alertas de muy corto plazo basadas en radar y en los algoritmos de pronóstico a muy corto plazo; difusión a la población |
 
+## Síntesis de evidencia
+
+```{note}
+**Método.** Síntesis narrativa por tipo de evidencia (no un metaanálisis con efectos agrupados: los estudios usan diseños, escalas y variables que no se pueden combinar en un solo estimador). Se leyeron los resúmenes de los artículos de la hoja de vigilancia que están en la carpeta de PDFs; las cifras vienen de esos resúmenes y **faltan por verificar contra el texto completo**.
+```
+
+| Estudio | Diseño y lugar | Resultado relevante |
+|---|---|---|
+| {cite:t}`casallas2021understanding` | Imágenes de satélite y datos de precipitación, Sabana de Bogotá | Los vientos del oeste de la tarde están presentes en el 78 % de los días de lluvias, pero solo el 26 % tiene tormentas convectivas: no son un buen predictor; el vapor de agua precipitable en el valle del Magdalena es anormalmente bajo en días convectivos |
+| {cite:t}`olivar2020effects` | Análisis de confiabilidad de tanques de almacenamiento | Evalúa el efecto de vientos extremos sobre estructuras industriales |
+
+**Lectura conjunta.** La predicción de tormentas convectivas en el altiplano no se reduce a la dirección del viento {cite:p}`casallas2021understanding`; esto limita las alertas basadas en un solo predictor. Para exposición industrial hay métodos de fragilidad de tanques {cite:p}`olivar2020effects`.
+
 ## Pendiente
 
 - Consultar la entrada de Wakimoto (2015) sobre microrráfagas (*Encyclopedia of Atmospheric Sciences*), que es de acceso cerrado y no se consultó.
@@ -184,3 +197,15 @@ Las medidas siguientes son un criterio de método de este libro, derivado de la 
 - Hacer un caso colombiano: un inventario sistemático de vendavales de un municipio, con su fuente, método y periodo, y su zonificación por recurrencia.
 - Contrastar en el trópico andino los patrones de ciclo diurno y ambiente termodinámico que la literatura describe para Estados Unidos.
 - Distinguir cuándo un viento fuerte es un vendaval de origen convectivo y cuándo es efecto de un ciclón o de una onda tropical.
+
+## Bibliografía recomendada
+
+Lista de los 4 registros de la hoja de vigilancia científica (pestaña `Vigilancia_CTeI`, columna `AMENAZA_ESPECIFICA` = «Viento»; «Tormenta eléctrica»), en formato APA 7 con metadatos de Crossref. Son lecturas recomendadas: **no están verificadas contra el texto completo** ni se usan como evidencia hasta que se citen en el capítulo. Las entradas sin DOI carecen de autores en la hoja.
+
+- Casallas, A., Hernández-Deckers, D., & Mora-Páez, H. (2021). Understanding convective storms in a tropical, high-altitude location with in-situ meteorological observations and GPS-derived water vapor. *Atmósfera*. https://doi.org/10.20937/atm.53051
+
+- Hernández, K. S., Henao, J. J., Gómez‐Ríos, S., Robledo, V., Rendón, A. M., & Mejía, J. F. (2025). Spatio‐Temporal Representation of Mesoscale Convective Systems in Convection‐Permitting Simulations Over Northwestern South America: Insights Into Rainfall Overestimation. *Journal of Geophysical Research: Atmospheres*, *130*(7), e2024JD042289. https://doi.org/10.1029/2024jd042289
+
+- Olivar, O. J. R., Mayorga, S. Z., Giraldo, F. M., Sánchez-Silva, M., Pinelli, J.-P., & Salzano, E. (2020). The effects of extreme winds on atmospheric storage tanks. *Reliability Engineering & System Safety*, *195*, 106686. https://doi.org/10.1016/j.ress.2019.106686
+
+- Serpa-Usta, Y., López-Lambraño, A. A., Flores, D.-L., Gámez-Balmaceda, E., Martínez-Acosta, L., Medrano-Barboza, J. P., López, J. F. R., López-Ramos, A., & López-Lambraño, M. (2021). Santa Ana Winds: Fractal-Based Analysis in a Semi-Arid Zone of Northern Mexico. *Atmosphere*, *13*(1), 48. https://doi.org/10.3390/atmos13010048
