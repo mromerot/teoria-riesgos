@@ -161,6 +161,6 @@ La NSR-22 es una propuesta que, según el capítulo citado, debía ser estudiada
 
 - Leer los resultados completos de {cite:p}`hoyos2022multicity`, {cite:p}`marulanda2021epistemic`, {cite:p}`archbold2025confined`, {cite:p}`reyes2025urm` y {cite:p}`cruz2026liquefaction`. Hoy se citan por título o resumen. Del primero y el segundo no verifiqué si los casos son colombianos.
 - Añadir las funciones de vulnerabilidad del Atlas con sus parámetros y las pérdidas anuales esperadas por sismo para ciudades de referencia.
-- Verificar la cifra de población en zonas de amenaza intermedia y alta: el Atlas da 87 % (NSR-10) y el estudio de Sabana Centro cita 83 %; hay que reconciliar las fuentes.
+- Buscar la cifra de población en zonas de amenaza sísmica intermedia y alta. El capítulo no la usa: la cifra de 87 % de mis notas no aparece en el texto extraído del Atlas, y la de 83 % del estudio de Sabana Centro no se verificó. No citar ninguna hasta hallar la fuente.
 - Añadir el caso de Bogotá, Medellín y Cali (DOI 10.1177/8755293020942537) y la reevaluación de la serie 2021, capítulo 2, para infraestructura escolar.
 - Documentar herramientas: OpenQuake (GEM) y CAPRA/CRISIS. Quedan por contrastar con su documentación.

@@ -26,6 +26,8 @@ project:
       children:
         - pattern: book/04_vulnerabilidad/4*.md
     - file: book/05_sintesis/index.md
+      children:
+        - pattern: book/05_sintesis/5*.md
     - title: Recursos
       children:
         - file: book/recursos/fuentes_colombia.md

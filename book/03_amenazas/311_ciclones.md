@@ -126,6 +126,6 @@ La tabla de medidas es un criterio de método de este libro. El Atlas trata los 
 ## Pendiente
 
 - Leer completos {cite:p}`rey2021hurricane`, {cite:p}`osorio2024reconstructing` y {cite:p}`velasquezcalderon2027assessing`.
-- Verificar el porcentaje de muertes por huracanes en tierra (80 %) en su fuente primaria.
+- La cifra de 80 % de muertes por huracanes donde tocan tierra está en el Atlas tal como se cita en el capítulo; falta hallar la fuente primaria que el Atlas no indica en ese pasaje.
 - Añadir las funciones de vulnerabilidad al viento y los parámetros de la marea de tormenta del Atlas.
 - Documentar la inclusión de ciclones en CLIMADA (módulo de ciclones tropicales) después de revisar su documentación.
