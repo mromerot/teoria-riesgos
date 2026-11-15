@@ -26,9 +26,12 @@ Esta lista convierte el libro en un procedimiento de trabajo. Sigue el flujo pro
 ## 3. Datos
 
 - [ ] Exposición: población, edificaciones, líneas vitales y suelo ([](../04_vulnerabilidad/41_exposicion.md)).
+- [ ] Chequear la completitud de las huellas de edificios contra la superficie construida de GHSL, con más de una fuente de huellas, **antes** de calcular pérdidas.
+- [ ] Leer los términos de uso de cada fuente. Los datos por edificio de fuentes con términos restrictivos no se versionan ni se publican (`data/restringido/`).
+- [ ] Población: declarar fuente y año, y contrastar el total con cifras oficiales (el censo cuenta personas; el DANE publica además una cifra ajustada).
 - [ ] Vulnerabilidad física: función de daño por tipo de elemento y amenaza ([](../04_vulnerabilidad/42_funciones_dano.md)).
 - [ ] Vulnerabilidad social y capacidades ([](../04_vulnerabilidad/43_vulnerabilidad_social.md)).
-- [ ] Amenaza: mapas oficiales (SGC, IDEAM, autoridades locales) o modelación propia.
+- [ ] Amenaza: mapas oficiales (SGC, IDEAM, autoridades locales) o modelación propia. Si se usa un proxy de tamizaje, contrastarlo con el mapa oficial donde exista y anotar qué cubre y qué no ([](../03_amenazas/305_inundacion.md)).
 - [ ] Registrar para cada insumo la fuente, la fecha, la resolución y el nivel de respaldo: local, nacional o global.
 
 **Producto:** un catálogo de datos con niveles de respaldo.
@@ -62,7 +65,20 @@ Esta lista convierte el libro en un procedimiento de trabajo. Sigue el flujo pro
 ## 7. Seguimiento
 
 - [ ] Guardar versión de datos, inventario, escenarios y fecha.
+- [ ] Dejar los resultados en el formato del contrato de salida (ver abajo) y pasar el validador.
 - [ ] Definir cuándo se repite el análisis y con qué indicadores se sigue.
+- [ ] Anotar lo que la ciudad enseñó sobre el libro, para llevarlo de vuelta (R5).
+
+## Contrato de salida
+
+Cada repositorio de ciudad guarda sus resultados con la misma forma, para que se puedan auditar, repetir y comparar. La plantilla trae la especificación (`resultados/LEEME.md`), una tabla de parámetros (`resultados/parametros.csv`), los datos de la corrida (`config/corrida.yaml`) y un validador (`scripts/verificar_salida.py`).
+
+- **Parámetros con fuente.** Cada parámetro lleva valor, unidad, fuente, nivel (local, nacional, global o supuesto), fecha de verificación y estado (`verificado`, `por_verificar`, `por_defecto` o `supuesto`). Un parámetro `por_defecto` no se cita en la síntesis.
+- **Obligatorios.** Versión del libro, tipo de modelo de elevación y si hubo respaldo, fuente y completitud de las huellas, licencia de la fuente, población con fuente y año, fuente y rango del costo, curva de daño, origen de los escenarios, periodo de retorno mínimo y qué excluye la PAE.
+- **Validador.** Da error si falta un parámetro o una fuente, y avisos si la completitud es menor a 80 % o mayor a 120 %, si se usó un modelo de elevación de respaldo o si una amenaza no está calibrada. Con `--estricto`, los parámetros por defecto también son error.
+- **Tablas por paso.** `resultados/03_datos/`, `04_linea_base/<amenaza>/`, `05_escenarios/` y `06_sintesis/`, con las columnas mínimas que fija el contrato. Las corridas anteriores se archivan en `resultados/archivo/`.
+
+Se probó con el piloto de inundación de Cali. Esa prueba cambió tres cosas del contrato: los parámetros de OpenStreetMap pasaron a ser de «huellas», porque la fuente puede ser el catastro; se añadieron la licencia de la fuente y la carpeta `data/restringido/`; y se añadió un parámetro para registrar el contraste con mapas oficiales.
 
 ## Aviso sobre capítulos provisionales
 
@@ -72,3 +88,5 @@ Si la ciudad tiene erosión costera, erosión fluvial, calor o vendavales como a
 
 - Convertir esta lista en una plantilla de repositorio por ciudad y en un comando que la cree.
 - Contrastarla con los análisis ya hechos en SIDRo y Leticia para ajustar lo que falte.
+- Probar el contrato completo con una segunda ciudad (Sincelejo) y con un análisis que no sea de inundación.
+- Fijar la versión del libro (etiqueta y DOI) que los análisis de ciudad deben citar (R4).

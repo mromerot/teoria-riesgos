@@ -12,6 +12,8 @@
   - [ ] `CLAUDE.md` del proyecto (escrito el 2026-11-02, falta aprobación)
   - [ ] `CITATION.cff` y `LICENSE`
   - [ ] Inventario de fuentes (matriz de la sección 3 del plan) con su estado de lectura
+    - [x] OpenHVRA (software, v0.13.1): ficha interna en `fuentes/fichas/openhvra.md` (2026-11-14); código de 5 módulos leído completo, el resto sin leer
+  - [x] Contrato de salida para las ciudades (2026-11-14): `plantilla/resultados/LEEME.md.tpl`, `config/corrida.yaml.tpl`, `scripts/verificar_salida.py.tpl`; probado con una ciudad de prueba. Probado en Cali (2026-11-15, `ciudades/cali`, piloto de inundación): corre de punta a punta. Ajustes que salieron: `pae.csv` con PAE sin cola, sensibilidad al costo y fuente de huellas; parámetros `osm_*` generalizados a `huellas_*` con `huellas_licencia`; carpeta `data/restringido/` para datos cuyos términos prohíben publicar; población declarada con fuente y año (`poblacion_*`); `amenaza_<clave>_validacion` para registrar el contraste con mapas oficiales. Pendiente: citar la versión del libro (R4) cuando haya etiqueta
   - [ ] Cerrar la lista de cifras por verificar (abajo)
 - [ ] **F2. Literatura colombiana**: esperando tres decisiones (copia local de PDFs, niveles A, B y C, subagentes).
 - [ ] **F3. Fuentes institucionales**, incluido el barrido de `mromerot.github.io/web/grd/`
@@ -38,7 +40,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 3 | Volcanes | L1 | Atlas | Literatura reciente |
 | 3 | Tsunami | L1 | Atlas, Guapi, Escobar 2020, Ávila-Guzmán 2026, piloto crc003 v2 | Leer completos Escobar 2020 y Páez 2021; fuente de Poveda y Pulido (2019); NSWE con inundación |
 | 3 | Movimientos en masa | L1 | Atlas, SGC, literatura nacional | Artículos leídos completos |
-| 3 | Inundación | L1 | Atlas, CLIMAAX | Artículos leídos completos |
+| 3 | Inundación | L1 (ampliado 2026-11-15) | Atlas, CLIMAAX, OpenHVRA, IDESC | Artículos leídos completos; HAND solo como tamizaje; informe CVC–Univalle 2019 sin leer |
 | 3 | Erosión costera | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; Pacífico |
 | 3 | Erosión fluvial | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; puentes |
 | 3 | Sequía | L1 | Atlas, CLIMAAX | Artículos leídos completos |
@@ -46,11 +48,11 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 3 | Incendios forestales | L1 | Atlas, CLIMAAX | Datos de área quemada recientes |
 | 3 | Ciclones tropicales | L1 | Atlas, IBTrACS (datos reales) | 80 % de muertes en tierra sin fuente primaria |
 | 3 | Vendavales | L1 **provisional** | DNP, Bolgiani 2020, CLIMAAX | Definición UNGRD 2017, EM-DAT, NSR-10, caso colombiano |
-| 4 | Exposición | L1 | Atlas, CLIMAAX, CCDR-tools | Plantilla de inventario |
+| 4 | Exposición | L1 (ampliado 2026-11-15) | Atlas, CLIMAAX, CCDR-tools, GHSL, Overture, IDESC, DANE | Plantilla de inventario; cifras del piloto de Cali sin publicar; conteos por manzana del DANE (censados o ajustados) |
 | 4 | Funciones de daño | L1 | Atlas, CLIMAAX | Estudios de vulnerabilidad física leídos |
 | 4 | Vulnerabilidad social | L1 | CCDR-tools, DNP, Atlas | Fórmula del DNP, ecuación de Moncho |
 | 5 | Síntesis multiamenaza | L1 | Atlas, Chen 2016 | Guía del paso de riesgos clave de CLIMAAX |
-| 5 | Lista de verificación | L1 | El libro, SIDRo y EVA | Probarla con una ciudad real |
+| 5 | Lista de verificación | L1 (ampliada 2026-11-15) | El libro, SIDRo y EVA, piloto de Cali | Probada con una ciudad (Cali); falta una segunda y otra amenaza |
 | R | Glosario | L1 | Ver cada término | Ampliar con PreventionWeb |
 
 ### Cuadernos (parte 3)
@@ -199,3 +201,11 @@ Resumen de todo lo abierto al cierre de la sesión. Estado: todo lo hecho está 
 - ¿Se extiende la verificación del RAG al texto corrido (A1) antes de pasar a nuevas ciudades?
 - `eva-core` (aplazado): ¿se extrae como paquete común para Leticia, SIDRo y Sincelejo?
 - Aplicar el libro a una ciudad piloto (Sincelejo en curso) y registrar qué falta en el libro.
+
+## Rebanada R5 (2026-11-15): lo aprendido en Cali vuelve al libro
+
+- Capítulos editados: `41_exposicion` (chequeo de completitud, fuentes de huellas, términos de uso, población), `305_inundacion` (HAND como tamizaje y contraste con la amenaza oficial) y `52_lista_ciudad` (pasos nuevos y contrato de salida).
+- `references.bib`: 7 entradas nuevas (GHSL, Overture, IDESC catastro, IDESC amenaza fluvial, términos de la IDESC, DANE InfoDane Cali, OpenHVRA), cada una con su estado de lectura.
+- Skill `nueva-ciudad` actualizado con las reglas del contrato, de las huellas y de los términos de uso.
+- **Regla aplicada:** las cifras del piloto de Cali derivadas del catastro NO se publican en el libro (términos de la IDESC) y el piloto no está publicado: se resumen de forma cualitativa en recuadros «Observación propia, sin publicar (por verificar)». Cuando la Alcaldía autorice, se reemplazan por las cifras y por una cita al piloto.
+- Libro construido con `myst build --html` sin avisos. Sin commit ni despliegue.

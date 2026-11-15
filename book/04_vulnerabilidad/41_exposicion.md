@@ -55,6 +55,37 @@ CLIMAAX y CCDR-tools coinciden en un conjunto de fuentes globales que sirven com
 
 Para Colombia se suman fuentes nacionales. El Índice Municipal de Riesgo usa el Censo Nacional de Población y Vivienda 2018 (DANE), el Mapa Nacional de Coberturas de la Tierra (IDEAM) y la densidad de semovientes del ICA {cite:p}`dnp2019imrd`. Un análisis urbano debe añadir el catastro, el censo de edificaciones y los inventarios sectoriales, cuya disponibilidad se documenta por ciudad.
 
+### Chequear la completitud antes de calcular
+
+Un inventario de huellas incompleto no avisa: el cálculo corre igual y da una pérdida más baja. Antes de calcular conviene comparar, por bloques de unos 250 a 300 m, la superficie de las huellas con la superficie construida que estima GHS-BUILT-S a partir de imágenes de satélite {cite:p}`ghsl2023r2023a`. La comparación no cuenta «edificios que faltan», porque huellas y satélite miden de formas distintas, pero una distancia grande no se explica por diferencias de método. Como regla práctica de este libro (no proviene de una fuente): con menos de 80 % en el global del área, las cuentas de edificios y de población quedan bajas; con más de 120 %, hay duplicados o sobreestimación.
+
+Conviene repetir la comparación con **varias fuentes de huellas**, porque la diferencia entre ellas puede ser de un orden de magnitud:
+
+| Fuente de huellas | Qué ofrece | Qué revisar |
+|---|---|---|
+| OpenStreetMap | Huellas de cobertura voluntaria {cite:p}`climaax2025handbook` | Cobertura por barrio; casi nunca trae número de pisos |
+| Overture Maps | Reúne huellas de OpenStreetMap, Microsoft y Google, con su fuente original {cite:p}`overture2026buildings` | Muchas huellas pequeñas; pocos atributos |
+| Catastro municipal | Construcción por construcción, con atributos como el número de pisos. En Cali, la capa de construcciones se consulta por el servicio WFS de la IDESC {cite:p}`idesc2026catastrowfs` | Términos de uso; qué significa un valor 0 en pisos; fecha de actualización; si trae uso |
+
+```{note}
+**Observación propia, sin publicar (por verificar).** En un piloto en Cali, las huellas de OpenStreetMap cubrían menos de una décima parte de la superficie construida de GHSL en la mancha urbana, y las de Overture menos de una quinta parte; el catastro cubría la mayor parte. Las cifras exactas se publicarán con el piloto, cuando se cuente con la autorización de la fuente catastral.
+```
+
+### Términos de uso de la fuente
+
+Los términos de uso condicionan qué se puede publicar. Los de la página de la IDESC de Cali son un ejemplo de lo que hay que leer con cuidado: declaran la información publicada de dominio público y no comercializable (numeral 5), pero también prohíben publicar, multiplicar o difundir la información de la Alcaldía sin autorización y piden dar crédito (numeral 6) {cite:p}`idesc2010terminos`. Están redactados para la página web, y su aplicación al servicio WFS es por confirmar. Ante la duda, se pide autorización por escrito.
+
+Regla de este libro: los datos por edificio de fuentes con términos restrictivos **no se versionan ni se publican**; en el repositorio de la ciudad viven en `data/restringido/`, y se publican solo resultados agregados cuando la fuente lo permita ([](../05_sintesis/52_lista_ciudad.md)).
+
+### Población: del total a cada edificio
+
+Cuando no hay censo por edificio, la población de una grilla global puede repartirse entre las huellas en proporción al área construida (reparto dasimétrico): cada celda de GHS-POP {cite:p}`ghsl2023r2023a` reparte sus habitantes entre las huellas que caen en ella. El método supone que la población es proporcional al área construida dentro de la celda y no distingue vivienda de comercio o industria. El total repartido debe contrastarse con cifras oficiales.
+
+Dos advertencias con el caso de Cali:
+
+1. **Censado no es lo mismo que ajustado.** En el CNPV 2018 se censaron 1 822 869 personas en Cali, y el DANE ajustó la población por omisión a 2 227 642 {cite:p}`dane2022infodanecali`. Los conteos por manzana probablemente corresponden a lo censado (por verificar), de modo que subestiman la población y deben reescalarse antes de mezclarlos con otras fuentes.
+2. **Los totales globales no coinciden con los oficiales.** *Observación propia, sin publicar (por verificar):* el total de GHS-POP 2020 en la mancha urbana de Cali fue unas 1,2 veces la proyección 2020 del DANE para la cabecera, de 2 205 680 personas {cite:p}`dane2022infodanecali`. Parte de la diferencia viene de que el área analizada incluye territorio vecino, y parte de que GHS-POP es un modelo; no se separaron las causas.
+
 ### Una advertencia práctica sobre WorldPop
 
 WorldPop publica la población total de Colombia en una versión restringida a las edificaciones (27 MB a 100 m, 2020) y las estructuras por edad y sexo en otra no restringida, con unos 0,5 GB por cada grupo de edad y un servidor que no admite descargas parciales. En el caso de Cartagena se usó la población total y la composición por edad quedó pendiente del censo DANE por manzana {cite:p}`romero2026crc002,worldpop2020`. Conviene decidirlo antes de planear una evaluación de vulnerabilidad por edad: bajar los 12 grupos relevantes (menores de 5 y mayores de 65, mujeres y hombres) son unos 6 GB.
@@ -78,11 +109,12 @@ Los escenarios de cambio climático ([](../02_metodologia/23_escenarios_climatic
 ## Incertidumbres
 
 - Las celdas de población de los modelos globales redistribuyen censos y pueden concentrar o dispersar población donde no hay construcción detectada {cite:p}`climaax2025handbook`.
-- OpenStreetMap depende de la cobertura voluntaria, que varía entre barrios formales e informales.
+- OpenStreetMap depende de la cobertura voluntaria, que varía entre barrios formales e informales. Un inventario incompleto subestima la pérdida sin dar aviso: por eso se chequea su completitud antes de calcular.
 - El inventario de tipo estructural suele ser la parte más débil; por eso aparece con frecuencia como proxy {cite:p}`ungrd2019atlas`.
 
 ## Pendiente
 
-- Documentar la disponibilidad real de catastro y censo de edificaciones en las ciudades ya analizadas.
+- Documentar la disponibilidad real de catastro y censo de edificaciones en las ciudades ya analizadas. Cali ya tiene una primera revisión (catastro por WFS de la IDESC, con términos restrictivos); faltan Bogotá, Leticia y Sincelejo.
+- Confirmar con el DANE si los conteos por manzana del CNPV 2018 son de lo censado o de lo ajustado.
 - Revisar los módulos de exposición de CLIMADA (LitPop, OSM) contra su documentación completa.
 - Definir una plantilla única de inventario de exposición para la ciudad nueva.

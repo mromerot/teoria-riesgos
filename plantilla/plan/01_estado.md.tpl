@@ -34,4 +34,6 @@ ${pasos_amenazas}
 
 ## 7. Seguimiento
 - [ ] Versión de datos, inventario, escenarios y fecha guardados
+- [ ] `config/corrida.yaml` y `resultados/parametros.csv` completos; `python scripts/verificar_salida.py` sin errores
+- [ ] Lo aprendido para el libro anotado en `resultados/retroalimentacion.md`
 - [ ] Fecha y criterio para repetir el análisis

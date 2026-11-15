@@ -89,6 +89,20 @@ La literatura reciente en Colombia ofrece métodos para el nivel de ciudad. Algu
 
 La calidad del modelo de elevación es una de las limitaciones más relevantes en llanuras. Conviene validarlo con datos locales antes de modelar.
 
+### Tamizaje con altura sobre el cauce (HAND)
+
+Cuando no hay modelación hidráulica, algunas herramientas abiertas estiman la profundidad en cada edificio como el nivel del agua de un escenario menos su **altura sobre el cauce más cercano** (HAND, por sus siglas en inglés), tomada de un modelo digital de elevación {cite:p}`amin2026openhvra`. Sirve como tamizaje de nivel 0 para decidir dónde mirar, no como estimación del riesgo. Sus límites:
+
+- Usa un solo nivel de agua para todos los cauces, y no tiene conectividad hidráulica, defensas ni inundación pluvial {cite:p}`amin2026openhvra`.
+- Con un modelo de elevación de superficie, que incluye techos y copas {cite:p}`amin2026openhvra`, el valor en un edificio queda sesgado hacia arriba y la inundación se subestima. Los cauces entubados no aparecen en el modelo.
+- Los niveles de agua deben venir de hidrología local. Con niveles ilustrativos, la curva de excedencia no tiene significado hidrológico.
+
+**Contrastarlo siempre con mapas oficiales, cuando existan.** En Cali, la IDESC publica la amenaza por inundación fluvial del convenio entre la CVC y la Universidad del Valle de 2019, en tres clases (alta, media y baja), para los ríos Cali, Aguacatal, Meléndez y Pance; no modela el río Cauca {cite:p}`idesc2026amenazafluvial`.
+
+```{note}
+**Observación propia, sin publicar (por verificar).** En el piloto de Cali, el acuerdo entre el HAND y esa capa oficial fue débil: el proxy marcó solo una parte de los edificios que están en zona oficial, y la mayoría de lo que marcó quedó fuera de ella. Las cifras se reservan hasta contar con la autorización de la fuente. La conclusión de método es que el HAND sirve para priorizar, no para delimitar la amenaza.
+```
+
 ## 3. Exposición
 
 La inundación expone a población, edificaciones, infraestructura vial y de servicios, y áreas agropecuarias. Los estudios de amenaza sirven para el ordenamiento territorial, la regulación de usos del suelo y la definición de zonas de protección ambiental {cite:p}`ungrd2019atlas`.
@@ -146,12 +160,13 @@ Los dos últimos puntos solo se citan por el objetivo declarado en sus resúmene
 | IDEAM | Red de 1 932 estaciones meteorológicas, 609 hidrológicas y 96 hidrometeorológicas | {cite:p}`ungrd2019atlas` |
 | UNGRD | Lineamientos para la evaluación probabilista del riesgo por inundación lenta | {cite:p}`ungrd2019atlas` |
 | Minambiente | Guía técnica de los POMCA | {cite:p}`ungrd2019atlas` |
+| IDESC (Cali) | Amenaza por inundación fluvial en tres clases para los ríos Cali, Aguacatal, Meléndez y Pance (CVC y Universidad del Valle, 2019), por servicio WFS | {cite:p}`idesc2026amenazafluvial` |
 
 Los datos del Atlas son de 2019. Las cifras de estaciones y la disponibilidad de mapas deben actualizarse antes de aplicarse a una ciudad.
 
 ### Incertidumbres principales
 
-- Calidad del modelo de elevación en llanuras {cite:p}`fragozo2026dem`.
+- Calidad del modelo de elevación en llanuras {cite:p}`fragozo2026dem`, y sesgo de los modelos de superficie en zonas construidas.
 - Ausencia de defensas y de gestión del agua en los mapas globales {cite:p}`climaax2025handbook`.
 - Pocos periodos de retorno para integrar la curva de excedencia {cite:p}`ccdr2025tools`.
 
@@ -198,6 +213,7 @@ Los datos del Atlas son de 2019. Las cifras de estaciones y la disponibilidad de
 - Añadir las curvas de daño y valores máximos de daño para Colombia (capítulo 4.2).
 - Añadir inundación pluvial urbana con los casos de SIDRo y Leticia y los sistemas urbanos de drenaje sostenible.
 - Añadir los capítulos 2021 (14), 2023 (6) y 2025 de la serie de investigaciones GRD.
+- Revisar la capa de amenaza por avenida torrencial de la IDESC (quebrada Isabel Pérez, 690 polígonos) y el informe del convenio CVC–Universidad del Valle de 2019, que no se leyó.
 
 ## Bibliografía recomendada
 

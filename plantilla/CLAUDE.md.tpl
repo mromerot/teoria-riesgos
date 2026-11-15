@@ -14,6 +14,7 @@ Proyecto de análisis de riesgos de desastres y climáticos de ${nombre} (${muni
 - Los capítulos provisionales del libro de teoría (erosión costera, erosión fluvial, calor, vendavales) exigen buscar la metodología específica y citarla.
 - No sumar PML entre amenazas ni mezclar índices relativos con dinero (ver síntesis del libro).
 - No publicar datos personales; agregar a manzana cuando haya duda.
+- Los resultados siguen el contrato de `resultados/LEEME.md`: parámetros en `resultados/parametros.csv` (con fuente, nivel y estado) y la corrida en `config/corrida.yaml`. Antes de citar una cifra, `python scripts/verificar_salida.py` debe pasar. Un parámetro `por_defecto` no se cita.
 
 ## Comandos
 ```bash
