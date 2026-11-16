@@ -33,7 +33,7 @@ project:
             - file: book/03_amenazas/301_sismo.md
               children:
                 - file: book/03_amenazas/317_sismicidad_colombia.ipynb
-                  title: Sismicidad con datos del USGS
+                  title: Sismicidad de Colombia (USGS y NOAA)
             - file: book/03_amenazas/302_volcanes.md
             - file: book/03_amenazas/303_tsunami.md
               children:
