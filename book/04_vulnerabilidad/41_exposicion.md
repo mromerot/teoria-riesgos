@@ -88,7 +88,7 @@ Dos advertencias con el caso de Cali:
 
 ### Una advertencia práctica sobre WorldPop
 
-WorldPop publica la población total de Colombia en una versión restringida a las edificaciones (27 MB a 100 m, 2020) y las estructuras por edad y sexo en otra no restringida, con unos 0,5 GB por cada grupo de edad y un servidor que no admite descargas parciales. En el caso de Cartagena se usó la población total y la composición por edad quedó pendiente del censo DANE por manzana {cite:p}`romero2026crc002,worldpop2020`. Conviene decidirlo antes de planear una evaluación de vulnerabilidad por edad: bajar los 12 grupos relevantes (menores de 5 y mayores de 65, mujeres y hombres) son unos 6 GB.
+WorldPop publica la población total de Colombia en una versión restringida a las edificaciones (27 MB a 100 m, 2020) y las estructuras por edad y sexo en otra no restringida, con unos 0,5 GB por cada grupo de edad y un servidor que no admite descargas parciales. En el caso de Montería se usó la población total y la composición por edad quedó pendiente del censo DANE por manzana {cite:p}`romero2026crc001,worldpop2020`. Conviene decidirlo antes de planear una evaluación de vulnerabilidad por edad: bajar los 12 grupos relevantes (menores de 5 y mayores de 65, mujeres y hombres) son unos 6 GB.
 
 ### Qué enseña el caso de las ciudades latinoamericanas
 

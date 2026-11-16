@@ -38,13 +38,13 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 2 | Escenarios climáticos | L1 | CLIMAAX, CCDR-tools | Reducción de escala para Colombia |
 | 3 | Sismo | L1 | Atlas, literatura nacional | Cifra de población en zonas de amenaza |
 | 3 | Volcanes | L1 | Atlas | Literatura reciente |
-| 3 | Tsunami | L1 | Atlas, Guapi, Escobar 2020, Ávila-Guzmán 2026, piloto crc003 v2 | Leer completos Escobar 2020 y Páez 2021; fuente de Poveda y Pulido (2019); NSWE con inundación |
+| 3 | Tsunami | L1 | Atlas, Guapi, Escobar 2020, Ávila-Guzmán 2026, piloto crc002 v2 | Leer completos Escobar 2020 y Páez 2021; fuente de Poveda y Pulido (2019); NSWE con inundación |
 | 3 | Movimientos en masa | L1 | Atlas, SGC, literatura nacional | Artículos leídos completos |
 | 3 | Inundación | L1 (ampliado 2026-11-15) | Atlas, CLIMAAX, OpenHVRA, IDESC | Artículos leídos completos; HAND solo como tamizaje; informe CVC–Univalle 2019 sin leer |
 | 3 | Erosión costera | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; Pacífico |
 | 3 | Erosión fluvial | L1 **provisional** | Hoja de vigilancia | Metodología de referencia; puentes |
 | 3 | Sequía | L1 | Atlas, CLIMAAX | Artículos leídos completos |
-| 3 | Olas de calor | L1 **provisional**, con un caso aplicado (Cartagena, CRC002) | CLIMAAX, CCDR-tools, Esteban-Cantillo 2024, estación IDEAM y datos abiertos | Probar el percentil local en otras ciudades; vulnerabilidad por edad y función de impacto; verificar cifras de resumen |
+| 3 | Olas de calor | L1 **provisional**, con un caso aplicado (Montería, CRC001) | CLIMAAX, CCDR-tools, Esteban-Cantillo 2024, estación IDEAM y datos abiertos | Probar el percentil local en otras ciudades; vulnerabilidad por edad y función de impacto; verificar cifras de resumen |
 | 3 | Incendios forestales | L1 | Atlas, CLIMAAX | Datos de área quemada recientes |
 | 3 | Ciclones tropicales | L1 | Atlas, IBTrACS (datos reales) | 80 % de muertes en tierra sin fuente primaria |
 | 3 | Vendavales | L1 **provisional** | DNP, Bolgiani 2020, CLIMAAX | Definición UNGRD 2017, EM-DAT, NSR-10, caso colombiano |
@@ -62,7 +62,7 @@ Ninguno ha llegado a L2 (verificado) ni a L3 (validado con una ciudad).
 | 313 Análisis multiamenaza | Inventados | Ejecutado, con salidas guardadas |
 | 314 Riesgos en cascada | Inventados | Ejecutado, con salidas guardadas |
 | 315 Trayectorias de ciclones | Reales (IBTrACS) | Ejecutado; descarga de 58 MB en caché local |
-| CRC002 Olas de calor en Cartagena (externo, `scr-ungrd`) | Reales (IDEAM, NEX-GDDP-CMIP6, Landsat 8 y 9, WorldCover, WorldPop, OpenStreetMap) | Versión 2 ejecutada y publicada; se cita desde el capítulo 309, no se copia al libro |
+| CRC001 Riesgo por olas de calor en Montería (externo, `scr-ungrd`) | Reales (IDEAM, NEX-GDDP-CMIP6, Landsat 8 y 9, WorldCover, WorldPop, OpenStreetMap) | Reescrito el 2026-11-15 con datos reales (reemplaza el análisis sintético anterior y al caso de Cartagena); se cita desde el capítulo 309, no se copia al libro |
 
 ## Cobertura de las fuentes de referencia
 
@@ -134,26 +134,36 @@ Ver la tabla de la sección 3 de `plan/00_plan.md`. Resumen de lo que falta: el 
 ## Natech, tsunami, verificación y oraciones temáticas (2026-11-02)
 
 - Nuevo capítulo provisional `319_natech.md` (grupo «Amenazas tecnológicas»; HIP TL0309; 3 estudios con PDF + Atlas 2019), con ícono, ilustración, tarjeta en la portada y entrada en `scripts/nueva_ciudad.py`. Faltan 4 trabajos de la hoja sin PDF.
-- Tsunami: subsección «Ejemplo aplicado: Tumaco 1979» y cuaderno 318 (`318_tsunami_tumaco_1979.ipynb`) con las observaciones del cuaderno piloto crc003 de la UNGRD (MIT). Hallazgo: el arribo de Salinas (35 min a unos 460 km) implica una profundidad equivalente de unos 4 900 m; contrastar con Herd et al. (1981) y NOAA. El cuaderno piloto está sin validar (la versión 1 usaba una amplitud de calibración de 8 m; la versión 2 usa una fuente de Okada).
+- Tsunami: subsección «Ejemplo aplicado: Tumaco 1979» y cuaderno 318 (`318_tsunami_tumaco_1979.ipynb`) con las observaciones del cuaderno piloto crc002 de la UNGRD (MIT). Hallazgo: el arribo de Salinas (35 min a unos 460 km) implica una profundidad equivalente de unos 4 900 m; contrastar con Herd et al. (1981) y NOAA. El cuaderno piloto está sin validar (la versión 1 usaba una amplitud de calibración de 8 m; la versión 2 usa una fuente de Okada).
 - `ragrd evidencia` sobre 14 capítulos: ninguna cifra «no encontrada», «parcial» ni «dispersa». Las filas «sin_pdf» son fuentes que no son PDF (handbooks, HIPs). Solo cubre cifras de las tablas de evidencia.
 - Skill `/topic-sentence` aplicado a las «Lectura conjunta» de 301–312, 316 y 319 (oración temática con calificador de confianza).
 - Pendiente: choque financiero, los 60 «POR DETERMINAR», PDFs sin copia local (454 filas) y leer el texto completo de los estudios cuyas cifras vienen de resúmenes.
 
-## Tsunami: versión 2 del piloto crc003 (2026-11-02)
+## Tsunami: versión 2 del piloto crc002 (2026-11-02)
 
-- El cuaderno piloto de la UNGRD (`cuadernos-reproducibles-crc003`) pasa a la **versión 2**: fuente de Okada (1985) en lugar de una onda en N calibrada, malla escalonada en lugar de Lax-Friedrichs, dominio ampliado, estaciones leídas en celdas de mar de ≥ 10 m, sensibilidad y contraste con la literatura. Se corrigieron la animación espejada, la fuente desligada del epicentro y la atribución del DEM (era un mosaico de NOAA, no GEBCO).
+- El cuaderno piloto de la UNGRD (`cuadernos-reproducibles-crc002`) pasa a la **versión 2**: fuente de Okada (1985) en lugar de una onda en N calibrada, malla escalonada en lugar de Lax-Friedrichs, dominio ampliado, estaciones leídas en celdas de mar de ≥ 10 m, sensibilidad y contraste con la literatura. Se corrigieron la animación espejada, la fuente desligada del epicentro y la atribución del DEM (era un mosaico de NOAA, no GEBCO).
 - `303_tsunami.md`: «Ejemplo aplicado» reescrito como «Qué enseña la simulación de un escenario» (generación con Okada, propagación y esquema numérico, lectura en la costa, resultados y su lectura); se agrega el tiempo de arribo a Tumaco (22–23 min) a la vulnerabilidad por evacuación, la sensibilidad a la fuente a las incertidumbres y dos pendientes. Se agregan `okada1985` y `avila2026` a `references.bib`.
 - `318_tsunami_tumaco_1979.ipynb`: se actualiza el texto (Mw 8,3; estaciones que no caen en el mar; contraste con 1,88–2,30 m de Escobar et al. y 22 min de Ávila-Guzmán et al.). La tabla de observaciones **sigue sin verificar** contra Herd et al. (1981) y NOAA/NGDC.
 - Lección de método incorporada al libro: verificar un solver con onda plana y reposo exacto, la fuente con una implementación independiente, y declarar que un modelo lineal da confianza en el **tiempo de arribo** y poca en la **amplitud**.
 - Cifras del piloto que el libro cita y aún no tienen respaldo en una fuente primaria propia: la geometría de la falla (supuesto), el epicentro y la profundidad (según el artículo del piloto).
 
-## Olas de calor: caso Cartagena (CRC002 v2) (2026-11-02)
+## Olas de calor: caso Cartagena (2026-11-02; cuaderno retirado el 2026-11-15)
 
-- El cuaderno `scr-ungrd/cuadernos-reproducibles-crc002` pasó a la **versión 2** con datos abiertos reales (estación IDEAM, cinco modelos de NEX-GDDP-CMIP6 bajo SSP2-4.5, SSP3-7.0 y SSP5-8.5, Landsat 8 y 9, WorldCover, WorldPop, OpenStreetMap), y se reescribió su marco teórico con el RAG-GRD y este libro.
+- Este cuaderno se retiró el 2026-11-15 y su análisis se unificó con el de Montería en CRC001 (ver la sección siguiente); el repositorio `crc002` pasó a alojar el cuaderno del tsunami. Lo que sigue es el registro de la versión 2 de Cartagena.
+- El cuaderno de Cartagena (entonces `scr-ungrd/cuadernos-reproducibles-crc002`) pasó a la **versión 2** con datos abiertos reales (estación IDEAM, cinco modelos de NEX-GDDP-CMIP6 bajo SSP2-4.5, SSP3-7.0 y SSP5-8.5, Landsat 8 y 9, WorldCover, WorldPop, OpenStreetMap), y se reescribió su marco teórico con el RAG-GRD y este libro.
 - Auditoría de la versión 1 (datos sintéticos): umbral nocturno de 24 °C que no discrimina (92 % de los días), generador con ~46 días/año de Tmáx ≥ 35 °C frente a ~14 observados, mapa de isla de calor circular y climatología base no verificable (el conjunto abierto del IDEAM empieza en septiembre de 2019).
-- Cambios en este libro: 309 gana la definición por percentil local, las tres rutas de datos abiertos para Colombia (IDEAM en datos.gov.co, NEX-GDDP-CMIP6 por OPeNDAP, advertencia sobre ERA5-Land en la costa), la sección «Caso aplicado: Cartagena» y la evidencia de Esteban-Cantillo et al. (2024) y Ávila-Díaz et al. (2023); 23 gana «Del modelo a la estación: sesgo y umbral relativo» y la advertencia de Arias et al. (2022) sobre promediar RCP; 41 gana una advertencia práctica sobre WorldPop. Entradas nuevas en el bib: cantillo2024historical, avila2023current, arias2022tercera, bubeck2025mortality, munoz2021era5land, zippenfenig2023openmeteo, zanaga2022worldcover, worldpop2020, ideam2026temperaturas, masterton1979humidex y romero2026crc002.
+- Cambios en este libro: 309 gana la definición por percentil local, las tres rutas de datos abiertos para Colombia (IDEAM en datos.gov.co, NEX-GDDP-CMIP6 por OPeNDAP, advertencia sobre ERA5-Land en la costa), la sección «Caso aplicado: Cartagena» y la evidencia de Esteban-Cantillo et al. (2024) y Ávila-Díaz et al. (2023); 23 gana «Del modelo a la estación: sesgo y umbral relativo» y la advertencia de Arias et al. (2022) sobre promediar RCP; 41 gana una advertencia práctica sobre WorldPop. Entradas nuevas en el bib: cantillo2024historical, avila2023current, arias2022tercera, bubeck2025mortality, munoz2021era5land, zippenfenig2023openmeteo, zanaga2022worldcover, worldpop2020, ideam2026temperaturas, masterton1979humidex y romero2026crc002 (hoy `romero2026crc001`, el caso de Montería).
 - Pendiente de verificar: las cifras de los resúmenes de Esteban-Cantillo y Ávila-Díaz contra el texto completo, las categorías del Humidex de Environment Canada contra Masterton y Richardson (1979), y las menciones de Bubeck et al. (2025) y Giraldo-Charria et al. (2025), que solo se conocen por el título.
 - Pendiente de la ciudad: datos sociales por manzana (censo DANE 2018), función de impacto del calor validada y humedad proyectada (`hurs`) para el Humidex futuro.
+
+
+## Olas de calor: caso Montería (CRC001, 2026-11-15)
+
+- `scr-ungrd/cuadernos-reproducibles-crc001` se reescribió por completo: reúne en un solo análisis la proyección del cambio climático, las olas de calor y el riesgo por calor urbano de **Montería**, con datos abiertos reales (estaciones IDEAM Aeropuerto Los Garzones e INCODER-AUT, cinco modelos de NEX-GDDP-CMIP6 bajo SSP2-4.5, SSP3-7.0 y SSP5-8.5, Landsat 8 y 9, WorldCover, WorldPop y OpenStreetMap). Reemplaza el análisis anterior (escalamiento por patrón sobre la GMST de CLIMADA, sintético) y al cuaderno de Cartagena.
+- Resultados de referencia: la Tmáx supera 35 °C en 37 % de los días y la Tmín supera 24 °C en 60 % (los umbrales absolutos de uso común no discriminan); con percentiles locales, los días calurosos pasan de 10 % a 48 %, 64 % y 77 % hacia 2061–2080; la superficie construida es 6,1 °C más caliente que la referencia rural; el Humidex observado supera 45 en 71 % de los días; el riesgo relativo se concentra en el sur y el sureste.
+- Cambios en este libro: el caso aplicado de 309 pasó de Cartagena a Montería; se actualizaron 23 y 41 y la entrada del bib (`romero2026crc001` reemplaza a `romero2026crc002`). El código nuevo de descarga fuerza IPv4 para el servidor THREDDS de la NASA (Python tardaba 75 s por catálogo) y usa el servicio de subconjuntos NCSS en lugar de OPeNDAP.
+- Pendiente de verificar: las categorías del Humidex contra Masterton y Richardson (1979), y las cifras de los resúmenes de Esteban-Cantillo y Ávila-Díaz contra el texto completo.
+- Pendiente de la ciudad: datos sociales por manzana (censo DANE 2018), función de impacto del calor validada, humedad proyectada (`hurs`) y completar los vacíos de Los Garzones.
 
 ## Pendientes consolidados (2026-11-02)
 
@@ -162,7 +172,7 @@ Resumen de todo lo abierto al cierre de la sesión. Estado: todo lo hecho está 
 ### A. Contenido del libro
 1. **Verificar cifras de resúmenes contra el texto completo.** Las «Síntesis de evidencia» de 301–312, 316 y 319 salen de resúmenes. `ragrd evidencia` solo cubre cifras de tablas con cita; extenderlo al texto corrido y a las «Lecturas conjuntas». Prioridad: avenidas torrenciales (Mocoa, Cali), sismos y movimientos en masa.
 2. **Capítulos provisionales por reforzar:** erosión costera (306), erosión fluvial (307), olas de calor (309), vendavales (312) y Natech (319). Faltan resultados completos de Soledad (vendavales) y de los estudios de calor.
-3. **Tsunami:** contrastar la tabla de observaciones de 1979 (en especial el arribo de Salinas, 35 min a unos 460 km) con Herd et al. (1981) y la base de la NOAA. El cuaderno piloto crc003 de la UNGRD sigue sin validar.
+3. **Tsunami:** contrastar la tabla de observaciones de 1979 (en especial el arribo de Salinas, 35 min a unos 460 km) con Herd et al. (1981) y la base de la NOAA. El cuaderno piloto crc002 de la UNGRD sigue sin validar.
 4. **Natech:** conseguir los cuatro trabajos sin PDF (oleoductos y deslizamientos 2021, sistema de calificación 2022, revisión sistemática de 2024, derrames por fenómenos hidrológicos extremos 2025) y buscar casos colombianos con fuente primaria; medir qué fracción de los 3 466 eventos tecnológicos de la UNGRD (1998–2017) fue Natech.
 5. **Amenazas de la hoja sin capítulo:** choque financiero (8 filas), agentes biológicos (7), perturbación geomagnética (7), contaminación del aire (6), enfermedades transmitidas por vectores, dengue y leptospirosis, residuos, falla de puente y de represa, entre otras. Decidir cuáles merecen capítulo (la web GRD ya tiene grupos biológicas, tecnológicas, sociales y extraterrestres).
 6. **Los 249 registros «POR DETERMINAR»** de `AMENAZA_ESPECIFICA` (60 con PDF): clasificar con el skill `vigilancia-cti-clasificacion-hips` y decidir si alimentan algún capítulo.

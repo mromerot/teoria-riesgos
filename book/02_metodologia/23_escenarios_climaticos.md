@@ -47,7 +47,7 @@ La literatura recomendada por CLIMAAX para los escenarios combina trayectorias d
 
 ## Del modelo a la estación: sesgo y umbral relativo
 
-Las proyecciones con reducción de escala siguen teniendo sesgo respecto de una estación, sobre todo en celdas costeras. En el caso de Cartagena, cinco modelos de NEX-GDDP-CMIP6 quedaron entre 0,2 y 0,8 °C sobre la temperatura máxima mediana de la estación del IDEAM y entre 0,8 y 1,2 °C sobre su percentil 90 {cite:p}`romero2026crc002`. Hay dos salidas, cada una con su límite:
+Las proyecciones con reducción de escala siguen teniendo sesgo respecto de una estación, sobre todo en celdas costeras. En el caso de Montería, cinco modelos de NEX-GDDP-CMIP6 quedaron entre 1,4 y 1,8 °C bajo la temperatura máxima mediana de la estación del IDEAM y entre 1,7 y 2,2 °C bajo su percentil 90 {cite:p}`romero2026crc001`. Hay dos salidas, cada una con su límite:
 
 - **Umbral relativo:** el umbral sale de la climatología de cada modelo (por ejemplo, el percentil 90 de cada día del año en el periodo de referencia). El sesgo sistemático desaparece de la comparación, pero el resultado no tiene valor absoluto.
 - **Umbral absoluto anclado a la estación:** a cada día observado se le suma el cambio por cuantil que proyecta el modelo entre la ventana de la estación y el periodo futuro. Da cifras comunicables (por ejemplo, días con 35 °C o más), pero hereda la variabilidad interanual de una serie corta.

@@ -92,7 +92,7 @@ Los dos primeros pasos de la cadena (fuente y deformación) y el tercero (propag
 
 **Lectura en la costa.** Un modelo lineal sin fricción sobreestima la elevación en aguas someras y no calcula run-up. El piloto lee cada estación en la celda de mar más cercana con al menos 10 m de profundidad y excluye las que no tienen mar de esa profundidad cerca (varias coordenadas de la tabla de observaciones caen tierra adentro o en estuarios).
 
-El cuaderno piloto de la Subdirección para el Conocimiento del Riesgo de la UNGRD simula el 12 de diciembre de 1979 con Okada, malla escalonada y 450 m de resolución ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), versión 2, licencia MIT). Sus resultados:
+El cuaderno piloto de la Subdirección para el Conocimiento del Riesgo de la UNGRD simula el 12 de diciembre de 1979 con Okada, malla escalonada y 450 m de resolución ([cuadernos-reproducibles-crc002](https://scr-ungrd.github.io/cuadernos-reproducibles-crc002/), versión 2, licencia MIT). Sus resultados:
 
 | Resultado | Valor | Lectura |
 |---|---|---|
