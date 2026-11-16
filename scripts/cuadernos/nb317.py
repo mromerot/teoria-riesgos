@@ -1,4 +1,4 @@
-"""Fuente del cuaderno 317 (sismicidad de Colombia con el catálogo del USGS). Adaptado de scr-ungrd/cuadernos-reproducibles-crc004 (CC BY 4.0)."""
+"""Fuente del cuaderno 317 (sismicidad de Colombia con el catálogo del USGS). Adaptado de scr-ungrd/cuadernos-reproducibles-crc003 (CC BY 4.0)."""
 CELLS = []
 def md(t): CELLS.append(("md", t.strip("\n")))
 def code(t): CELLS.append(("code", t.strip("\n")))
@@ -10,7 +10,7 @@ md(r'''
 
 Este cuaderno **descarga datos reales** y muestra cómo caracterizar la sismicidad de una región: tasa de ocurrencia, distribución de profundidades y de magnitudes (relación de Gutenberg-Richter). Son los insumos del análisis probabilista de amenaza sísmica de [](301_sismo.md). Se puede ejecutar completo en Colab o en un computador, sin cuenta ni claves.
 
-**Origen y licencia.** Adaptado del cuaderno «Análisis de Sismicidad de Colombia», de la Subdirección para el Conocimiento del Riesgo de la UNGRD ([cuadernos-reproducibles-crc004](https://scr-ungrd.github.io/cuadernos-reproducibles-crc004/), CC BY 4.0). Aquí se recortó el material interactivo (mapas y animación), se añadió la estimación de la magnitud de completitud y de la *b* por máxima verosimilitud, y se dejó el análisis estático.
+**Origen y licencia.** Adaptado del cuaderno «Análisis de Sismicidad de Colombia», de la Subdirección para el Conocimiento del Riesgo de la UNGRD ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/), CC BY 4.0). Aquí se recortó el material interactivo (mapas y animación), se añadió la estimación de la magnitud de completitud y de la *b* por máxima verosimilitud, y se dejó el análisis estático.
 
 **Datos.** Servicio web FDSN de eventos del USGS ([earthquake.usgs.gov/fdsnws/event/1](https://earthquake.usgs.gov/fdsnws/event/1/)), dominio público. Periodo 2000–2024, región entre 5° S y 13° N y entre 82° O y 65° O, magnitud mínima 3,0. La caja incluye parte de Ecuador, Perú, Venezuela y Panamá, por lo que **los sismos mayores del listado no son todos colombianos** (se muestra el lugar de cada uno).
 

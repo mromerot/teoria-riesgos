@@ -86,7 +86,7 @@ Es común suponer que los terremotos de una fuente siguen un proceso de Poisson:
 
 ### Ejemplo con datos reales: sismicidad con el catálogo del USGS
 
-El cuaderno [](317_sismicidad_colombia.ipynb) descarga el catálogo del USGS para Colombia y su área de influencia (2000–2024, magnitud de 3,0 o más) y muestra cómo se obtienen los insumos de esta sección. Está adaptado del cuaderno de la Subdirección para el Conocimiento del Riesgo de la UNGRD, con licencia CC BY 4.0 ([cuadernos-reproducibles-crc004](https://scr-ungrd.github.io/cuadernos-reproducibles-crc004/)). Con los datos descargados al ejecutarlo:
+El cuaderno [](317_sismicidad_colombia.ipynb) descarga el catálogo del USGS para Colombia y su área de influencia (2000–2024, magnitud de 3,0 o más) y muestra cómo se obtienen los insumos de esta sección. Está adaptado del cuaderno de la Subdirección para el Conocimiento del Riesgo de la UNGRD, con licencia CC BY 4.0 ([cuadernos-reproducibles-crc003](https://scr-ungrd.github.io/cuadernos-reproducibles-crc003/)). Con los datos descargados al ejecutarlo:
 
 | Resultado | Valor |
 |---|---|
