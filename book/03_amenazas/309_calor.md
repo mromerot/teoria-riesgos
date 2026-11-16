@@ -108,7 +108,7 @@ Con cinco modelos de NEX-GDDP-CMIP6, el porcentaje de días con Tmáx sobre el p
 | Landsat 8 | Temperatura de superficie a 30 m | {cite:p}`climaax2025handbook` |
 | WorldPop | Población por grupos de edad | {cite:p}`climaax2025handbook` |
 | Conjuntos de estrés por calor | WBGT, UTCI, índices de calor y humedad (resoluciones de 10 a 30 km) | {cite:p}`ccdr2025tools` |
-| IDEAM, estaciones locales | Temperatura máxima, mínima, horaria y humedad relativa en datos abiertos (datos.gov.co: conjuntos ccvq-rp9s, afdg-3zpb, sbwg-7ju4 y uext-mhny); la estación de Cartagena empieza en 2019 | {cite:p}`ideam2026temperaturas` |
+| IDEAM, estaciones locales | Temperatura máxima, mínima, horaria y humedad relativa en datos abiertos (datos.gov.co: conjuntos ccvq-rp9s, afdg-3zpb, sbwg-7ju4 y uext-mhny); la estación del Aeropuerto Los Garzones, en Montería, empieza en 2015 | {cite:p}`ideam2026temperaturas` |
 | NEX-GDDP-CMIP6 | Tmáx y Tmín diarias proyectadas, 0,25°, 1950–2100 | {cite:p}`thrasher2022nex` |
 | ERA5-Land | Reanálisis de 9 km; sesgo frío en celdas costeras | {cite:p}`munoz2021era5land` |
 | ESA WorldCover | Cobertura del suelo a 10 m para explicar la LST | {cite:p}`zanaga2022worldcover` |
