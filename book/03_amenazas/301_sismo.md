@@ -98,7 +98,8 @@ El cuaderno [](317_sismicidad_colombia.ipynb) descarga el catálogo del USGS par
 
 Lo que enseña el ejemplo:
 
-- **Completitud primero.** El ajuste de Gutenberg-Richter solo vale para magnitudes sobre $M_c$. Con un catálogo global la completitud es mayor que con el del SGC.
+- **Completitud primero.** El ajuste de Gutenberg-Richter solo vale para magnitudes sobre $M_c$. Con un catálogo global la completitud es mayor que con el del SGC. Los catálogos son incompletos por naturaleza, porque los analistas se concentran en los eventos mayores a medida que crece el volumen de datos {cite:p}`woessner2005completeness,mignan2012completeness,arrowsmith2022bigdata`, y la completitud no es constante: cae de forma transitoria durante las secuencias densas de réplicas {cite:p}`hainzl2016incompleteness`.
+- **Mejorar el catálogo cambia lo que se ve.** Como los sismos pequeños son mucho más numerosos que los grandes, mejorar la detección tiene un gran efecto: con *template matching* el catálogo del sur de California pasó de 180 000 a 1,81 millones de eventos {cite:p}`ross2019hidden`. Aun así, los catálogos de alta resolución presentan incompletitud e inconsistencias en la distribución magnitud-frecuencia que pueden ser problemáticas en aplicaciones de amenaza {cite:p}`herrmann2020inconsistencies`.
 - **Dos estimadores de $b$ dan resultados distintos.** La regresión sobre la curva acumulada y la máxima verosimilitud difieren en 0,13; para una tasa de recurrencia se prefiere la segunda ($\beta = b \ln 10$, ver la tabla anterior).
 - **La caja de búsqueda no es el país.** Incluye parte de Ecuador, Perú, Venezuela y Panamá, y los mayores sismos del listado (por ejemplo, el de Ecuador de 2016, de magnitud 7,8) no son colombianos. Para una ciudad hay que delimitar las fuentes que la afectan.
 - **El catálogo USGS no reemplaza al del SGC** para un estudio de amenaza.
@@ -114,6 +115,8 @@ Para el norte de Suramérica hay modelos regionalizados. El modelo NoSAm para si
 ### Amenaza sísmica nacional y local
 
 La evaluación nacional que respalda la NSR-10 siguió cinco pasos: modelar las fuentes sismogénicas, asignar los eventos de los catálogos a cada fuente, caracterizar cada fuente con parámetros estadísticos, aplicar el modelo probabilista (software CRISIS V7.2) e interpretar los resultados para el diseño {cite:p}`ungrd2019atlas`. El Atlas muestra el mapa para un periodo de retorno de 475 años y un periodo estructural de 0,5 s, calculado **en roca firme**. Sirve como insumo para microzonificación y estudios de sitio, no como valor directo en el suelo de la ciudad {cite:p}`ungrd2019atlas`.
+
+El análisis probabilista descrito es de largo plazo y trata cada sismo como un evento independiente. Tras un sismo grande, en cambio, la amenaza se mantiene por encima de su nivel de fondo durante un periodo, por las réplicas y los sismos que desencadena; cuantificar esa amenaza y comunicarla al público es el objeto del pronóstico operacional de sismos {cite:p}`jordan2010oef`.
 
 ```{important}
 A escala de ciudad, la amenaza en roca debe modificarse por el efecto del suelo. La microzonificación sísmica (caracterización geotécnica y geológica de cada sitio) es esencial para evaluar la respuesta de los suelos {cite:p}`ungrd2019atlas`. En 2019 había 16 ciudades con estudios de microzonificación: Popayán, Bogotá, Manizales, Cali, Medellín, Armenia, Pereira, Ibagué, el Valle de Aburrá, Bucaramanga (indicativo), Dosquebradas, Santa Rosa de Cabal, Palmira, Tuluá y Buga {cite:p}`ungrd2019atlas`.
