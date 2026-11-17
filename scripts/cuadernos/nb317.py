@@ -427,6 +427,86 @@ plt.show()
 ''')
 
 md(r'''
+### 6.1 Animación a ritmo constante
+
+La animación recorre la sismicidad de 1900 a 2026 con el mismo número de años por cuadro, de modo que el reloj avanza a velocidad constante, y compara dos paneles con el mismo reloj: a la izquierda, todo el catálogo; a la derecha, solo los sismos por encima de la magnitud de completitud. Si el aumento del panel izquierdo fuera actividad real, el derecho crecería igual. El video se genera con el codificador del sistema o con el paquete `imageio-ffmpeg` (`pip install imageio-ffmpeg`) y pesa unos 200 KB.
+''')
+
+code(r'''
+from matplotlib import animation
+
+ANIM_INI = 1900       # año de inicio de la animación
+ANIOS_POR_CUADRO = 1  # años que avanza cada cuadro
+FPS = 12              # cuadros por segundo
+
+# Codificador de video: el del sistema o, si no hay, el que trae el paquete imageio-ffmpeg
+import shutil, tempfile, os
+TMP = tempfile.mkdtemp()
+if not shutil.which("ffmpeg"):
+    try:
+        import imageio_ffmpeg
+        plt.rcParams["animation.ffmpeg_path"] = imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        pass
+
+def animar(df, mag_completa=MAG_COMPLETA, anio_ini=ANIM_INI, paso=ANIOS_POR_CUADRO, fps=FPS):
+    df = df[df.anio_dec >= anio_ini].sort_values("anio_dec")
+    grupos = [df, df[df.mag >= mag_completa]]
+    titulos = ["Todo el catálogo", f"Solo M ≥ {dec(mag_completa)}"]
+    hay_video = animation.writers.is_available("ffmpeg")
+    if not hay_video:
+        paso = max(paso, 2)                                   # el GIF pesa mucho: menos cuadros
+    tiempos = np.append(np.arange(anio_ini, ANIO_FIN, paso), [ANIO_FIN] * fps)   # pausa final de 1 s
+
+    fig, axs = plt.subplots(1, 2, figsize=(10, 6.3), dpi=90)
+    cmap = CMAP.copy(); cmap.set_bad("0.35")
+    capas = []
+    for ax, g, titulo in zip(axs, grupos, titulos):
+        mapa_base(ax); ax.set_xlabel(""); ax.set_ylabel(""); ax.tick_params(labelsize=7)
+        ax.set_title(titulo, fontsize=11, fontweight="bold")
+        sc = ax.scatter([], [], s=[], c=[], cmap=cmap, norm=NORM, alpha=0.75, linewidths=0)
+        txt = ax.text(0.03, 0.03, "", transform=ax.transAxes, fontsize=10,
+                      bbox=dict(fc="white", ec="none", alpha=0.8))
+        capas.append((sc, txt, g.anio_dec.to_numpy(), g[["lon", "lat"]].to_numpy(),
+                      tam(g.mag), np.ma.masked_invalid(g.prof_km.to_numpy(dtype=float))))
+    reloj = fig.suptitle("", fontsize=16, fontweight="bold", y=0.98)
+    fig.text(0.5, 0.015, "El aumento del panel izquierdo refleja mejor monitoreo, no más actividad sísmica. "
+             + CREDITO, ha="center", fontsize=8.5)
+    fig.subplots_adjust(left=0.05, right=0.98, top=0.9, bottom=0.08, wspace=0.12)
+
+    def actualizar(i):
+        t = tiempos[i]
+        for sc, txt, tt, xy, s, c in capas:
+            k = np.searchsorted(tt, t, side="right")
+            sc.set_offsets(xy[:k]); sc.set_sizes(s[:k]); sc.set_array(c[:k])
+            txt.set_text(f"{miles(k)} sismos")
+        reloj.set_text(str(int(t)))
+        return [c[0] for c in capas]
+
+    anim = animation.FuncAnimation(fig, actualizar, frames=len(tiempos), interval=1000 / fps)
+    if hay_video:
+        salida = os.path.join(TMP, "animacion_sismicidad.mp4")
+        # calidad constante (CRF 28): el video pesa unos 200 KB con poca pérdida visual
+        anim.save(salida, writer=animation.FFMpegWriter(fps=fps, extra_args=["-crf", "28", "-preset", "slow", "-pix_fmt", "yuv420p"]))
+    else:
+        salida = os.path.join(TMP, "animacion_sismicidad.gif")
+        anim.save(salida, writer=animation.PillowWriter(fps=fps))
+    plt.close(fig)
+    return salida
+
+archivo_anim = animar(cat)
+print("Animación guardada en", archivo_anim)
+''')
+
+code(r'''
+from IPython.display import Video, Image, display
+if archivo_anim.endswith(".mp4"):
+    display(Video(archivo_anim, embed=True, html_attributes="controls loop muted playsinline"))
+else:
+    display(Image(filename=archivo_anim))
+''')
+
+md(r'''
 ## 7. Cortes transversales
 
 Un corte vertical muestra cómo se distribuye la sismicidad en profundidad. El siguiente proyecta todo el cuadrante sobre un solo plano, Sur-Norte y Oeste-Este, hasta 200 km y con exageración vertical ×3, con la escala horizontal en kilómetros y los extremos rotulados. Hay dos advertencias de lectura: la exageración ×3 hace que una placa que buza 30° se vea a unos 60°, y al proyectar más de 2 000 km de país sobre un plano, estructuras que están a cientos de kilómetros entre sí aparecen una al lado de la otra.
