@@ -150,6 +150,7 @@ MAG_COMPLETA = 4.5       # umbral "completo" para comparar tasas
 PROF_MAX = 200           # profundidad máxima de los cortes (km)
 EXAG_VERTICAL = 3        # exageración vertical de los cortes
 
+ANIO_FIN = pd.Timestamp(FECHA_FIN).year + (pd.Timestamp(FECHA_FIN).dayofyear - 1) / 365.25
 LAT_MEDIA = (BBOX["lat_min"] + BBOX["lat_max"]) / 2
 KM_LAT = 110.57
 KM_LON = 111.32 * np.cos(np.radians(LAT_MEDIA))
@@ -272,7 +273,7 @@ _t
 md(r'''
 ### 5.1 Completitud en el tiempo
 
-La magnitud de completitud ($M_c$) es el umbral sobre el cual el catálogo registra prácticamente todos los sismos. Se estima aquí por máxima curvatura (el intervalo de magnitud más frecuente, más una corrección de 0,2; Wiemer y Wyss, 2000) en ventanas de cinco años, lo que da una estimación gruesa, suficiente para elegir un umbral de filtrado. La primera figura muestra el acumulado de sismos según el umbral de magnitud: si el crecimiento fuera actividad real, las tres curvas subirían por igual; lo que ocurre es que solo se dispara la de todos los eventos, con saltos en los años en que cambia la instrumentación.
+La magnitud de completitud ($M_c$) es el umbral sobre el cual el catálogo registra prácticamente todos los sismos; para el catálogo de 2000 en adelante se estimó en la sección 3. La primera figura muestra el acumulado de sismos según el umbral de magnitud: si el crecimiento fuera actividad real, las tres curvas subirían por igual; lo que ocurre es que solo se dispara la de todos los eventos, con saltos en los años en que cambia la instrumentación.
 ''')
 
 code(r'''
@@ -298,35 +299,7 @@ for anio in (1973, 1993):
 ''')
 
 md(r'''
-La segunda figura presenta $M_c$ en el tiempo: el piso de detección baja a medida que se instalan estaciones.
-''')
-
-code(r'''
-def mc_maxc(mags, paso=0.1, correccion=0.2, n_min=50):
-    """Magnitud de completitud por máxima curvatura (Wiemer y Wyss, 2000)."""
-    m = np.round(pd.Series(mags).dropna().to_numpy(), 1)
-    if len(m) < n_min:
-        return np.nan
-    bordes = np.arange(m.min() - paso / 2, m.max() + paso, paso)
-    h, _ = np.histogram(m, bins=bordes)
-    return round(bordes[np.argmax(h)] + paso / 2 + correccion, 1)
-
-ANIO_FIN = pd.Timestamp(FECHA_FIN).year + (pd.Timestamp(FECHA_FIN).dayofyear - 1) / 365.25
-ventanas = np.arange(1960, int(ANIO_FIN) + 1, 5)
-mc = pd.Series({a: mc_maxc(inst.loc[inst.anio.between(a, a + 4), "mag"]) for a in ventanas}, name="Mc")
-
-fig, ax = plt.subplots(figsize=(8, 4.2))
-ax.scatter(cat.anio_dec, cat.mag, s=2, alpha=0.25, color="#c2408c", linewidths=0, rasterized=True)
-ax.step(list(mc.index) + [ANIO_FIN], list(mc.values) + [mc.values[-1]], where="post", color="k", lw=1.8,
-        label="$M_c$ (ventanas de 5 años)")
-ax.axhline(MAG_COMPLETA, color="#1b0b2e", lw=0.8, ls="--", label=f"Umbral de comparación (M {dec(MAG_COMPLETA)})")
-ax.set(xlim=(1550, 2030), xlabel="Año", ylabel="Magnitud", title="El piso de detección baja con el tiempo")
-ax.legend(frameon=False, fontsize=8, loc="lower left")
-mc.dropna().to_frame().T
-''')
-
-md(r'''
-Si el umbral es completo, la tasa anual no debería tener tendencia instrumental. La tercera figura compara la tasa anual de todos los eventos con la de los umbrales altos.
+Si el umbral es completo, la tasa anual no debería tener tendencia instrumental. La segunda figura compara la tasa anual de todos los eventos con la de los umbrales altos.
 ''')
 
 code(r'''
@@ -615,7 +588,274 @@ fig3d.show()
 ''')
 
 md(r'''
-## 9. Lectura y límites
+## 9. Análisis departamental
+
+Los análisis de la sismicidad de todo el país se consultan, en la práctica, por territorio: un departamento o un municipio necesita una lectura de su entorno sísmico que se pueda insertar en sus documentos de gestión del riesgo, como las fichas departamentales de escenarios de riesgo. Esta sección presenta un piloto para **Córdoba**: una figura de cuatro paneles y dos párrafos que resumen la sismicidad del departamento y de su entorno inmediato, y una función que repite el análisis para cualquier otro departamento de Colombia cambiando solo su nombre.
+
+La figura usa el catálogo ampliado de la sección 5 y los límites departamentales de geoBoundaries (Runfola et al., 2020). Como la sismicidad no se detiene en un límite administrativo, el análisis no se restringe al departamento: considera los sismos dentro de Córdoba y los que ocurren en un radio de 100 km de su frontera, que son los que pueden sentirse en su territorio.
+''')
+
+code(r'''
+import json, unicodedata
+from datetime import datetime
+from matplotlib.path import Path as MPath
+from matplotlib.lines import Line2D
+from scipy.spatial import cKDTree
+
+URL_DEPTOS = ("https://github.com/wmgeolab/geoBoundaries/raw/9469f09/releaseData/gbOpen/COL/ADM1/"
+              "geoBoundaries-COL-ADM1_simplified.geojson")
+COLOR_PROF = {"Superficial (≤ 70 km)": "#e74c3c", "Intermedia (70–300 km)": "#f39c12", "Profunda (> 300 km)": "#2980b9"}
+
+
+def _es(x, dec=1):
+    """Número con coma decimal y espacio como separador de miles."""
+    return f"{x:,.{dec}f}".replace(",", " ").replace(".", ",")
+
+
+def _norm(s):
+    return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower().strip()
+
+
+def cargar_departamentos(url=URL_DEPTOS):
+    """Límites departamentales de Colombia (geoBoundaries ADM1) como {nombre: [anillos (lon, lat)]}."""
+    feats = requests.get(url, timeout=120).json()["features"]
+    salida = {}
+    for f in feats:
+        g = f["geometry"]
+        polis = [g["coordinates"]] if g["type"] == "Polygon" else g["coordinates"]
+        salida[f["properties"]["shapeName"]] = [np.array(p[0]) for p in polis]
+    return salida
+
+
+def _buscar(deptos, nombre):
+    for k in deptos:
+        if _norm(k) == _norm(nombre):
+            return k
+    raise KeyError(f"'{nombre}' no está en la lista de departamentos: {sorted(deptos)}")
+
+
+def _km(lon, lat, lat0):
+    """Proyección plana local en kilómetros."""
+    return np.c_[np.asarray(lon) * 111.32 * np.cos(np.radians(lat0)), np.asarray(lat) * 110.57]
+
+
+def distancia_al_departamento(anillos, lon, lat, lat0, paso_km=3):
+    """Distancia (km) de cada punto al límite del departamento (0 si está dentro) y máscara de interior."""
+    lon, lat = np.asarray(lon, float), np.asarray(lat, float)
+    pts = []
+    for e in anillos:
+        xy = _km(e[:, 0], e[:, 1], lat0)
+        for a, b in zip(xy[:-1], xy[1:]):
+            n = max(2, int(np.hypot(*(b - a)) / paso_km))
+            pts.append(a + (b - a) * np.linspace(0, 1, n, endpoint=False)[:, None])
+    d, _ = cKDTree(np.vstack(pts)).query(_km(lon, lat, lat0))
+    dentro = np.zeros(len(lon), bool)
+    for e in anillos:
+        dentro |= MPath(e).contains_points(np.c_[lon, lat])
+    return np.where(dentro, 0.0, d), dentro
+
+
+def _periodo(T):
+    """Período de retorno como texto: meses si es menor de un año y años en otro caso."""
+    return f"cada {_es(T * 12, 0)} meses" if T < 1 else f"cada {_es(T, 0 if T >= 10 else 1)} años"
+
+
+def clase_prof(p):
+    return "Superficial (≤ 70 km)" if p <= 70 else ("Intermedia (70–300 km)" if p <= 300 else "Profunda (> 300 km)")
+
+
+def indicadores_sismicos(depto, catalogo, deptos, radio_km=100, mag_completa=4.5, anio_completo=1973):
+    """Indicadores sísmicos de un departamento y su entorno.
+    catalogo: DataFrame con lat, lon, prof_km, mag, fecha (AAAA-MM-DD), anio_dec, lugar (y, opcional, historico).
+    Devuelve (indicadores, eventos_en_el_radio): los indicadores son un dict serializable a JSON."""
+    nombre = _buscar(deptos, depto)
+    anillos = deptos[nombre]
+    lat0 = float(np.mean(np.concatenate([e[:, 1] for e in anillos])))
+    c = catalogo[~catalogo.get("historico", False)].copy() if "historico" in catalogo else catalogo.copy()
+    dist, dentro = distancia_al_departamento(anillos, c.lon, c.lat, lat0)
+    c = c.assign(dist_km=dist, dentro=dentro)
+    area = c[c.dist_km <= radio_km].copy()
+    anio_fin = float(c.anio_dec.max())
+    comp = area[(area.mag >= mag_completa) & (area.anio_dec >= anio_completo)]
+    anos = anio_fin - anio_completo
+    b = float(np.log10(np.e) / (comp.mag.mean() - (mag_completa - 0.05)))          # Aki-Utsu, intervalo de 0,1
+    se = b / np.sqrt(len(comp))
+    tasa = lambda m: len(comp) / anos * 10 ** (-b * (m - mag_completa))               # sismos por año de magnitud >= m
+    mayor = area.nlargest(1, "mag").iloc[0]
+    ind = dict(
+        departamento=nombre, radio_km=radio_km, mag_minima_catalogo=float(c.mag.min()),
+        periodo=[int(c.anio_dec.min()), int(anio_fin)], mag_completa=mag_completa, anio_completo=anio_completo,
+        n_dentro=int(area.dentro.sum()), n_hasta_50km=int((area.dist_km <= 50).sum()), n_en_radio=int(len(area)),
+        n_completos_en_radio=int(len(comp)), pct_superficiales=float(100 * (comp.prof_km <= 70).mean()),
+        b=b, b_error=float(se),
+        retorno_anios={str(m): float(1 / tasa(m)) for m in (5, 6, 7)},
+        mayor=dict(mag=float(mayor.mag), fecha=str(mayor.fecha), prof_km=float(mayor.prof_km), lugar=str(mayor.lugar),
+                   dist_km=float(mayor.dist_km)),
+        mayores=[dict(mag=float(r.mag), fecha=str(r.fecha), prof_km=float(r.prof_km), lugar=str(r.lugar),
+                      dist_km=float(r.dist_km)) for r in area.nlargest(5, "mag").itertuples()])
+    return ind, area, comp
+
+
+def ficha_sismica(depto, catalogo, deptos, radio_km=100, mag_completa=4.5, anio_completo=1973, lugares=None):
+    """Figura de cuatro paneles (mapa, sismos por año, Gutenberg-Richter y mayores sismos) de un departamento.
+    lugares: dict opcional {nombre: (lat, lon)} para marcar localidades en el mapa. Devuelve (figura, indicadores)."""
+    ind, area, comp = indicadores_sismicos(depto, catalogo, deptos, radio_km, mag_completa, anio_completo)
+    nombre = ind["departamento"]
+    anillos = deptos[nombre]
+    lat0 = float(np.mean(np.concatenate([e[:, 1] for e in anillos])))
+    tam = lambda m: np.clip((np.asarray(m, float) - 2.0) ** 2.3 * 2.2, 3, 400)
+
+    fig = plt.figure(figsize=(8.4, 8.0))
+    gs = fig.add_gridspec(2, 2, hspace=0.34, wspace=0.26, left=0.07, right=0.98, top=0.915, bottom=0.15)
+    ax = fig.add_subplot(gs[0, 0])
+
+    # (a) mapa ---------------------------------------------------------------
+    todos = np.concatenate(anillos)
+    m_deg = radio_km / 105 + 0.15
+    x0, x1 = todos[:, 0].min() - m_deg, todos[:, 0].max() + m_deg
+    y0, y1 = todos[:, 1].min() - m_deg, todos[:, 1].max() + m_deg
+    ax.set_facecolor("#dbe8f3")
+    for k, polis in deptos.items():
+        for p in polis:
+            ax.fill(p[:, 0], p[:, 1], color="#f4f1ea" if k != nombre else "#fbe3b5", ec="#8a8a8a" if k != nombre else "k",
+                    lw=0.5 if k != nombre else 1.4, zorder=1 if k != nombre else 2)
+    gx, gy = np.meshgrid(np.linspace(x0, x1, 130), np.linspace(y0, y1, 130))
+    gd, _ = distancia_al_departamento(anillos, gx.ravel(), gy.ravel(), lat0)
+    ax.contour(gx, gy, gd.reshape(gx.shape), levels=[50, radio_km], colors="k", linestyles=["--", ":"], linewidths=0.8, zorder=3)
+    for clase, col in COLOR_PROF.items():
+        s = area[area.prof_km.map(clase_prof) == clase].sort_values("mag", ascending=False)
+        ax.scatter(s.lon, s.lat, s=tam(s.mag), color=col, alpha=0.65, linewidths=0.3, edgecolors="k", zorder=4)
+    for nom, (la, lo) in (lugares or {}).items():
+        ax.plot(lo, la, marker="*", ms=11, color="#ffd400", mec="k", mew=0.8, zorder=6)
+        ax.annotate(nom, (lo, la), xytext=(6, -2), textcoords="offset points", fontsize=8, fontweight="bold", zorder=6)
+    ax.set_xlim(x0, x1); ax.set_ylim(y0, y1); ax.set_aspect(1 / np.cos(np.radians(lat0)))
+    ax.set_xlabel("Longitud"); ax.set_ylabel("Latitud"); ax.tick_params(labelsize=8)
+    ax.set_title(f"(a) Epicentros en {nombre} y a menos de {radio_km} km", fontsize=9.5, fontweight="bold", loc="left")
+    asa = [Line2D([], [], marker="o", ls="", color=col, mec="k", mew=0.3, ms=7, label=cl) for cl, col in COLOR_PROF.items()
+           if cl in set(area.prof_km.map(clase_prof))]
+    asa += [Line2D([], [], marker="o", ls="", color="0.55", mec="k", mew=0.3, ms=np.sqrt(tam(m)), label=f"M {m}") for m in (3, 5, 7)]
+    asa += [Line2D([], [], color="k", ls="--", lw=0.8, label="50 km del límite"), Line2D([], [], color="k", ls=":", lw=0.8, label=f"{radio_km} km del límite")]
+    fig.legend(handles=asa, loc="lower center", bbox_to_anchor=(0.5, 0.035), ncol=4, fontsize=7.4, frameon=False, columnspacing=1.8, handletextpad=0.4)
+
+    # (b) sismos por año -----------------------------------------------------
+    ax2 = fig.add_subplot(gs[0, 1])
+    anios = np.arange(anio_completo, int(ind["periodo"][1]) + 1)
+    capas = [("Dentro del departamento", comp.dentro, "#b2182b"), ("Hasta 50 km", (~comp.dentro) & (comp.dist_km <= 50), "#ef8a62"),
+             (f"50 a {radio_km} km", comp.dist_km > 50, "#fddbc7")]
+    base = np.zeros(len(anios))
+    for etiqueta, m, col in capas:
+        cuenta = comp[m].assign(a=lambda d: np.floor(d.anio_dec).astype(int)).a.value_counts().reindex(anios, fill_value=0).to_numpy()
+        ax2.bar(anios, cuenta, bottom=base, color=col, width=0.85, label=etiqueta, ec="0.35", lw=0.3)
+        base += cuenta
+    ax2.set_title(f"(b) Sismos de M ≥ {_es(mag_completa)} por año", fontsize=9.5, fontweight="bold", loc="left")
+    ax2.set_ylabel("Número de sismos", fontsize=8.5); ax2.tick_params(labelsize=8)
+    ax2.legend(fontsize=7, frameon=False, loc="upper left")
+    ax2.text(0.99, 0.97, "2026 es un año parcial", transform=ax2.transAxes, ha="right", va="top", fontsize=6.8, color="0.4")
+
+    # (c) Gutenberg-Richter --------------------------------------------------
+    ax3 = fig.add_subplot(gs[1, 0])
+    anos = ind["periodo"][1] - anio_completo
+    mm = np.arange(mag_completa, comp.mag.max() + 0.05, 0.1)
+    obs = np.array([(comp.mag >= m - 1e-9).sum() for m in mm]) / anos
+    ok = obs > 0
+    ax3.semilogy(mm[ok], obs[ok], "o", ms=3.5, color="#0154a5", label="Observado")
+    mx = np.arange(mag_completa, 7.6, 0.1)
+    ajuste = len(comp) / anos * 10 ** (-ind["b"] * (mx - mag_completa))
+    ax3.semilogy(mx, ajuste, color="#b2182b", lw=1.6, label=f"Ajuste: b = {_es(ind['b'], 2)} ± {_es(ind['b_error'], 2)}")
+    for m in (5, 6, 7):
+        T = ind["retorno_anios"][str(m)]
+        ax3.plot([m], [1 / T], marker="D", ms=5, color="#b2182b", mec="k", mew=0.5, zorder=5)
+        ax3.annotate(f"M ≥ {m}: {_periodo(T)}", (m, 1 / T), xytext=(8, 5), textcoords="offset points", fontsize=7.2, va="bottom")
+    ax3.set_title("(c) Frecuencia de sismos y períodos de retorno", fontsize=9.5, fontweight="bold", loc="left")
+    ax3.set_xlabel("Magnitud (M)", fontsize=8.5); ax3.set_ylabel("Sismos por año (≥ M)", fontsize=8.5)
+    ax3.tick_params(labelsize=8); ax3.grid(True, which="major", alpha=0.3)
+    ax3.legend(fontsize=7, frameon=False, loc="upper right")
+
+    # (d) mayores sismos -----------------------------------------------------
+    ax4 = fig.add_subplot(gs[1, 1])
+    top = ind["mayores"][::-1]
+    etiquetas = [f"{r['fecha'][:4]} · {r['lugar'].split(' of ')[-1].split(',')[0]}" for r in top]
+    ys = range(len(top))
+    ax4.hlines(ys, 5, [r["mag"] for r in top], color="0.6", lw=1.2)
+    ax4.scatter([r["mag"] for r in top], ys, s=70, color=[COLOR_PROF[clase_prof(r["prof_km"])] for r in top], ec="k", lw=0.5, zorder=3)
+    for i, r in enumerate(top):
+        ax4.text(r["mag"] + 0.12, i, f"M {_es(r['mag'])} · prof. {_es(r['prof_km'], 0)} km\na {_es(r['dist_km'], 0)} km del límite", va="center", fontsize=6.8)
+    ax4.set_yticks(list(ys)); ax4.set_yticklabels(etiquetas, fontsize=7.5)
+    ax4.set_xlim(5, max(r["mag"] for r in top) + 1.8); ax4.set_ylim(-0.6, len(top) - 0.4)
+    ax4.set_xlabel("Magnitud (M)", fontsize=8.5); ax4.tick_params(axis="x", labelsize=8); ax4.grid(True, axis="x", alpha=0.3)
+    ax4.set_title(f"(d) Los cinco mayores sismos a menos de {radio_km} km", fontsize=9.5, fontweight="bold", loc="left")
+
+    fig.suptitle(f"Sismicidad en {nombre} y su entorno", fontsize=12.5, fontweight="bold", x=0.07, ha="left", y=0.985)
+    fig.text(0.07, 0.008, f"Catálogo USGS ComCat desde {ind['periodo'][0]} (M ≥ {_es(ind['mag_minima_catalogo'])}); los paneles (b) y (c) usan M ≥ {_es(mag_completa)} desde {anio_completo}. "
+             "Límites: geoBoundaries (2017).", fontsize=6.8, color="0.35")
+    return fig, ind
+''')
+
+code(r'''
+def redactar_parrafos(ind):
+    """Dos párrafos explicativos (Markdown) a partir de los indicadores de ficha_sismica."""
+    d, m = ind["departamento"], ind["mayor"]
+    T5, T6 = ind["retorno_anios"]["5"], ind["retorno_anios"]["6"]
+    fecha = datetime.strptime(m["fecha"], "%Y-%m-%d")
+    meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    lugar = m["lugar"].split(" of ")[-1].split(",")[0]
+    p1 = (f"{d} registra poca sismicidad propia, pero está rodeado de fuentes activas. Entre {ind['periodo'][0]} y {ind['periodo'][1]} el catálogo del USGS "
+          f"ubica {_es(ind['n_dentro'], 0)} sismos de magnitud {_es(ind['mag_minima_catalogo'])} o más dentro del departamento, {_es(ind['n_hasta_50km'], 0)} a menos de 50 km de su límite "
+          f"y {_es(ind['n_en_radio'], 0)} a menos de {ind['radio_km']} km (figura, panel a). El mayor sismo en ese radio fue el de magnitud {_es(m['mag'])} del "
+          f"{fecha.day} de {meses[fecha.month - 1]} de {fecha.year}, con epicentro en {lugar}, a {_es(m['dist_km'], 0)} km del departamento y {_es(m['prof_km'], 0)} km de profundidad (panel d). "
+          f"La sismicidad cercana es sobre todo superficial: {_es(ind['pct_superficiales'], 0)} % de los sismos de magnitud {_es(ind['mag_completa'])} o más ocurre a 70 km de profundidad o menos.")
+    p2 = (f"Con los sismos de magnitud {_es(ind['mag_completa'])} o más desde {ind['anio_completo']}, el período en que el catálogo es completo para ese umbral, la relación de "
+          f"Gutenberg-Richter da un parámetro b de {_es(ind['b'], 2)} ± {_es(ind['b_error'], 2)}, lo que equivale a esperar, en promedio, un sismo de magnitud 5 o más {_periodo(T5)} y uno de magnitud 6 o más {_periodo(T6)} dentro de ese radio (panel c). Esta lectura describe la frecuencia de sismos en el entorno, no la amenaza en el territorio: no considera la "
+          f"atenuación del movimiento con la distancia ni el efecto del suelo local, y mezcla tipos de magnitud sin homogeneizar, por lo que debe complementarse con estudios de amenaza y microzonificación "
+          f"antes de usarse en decisiones de planificación.")
+    return p1 + "\n\n" + p2
+
+
+def guardar_ficha(fig, ind, parrafos, prefijo):
+    """Escribe la figura (PNG a 300 ppp), los indicadores (JSON) y los párrafos (Markdown) para reutilizarlos en otros productos."""
+    fig.savefig(f"{prefijo}.png", dpi=300, bbox_inches="tight")
+    with open(f"{prefijo}.json", "w", encoding="utf-8") as f:
+        json.dump(ind, f, ensure_ascii=False, indent=2)
+    with open(f"{prefijo}.md", "w", encoding="utf-8") as f:
+        f.write(parrafos + "\n")
+''')
+
+code(r'''
+deptos = cargar_departamentos()
+fig, ind = ficha_sismica("Córdoba", cat, deptos, lugares={"Montería": (8.75, -75.88)})
+parrafos = redactar_parrafos(ind)
+plt.show()
+''')
+
+md(r'''
+Los dos párrafos siguientes salen del mismo cálculo que la figura: (a) epicentros dentro del departamento y a menos de 100 km de su límite, con color por profundidad y tamaño por magnitud; (b) sismos de magnitud 4,5 o más por año desde 1973, según su distancia al departamento; (c) frecuencia anual de sismos por magnitud, ajuste de Gutenberg-Richter y períodos de retorno aproximados; (d) los cinco mayores sismos a menos de 100 km. Fuente: USGS ComCat; límites departamentales: geoBoundaries (2017).
+''')
+
+code(r'''
+from IPython.display import Markdown, display
+display(Markdown(parrafos))
+''')
+
+code(r'''
+_c = ind["retorno_anios"]
+_t = pd.DataFrame({
+    "Indicador": [f"Sismos dentro del departamento (M ≥ {_es(ind['mag_minima_catalogo'])})", "Sismos a menos de 50 km del límite", f"Sismos a menos de {ind['radio_km']} km del límite",
+                  f"Sismos de M ≥ {_es(ind['mag_completa'])} en el radio desde {ind['anio_completo']}", "Parámetro b (máxima verosimilitud)",
+                  "Período de retorno de M ≥ 5 (años)", "Período de retorno de M ≥ 6 (años)", "Mayor sismo en el radio"],
+    "Valor": [_es(ind["n_dentro"], 0), _es(ind["n_hasta_50km"], 0), _es(ind["n_en_radio"], 0), _es(ind["n_completos_en_radio"], 0),
+              f"{_es(ind['b'], 2)} ± {_es(ind['b_error'], 2)}", _es(_c["5"], 1), _es(_c["6"], 0),
+              f"M {_es(ind['mayor']['mag'])}, {ind['mayor']['fecha']}"]}).set_index("Indicador")
+_t
+''')
+
+md(r'''
+### 9.1 Cómo reutilizar el análisis
+
+La función `ficha_sismica(departamento, catalogo, deptos)` recibe el nombre de un departamento (con o sin tilde), un catálogo con las columnas `lat`, `lon`, `prof_km`, `mag`, `fecha`, `anio_dec` y `lugar`, y los límites que entrega `cargar_departamentos()`. Devuelve la figura y un diccionario de indicadores serializable a JSON, y `redactar_parrafos` y `guardar_ficha` producen los párrafos y los archivos (PNG a 300 ppp, JSON y Markdown) para insertarlos en otros documentos. El radio (`radio_km`), la magnitud de completitud (`mag_completa`) y el año desde el cual se considera completo el catálogo (`anio_completo`) son parámetros. Para otro departamento basta cambiar el nombre: `ficha_sismica("Antioquia", cat, deptos)`. Como el catálogo es un `DataFrame` de pandas, puede sustituirse por uno propio, siempre que tenga esas columnas.
+''')
+
+md(r'''
+## 10. Lectura y límites
 
 **Qué se puede afirmar.** El crecimiento del número de sismos registrados es un efecto de instrumentación: desaparece al filtrar por una magnitud completa. La sismicidad intermedia dibuja placas que se hunden hacia el este, con dos segmentos distintos, y el sismo de agosto de 2026 se ubica dentro del segmento occidental, a profundidad intermedia.
 
@@ -631,11 +871,12 @@ md(r'''
 ''')
 
 md(r'''
-## 10. Qué sigue
+## 11. Qué sigue
 
 - Sustituir el catálogo USGS por el del **SGC**, con su autorización y licencia, y comparar la magnitud de completitud.
 - Separar fuentes (subducción, cortical, nido) y estimar $a$ y $b$ por fuente.
 - Pasar de la sismicidad a la amenaza con modelos de movimiento del suelo (ver [](301_sismo.md)).
 
-**Referencias.** Aki, K. (1965). Maximum likelihood estimate of *b* in the formula log N = a − bM and its confidence limits. *Bulletin of the Earthquake Research Institute*, 43, 237-239. Montejo, J., Arcila, M. y Zornosa, D. (2023). Catálogo Sísmico Integrado para Colombia. *Boletín Geológico*, 50(1). https://doi.org/10.32685/0120-1425/bol.geol.50.1.2023.665. NOAA National Centers for Environmental Information, Global Significant Earthquake Database. https://doi.org/10.7289/V5TD9V7K. USGS Earthquake Hazards Program, FDSN Event Web Service. Utsu, T. (1966). A statistical significance test of the difference in b-value between two earthquake groups. *Journal of Physics of the Earth*, 14, 37-40. Wiemer, S. y Wyss, M. (2000). Minimum magnitude of completeness in earthquake catalogs. *Bulletin of the Seismological Society of America*, 90(4), 859–869.
+**Referencias.** Aki, K. (1965). Maximum likelihood estimate of *b* in the formula log N = a − bM and its confidence limits. *Bulletin of the Earthquake Research Institute*, 43, 237-239. Montejo, J., Arcila, M. y Zornosa, D. (2023). Catálogo Sísmico Integrado para Colombia. *Boletín Geológico*, 50(1). https://doi.org/10.32685/0120-1425/bol.geol.50.1.2023.665. NOAA National Centers for Environmental Information, Global Significant Earthquake Database. https://doi.org/10.7289/V5TD9V7K. Runfola, D. et al. (2020). geoBoundaries: A global database of political administrative boundaries. *PLOS ONE*, 15(4), e0231866. https://doi.org/10.1371/journal.pone.0231866. USGS Earthquake Hazards Program, FDSN Event Web Service. Utsu, T. (1966). A statistical significance test of the difference in b-value between two earthquake groups. *Journal of Physics of the Earth*, 14, 37-40. Wiemer, S. y Wyss, M. (2000). Minimum magnitude of completeness in earthquake catalogs. *Bulletin of the Seismological Society of America*, 90(4), 859–869.
 ''')
+
